@@ -1,6 +1,6 @@
 [package]
 name = "greentic-dev"
-version = "0.4.51"
+version = "0.4.52"
 edition = "2024"
 description = "Developer CLI and local tooling for Greentic flows, packs, and components"
 license = "MIT"
@@ -21,49 +21,9 @@ pkg-url = "{ repo }/releases/download/v{ version }/greentic-dev-v{ version }-{ t
 pkg-fmt = "tgz"
 bin-dir = "{ bin }{ binary-ext }"
 
-[[bin]]
-name = "greentic-component"
-path = "src/bin/greentic-component.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-secrets"
-path = "src/bin/greentic-secrets.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-gui"
-path = "src/bin/greentic-gui.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-flow"
-path = "src/bin/greentic-flow.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-pack"
-path = "src/bin/greentic-pack.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-runner"
-path = "src/bin/greentic-runner.rs"
-required-features = ["bundled-tools"]
-
-[[bin]]
-name = "greentic-runner-cli"
-path = "src/bin/greentic-runner-cli.rs"
-required-features = ["bundled-tools"]
-
 [workspace]
 members = ["xtask"]
 resolver = "2"
-
-[features]
-# This crate ships a multi-tool bin bundle via release artifacts. Some bins are
-# only meaningful when installed from those artifacts.
-bundled-tools = []
 
 [dependencies]
 anyhow = "1.0"

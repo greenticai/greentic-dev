@@ -56,6 +56,7 @@
 ## 5. Notes for Future Work
 - After publishing a new release from current sources, verify `cargo binstall greentic-dev` install logs are clean and only include `greentic-dev` binary (no bundled delegated binaries).
 - GitHub Actions now installs delegated tool binaries through `greentic-dev install tools --latest`; keep workflow and CLI install behavior aligned if delegated tool names change.
+- GitHub Actions cache paths were tightened to cache cargo index/cache/git only (not full `CARGO_HOME` source trees) to reduce flaky registry-source mutation issues during `greentic-interfaces` WIT staging.
 - Verify the GitHub Actions release workflow after recent changes to ensure matrix builds and asset uploads run for both tag and master pushes without YAML errors.
 - Keep an eye on upstream runner/flow releases; currently using `greentic-flow` 0.4.4 with `greentic-runner-host`/`desktop` 0.4.10. Upgrade together as new versions land.
 - Flow semantics audit added: see `docs/audits/flow_semantics_in_dev.md` and `docs/audits/flow_move_plan.md` for non-pass-through behaviors in `flow_cmd.rs` (config-flow rendering, manifest normalization, add-step orchestration) and a migration plan to move semantics into greentic-flow.

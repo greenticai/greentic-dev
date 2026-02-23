@@ -52,7 +52,9 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: |
-            ${{ env.CARGO_HOME }}
+            ${{ env.CARGO_HOME }}/registry/index
+            ${{ env.CARGO_HOME }}/registry/cache
+            ${{ env.CARGO_HOME }}/git/db
             ${{ env.CARGO_TARGET_DIR }}
           key: release-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
 
@@ -130,7 +132,9 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: |
-            ${{ env.CARGO_HOME }}
+            ${{ env.CARGO_HOME }}/registry/index
+            ${{ env.CARGO_HOME }}/registry/cache
+            ${{ env.CARGO_HOME }}/git/db
             ${{ env.CARGO_TARGET_DIR }}
           key: release-${{ runner.os }}-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
 

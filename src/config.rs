@@ -61,7 +61,7 @@ pub struct DistributorSection {
     /// Profiles nested under [distributor.profiles.*].
     #[serde(default)]
     pub profiles: HashMap<String, DistributorProfileConfig>,
-    /// Backward-compatible: [distributor.<name>] tables.
+    /// Backward-compatible: `[distributor.<name>]` tables.
     #[serde(default, flatten)]
     legacy_profiles: HashMap<String, DistributorProfileConfig>,
 }

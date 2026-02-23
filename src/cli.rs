@@ -139,7 +139,7 @@ pub struct WizardRunArgs {
     /// Answers file (JSON object)
     #[arg(long = "answers")]
     pub answers: Option<PathBuf>,
-    /// Override output directory (default: .greentic/wizard/<run-id>/)
+    /// Override output directory (default: `.greentic/wizard/<run-id>/`)
     #[arg(long = "out")]
     pub out: Option<PathBuf>,
     /// Preview only (default when neither --dry-run nor --execute is set)

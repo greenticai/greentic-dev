@@ -1,6 +1,6 @@
 [package]
 name = "greentic-dev"
-version = "0.4.49"
+version = "0.4.50"
 edition = "2024"
 description = "Developer CLI and local tooling for Greentic flows, packs, and components"
 license = "MIT"
@@ -24,6 +24,7 @@ bin-dir = "{ bin }{ binary-ext }"
 [[bin]]
 name = "greentic-component"
 path = "src/bin/greentic-component.rs"
+required-features = ["bundled-tools"]
 
 [[bin]]
 name = "greentic-secrets"
@@ -111,7 +112,7 @@ targets = [
 ]
 
 [workspace.metadata.dist.package.greentic-dev]
-all-features = true
+all-features = false
 
 [dev-dependencies]
 httpmock = "0.8"

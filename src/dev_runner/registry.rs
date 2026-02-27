@@ -30,7 +30,7 @@ inputs:
         stubs.insert(
             "oauth".to_string(),
             ComponentStub {
-                schema: r#"{"$id":"https://greentic-ai.github.io/component-oauth/schemas/v1/oauth.node.schema.json","type":"object"}"#.to_string(),
+                schema: r#"{"$id":"https://greenticai.github.io/component-oauth/schemas/v1/oauth.node.schema.json","type":"object"}"#.to_string(),
                 defaults,
             },
         );
@@ -55,3 +55,4 @@ impl Default for DescribeRegistry {
         Self::new()
     }
 }
+

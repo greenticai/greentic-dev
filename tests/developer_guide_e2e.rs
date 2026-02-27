@@ -145,7 +145,7 @@ fn developer_guide_hello2_remote_templates_pack_run() {
                 .ok()
                 .filter(|s| !s.trim().is_empty())
         })
-        .unwrap_or_else(|| "greentic-ai".to_string());
+        .unwrap_or_else(|| "greenticai".to_string());
     let templates_ref = format!("ghcr.io/{ghcr_owner}/components/templates:latest");
     let templates_oci_ref = format!("oci://{templates_ref}");
 
@@ -392,3 +392,4 @@ fn write_runner_cli_stub(dir: &Path) -> PathBuf {
 
     path
 }
+

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/greentic-ai/greentic-flow/refs/heads/master/schemas/ygtc.flow.schema.json",
+  "$id": "https://raw.githubusercontent.com/greenticai/greentic-flow/refs/heads/master/schemas/ygtc.flow.schema.json",
   "title": "Greentic YGTC Flow (self-describing nodes)",
   "type": "object",
   "required": ["id", "type", "nodes"],
@@ -118,3 +118,4 @@
     }
   }
 }
+

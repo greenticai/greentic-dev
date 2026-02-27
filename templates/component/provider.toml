@@ -3,7 +3,7 @@ name        = "{{component_name}}"
 version     = "0.1.0"
 description = "Minimal Greentic component scaffold"
 license     = "MIT"
-homepage    = "https://github.com/greentic-ai/{{component_name}}"
+homepage    = "https://github.com/greenticai/{{component_name}}"
 
 # --- platform/ABI contracts ---
 [abi]
@@ -44,3 +44,4 @@ created = ""
 [docs]
 readme  = "README.md"
 schemas = ["schemas/v1/config.schema.json"]
+

@@ -118,6 +118,10 @@ pub struct CborArgs {
 pub enum WizardCommand {
     /// Build a deterministic wizard plan and optionally execute it
     Run(WizardRunArgs),
+    /// Validate a wizard plan non-interactively from answers input
+    Validate(WizardValidateArgs),
+    /// Apply a wizard plan non-interactively from answers input
+    Apply(WizardApplyArgs),
     /// Replay a previously persisted wizard plan + answers
     Replay(WizardReplayArgs),
 }
@@ -139,6 +143,15 @@ pub struct WizardRunArgs {
     /// Answers file (JSON object)
     #[arg(long = "answers")]
     pub answers: Option<PathBuf>,
+    /// Emit a portable AnswerDocument envelope JSON file
+    #[arg(long = "emit-answers")]
+    pub emit_answers: Option<PathBuf>,
+    /// Pin schema version for emitted/validated AnswerDocument
+    #[arg(long = "schema-version")]
+    pub schema_version: Option<String>,
+    /// Migrate AnswerDocument to the selected schema version when needed
+    #[arg(long = "migrate")]
+    pub migrate: bool,
     /// Override output directory (default: `.greentic/wizard/<run-id>/`)
     #[arg(long = "out")]
     pub out: Option<PathBuf>,
@@ -148,6 +161,80 @@ pub struct WizardRunArgs {
     /// Execute plan steps
     #[arg(long = "execute")]
     pub execute: bool,
+    /// Skip interactive confirmation prompt
+    #[arg(long = "yes")]
+    pub yes: bool,
+    /// Allow execution in non-interactive contexts
+    #[arg(long = "non-interactive")]
+    pub non_interactive: bool,
+    /// Allow commands outside the default run-command allowlist
+    #[arg(long = "unsafe-commands")]
+    pub unsafe_commands: bool,
+    /// Allow destructive operations (delete/overwrite/move) when requested by a plan step
+    #[arg(long = "allow-destructive")]
+    pub allow_destructive: bool,
+}
+
+#[derive(Args, Debug, Clone)]
+pub struct WizardValidateArgs {
+    /// Answers file (AnswerDocument envelope or legacy answers JSON object)
+    #[arg(long = "answers")]
+    pub answers: PathBuf,
+    /// Target domain (optional when inferrable from AnswerDocument wizard_id)
+    #[arg(long = "target")]
+    pub target: Option<String>,
+    /// Operation mode (optional when inferrable from AnswerDocument wizard_id)
+    #[arg(long = "mode")]
+    pub mode: Option<String>,
+    /// Frontend mode (text/json/adaptive-card)
+    #[arg(long = "frontend", default_value = "json")]
+    pub frontend: String,
+    /// Locale (BCP47), passed to providers and recorded in plan metadata
+    #[arg(long = "locale")]
+    pub locale: Option<String>,
+    /// Emit a portable AnswerDocument envelope JSON file
+    #[arg(long = "emit-answers")]
+    pub emit_answers: Option<PathBuf>,
+    /// Pin schema version for emitted/validated AnswerDocument
+    #[arg(long = "schema-version")]
+    pub schema_version: Option<String>,
+    /// Migrate AnswerDocument to the selected schema version when needed
+    #[arg(long = "migrate")]
+    pub migrate: bool,
+    /// Override output directory (default: `.greentic/wizard/<run-id>/`)
+    #[arg(long = "out")]
+    pub out: Option<PathBuf>,
+}
+
+#[derive(Args, Debug, Clone)]
+pub struct WizardApplyArgs {
+    /// Answers file (AnswerDocument envelope or legacy answers JSON object)
+    #[arg(long = "answers")]
+    pub answers: PathBuf,
+    /// Target domain (optional when inferrable from AnswerDocument wizard_id)
+    #[arg(long = "target")]
+    pub target: Option<String>,
+    /// Operation mode (optional when inferrable from AnswerDocument wizard_id)
+    #[arg(long = "mode")]
+    pub mode: Option<String>,
+    /// Frontend mode (text/json/adaptive-card)
+    #[arg(long = "frontend", default_value = "json")]
+    pub frontend: String,
+    /// Locale (BCP47), passed to providers and recorded in plan metadata
+    #[arg(long = "locale")]
+    pub locale: Option<String>,
+    /// Emit a portable AnswerDocument envelope JSON file
+    #[arg(long = "emit-answers")]
+    pub emit_answers: Option<PathBuf>,
+    /// Pin schema version for emitted/validated AnswerDocument
+    #[arg(long = "schema-version")]
+    pub schema_version: Option<String>,
+    /// Migrate AnswerDocument to the selected schema version when needed
+    #[arg(long = "migrate")]
+    pub migrate: bool,
+    /// Override output directory (default: `.greentic/wizard/<run-id>/`)
+    #[arg(long = "out")]
+    pub out: Option<PathBuf>,
     /// Skip interactive confirmation prompt
     #[arg(long = "yes")]
     pub yes: bool,

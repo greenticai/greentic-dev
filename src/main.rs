@@ -58,6 +58,8 @@ fn main() -> Result<()> {
         },
         Command::Wizard(command) => match command {
             WizardCommand::Run(args) => wizard::run(args),
+            WizardCommand::Validate(args) => wizard::validate(args),
+            WizardCommand::Apply(args) => wizard::apply(args),
             WizardCommand::Replay(args) => wizard::replay(args),
         },
         Command::Gui(args) => {

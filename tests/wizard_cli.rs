@@ -481,3 +481,133 @@ exit 0
         .failure()
         .stderr(contains("replay pin mismatch for `greentic-pack`"));
 }
+
+#[test]
+fn wizard_run_emit_answers_writes_answer_document_envelope() {
+    let tmp = TempDir::new().expect("temp dir");
+    let out = tmp.path().join("wiz-emit");
+    let emitted = tmp.path().join("answers-envelope.json");
+
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.args([
+        "wizard",
+        "run",
+        "--target",
+        "pack",
+        "--mode",
+        "build",
+        "--emit-answers",
+        emitted.to_str().expect("utf8 path"),
+        "--out",
+        out.to_str().expect("utf8 path"),
+    ]);
+    cmd.assert().success();
+
+    let envelope = fs::read_to_string(&emitted).expect("read emitted envelope");
+    assert!(envelope.contains("\"wizard_id\": \"greentic-dev.wizard.pack.build\""));
+    assert!(envelope.contains("\"schema_id\": \"greentic-dev.pack.build\""));
+    assert!(envelope.contains("\"schema_version\": \"1.0.0\""));
+    assert!(envelope.contains("\"locale\": \"en-US\""));
+    assert!(envelope.contains("\"answers\": {}"));
+}
+
+#[test]
+fn wizard_validate_answers_document_runs_dry_run_plan() {
+    let tmp = TempDir::new().expect("temp dir");
+    let out = tmp.path().join("wiz-validate");
+    let answers_doc = tmp.path().join("answers-doc.json");
+
+    fs::write(
+        &answers_doc,
+        r#"{
+  "wizard_id": "greentic-dev.wizard.pack.build",
+  "schema_id": "greentic-dev.pack.build",
+  "schema_version": "1.0.0",
+  "locale": "en-US",
+  "answers": {
+    "in": "."
+  },
+  "locks": {}
+}
+"#,
+    )
+    .expect("write answers doc");
+
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.args([
+        "wizard",
+        "validate",
+        "--answers",
+        answers_doc.to_str().expect("utf8 path"),
+        "--out",
+        out.to_str().expect("utf8 path"),
+    ]);
+    cmd.assert()
+        .success()
+        .stdout(contains("\"target\": \"pack\""))
+        .stdout(contains("\"mode\": \"build\""));
+
+    assert!(
+        !out.join("exec.log").exists(),
+        "dry-run validate should not create exec.log"
+    );
+}
+
+#[test]
+fn wizard_apply_answers_document_executes_plan() {
+    let tmp = TempDir::new().expect("temp dir");
+    let bin_dir = tmp.path().join("bin");
+    fs::create_dir_all(&bin_dir).expect("create bin dir");
+    let out = tmp.path().join("wiz-apply");
+    let runlog = tmp.path().join("apply-runs.log");
+    let answers_doc = tmp.path().join("answers-doc.json");
+
+    write_stub_bin(
+        &bin_dir,
+        "greentic-pack",
+        &format!(
+            r#"
+if [ "$1" = "--version" ]; then
+  echo "greentic-pack 0.4.test"
+  exit 0
+fi
+echo "$@" >> "{}"
+exit 0
+"#,
+            runlog.display()
+        ),
+    );
+
+    fs::write(
+        &answers_doc,
+        r#"{
+  "wizard_id": "greentic-dev.wizard.pack.build",
+  "schema_id": "greentic-dev.pack.build",
+  "schema_version": "1.0.0",
+  "locale": "en-US",
+  "answers": {
+    "in": "."
+  },
+  "locks": {}
+}
+"#,
+    )
+    .expect("write answers doc");
+
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.env("PATH", prepend_path(&bin_dir)).args([
+        "wizard",
+        "apply",
+        "--answers",
+        answers_doc.to_str().expect("utf8 path"),
+        "--non-interactive",
+        "--out",
+        out.to_str().expect("utf8 path"),
+    ]);
+    cmd.assert().success();
+
+    let exec_log = fs::read_to_string(out.join("exec.log")).expect("read exec log");
+    assert!(exec_log.contains("RUN greentic-pack build --in ."));
+    let stub_log = fs::read_to_string(&runlog).expect("read stub run log");
+    assert!(stub_log.contains("build --in ."));
+}

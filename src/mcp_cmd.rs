@@ -2,8 +2,8 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, bail};
-use greentic_mcp::{ToolMap, load_tool_map_config};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
+use std::collections::{BTreeMap, btree_map::Entry};
 
 use crate::path_safety::normalize_under_root;
 
@@ -28,6 +28,77 @@ pub fn doctor(target: &str, json: bool) -> Result<()> {
     }
 
     Ok(())
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct ToolRef {
+    name: String,
+    component: String,
+    entry: String,
+    #[serde(default)]
+    timeout_ms: Option<u64>,
+    #[serde(default)]
+    max_retries: Option<u32>,
+    #[serde(default)]
+    retry_backoff_ms: Option<u64>,
+}
+
+#[derive(Debug, Clone, Deserialize)]
+struct ToolMapConfig {
+    tools: Vec<ToolRef>,
+}
+
+#[derive(Debug, Clone)]
+struct ToolMap {
+    tools: BTreeMap<String, ToolRef>,
+}
+
+impl ToolMap {
+    fn from_config(config: &ToolMapConfig) -> Result<Self> {
+        let mut tools = BTreeMap::new();
+        for tool in &config.tools {
+            match tools.entry(tool.name.clone()) {
+                Entry::Vacant(slot) => {
+                    slot.insert(tool.clone());
+                }
+                Entry::Occupied(_) => {
+                    bail!("tool map contains duplicate tool names");
+                }
+            }
+        }
+        Ok(Self { tools })
+    }
+
+    fn iter(&self) -> impl Iterator<Item = (&String, &ToolRef)> {
+        self.tools.iter()
+    }
+}
+
+fn load_tool_map_config(path: &Path) -> Result<ToolMapConfig> {
+    let content = fs::read_to_string(path)
+        .with_context(|| format!("failed to read MCP tool map {}", path.display()))?;
+    if is_json(path, &content) {
+        Ok(serde_json::from_str(&content)
+            .with_context(|| format!("invalid MCP tool map JSON {}", path.display()))?)
+    } else {
+        Ok(serde_yaml_bw::from_str(&content)
+            .with_context(|| format!("invalid MCP tool map YAML {}", path.display()))?)
+    }
+}
+
+fn is_json(path: &Path, content: &str) -> bool {
+    if let Some(ext) = path.extension().and_then(|e| e.to_str()) {
+        if matches!(ext, "json") {
+            return true;
+        }
+        if matches!(ext, "yaml" | "yml") {
+            return false;
+        }
+    }
+    content
+        .chars()
+        .find(|c| !c.is_whitespace())
+        .is_some_and(|c| c == '{' || c == '[')
 }
 
 fn locate_toolmap(workspace_root: &Path, target: &str) -> Result<PathBuf> {

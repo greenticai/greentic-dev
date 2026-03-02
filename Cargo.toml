@@ -1,6 +1,6 @@
 [package]
 name = "greentic-dev"
-version = "0.4.54"
+version = "0.4.56"
 edition = "2024"
 description = "Developer CLI and local tooling for Greentic flows, packs, and components"
 license = "MIT"
@@ -46,7 +46,6 @@ greentic-interfaces = { version = "0.4", default-features = false, features = ["
 greentic-types = { version = "0.4", features = ["serde"] }
 greentic-flow = "0.4"
 greentic-pack-lib = "0.4"
-greentic-mcp = "0.4"
 greentic-component = { version = "0.4", features = ["prepare", "describe", "cli"] }
 jsonschema = "0.42"
 tempfile = "3"

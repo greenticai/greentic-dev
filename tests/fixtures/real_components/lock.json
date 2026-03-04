@@ -1,12 +1,12 @@
 {
   "adaptive_card": {
-    "repo": "https://github.com/greentic-ai/component-adaptive-card",
+    "repo": "https://github.com/greenticai/component-adaptive-card",
     "commit": "4e6e63b059166c7fa66aa145e8ff670d6b601036",
     "artifact": "adaptive_card/component.wasm",
     "hash_blake3": "1b4ff907e5873289897e5933fe69898e75ae0b1953c64e95926e7fb9be542ed7"
   },
   "templates": {
-    "repo": "https://github.com/greentic-ai/component-templates",
+    "repo": "https://github.com/greenticai/component-templates",
     "commit": "959ef0a5ed6703a33cc19dd9b24a521ff49dced1",
     "artifact": "templates/component.wasm",
     "hash_blake3": "8dcb693946422ecb635229d884759370248c78cfa2c84cf2694a0042dd5d5892"
@@ -18,3 +18,4 @@
     "hash_blake3": "TODO"
   }
 }
+

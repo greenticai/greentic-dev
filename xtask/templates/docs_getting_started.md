@@ -33,7 +33,8 @@ Eventually the component binary or pack should expose a describe endpoint (typic
 Publish the schema at:
 
 ```
-https://greentic-ai.github.io/component-{{component_kebab}}/schemas/v1/{{component_kebab}}.node.schema.json
+https://greenticai.github.io/component-{{component_kebab}}/schemas/v1/{{component_kebab}}.node.schema.json
 ```
 
 The placeholder value is already embedded in the describe payload.
+

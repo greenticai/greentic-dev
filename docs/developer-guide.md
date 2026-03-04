@@ -34,7 +34,7 @@ This guide walks from a clean workstation all the way to a “hello world” Gre
    ```
    For the latest commit or local forks:
    ```bash
-   cargo install --git https://github.com/greentic-ai/greentic-dev greentic-dev
+   cargo install --git https://github.com/greenticai/greentic-dev greentic-dev
    # or from the current checkout
    cargo install --path .
    ```
@@ -113,7 +113,7 @@ cd hello2-pack
 ```bash
 mkdir -p flows/answers
 greentic-dev flow answers \
-  --component oci://ghcr.io/greentic-ai/components/templates:latest \
+  --component oci://ghcr.io/greenticai/components/templates:latest \
   --operation text \
   --mode config \
   --name templates \
@@ -123,7 +123,7 @@ greentic-dev flow add-step \
   --node-id templates \
   --operation text \
   --mode config \
-  --component oci://ghcr.io/greentic-ai/components/templates:latest \
+  --component oci://ghcr.io/greenticai/components/templates:latest \
   --answers-file flows/answers/templates.example.json \
   --routing-out
 ```
@@ -174,3 +174,4 @@ greentic-dev pack run --pack dist/hello.gtpack --offline
 # greentic-pack providers info dist/hello.gtpack --id dev.local.hello.provider
 # greentic-pack providers validate dist/hello.gtpack
 ```
+

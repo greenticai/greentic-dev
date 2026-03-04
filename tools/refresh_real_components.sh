@@ -22,7 +22,7 @@ BRANCH_FALLBACK="${BRANCH_FALLBACK:-master}"
 TMP_ROOT="${TMP_ROOT:-${TMPDIR:-/tmp}/greentic-refresh-real}"
 OCI_BIN="${OCI_BIN:-oras}"
 OCI_USERNAME="${OCI_USERNAME:-${USER:-}}"
-DEFAULT_WEATHERAPI_OCI_REF="${DEFAULT_WEATHERAPI_OCI_REF:-ghcr.io/greentic-ai/private/mcp-components/openweatherapi.component:latest}"
+DEFAULT_WEATHERAPI_OCI_REF="${DEFAULT_WEATHERAPI_OCI_REF:-ghcr.io/greenticai/private/mcp-components/openweatherapi.component:latest}"
 DEFAULT_WEATHERAPI_ARTIFACT="${DEFAULT_WEATHERAPI_ARTIFACT:-weatherapi/openweatherapi.component.wasm}"
 ONLY_OCI="${ONLY_OCI:-0}"
 ONLY_COMPONENTS="${ONLY_COMPONENTS:-}"
@@ -449,3 +449,4 @@ if [[ $status -ne 0 ]]; then
   fatal "one or more required artifacts missing; see warnings above"
 fi
 log "done"
+

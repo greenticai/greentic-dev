@@ -65,9 +65,11 @@ ci = ["github"]
 installers = ["shell"]
 targets = [
     "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
     "x86_64-apple-darwin",
     "aarch64-apple-darwin",
     "x86_64-pc-windows-msvc",
+    "aarch64-pc-windows-msvc",
 ]
 
 [workspace.metadata.dist.package.greentic-dev]
@@ -82,4 +84,3 @@ greentic-secrets-api = "0.4"
 async-trait = "0.1"
 assert_cmd = "2"
 predicates = "3"
-

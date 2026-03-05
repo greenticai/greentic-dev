@@ -1,4 +1,5 @@
 use anyhow::{Context, Result, anyhow, bail};
+use semver::Version;
 use std::env;
 use std::ffi::OsString;
 use std::path::{Path, PathBuf};
@@ -125,20 +126,35 @@ fn install_with_binstall(spec: InstallSpec, force_latest: bool) -> Result<()> {
 }
 
 fn ensure_cargo_binstall() -> Result<()> {
-    let has_binstall = Command::new("cargo")
-        .arg("binstall")
-        .arg("--version")
-        .stdin(Stdio::null())
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
-        .status()
-        .map(|status| status.success())
-        .unwrap_or(false);
-    if has_binstall {
-        return Ok(());
+    let installed_version = installed_cargo_binstall_version()?;
+    if installed_version.is_none() {
+        eprintln!("greentic-dev: installing `cargo-binstall` via cargo...");
+        return install_cargo_binstall();
     }
 
-    eprintln!("greentic-dev: installing `cargo-binstall` via cargo...");
+    let installed_version = installed_version.expect("checked is_some above");
+    match latest_cargo_binstall_version() {
+        Ok(latest_version) => {
+            if installed_version >= latest_version {
+                return Ok(());
+            }
+
+            eprintln!(
+                "greentic-dev: updating `cargo-binstall` from {} to {} via cargo...",
+                installed_version, latest_version
+            );
+            install_cargo_binstall()
+        }
+        Err(err) => {
+            eprintln!(
+                "greentic-dev: failed to check latest `cargo-binstall` version ({err}); continuing with installed version {installed_version}."
+            );
+            Ok(())
+        }
+    }
+}
+
+fn install_cargo_binstall() -> Result<()> {
     let status = Command::new("cargo")
         .arg("install")
         .arg("cargo-binstall")
@@ -159,9 +175,80 @@ fn ensure_cargo_binstall() -> Result<()> {
     }
 }
 
+fn installed_cargo_binstall_version() -> Result<Option<Version>> {
+    let output = Command::new("cargo")
+        .arg("binstall")
+        .arg("--version")
+        .stdin(Stdio::null())
+        .stderr(Stdio::null())
+        .output();
+    let output = match output {
+        Ok(output) => output,
+        Err(_) => return Ok(None),
+    };
+    if !output.status.success() {
+        return Ok(None);
+    }
+
+    let stdout = String::from_utf8(output.stdout)
+        .context("`cargo binstall --version` returned non-UTF8 output")?;
+    parse_installed_cargo_binstall_version(&stdout)
+}
+
+fn latest_cargo_binstall_version() -> Result<Version> {
+    let output = Command::new("cargo")
+        .arg("search")
+        .arg("cargo-binstall")
+        .arg("--limit")
+        .arg("1")
+        .stdin(Stdio::null())
+        .stderr(Stdio::null())
+        .output()
+        .with_context(|| "failed to execute `cargo search cargo-binstall --limit 1`")?;
+    if !output.status.success() {
+        bail!(
+            "`cargo search cargo-binstall --limit 1` failed with exit code {:?}",
+            output.status.code()
+        );
+    }
+
+    let stdout = String::from_utf8(output.stdout)
+        .context("`cargo search cargo-binstall --limit 1` returned non-UTF8 output")?;
+    parse_latest_cargo_binstall_version(&stdout)
+}
+
+fn parse_installed_cargo_binstall_version(stdout: &str) -> Result<Option<Version>> {
+    let line = stdout.lines().next().unwrap_or_default();
+    let maybe_version = line
+        .split_whitespace()
+        .find_map(|token| Version::parse(token.trim_start_matches('v')).ok());
+    Ok(maybe_version)
+}
+
+fn parse_latest_cargo_binstall_version(stdout: &str) -> Result<Version> {
+    let first_line = stdout
+        .lines()
+        .find(|line| !line.trim().is_empty())
+        .ok_or_else(|| anyhow!("`cargo search cargo-binstall --limit 1` returned no results"))?;
+    let (_, rhs) = first_line
+        .split_once('=')
+        .ok_or_else(|| anyhow!("unexpected cargo search output: {first_line}"))?;
+    let quoted = rhs
+        .split('#')
+        .next()
+        .map(str::trim)
+        .ok_or_else(|| anyhow!("unexpected cargo search output: {first_line}"))?;
+    let version_text = quoted.trim_matches('"');
+    Version::parse(version_text)
+        .with_context(|| format!("failed to parse cargo-binstall version from `{first_line}`"))
+}
+
 #[cfg(test)]
 mod tests {
-    use super::DELEGATED_INSTALL_SPECS;
+    use super::{
+        DELEGATED_INSTALL_SPECS, parse_installed_cargo_binstall_version,
+        parse_latest_cargo_binstall_version,
+    };
 
     #[test]
     fn delegated_install_specs_include_runner_cli() {
@@ -169,5 +256,22 @@ mod tests {
             spec.bin_name == "greentic-runner-cli" && spec.crate_name == "greentic-runner"
         });
         assert!(found);
+    }
+
+    #[test]
+    fn parse_installed_binstall_version_line() {
+        let parsed = parse_installed_cargo_binstall_version("cargo-binstall 1.15.7\n")
+            .expect("parse should succeed")
+            .expect("version should exist");
+        assert_eq!(parsed.to_string(), "1.15.7");
+    }
+
+    #[test]
+    fn parse_latest_binstall_version_line() {
+        let parsed = parse_latest_cargo_binstall_version(
+            "cargo-binstall = \"1.15.7\"    # Binary installation for rust projects\n",
+        )
+        .expect("parse should succeed");
+        assert_eq!(parsed.to_string(), "1.15.7");
     }
 }

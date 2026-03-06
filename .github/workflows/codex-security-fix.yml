@@ -1,0 +1,187 @@
+﻿name: Codex Security Fix
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to scan and patch (only for manual run)"
+        required: false
+        default: ""
+      max_alerts:
+        description: "Maximum open alerts per source to include"
+        required: true
+        default: "20"
+
+permissions:
+  contents: write
+  pull-requests: write
+  security-events: read
+
+jobs:
+  codex-fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      security-events: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.event.inputs.branch }}
+          fetch-depth: 0
+
+      - name: Dependency Review
+        if: github.event_name == 'pull_request'
+        id: dependency_review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+          warn-only: true
+
+      - name: Fetch open security alerts
+        id: alerts
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          MAX_ALERTS: ${{ github.event.inputs.max_alerts || 20 }}
+          PR_VULN_CHANGES: ${{ steps.dependency_review.outputs.vulnerable-changes }}
+          PR_COMMENT_CONTENT: ${{ steps.dependency_review.outputs.comment-content }}
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "$PR_VULN_CHANGES" > pr-vulnerable-changes.json
+            echo "$PR_COMMENT_CONTENT" > pr-comment.md
+            
+            echo "[]" > all-dependabot-alerts.json
+            echo "[]" > dependabot-alerts.json
+            echo "[]" > all-code-scanning-alerts.json
+            echo "[]" > code-scanning-alerts.json
+            echo '{"dependabot": [], "code_scanning": []}' > security-alerts.json
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            echo "Skipping global alerts fetch for pull request - Codex will only evaluate PR vulnerabilities."
+            exit 0
+          fi
+          
+          echo "[]" > pr-vulnerable-changes.json
+          echo "" > pr-comment.md
+
+          # Fetch Dependabot alerts
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${OWNER}/${REPO}/dependabot/alerts?state=open&per_page=100" > all-dependabot-alerts.json || echo "[]" > all-dependabot-alerts.json
+          jq ".[0:(${MAX_ALERTS}|tonumber)]" all-dependabot-alerts.json > dependabot-alerts.json
+
+          # Fetch Code Scanning alerts
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${OWNER}/${REPO}/code-scanning/alerts?state=open&per_page=100" > all-code-scanning-alerts.json || echo "[]" > all-code-scanning-alerts.json
+          jq ".[0:(${MAX_ALERTS}|tonumber)]" all-code-scanning-alerts.json > code-scanning-alerts.json
+
+          DEP_COUNT=$(jq 'length' dependabot-alerts.json)
+          CODE_COUNT=$(jq 'length' code-scanning-alerts.json)
+          TOTAL_COUNT=$((DEP_COUNT + CODE_COUNT))
+
+          jq -n \
+            --slurpfile dependabot dependabot-alerts.json \
+            --slurpfile code_scanning code-scanning-alerts.json \
+            '{dependabot: $dependabot[0], code_scanning: $code_scanning[0]}' > security-alerts.json
+
+          echo "count=${TOTAL_COUNT}" >> "$GITHUB_OUTPUT"
+          echo "Found ${DEP_COUNT} open Dependabot alerts and ${CODE_COUNT} open Code Scanning alerts"
+
+      - name: Build Codex prompt
+        if: steps.alerts.outputs.count != '0' || github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          cat > codex-prompt.txt <<'PROMPT'
+          You are operating in a CI environment as a Security Reviewer.
+
+          Task:
+          1) Analyze the security alerts listed below.
+          2) If this is a Pull Request, check the repo for any new vulnerabilities introduced in dependency files.
+          3) Apply minimal, safe fixes to remediate vulnerabilities.
+          4) Write SECURITY_FIX_REPORT.md summarizing your actions.
+          
+          Security alerts JSON:
+          PROMPT
+
+          cat security-alerts.json >> codex-prompt.txt
+          
+          if [ -s pr-vulnerable-changes.json ]; then
+            echo -e "\n\nNew PR Dependency Vulnerabilities:" >> codex-prompt.txt
+            cat pr-vulnerable-changes.json >> codex-prompt.txt
+          fi
+
+      - name: Run Codex remediation
+        if: steps.alerts.outputs.count != '0' || github.event_name == 'pull_request'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY || secrets.CODEX_OPENAI_API_KEY }}
+          prompt-file: codex-prompt.txt
+          codex-args: '["--full-auto"]'
+
+      - name: Commit and push fixes
+        if: (steps.alerts.outputs.count != '0' || github.event_name == 'pull_request')
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref || github.event.inputs.branch }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet && [ ! -f SECURITY_FIX_REPORT.md ]; then
+            echo "No changes created by Codex"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "chore(security): codex remediation for security alerts" || echo "No changes to commit"
+          git push origin "HEAD:${BRANCH}"
+
+      - name: Post Codex Review
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          set -euo pipefail
+          
+          # Combine the Dependency Review scorecard and the Codex report
+          if [ -s pr-comment.md ]; then
+             cat pr-comment.md > COMBINED_REPORT.md
+          else
+             echo "## Dependency Review Scorecard" > COMBINED_REPORT.md
+             echo "No dependency changes detected." >> COMBINED_REPORT.md
+          fi
+
+          if [ -f SECURITY_FIX_REPORT.md ]; then
+             echo -e "\n\n---\n\n" >> COMBINED_REPORT.md
+             cat SECURITY_FIX_REPORT.md >> COMBINED_REPORT.md
+          fi
+          
+          echo "Adding bot as reviewer"
+          gh pr edit "${PR_URL}" --add-reviewer "@me" || echo "Could not add reviewer (might already be one)"
+          
+          echo "Posting Combined report as a review comment to ${PR_URL}"
+          gh pr review "${PR_URL}" --comment --body-file COMBINED_REPORT.md
+
+      - name: Upload remediation artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-security-run
+          path: |
+            all-dependabot-alerts.json
+            all-code-scanning-alerts.json
+            dependabot-alerts.json
+            code-scanning-alerts.json
+            security-alerts.json
+            codex-prompt.txt
+            SECURITY_FIX_REPORT.md
+          if-no-files-found: ignore
+

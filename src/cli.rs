@@ -35,8 +35,7 @@ pub enum Command {
     #[command(subcommand)]
     Tools(ToolsCommand),
     /// Install delegated assets
-    #[command(subcommand)]
-    Install(InstallCommand),
+    Install(InstallArgs),
     /// Decode a CBOR file to text
     Cbor(CborArgs),
     /// Deterministic orchestration for dev workbench workflows
@@ -83,9 +82,30 @@ pub enum ToolsCommand {
 }
 
 #[derive(Subcommand, Debug)]
-pub enum InstallCommand {
+pub enum InstallSubcommand {
     /// Install delegated tools (component/flow/pack/gui/runner/secrets)
     Tools(ToolsInstallArgs),
+}
+
+#[derive(Args, Debug)]
+pub struct InstallArgs {
+    #[command(subcommand)]
+    pub command: Option<InstallSubcommand>,
+    /// Tenant identifier for commercial installs
+    #[arg(long = "tenant")]
+    pub tenant: Option<String>,
+    /// Auth token or env:VAR indirection for commercial installs
+    #[arg(long = "token")]
+    pub token: Option<String>,
+    /// Override the directory used for installed binaries
+    #[arg(long = "bin-dir")]
+    pub bin_dir: Option<PathBuf>,
+    /// Override the directory used for installed docs
+    #[arg(long = "docs-dir")]
+    pub docs_dir: Option<PathBuf>,
+    /// Locale (BCP47) used for translated install manifests/docs
+    #[arg(long = "locale")]
+    pub locale: Option<String>,
 }
 
 #[derive(Args, Debug)]

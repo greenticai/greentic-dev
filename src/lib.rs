@@ -8,6 +8,8 @@ pub mod config;
 pub mod delegate;
 pub mod dev_runner;
 pub mod distributor;
+pub mod i18n;
+pub mod install;
 pub mod mcp_cmd;
 pub mod pack_build;
 pub mod pack_init;

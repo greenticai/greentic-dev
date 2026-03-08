@@ -25,6 +25,62 @@
 
 - `cbor <file>.cbor` decodes a CBOR payload and prints pretty JSON.
 
+## Install
+
+- `greentic-dev install`
+- `greentic-dev install --tenant <TENANT> --token <TOKEN-or-env:VAR>`
+- `greentic-dev install --tenant <TENANT> --token <TOKEN-or-env:VAR> --bin-dir <DIR>`
+- `greentic-dev install --tenant <TENANT> --token <TOKEN-or-env:VAR> --docs-dir <DIR>`
+- `greentic-dev install --tenant <TENANT> --locale <BCP47>`
+- `greentic-dev install tools`
+
+Behavior:
+
+- bare `install` always runs the OSS delegated tool installer first
+- when `--tenant` is omitted, the command stops after the OSS install step
+- when `--tenant` is present, the command prompts for a hidden token if `--token` is omitted in an interactive terminal
+- when `--tenant` is present in a non-interactive context, `--token` is required
+- when a tenant token is available, the command also installs tenant-authorized binaries and docs
+- `--locale` selects translated manifest/doc values when available; exact locale is preferred, then language-only fallback (`nl-NL` -> `nl`)
+- `install tools` remains the legacy OSS-only `cargo binstall` path
+
+Commercial install contract:
+
+- tenant manifests are pulled from `oci://ghcr.io/greentic-biz/customers-tools/<tenant>:latest`
+- tenant manifests may include expanded tool/doc entries or GitHub-hosted manifest references
+- tenant manifests may also use the simple OCI payload shape:
+  - tools: `{ id, targets }`
+  - docs: `{ url, file_name }`
+- commercial binaries and docs must come from GitHub-hosted URLs
+- supported target `os` values are `linux`, `macos`, and `windows`
+- supported target `arch` values are `x86_64` and `aarch64`
+- Linux/macOS archives are expected as `.tar.gz`; Windows archives are expected as `.zip`
+- `.tgz` is also accepted for gzip-compressed tarballs
+
+Schema contract:
+
+- tenant manifests should include `$schema` pointing to `tenant-tools.schema.json`
+- tool manifests should include `$schema` pointing to `tool.schema.json`
+- doc manifests should include `$schema` pointing to `doc.schema.json`
+- `schema_version` is currently `"1"`
+- `greentic-dev` currently consumes these schema-decorated manifests but does not perform JSON Schema validation before install
+- tool/doc manifests may include `i18n` maps keyed by locale such as `nl` or `nl-NL`
+
+Doc manifest notes:
+
+- docs use `source.type = "download"`
+- docs include `download_file_name` as part of the manifest contract
+- docs use `default_relative_path` for the installed path under the docs root
+- `default_relative_path` must remain within the docs directory; path traversal is rejected
+- localized doc entries may override `title`, `source.url`, `download_file_name`, and `default_relative_path`
+- simple doc entries use `file_name`, which installs directly under the docs root
+
+Default install locations:
+
+- binaries: `$CARGO_HOME/bin` or `~/.cargo/bin`
+- docs: `~/.greentic/install/docs`
+- state: `~/.greentic/install/state.json`
+
 ## Wizard (Launcher-Only)
 
 - `greentic-dev wizard`

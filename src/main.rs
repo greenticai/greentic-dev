@@ -5,12 +5,13 @@ use std::ffi::OsString;
 use std::process::{Command as ProcessCommand, Stdio};
 
 use greentic_dev::cli::{Cli, Command};
-use greentic_dev::cli::{InstallCommand, McpCommand, ToolsCommand, WizardSubcommand};
+use greentic_dev::cli::{InstallSubcommand, McpCommand, ToolsCommand, WizardSubcommand};
 use greentic_dev::passthrough::{resolve_binary, run_passthrough};
 
 use greentic_dev::cbor_cmd;
 use greentic_dev::cmd::config;
 use greentic_dev::cmd::tools;
+use greentic_dev::install;
 use greentic_dev::mcp_cmd;
 use greentic_dev::secrets_cli::run_secrets_command;
 use greentic_dev::wizard;
@@ -53,8 +54,9 @@ fn main() -> Result<()> {
         Command::Tools(command) => match command {
             ToolsCommand::Install(args) => tools::install(args.latest),
         },
-        Command::Install(command) => match command {
-            InstallCommand::Tools(args) => tools::install(args.latest),
+        Command::Install(args) => match args.command {
+            Some(InstallSubcommand::Tools(args)) => tools::install(args.latest),
+            None => install::run(args),
         },
         Command::Wizard(args) => match args.command {
             Some(WizardSubcommand::Validate(sub)) => wizard::validate(sub),

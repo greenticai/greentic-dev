@@ -55,9 +55,15 @@ reqwest = { version = "0.13", default-features = false, features = ["blocking", 
 zip = { version = "8", default-features = false, features = ["deflate"] }
 bytes = "1.7"
 async-compression = "0.4"
-greentic-distributor-client = { version = "0.4", features = ["http-runtime"] }
+flate2 = "1"
+tar = "0.4"
+oci-distribution = { version = "0.11", default-features = false, features = ["rustls-tls"] }
+greentic-distributor-client = { version = "0.4", features = ["http-runtime", "pack-fetch"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 async-trait = "0.1"
+rpassword = "7"
+sys-locale = "0.3"
+unic-langid = "0.9"
 
 [workspace.metadata.dist]
 cargo-dist-version = "0.24"
@@ -84,3 +90,6 @@ greentic-secrets-api = "0.4"
 async-trait = "0.1"
 assert_cmd = "2"
 predicates = "3"
+
+[build-dependencies]
+serde_json = "1.0"

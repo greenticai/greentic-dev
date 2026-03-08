@@ -52,5 +52,11 @@
   "cli.install.summary.tools": "Installed tools:",
   "cli.install.summary.tool_item": "- {id}: {path}",
   "cli.install.summary.docs": "Downloaded docs:",
-  "cli.install.summary.doc_item": "- {id}: {path}"
+  "cli.install.summary.doc_item": "- {id}: {path}",
+  "cli.wizard.launcher.title": "Greentic Developer Wizard",
+  "cli.wizard.launcher.option_pack": "1) Build / Update a Pack (flows + components)",
+  "cli.wizard.launcher.option_bundle": "2) Build / Update a Production Bundle",
+  "cli.wizard.launcher.select_option": "Select option: ",
+  "cli.wizard.error.interactive_required": "wizard launcher requires interactive input. Use `wizard apply --answers <FILE>` or `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "invalid selection; expected 1 or 2"
 }

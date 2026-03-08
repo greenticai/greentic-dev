@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Изтеглени документи:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Инсталирани инструменти:"
+  "cli.install.summary.tools": "Инсталирани инструменти:",
+  "cli.wizard.error.interactive_required": "стартерът на съветника изисква интерактивен вход. Използвайте `wizard apply --answers <FILE>` или `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "невалиден избор; очакваше се 1 или 2",
+  "cli.wizard.launcher.option_bundle": "2) Създаване / Обновяване на Production Bundle",
+  "cli.wizard.launcher.option_pack": "1) Създаване / Обновяване на Pack (потоци + компоненти)",
+  "cli.wizard.launcher.select_option": "Изберете опция: ",
+  "cli.wizard.launcher.title": "Greentic Developer Wizard"
 }

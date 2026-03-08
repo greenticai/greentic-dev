@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Kuatiañe'ẽnguéra mboguejypyre:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Tembiporuéra oñemohendapyréva:"
+  "cli.install.summary.tools": "Tembiporuéra oñemohendapyréva:",
+  "cli.wizard.error.interactive_required": "pe lanzador del asistente oikotevẽ jeike hag̃ua oñeñomongeta hag̃uáicha. Eipuru `wizard apply --answers <FILE>` térã `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "jeporavo ndoikói; oñeha'arõ 1 térã 2",
+  "cli.wizard.launcher.option_bundle": "2) Ejapo / Embopyahu peteĩ Production Bundle",
+  "cli.wizard.launcher.option_pack": "1) Ejapo / Embopyahu peteĩ Pack (flows + components)",
+  "cli.wizard.launcher.select_option": "Eiporavo peteĩ opción: ",
+  "cli.wizard.launcher.title": "Greentic Developer Wizard"
 }

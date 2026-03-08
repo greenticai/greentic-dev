@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Downloadede dokumenter:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Installerede værktøjer:"
+  "cli.install.summary.tools": "Installerede værktøjer:",
+  "cli.wizard.error.interactive_required": "wizard-starter kræver interaktiv input. Brug `wizard apply --answers <FILE>` eller `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "ugyldigt valg; forventede 1 eller 2",
+  "cli.wizard.launcher.option_bundle": "2) Byg / Opdater en produktionsbundle",
+  "cli.wizard.launcher.option_pack": "1) Byg / Opdater en pakke (flows + komponenter)",
+  "cli.wizard.launcher.select_option": "Vælg mulighed: ",
+  "cli.wizard.launcher.title": "Greentic-udviklerguide"
 }

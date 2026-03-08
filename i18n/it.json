@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Documentazione scaricata:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Strumenti installati:"
+  "cli.install.summary.tools": "Strumenti installati:",
+  "cli.wizard.error.interactive_required": "il launcher della procedura guidata richiede input interattivo. Usa `wizard apply --answers <FILE>` oppure `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "selezione non valida; previsto 1 o 2",
+  "cli.wizard.launcher.option_bundle": "2) Crea / Aggiorna un Bundle di Produzione",
+  "cli.wizard.launcher.option_pack": "1) Crea / Aggiorna un Pacchetto (flussi + componenti)",
+  "cli.wizard.launcher.select_option": "Seleziona un'opzione: ",
+  "cli.wizard.launcher.title": "Procedura guidata sviluppatore Greentic"
 }

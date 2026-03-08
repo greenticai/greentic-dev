@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ダウンロードしたドキュメント:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "インストールしたツール:"
+  "cli.install.summary.tools": "インストールしたツール:",
+  "cli.wizard.error.interactive_required": "ウィザードランチャーには対話入力が必要です。`wizard apply --answers <FILE>` または `wizard validate --answers <FILE>` を使用してください。",
+  "cli.wizard.error.invalid_selection": "無効な選択です; 1 または 2 を指定してください",
+  "cli.wizard.launcher.option_bundle": "2) 本番バンドルをビルド / 更新",
+  "cli.wizard.launcher.option_pack": "1) パックをビルド / 更新（フロー + コンポーネント）",
+  "cli.wizard.launcher.select_option": "オプションを選択: ",
+  "cli.wizard.launcher.title": "Greentic 開発者ウィザード"
 }

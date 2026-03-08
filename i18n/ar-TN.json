@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "الوثائق اللي تهبّطت:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "الأدوات اللي تتركّبت:"
+  "cli.install.summary.tools": "الأدوات اللي تتركّبت:",
+  "cli.wizard.error.interactive_required": "مُشغّل المعالج يتطلّب إدخالًا تفاعليًا. استعمل `wizard apply --answers <FILE>` أو `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "اختيار غير صالح؛ المُتوقّع 1 أو 2",
+  "cli.wizard.launcher.option_bundle": "2) إنشاء / تحديث حزمة إنتاج",
+  "cli.wizard.launcher.option_pack": "1) إنشاء / تحديث حزمة (التدفّقات + المكوّنات)",
+  "cli.wizard.launcher.select_option": "اختر خيارًا: ",
+  "cli.wizard.launcher.title": "معالج مطوّر Greentic"
 }

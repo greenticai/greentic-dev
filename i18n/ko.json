@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "다운로드한 문서:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "설치된 도구:"
+  "cli.install.summary.tools": "설치된 도구:",
+  "cli.wizard.error.interactive_required": "wizard 실행기는 대화형 입력이 필요합니다. `wizard apply --answers <FILE>` 또는 `wizard validate --answers <FILE>`를 사용하세요.",
+  "cli.wizard.error.invalid_selection": "잘못된 선택입니다. 1 또는 2여야 합니다.",
+  "cli.wizard.launcher.option_bundle": "2) 프로덕션 번들 빌드 / 업데이트",
+  "cli.wizard.launcher.option_pack": "1) 팩 빌드 / 업데이트 (flows + components)",
+  "cli.wizard.launcher.select_option": "옵션 선택: ",
+  "cli.wizard.launcher.title": "Greentic 개발자 마법사"
 }

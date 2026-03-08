@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ડાઉનલોડ કરેલા દસ્તાવેજો:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ઇન્સ્ટોલ કરેલા સાધનો:"
+  "cli.install.summary.tools": "ઇન્સ્ટોલ કરેલા સાધનો:",
+  "cli.wizard.error.interactive_required": "વિઝાર્ડ લૉન્ચર માટે ઇન્ટરએક્ટિવ ઇનપુટ જરૂરી છે. `wizard apply --answers <FILE>` અથવા `wizard validate --answers <FILE>` નો ઉપયોગ કરો.",
+  "cli.wizard.error.invalid_selection": "અમાન્ય પસંદગી; 1 અથવા 2 અપેક્ષિત",
+  "cli.wizard.launcher.option_bundle": "2) પ્રોડક્શન બંડલ બનાવો / અપડેટ કરો",
+  "cli.wizard.launcher.option_pack": "1) પેક બનાવો / અપડેટ કરો (ફ્લોઝ + કોમ્પોનેન્ટ્સ)",
+  "cli.wizard.launcher.select_option": "વિકલ્પ પસંદ કરો: ",
+  "cli.wizard.launcher.title": "Greentic ડેવલપર વિઝાર્ડ"
 }

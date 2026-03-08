@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Ladatut dokumentit:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Asennetut työkalut:"
+  "cli.install.summary.tools": "Asennetut työkalut:",
+  "cli.wizard.error.interactive_required": "ohjatun toiminnon käynnistin vaatii interaktiivisen syötteen. Käytä `wizard apply --answers <FILE>` tai `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "virheellinen valinta; odotettiin arvoa 1 tai 2",
+  "cli.wizard.launcher.option_bundle": "2) Rakenna / päivitä tuotantonippu",
+  "cli.wizard.launcher.option_pack": "1) Rakenna / päivitä paketti (työnkulut + komponentit)",
+  "cli.wizard.launcher.select_option": "Valitse vaihtoehto: ",
+  "cli.wizard.launcher.title": "Greentic-kehittäjän ohjattu toiminto"
 }

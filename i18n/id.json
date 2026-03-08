@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Dokumen yang diunduh:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Alat yang diinstal:"
+  "cli.install.summary.tools": "Alat yang diinstal:",
+  "cli.wizard.error.interactive_required": "peluncur wizard memerlukan input interaktif. Gunakan `wizard apply --answers <FILE>` atau `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "pilihan tidak valid; yang diharapkan 1 atau 2",
+  "cli.wizard.launcher.option_bundle": "2) Bangun / Perbarui Bundle Produksi",
+  "cli.wizard.launcher.option_pack": "1) Bangun / Perbarui Pack (alur + komponen)",
+  "cli.wizard.launcher.select_option": "Pilih opsi: ",
+  "cli.wizard.launcher.title": "Wizard Pengembang Greentic"
 }

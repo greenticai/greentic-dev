@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ডাউনলোড করা ডকস:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ইনস্টল করা টুলস:"
+  "cli.install.summary.tools": "ইনস্টল করা টুলস:",
+  "cli.wizard.error.interactive_required": "উইজার্ড লঞ্চারের জন্য ইন্টারঅ্যাকটিভ ইনপুট প্রয়োজন। `wizard apply --answers <FILE>` বা `wizard validate --answers <FILE>` ব্যবহার করুন।",
+  "cli.wizard.error.invalid_selection": "অবৈধ নির্বাচন; 1 বা 2 প্রত্যাশিত",
+  "cli.wizard.launcher.option_bundle": "2) একটি প্রোডাকশন বান্ডল তৈরি / আপডেট করুন",
+  "cli.wizard.launcher.option_pack": "1) একটি প্যাক তৈরি / আপডেট করুন (ফ্লো + কম্পোনেন্ট)",
+  "cli.wizard.launcher.select_option": "বিকল্প নির্বাচন করুন: ",
+  "cli.wizard.launcher.title": "Greentic ডেভেলপার উইজার্ড"
 }

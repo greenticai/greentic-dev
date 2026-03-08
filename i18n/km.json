@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ឯកសារដែលបានទាញយក៖",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ឧបករណ៍ដែលបានដំឡើង៖"
+  "cli.install.summary.tools": "ឧបករណ៍ដែលបានដំឡើង៖",
+  "cli.wizard.error.interactive_required": "កម្មវិធីបើក wizard ត្រូវការការបញ្ចូលអន្តរកម្ម។ ប្រើ `wizard apply --answers <FILE>` ឬ `wizard validate --answers <FILE>`។",
+  "cli.wizard.error.invalid_selection": "ការជ្រើសរើសមិនត្រឹមត្រូវ; រំពឹងថា 1 ឬ 2",
+  "cli.wizard.launcher.option_bundle": "2) បង្កើត / ធ្វើបច្ចុប្បន្នភាពកញ្ចប់ផលិតកម្ម",
+  "cli.wizard.launcher.option_pack": "1) បង្កើត / ធ្វើបច្ចុប្បន្នភាពកញ្ចប់ (លំហូរ + សមាសភាគ)",
+  "cli.wizard.launcher.select_option": "ជ្រើសរើសជម្រើស: ",
+  "cli.wizard.launcher.title": "អ្នកជំនួយការអភិវឌ្ឍន៍ Greentic"
 }

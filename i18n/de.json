@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Heruntergeladene Doku:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Installierte Tools:"
+  "cli.install.summary.tools": "Installierte Tools:",
+  "cli.wizard.error.interactive_required": "Der Wizard-Starter erfordert interaktive Eingabe. Verwenden Sie `wizard apply --answers <FILE>` oder `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "ungültige Auswahl; erwartet 1 oder 2",
+  "cli.wizard.launcher.option_bundle": "2) Produktions-Bundle erstellen / aktualisieren",
+  "cli.wizard.launcher.option_pack": "1) Pack erstellen / aktualisieren (Flows + Komponenten)",
+  "cli.wizard.launcher.select_option": "Option auswählen: ",
+  "cli.wizard.launcher.title": "Greentic-Entwickler-Wizard"
 }

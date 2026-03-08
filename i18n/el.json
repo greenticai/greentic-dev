@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Ληφθέντα έγγραφα:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Εγκατεστημένα εργαλεία:"
+  "cli.install.summary.tools": "Εγκατεστημένα εργαλεία:",
+  "cli.wizard.error.interactive_required": "ο εκκινητής wizard απαιτεί διαδραστική είσοδο. Χρησιμοποιήστε `wizard apply --answers <FILE>` ή `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "μη έγκυρη επιλογή· αναμενόταν 1 ή 2",
+  "cli.wizard.launcher.option_bundle": "2) Δημιουργία / Ενημέρωση ενός Production Bundle",
+  "cli.wizard.launcher.option_pack": "1) Δημιουργία / Ενημέρωση ενός Pack (ροές + στοιχεία)",
+  "cli.wizard.launcher.select_option": "Επιλέξτε επιλογή: ",
+  "cli.wizard.launcher.title": "Οδηγός Προγραμματιστή Greentic"
 }

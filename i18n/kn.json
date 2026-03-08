@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ಡೌನ್‌ಲೋಡ್ ಮಾಡಿದ ಡಾಕ್ಸ್:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ಸ್ಥಾಪಿತ ಟೂಲ್‌ಗಳು:"
+  "cli.install.summary.tools": "ಸ್ಥಾಪಿತ ಟೂಲ್‌ಗಳು:",
+  "cli.wizard.error.interactive_required": "ವಿಜಾರ್ಡ್ ಲಾಂಚರ್‌ಗೆ ಸಂವಾದಾತ್ಮಕ ಇನ್‌ಪುಟ್ ಅಗತ್ಯವಿದೆ. `wizard apply --answers <FILE>` ಅಥವಾ `wizard validate --answers <FILE>` ಅನ್ನು ಬಳಸಿ.",
+  "cli.wizard.error.invalid_selection": "ಅಮಾನ್ಯ ಆಯ್ಕೆ; 1 ಅಥವಾ 2 ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ",
+  "cli.wizard.launcher.option_bundle": "2) ಪ್ರೊಡಕ್ಷನ್ ಬಂಡಲ್ ಅನ್ನು ನಿರ್ಮಿಸಿ / ನವೀಕರಿಸಿ",
+  "cli.wizard.launcher.option_pack": "1) ಪ್ಯಾಕ್ (ಫ್ಲೋಗಳು + ಘಟಕಗಳು) ಅನ್ನು ನಿರ್ಮಿಸಿ / ನವೀಕರಿಸಿ",
+  "cli.wizard.launcher.select_option": "ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ: ",
+  "cli.wizard.launcher.title": "Greentic ಡೆವಲಪರ್ ವಿಜಾರ್ಡ್"
 }

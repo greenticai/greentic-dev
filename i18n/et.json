@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Allalaaditud dokumendid:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Paigaldatud tööriistad:"
+  "cli.install.summary.tools": "Paigaldatud tööriistad:",
+  "cli.wizard.error.interactive_required": "viisardi käivitaja nõuab interaktiivset sisendit. Kasuta `wizard apply --answers <FILE>` või `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "vale valik; eeldati 1 või 2",
+  "cli.wizard.launcher.option_bundle": "2) Loo / uuenda tootmiskomplekt",
+  "cli.wizard.launcher.option_pack": "1) Loo / uuenda pakk (vood + komponendid)",
+  "cli.wizard.launcher.select_option": "Vali suvand: ",
+  "cli.wizard.launcher.title": "Greenticu arendaja viisard"
 }

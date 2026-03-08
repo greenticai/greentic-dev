@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "डाउनलोड किए गए दस्तावेज़:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "इंस्टॉल किए गए टूल्स:"
+  "cli.install.summary.tools": "इंस्टॉल किए गए टूल्स:",
+  "cli.wizard.error.interactive_required": "wizard launcher के लिए इंटरैक्टिव इनपुट आवश्यक है। `wizard apply --answers <FILE>` या `wizard validate --answers <FILE>` का उपयोग करें।",
+  "cli.wizard.error.invalid_selection": "अमान्य चयन; 1 या 2 अपेक्षित था",
+  "cli.wizard.launcher.option_bundle": "2) प्रोडक्शन बंडल बनाएँ / अपडेट करें",
+  "cli.wizard.launcher.option_pack": "1) पैक बनाएँ / अपडेट करें (flows + components)",
+  "cli.wizard.launcher.select_option": "विकल्प चुनें: ",
+  "cli.wizard.launcher.title": "Greentic डेवलपर विज़ार्ड"
 }

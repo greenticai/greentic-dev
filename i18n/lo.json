@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "ເອກະສານທີ່ດາວໂຫຼດ:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ເຄື່ອງມືທີ່ຕິດຕັ້ງ:"
+  "cli.install.summary.tools": "ເຄື່ອງມືທີ່ຕິດຕັ້ງ:",
+  "cli.wizard.error.interactive_required": "ຕົວເປີດ wizard ຕ້ອງການການປ້ອນຂໍ້ມູນແບບໂຕ້ຕອບ. ໃຊ້ `wizard apply --answers <FILE>` ຫຼື `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "ການເລືອກບໍ່ຖືກຕ້ອງ; ຄາດວ່າເປັນ 1 ຫຼື 2",
+  "cli.wizard.launcher.option_bundle": "2) ສ້າງ / ອັບເດດ Bundle ສໍາລັບການນໍາໃຊ້ຈິງ",
+  "cli.wizard.launcher.option_pack": "1) ສ້າງ / ອັບເດດ Pack (flows + components)",
+  "cli.wizard.launcher.select_option": "ເລືອກຕົວເລືອກ: ",
+  "cli.wizard.launcher.title": "ຕົວຊ່ວຍ Greentic Developer"
 }

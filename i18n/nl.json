@@ -1,1 +1,12 @@
-{}
+{
+  "cli.install.summary.tools": "Geinstalleerde tools:",
+  "cli.install.summary.tool_item": "- {id}: {path}",
+  "cli.install.summary.docs": "Gedownloade documentatie:",
+  "cli.install.summary.doc_item": "- {id}: {path}",
+  "cli.wizard.launcher.title": "Greentic Ontwikkelaarswizard",
+  "cli.wizard.launcher.option_pack": "1) Bouw / Werk een Pack bij (flows + componenten)",
+  "cli.wizard.launcher.option_bundle": "2) Bouw / Werk een Productiebundel bij",
+  "cli.wizard.launcher.select_option": "Kies een optie: ",
+  "cli.wizard.error.interactive_required": "de wizard-launcher vereist interactieve invoer. Gebruik `wizard apply --answers <BESTAND>` of `wizard validate --answers <BESTAND>`.",
+  "cli.wizard.error.invalid_selection": "ongeldige keuze; verwacht 1 of 2"
+}

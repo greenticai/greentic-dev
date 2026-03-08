@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Stažená dokumentace:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Nainstalované nástroje:"
+  "cli.install.summary.tools": "Nainstalované nástroje:",
+  "cli.wizard.error.interactive_required": "spouštěč průvodce vyžaduje interaktivní vstup. Použijte `wizard apply --answers <FILE>` nebo `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "neplatný výběr; očekáváno 1 nebo 2",
+  "cli.wizard.launcher.option_bundle": "2) Vytvořit / Aktualizovat produkční balíček",
+  "cli.wizard.launcher.option_pack": "1) Vytvořit / Aktualizovat balíček (toky + komponenty)",
+  "cli.wizard.launcher.select_option": "Vyberte možnost: ",
+  "cli.wizard.launcher.title": "Průvodce pro vývojáře Greentic"
 }

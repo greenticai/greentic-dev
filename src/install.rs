@@ -39,11 +39,7 @@ pub fn run(args: InstallArgs) -> Result<()> {
         .context(i18n::t(&locale, "cli.install.error.tenant_requires_token"))?;
 
     let env = InstallEnv::detect(args.bin_dir, args.docs_dir, Some(locale))?;
-    let installer = Installer::new(
-        RealTenantManifestSource::default(),
-        RealHttpDownloader::default(),
-        env,
-    );
+    let installer = Installer::new(RealTenantManifestSource, RealHttpDownloader::default(), env);
     installer.install_tenant(&tenant, &token)
 }
 

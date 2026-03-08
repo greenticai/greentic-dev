@@ -14,6 +14,7 @@ use anyhow::{Context, Result, bail};
 use serde::{Deserialize, Serialize};
 
 use crate::cli::{WizardApplyArgs, WizardLaunchArgs, WizardValidateArgs};
+use crate::i18n;
 use crate::wizard::executor::ExecuteOptions;
 use crate::wizard::plan::{WizardAnswers, WizardFrontend, WizardPlan};
 use crate::wizard::provider::{ProviderRequest, ShellWizardProvider, WizardProvider};
@@ -54,7 +55,8 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
         ExecutionMode::Execute
     };
 
-    let answers = prompt_launcher_answers(mode)?;
+    let locale = i18n::select_locale(args.locale.as_deref());
+    let answers = prompt_launcher_answers(mode, &locale)?;
     let loaded = LoadedAnswers {
         answers,
         inferred_locale: None,
@@ -63,7 +65,7 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
 
     run_from_inputs(
         args.frontend,
-        args.locale,
+        Some(locale),
         loaded,
         args.out,
         mode,
@@ -134,9 +136,12 @@ fn run_from_inputs(
     emit_answers: Option<PathBuf>,
     requested_schema_version: Option<String>,
 ) -> Result<()> {
-    let locale = cli_locale
-        .or(loaded.inferred_locale.clone())
-        .unwrap_or_else(|| DEFAULT_LOCALE.to_string());
+    let locale = i18n::select_locale(
+        cli_locale
+            .as_deref()
+            .or(loaded.inferred_locale.as_deref())
+            .or(Some(DEFAULT_LOCALE)),
+    );
     let frontend = WizardFrontend::parse(&frontend_raw).ok_or_else(|| {
         anyhow::anyhow!(
             "unsupported frontend `{}`; expected text|json|adaptive-card",
@@ -245,20 +250,21 @@ fn render_text_plan(plan: &WizardPlan) -> String {
     out
 }
 
-fn prompt_launcher_answers(mode: ExecutionMode) -> Result<serde_json::Value> {
+fn prompt_launcher_answers(mode: ExecutionMode, locale: &str) -> Result<serde_json::Value> {
     let interactive = io::stdin().is_terminal() && io::stdout().is_terminal();
     if !interactive {
         bail!(
-            "wizard launcher requires interactive input. Use `wizard apply --answers <FILE>` or `wizard validate --answers <FILE>`."
+            "{}",
+            i18n::t(locale, "cli.wizard.error.interactive_required")
         );
     }
 
-    eprintln!("Greentic Developer Wizard");
+    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.title"));
     eprintln!();
-    eprintln!("1) Build / Update a Pack (flows + components)");
-    eprintln!("2) Build / Update a Production Bundle");
+    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_pack"));
+    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_bundle"));
     eprintln!();
-    eprint!("Select option: ");
+    eprint!("{}", i18n::t(locale, "cli.wizard.launcher.select_option"));
     io::stderr().flush()?;
 
     let mut input = String::new();
@@ -266,7 +272,7 @@ fn prompt_launcher_answers(mode: ExecutionMode) -> Result<serde_json::Value> {
     let selected_action = match input.trim() {
         "1" => "pack",
         "2" => "bundle",
-        _ => bail!("invalid selection; expected 1 or 2"),
+        _ => bail!("{}", i18n::t(locale, "cli.wizard.error.invalid_selection")),
     };
 
     let mut answers = serde_json::Map::new();

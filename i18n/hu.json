@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Letöltött dokumentációk:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Telepített eszközök:"
+  "cli.install.summary.tools": "Telepített eszközök:",
+  "cli.wizard.error.interactive_required": "a varázsló indítója interaktív bemenetet igényel. Használd a `wizard apply --answers <FILE>` vagy a `wizard validate --answers <FILE>` parancsot.",
+  "cli.wizard.error.invalid_selection": "érvénytelen választás; 1 vagy 2 az elvárt",
+  "cli.wizard.launcher.option_bundle": "2) Éles csomag összeállítása / frissítése",
+  "cli.wizard.launcher.option_pack": "1) Csomag összeállítása / frissítése (folyamatok + komponensek)",
+  "cli.wizard.launcher.select_option": "Válassz lehetőséget: ",
+  "cli.wizard.launcher.title": "Greentic fejlesztői varázsló"
 }

@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Preuzeta dokumentacija:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Instalirani alati:"
+  "cli.install.summary.tools": "Instalirani alati:",
+  "cli.wizard.error.interactive_required": "pokretač čarobnjaka zahtijeva interaktivan unos. Koristite `wizard apply --answers <FILE>` ili `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "neispravan odabir; očekivano 1 ili 2",
+  "cli.wizard.launcher.option_bundle": "2) Izgradi / Ažuriraj produkcijski paket",
+  "cli.wizard.launcher.option_pack": "1) Izgradi / Ažuriraj paket (tijekovi + komponente)",
+  "cli.wizard.launcher.select_option": "Odaberite opciju: ",
+  "cli.wizard.launcher.title": "Greentic Developer Čarobnjak"
 }

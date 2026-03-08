@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Dokiman telechaje yo:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Zouti enstale yo:"
+  "cli.install.summary.tools": "Zouti enstale yo:",
+  "cli.wizard.error.interactive_required": "lansè wizard la mande antre entèaktif. Sèvi ak `wizard apply --answers <FILE>` oswa `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "seleksyon pa valab; yo te espere 1 oswa 2",
+  "cli.wizard.launcher.option_bundle": "2) Konstwi / Mete ajou yon Bundle Pwodiksyon",
+  "cli.wizard.launcher.option_pack": "1) Konstwi / Mete ajou yon Pack (flows + components)",
+  "cli.wizard.launcher.select_option": "Chwazi opsyon: ",
+  "cli.wizard.launcher.title": "Asistan Devlopè Greentic"
 }

@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id} : {path}",
   "cli.install.summary.docs": "Documentation téléchargée :",
   "cli.install.summary.tool_item": "- {id} : {path}",
-  "cli.install.summary.tools": "Outils installés :"
+  "cli.install.summary.tools": "Outils installés :",
+  "cli.wizard.error.interactive_required": "le lanceur de l’assistant nécessite une saisie interactive. Utilisez `wizard apply --answers <FILE>` ou `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "sélection invalide ; 1 ou 2 attendu",
+  "cli.wizard.launcher.option_bundle": "2) Construire / Mettre à jour un bundle de production",
+  "cli.wizard.launcher.option_pack": "1) Construire / Mettre à jour un pack (flux + composants)",
+  "cli.wizard.launcher.select_option": "Sélectionnez une option : ",
+  "cli.wizard.launcher.title": "Assistant développeur Greentic"
 }

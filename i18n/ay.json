@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Apaqat qillqatanaka:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Uñstayat yänaka:"
+  "cli.install.summary.tools": "Uñstayat yänaka:",
+  "cli.wizard.error.interactive_required": "asistente qalltayañax interacción mantañ muni. Apnaqam `wizard apply --answers <FILE>` jan ukax `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "jan wal ajllita; suyt'ata 1 jan ukax 2",
+  "cli.wizard.launcher.option_bundle": "2) Luraña / Machaqt'ayaña mä Producción Bundle",
+  "cli.wizard.launcher.option_pack": "1) Luraña / Machaqt'ayaña mä Pack (flows + components)",
+  "cli.wizard.launcher.select_option": "Ajlli opción: ",
+  "cli.wizard.launcher.title": "Greentic Developer Wizard"
 }

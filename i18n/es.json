@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "Documentación descargada:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "Herramientas instaladas:"
+  "cli.install.summary.tools": "Herramientas instaladas:",
+  "cli.wizard.error.interactive_required": "el lanzador del asistente requiere entrada interactiva. Usa `wizard apply --answers <FILE>` o `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.invalid_selection": "selección no válida; se esperaba 1 o 2",
+  "cli.wizard.launcher.option_bundle": "2) Crear / Actualizar un paquete de producción",
+  "cli.wizard.launcher.option_pack": "1) Crear / Actualizar un paquete (flujos + componentes)",
+  "cli.wizard.launcher.select_option": "Selecciona una opción: ",
+  "cli.wizard.launcher.title": "Asistente para desarrolladores de Greentic"
 }

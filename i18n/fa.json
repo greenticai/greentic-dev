@@ -52,5 +52,11 @@
   "cli.install.summary.doc_item": "- {id}: {path}",
   "cli.install.summary.docs": "مستندات دانلودشده:",
   "cli.install.summary.tool_item": "- {id}: {path}",
-  "cli.install.summary.tools": "ابزارهای نصب‌شده:"
+  "cli.install.summary.tools": "ابزارهای نصب‌شده:",
+  "cli.wizard.error.interactive_required": "اجرای wizard به ورودی تعاملی نیاز دارد. از `wizard apply --answers <FILE>` یا `wizard validate --answers <FILE>` استفاده کنید.",
+  "cli.wizard.error.invalid_selection": "انتخاب نامعتبر؛ انتظار می‌رفت 1 یا 2 باشد",
+  "cli.wizard.launcher.option_bundle": "2) ساخت / به‌روزرسانی یک بستهٔ تولید",
+  "cli.wizard.launcher.option_pack": "1) ساخت / به‌روزرسانی یک پَک (جریان‌ها + مؤلفه‌ها)",
+  "cli.wizard.launcher.select_option": "گزینه را انتخاب کنید: ",
+  "cli.wizard.launcher.title": "جادوگر توسعه‌دهندهٔ Greentic"
 }

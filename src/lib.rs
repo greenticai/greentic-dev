@@ -1,4 +1,3 @@
-pub mod bundle_cmd;
 pub mod cbor_cmd;
 pub mod cli;
 pub mod cmd;

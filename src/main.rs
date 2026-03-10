@@ -5,10 +5,9 @@ use std::ffi::OsString;
 use std::process::{Command as ProcessCommand, Stdio};
 
 use greentic_dev::cli::{Cli, Command};
-use greentic_dev::cli::{BundleCommand, InstallSubcommand, McpCommand, ToolsCommand, WizardSubcommand};
+use greentic_dev::cli::{InstallSubcommand, McpCommand, ToolsCommand, WizardSubcommand};
 use greentic_dev::passthrough::{resolve_binary, run_passthrough};
 
-use greentic_dev::bundle_cmd;
 use greentic_dev::cbor_cmd;
 use greentic_dev::cmd::config;
 use greentic_dev::cmd::tools;
@@ -70,13 +69,6 @@ fn main() -> Result<()> {
             std::process::exit(status.code().unwrap_or(1));
         }
         Command::Secrets(secrets) => run_secrets_command(secrets),
-        Command::Bundle(cmd) => match cmd {
-            BundleCommand::Add(args) => bundle_cmd::add(args),
-            BundleCommand::Setup(args) => bundle_cmd::setup(args),
-            BundleCommand::Update(args) => bundle_cmd::update(args),
-            BundleCommand::Remove(args) => bundle_cmd::remove(args),
-            BundleCommand::Status(args) => bundle_cmd::status(args),
-        },
     }
 }
 
@@ -110,7 +102,6 @@ fn is_known_subcommand(subcmd: &str) -> bool {
             | "install"
             | "cbor"
             | "wizard"
-            | "bundle"
             | "help"
     )
 }

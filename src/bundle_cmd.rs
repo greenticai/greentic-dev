@@ -1,6 +1,6 @@
 //! Bundle lifecycle management commands.
 //!
-//! Provides CLI commands for managing Greentic bundles:
+//! Provides CLI commands for managing Greentic bundles using greentic-setup library:
 //! - `bundle add` - Add a pack to a bundle
 //! - `bundle setup` - Run setup flow for a provider
 //! - `bundle update` - Update a provider's configuration
@@ -10,6 +10,9 @@
 use std::path::PathBuf;
 
 use anyhow::{Context, Result, bail};
+use greentic_setup::{SetupEngine, SetupMode};
+use greentic_setup::engine::{SetupConfig, SetupRequest};
+use greentic_setup::plan::TenantSelection;
 
 use crate::cli::{BundleAddArgs, BundleRemoveArgs, BundleSetupArgs, BundleStatusArgs};
 
@@ -29,66 +32,50 @@ pub fn add(args: BundleAddArgs) -> Result<()> {
         return Ok(());
     }
 
-    // Ensure bundle directory exists
-    if !bundle_dir.exists() {
-        std::fs::create_dir_all(&bundle_dir)
-            .context("failed to create bundle directory")?;
+    // Create bundle structure if it doesn't exist
+    if !bundle_dir.join("greentic.demo.yaml").exists() {
+        greentic_setup::bundle::create_demo_bundle_structure(&bundle_dir, None)
+            .context("failed to create bundle structure")?;
+        println!("Created bundle structure at {}", bundle_dir.display());
     }
 
-    // Create providers directory if needed
-    let providers_dir = bundle_dir.join("providers");
-    if !providers_dir.exists() {
-        std::fs::create_dir_all(&providers_dir)
-            .context("failed to create providers directory")?;
-    }
+    // Build setup request
+    let request = SetupRequest {
+        bundle: bundle_dir.clone(),
+        pack_refs: vec![args.pack_ref.clone()],
+        tenants: vec![TenantSelection {
+            tenant: args.tenant.clone(),
+            team: args.team.clone(),
+            allow_paths: Vec::new(),
+        }],
+        ..Default::default()
+    };
 
-    // Determine pack type and destination
-    let pack_path = PathBuf::from(&args.pack_ref);
-    if pack_path.exists() {
-        // Local pack file - copy to providers directory
-        let pack_name = pack_path
-            .file_name()
-            .and_then(|n| n.to_str())
-            .unwrap_or("unknown.gtpack");
+    // Create engine and build plan
+    let config = SetupConfig {
+        tenant: args.tenant,
+        team: args.team,
+        env: args.env,
+        offline: false,
+        verbose: true,
+    };
+    let engine = SetupEngine::new(config);
+    let plan = engine.plan(SetupMode::Create, &request, false)?;
 
-        // Determine domain from pack name (messaging-*, events-*, etc.)
-        let domain = if pack_name.starts_with("messaging-") {
-            "messaging"
-        } else if pack_name.starts_with("events-") {
-            "events"
-        } else if pack_name.starts_with("oauth-") {
-            "oauth"
-        } else if pack_name.starts_with("secrets-") {
-            "secrets"
-        } else {
-            "other"
-        };
+    // Print plan summary
+    engine.print_plan(&plan);
 
-        let domain_dir = providers_dir.join(domain);
-        if !domain_dir.exists() {
-            std::fs::create_dir_all(&domain_dir)?;
-        }
-
-        let dest = domain_dir.join(pack_name);
-        std::fs::copy(&pack_path, &dest)
-            .context("failed to copy pack to bundle")?;
-
-        println!("\nPack added: {}", dest.display());
-    } else if args.pack_ref.contains('/') || args.pack_ref.contains(':') {
-        // OCI reference - would need to pull from registry
-        println!("\nOCI pack references require greentic-distributor-client.");
-        println!("Use: gtc pack pull {} --out {}", args.pack_ref, providers_dir.display());
-        bail!("OCI pack pull not yet integrated - use gtc pack pull first");
-    } else {
-        bail!("Pack not found: {}", args.pack_ref);
-    }
-
+    println!("\nPack added to bundle plan. Run setup to configure.");
     Ok(())
 }
 
 /// Run the `bundle setup` command.
 pub fn setup(args: BundleSetupArgs) -> Result<()> {
     let bundle_dir = resolve_bundle_dir(args.bundle)?;
+
+    // Validate bundle exists
+    greentic_setup::bundle::validate_bundle_exists(&bundle_dir)
+        .context("invalid bundle directory")?;
 
     println!("Setting up provider...");
     println!("  Provider: {}", args.provider_id);
@@ -97,65 +84,132 @@ pub fn setup(args: BundleSetupArgs) -> Result<()> {
     println!("  Team: {}", args.team.as_deref().unwrap_or("default"));
     println!("  Env: {}", args.env);
 
-    // Find the provider pack
-    let pack_path = find_provider_pack(&bundle_dir, &args.provider_id)?;
-    println!("  Pack: {}", pack_path.display());
-
     // Load answers if provided
-    let answers: serde_json::Value = if let Some(answers_path) = &args.answers {
-        let content = std::fs::read_to_string(answers_path)
-            .context("failed to read answers file")?;
-        if answers_path.extension().map_or(false, |e| e == "yaml" || e == "yml") {
-            serde_yaml_bw::from_str(&content)?
+    let setup_answers: serde_json::Map<String, serde_json::Value> =
+        if let Some(answers_path) = &args.answers {
+            let content = std::fs::read_to_string(answers_path)
+                .context("failed to read answers file")?;
+            let value: serde_json::Value = if answers_path.extension().map_or(false, |e| e == "yaml" || e == "yml") {
+                serde_yaml_bw::from_str(&content)?
+            } else {
+                serde_json::from_str(&content)?
+            };
+            match value {
+                serde_json::Value::Object(map) => map,
+                _ => bail!("answers file must be a JSON/YAML object"),
+            }
+        } else if args.non_interactive {
+            bail!("--answers required in non-interactive mode");
         } else {
-            serde_json::from_str(&content)?
-        }
-    } else if args.non_interactive {
-        bail!("--answers required in non-interactive mode");
-    } else {
-        // Interactive mode - would use QA wizard
-        println!("\nInteractive setup not yet implemented.");
-        println!("Use --answers <file> to provide setup answers.");
-        bail!("interactive setup not implemented");
+            // Interactive mode - would use QA wizard
+            println!("\nInteractive setup not yet implemented in CLI.");
+            println!("Use --answers <file> to provide setup answers.");
+            bail!("interactive setup requires --answers file");
+        };
+
+    // Build setup request
+    let request = SetupRequest {
+        bundle: bundle_dir.clone(),
+        providers: vec![args.provider_id.clone()],
+        tenants: vec![TenantSelection {
+            tenant: args.tenant.clone(),
+            team: args.team.clone(),
+            allow_paths: Vec::new(),
+        }],
+        setup_answers,
+        ..Default::default()
     };
 
-    // Persist config
-    let config_dir = bundle_dir.join(".providers").join(&args.provider_id);
-    if !config_dir.exists() {
-        std::fs::create_dir_all(&config_dir)?;
-    }
+    // Create engine and build plan
+    let config = SetupConfig {
+        tenant: args.tenant,
+        team: args.team,
+        env: args.env,
+        offline: false,
+        verbose: true,
+    };
+    let engine = SetupEngine::new(config);
+    let plan = engine.plan(SetupMode::Create, &request, false)?;
 
-    let config_file = config_dir.join("config.json");
-    let config_json = serde_json::to_string_pretty(&answers)?;
-    std::fs::write(&config_file, &config_json)
-        .context("failed to write config")?;
+    // Print plan summary
+    engine.print_plan(&plan);
 
-    println!("\nSetup complete: {}", config_file.display());
+    println!("\nSetup plan created. Provider: {}", args.provider_id);
     Ok(())
 }
 
 /// Run the `bundle update` command.
 pub fn update(args: BundleSetupArgs) -> Result<()> {
-    // Update is similar to setup but for existing providers
+    let bundle_dir = resolve_bundle_dir(args.bundle.clone())?;
+
+    // Validate bundle exists
+    greentic_setup::bundle::validate_bundle_exists(&bundle_dir)
+        .context("invalid bundle directory")?;
+
     println!("Updating provider configuration...");
-    setup(args)
+
+    // Load answers if provided
+    let setup_answers: serde_json::Map<String, serde_json::Value> =
+        if let Some(answers_path) = &args.answers {
+            let content = std::fs::read_to_string(answers_path)
+                .context("failed to read answers file")?;
+            let value: serde_json::Value = if answers_path.extension().map_or(false, |e| e == "yaml" || e == "yml") {
+                serde_yaml_bw::from_str(&content)?
+            } else {
+                serde_json::from_str(&content)?
+            };
+            match value {
+                serde_json::Value::Object(map) => map,
+                _ => bail!("answers file must be a JSON/YAML object"),
+            }
+        } else if args.non_interactive {
+            bail!("--answers required in non-interactive mode");
+        } else {
+            bail!("interactive update requires --answers file");
+        };
+
+    // Build update request
+    let request = SetupRequest {
+        bundle: bundle_dir.clone(),
+        providers: vec![args.provider_id.clone()],
+        tenants: vec![TenantSelection {
+            tenant: args.tenant.clone(),
+            team: args.team.clone(),
+            allow_paths: Vec::new(),
+        }],
+        setup_answers,
+        ..Default::default()
+    };
+
+    // Create engine and build plan
+    let config = SetupConfig {
+        tenant: args.tenant,
+        team: args.team,
+        env: args.env,
+        offline: false,
+        verbose: true,
+    };
+    let engine = SetupEngine::new(config);
+    let plan = engine.plan(SetupMode::Update, &request, false)?;
+
+    // Print plan summary
+    engine.print_plan(&plan);
+
+    println!("\nUpdate plan created. Provider: {}", args.provider_id);
+    Ok(())
 }
 
 /// Run the `bundle remove` command.
 pub fn remove(args: BundleRemoveArgs) -> Result<()> {
     let bundle_dir = resolve_bundle_dir(args.bundle)?;
 
+    // Validate bundle exists
+    greentic_setup::bundle::validate_bundle_exists(&bundle_dir)
+        .context("invalid bundle directory")?;
+
     println!("Removing provider...");
     println!("  Provider: {}", args.provider_id);
     println!("  Bundle: {}", bundle_dir.display());
-
-    // Find provider config directory
-    let config_dir = bundle_dir.join(".providers").join(&args.provider_id);
-
-    if !config_dir.exists() {
-        println!("Provider not configured: {}", args.provider_id);
-        return Ok(());
-    }
 
     if !args.force {
         println!("\nThis will remove the provider configuration.");
@@ -163,9 +217,31 @@ pub fn remove(args: BundleRemoveArgs) -> Result<()> {
         bail!("removal cancelled - use --force to confirm");
     }
 
-    // Remove config directory
-    std::fs::remove_dir_all(&config_dir)
-        .context("failed to remove provider config")?;
+    // Build remove request
+    let request = SetupRequest {
+        bundle: bundle_dir.clone(),
+        providers_remove: vec![args.provider_id.clone()],
+        tenants: vec![TenantSelection {
+            tenant: args.tenant.clone(),
+            team: args.team.clone(),
+            allow_paths: Vec::new(),
+        }],
+        ..Default::default()
+    };
+
+    // Create engine and build plan
+    let config = SetupConfig {
+        tenant: args.tenant,
+        team: args.team,
+        env: "dev".to_string(),
+        offline: false,
+        verbose: true,
+    };
+    let engine = SetupEngine::new(config);
+    let plan = engine.plan(SetupMode::Remove, &request, false)?;
+
+    // Print plan summary
+    engine.print_plan(&plan);
 
     println!("\nProvider removed: {}", args.provider_id);
     Ok(())
@@ -184,13 +260,16 @@ pub fn status(args: BundleStatusArgs) -> Result<()> {
         return Ok(());
     }
 
-    // Count providers
+    // Check if valid bundle
+    let is_valid = bundle_dir.join("greentic.demo.yaml").exists();
+
+    // Count providers in providers/ directory
     let providers_dir = bundle_dir.join("providers");
     let mut pack_count = 0;
     let mut packs = Vec::new();
 
     if providers_dir.exists() {
-        for domain in &["messaging", "events", "oauth", "secrets", "mcp", "other"] {
+        for domain in &["messaging", "events", "oauth", "secrets", "mcp", "state", "other"] {
             let domain_dir = providers_dir.join(domain);
             if domain_dir.exists() {
                 if let Ok(entries) = std::fs::read_dir(&domain_dir) {
@@ -208,18 +287,18 @@ pub fn status(args: BundleStatusArgs) -> Result<()> {
         }
     }
 
-    // Count configured providers
-    let config_dir = bundle_dir.join(".providers");
-    let mut configured_count = 0;
-    let mut configured = Vec::new();
+    // Count tenants
+    let tenants_dir = bundle_dir.join("tenants");
+    let mut tenant_count = 0;
+    let mut tenants = Vec::new();
 
-    if config_dir.exists() {
-        if let Ok(entries) = std::fs::read_dir(&config_dir) {
+    if tenants_dir.exists() {
+        if let Ok(entries) = std::fs::read_dir(&tenants_dir) {
             for entry in entries.flatten() {
                 if entry.path().is_dir() {
-                    configured_count += 1;
+                    tenant_count += 1;
                     if let Some(name) = entry.file_name().to_str() {
-                        configured.push(name.to_string());
+                        tenants.push(name.to_string());
                     }
                 }
             }
@@ -229,53 +308,35 @@ pub fn status(args: BundleStatusArgs) -> Result<()> {
     if args.format == "json" {
         let status = serde_json::json!({
             "exists": true,
+            "valid": is_valid,
             "path": bundle_dir.display().to_string(),
             "pack_count": pack_count,
             "packs": packs,
-            "configured_count": configured_count,
-            "configured": configured,
+            "tenant_count": tenant_count,
+            "tenants": tenants,
         });
         println!("{}", serde_json::to_string_pretty(&status)?);
     } else {
         println!("Bundle: {}", bundle_dir.display());
+        println!("Valid: {}", if is_valid { "yes" } else { "no (missing greentic.demo.yaml)" });
         println!("Packs: {} installed", pack_count);
         for pack in &packs {
             println!("  - {}", pack);
         }
-        println!("Providers: {} configured", configured_count);
-        for provider in &configured {
-            println!("  - {}", provider);
+        println!("Tenants: {}", tenant_count);
+        for tenant in &tenants {
+            println!("  - {}", tenant);
         }
     }
 
     Ok(())
 }
 
-// ── Helpers ─────────────────────────────────────────────────────────
+// ── Helpers ─────────────────────────────────────────────────────────────────
 
 fn resolve_bundle_dir(bundle: Option<PathBuf>) -> Result<PathBuf> {
     match bundle {
         Some(path) => Ok(path),
         None => std::env::current_dir().context("failed to get current directory"),
     }
-}
-
-fn find_provider_pack(bundle_dir: &PathBuf, provider_id: &str) -> Result<PathBuf> {
-    let providers_dir = bundle_dir.join("providers");
-
-    // Check common locations
-    for domain in &["messaging", "events", "oauth", "secrets", "mcp", "other"] {
-        let pack = providers_dir.join(domain).join(format!("{}.gtpack", provider_id));
-        if pack.exists() {
-            return Ok(pack);
-        }
-    }
-
-    // Check flat layout
-    let flat = providers_dir.join(format!("{}.gtpack", provider_id));
-    if flat.exists() {
-        return Ok(flat);
-    }
-
-    bail!("provider pack not found: {}", provider_id)
 }

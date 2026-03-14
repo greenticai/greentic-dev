@@ -9,12 +9,14 @@ use std::collections::BTreeMap;
 use std::fs;
 use std::io::{self, IsTerminal, Write};
 use std::path::{Path, PathBuf};
+use std::process::{Command, Stdio};
 
 use anyhow::{Context, Result, bail};
 use serde::{Deserialize, Serialize};
 
 use crate::cli::{WizardApplyArgs, WizardLaunchArgs, WizardValidateArgs};
 use crate::i18n;
+use crate::passthrough::resolve_binary;
 use crate::wizard::executor::ExecuteOptions;
 use crate::wizard::plan::{WizardAnswers, WizardFrontend, WizardPlan};
 use crate::wizard::provider::{ProviderRequest, ShellWizardProvider, WizardProvider};
@@ -23,11 +25,20 @@ const DEFAULT_LOCALE: &str = "en-US";
 const DEFAULT_SCHEMA_VERSION: &str = "1.0.0";
 const WIZARD_ID: &str = "greentic-dev.wizard.launcher.main";
 const SCHEMA_ID: &str = "greentic-dev.launcher.main";
+const EMBEDDED_WIZARD_ROOT_ZERO_ACTION_ENV: &str = "GREENTIC_WIZARD_ROOT_ZERO_ACTION";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum ExecutionMode {
     DryRun,
     Execute,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum LauncherMenuChoice {
+    Pack,
+    Bundle,
+    MainMenu,
+    Exit,
 }
 
 #[derive(Debug, Clone)]
@@ -56,26 +67,75 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
     };
 
     let locale = i18n::select_locale(args.locale.as_deref());
-    let answers = prompt_launcher_answers(mode, &locale)?;
-    let loaded = LoadedAnswers {
-        answers,
-        inferred_locale: None,
-        schema_version: args.schema_version.clone(),
+    if mode == ExecutionMode::DryRun {
+        let Some(answers) = prompt_launcher_answers(mode, &locale)? else {
+            return Ok(());
+        };
+        let loaded = LoadedAnswers {
+            answers,
+            inferred_locale: None,
+            schema_version: args.schema_version.clone(),
+        };
+
+        return run_from_inputs(
+            args.frontend,
+            Some(locale),
+            loaded,
+            args.out,
+            mode,
+            args.yes,
+            args.non_interactive,
+            args.unsafe_commands,
+            args.allow_destructive,
+            args.emit_answers,
+            args.schema_version,
+        );
+    }
+
+    loop {
+        let Some(answers) = prompt_launcher_answers(mode, &locale)? else {
+            return Ok(());
+        };
+
+        run_interactive_delegate(&answers)?;
+    }
+}
+
+fn run_interactive_delegate(answers: &serde_json::Value) -> Result<()> {
+    let selected_action = answers
+        .get("selected_action")
+        .and_then(|value| value.as_str())
+        .ok_or_else(|| anyhow::anyhow!("missing required answers.selected_action"))?;
+
+    let program = match selected_action {
+        "pack" => "greentic-pack",
+        "bundle" => "greentic-bundle",
+        other => bail!("unsupported selected_action `{other}`; expected `pack` or `bundle`"),
     };
 
-    run_from_inputs(
-        args.frontend,
-        Some(locale),
-        loaded,
-        args.out,
-        mode,
-        args.yes,
-        args.non_interactive,
-        args.unsafe_commands,
-        args.allow_destructive,
-        args.emit_answers,
-        args.schema_version,
-    )
+    let bin = resolve_binary(program)?;
+    let mut command = Command::new(&bin);
+    command
+        .arg("wizard")
+        .stdin(Stdio::inherit())
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit());
+    if program == "greentic-bundle" {
+        command.env(EMBEDDED_WIZARD_ROOT_ZERO_ACTION_ENV, "back");
+    }
+    let status = command
+        .status()
+        .map_err(|e| anyhow::anyhow!("failed to execute {}: {e}", bin.display()))?;
+    if status.success() {
+        Ok(())
+    } else {
+        bail!(
+            "wizard step command failed: {} {:?} (exit code {:?})",
+            program,
+            ["wizard"],
+            status.code()
+        );
+    }
 }
 
 pub fn validate(args: WizardValidateArgs) -> Result<()> {
@@ -250,7 +310,7 @@ fn render_text_plan(plan: &WizardPlan) -> String {
     out
 }
 
-fn prompt_launcher_answers(mode: ExecutionMode, locale: &str) -> Result<serde_json::Value> {
+fn prompt_launcher_answers(mode: ExecutionMode, locale: &str) -> Result<Option<serde_json::Value>> {
     let interactive = io::stdin().is_terminal() && io::stdout().is_terminal();
     if !interactive {
         bail!(
@@ -259,22 +319,46 @@ fn prompt_launcher_answers(mode: ExecutionMode, locale: &str) -> Result<serde_js
         );
     }
 
-    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.title"));
-    eprintln!();
-    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_pack"));
-    eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_bundle"));
-    eprintln!();
-    eprint!("{}", i18n::t(locale, "cli.wizard.launcher.select_option"));
-    io::stderr().flush()?;
+    loop {
+        eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.title"));
+        eprintln!();
+        eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_pack"));
+        eprintln!("{}", i18n::t(locale, "cli.wizard.launcher.option_bundle"));
+        eprintln!("0) Exit");
+        eprintln!();
+        eprint!("{}", i18n::t(locale, "cli.wizard.launcher.select_option"));
+        io::stderr().flush()?;
 
-    let mut input = String::new();
-    io::stdin().read_line(&mut input)?;
-    let selected_action = match input.trim() {
-        "1" => "pack",
-        "2" => "bundle",
+        let mut input = String::new();
+        io::stdin().read_line(&mut input)?;
+        match parse_launcher_menu_choice(input.trim(), true, locale)? {
+            LauncherMenuChoice::Pack => return Ok(Some(build_launcher_answers(mode, "pack"))),
+            LauncherMenuChoice::Bundle => return Ok(Some(build_launcher_answers(mode, "bundle"))),
+            LauncherMenuChoice::MainMenu => {
+                eprintln!();
+                continue;
+            }
+            LauncherMenuChoice::Exit => return Ok(None),
+        }
+    }
+}
+
+fn parse_launcher_menu_choice(
+    input: &str,
+    in_main_menu: bool,
+    locale: &str,
+) -> Result<LauncherMenuChoice> {
+    match input.trim() {
+        "1" if in_main_menu => Ok(LauncherMenuChoice::Pack),
+        "2" if in_main_menu => Ok(LauncherMenuChoice::Bundle),
+        "0" if in_main_menu => Ok(LauncherMenuChoice::Exit),
+        "0" => Ok(LauncherMenuChoice::MainMenu),
+        "m" | "M" => Ok(LauncherMenuChoice::MainMenu),
         _ => bail!("{}", i18n::t(locale, "cli.wizard.error.invalid_selection")),
-    };
+    }
+}
 
+fn build_launcher_answers(mode: ExecutionMode, selected_action: &str) -> serde_json::Value {
     let mut answers = serde_json::Map::new();
     answers.insert(
         "selected_action".to_string(),
@@ -286,7 +370,7 @@ fn prompt_launcher_answers(mode: ExecutionMode, locale: &str) -> Result<serde_js
             serde_json::Value::Object(Default::default()),
         );
     }
-    Ok(serde_json::Value::Object(answers))
+    serde_json::Value::Object(answers)
 }
 
 fn load_answer_document(
@@ -423,7 +507,8 @@ mod tests {
     use serde_json::json;
 
     use super::{
-        AnswerDocument, SCHEMA_ID, WIZARD_ID, build_answer_document, merge_answers,
+        AnswerDocument, LauncherMenuChoice, SCHEMA_ID, WIZARD_ID, build_answer_document,
+        build_launcher_answers, merge_answers, parse_launcher_menu_choice,
         validate_answer_document_identity,
     };
     use crate::wizard::plan::{WizardFrontend, WizardPlan, WizardPlanMetadata};
@@ -484,5 +569,40 @@ mod tests {
         };
         let err = validate_answer_document_identity(&doc, Path::new("answers.json")).unwrap_err();
         assert!(err.to_string().contains("unsupported wizard_id"));
+    }
+
+    #[test]
+    fn parse_main_menu_navigation_keys() {
+        assert_eq!(
+            parse_launcher_menu_choice("1", true, "en-US").expect("parse"),
+            LauncherMenuChoice::Pack
+        );
+        assert_eq!(
+            parse_launcher_menu_choice("2", true, "en-US").expect("parse"),
+            LauncherMenuChoice::Bundle
+        );
+        assert_eq!(
+            parse_launcher_menu_choice("0", true, "en-US").expect("parse"),
+            LauncherMenuChoice::Exit
+        );
+        assert_eq!(
+            parse_launcher_menu_choice("M", true, "en-US").expect("parse"),
+            LauncherMenuChoice::MainMenu
+        );
+    }
+
+    #[test]
+    fn parse_nested_menu_zero_returns_to_main_menu() {
+        assert_eq!(
+            parse_launcher_menu_choice("0", false, "en-US").expect("parse"),
+            LauncherMenuChoice::MainMenu
+        );
+    }
+
+    #[test]
+    fn build_launcher_answers_includes_selected_action() {
+        let answers = build_launcher_answers(super::ExecutionMode::DryRun, "bundle");
+        assert_eq!(answers["selected_action"], "bundle");
+        assert!(answers.get("delegate_answer_document").is_some());
     }
 }

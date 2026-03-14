@@ -22,7 +22,7 @@
 ## Delegation
 
 - `selected_action = pack` -> `greentic-pack wizard`
-- `selected_action = bundle` -> `greentic-operator wizard`
+- `selected_action = bundle` -> `greentic-bundle wizard`
 
 ## AnswerDocument Rules
 

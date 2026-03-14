@@ -29,7 +29,7 @@ impl WizardProvider for ShellWizardProvider {
         let (program, semantic_step) = match selected_action {
             "pack" => ("greentic-pack".to_string(), WizardStep::LaunchPackWizard),
             "bundle" => (
-                "greentic-operator".to_string(),
+                "greentic-bundle".to_string(),
                 WizardStep::LaunchBundleWizard,
             ),
             other => bail!("unsupported selected_action `{other}`; expected `pack` or `bundle`"),
@@ -113,7 +113,7 @@ mod tests {
             WizardStep::RunCommand(cmd) => cmd,
             other => panic!("expected RunCommand step, got {other:?}"),
         };
-        assert_eq!(cmd.program, "greentic-operator");
+        assert_eq!(cmd.program, "greentic-bundle");
         assert_eq!(cmd.args, vec!["wizard", "--dry-run"]);
     }
 }

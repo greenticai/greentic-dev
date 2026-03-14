@@ -121,6 +121,7 @@ fn is_allowed_program(program: &str) -> bool {
         program,
         "greentic-pack"
             | "greentic-component"
+            | "greentic-bundle"
             | "greentic-flow"
             | "greentic-operator"
             | "greentic-runner-cli"

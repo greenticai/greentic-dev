@@ -92,7 +92,7 @@ Behavior:
 
 - `wizard` is interactive and prompts for launcher action:
   - pack path -> delegates to `greentic-pack wizard`
-  - bundle path -> delegates to `greentic-operator wizard`
+  - bundle path -> delegates to `greentic-bundle wizard`
 - `--dry-run` builds/renders plan without delegated execution.
 - `validate` builds plan from `AnswerDocument` without delegated execution.
 - `apply` builds and executes delegation from `AnswerDocument`.

@@ -11,7 +11,7 @@ Status: updated for launcher-only implementation.
 ## Current Delegation
 
 - Pack path -> `greentic-pack wizard`
-- Bundle path -> `greentic-operator wizard`
+- Bundle path -> `greentic-bundle wizard`
 
 ## Current Answer Contract
 

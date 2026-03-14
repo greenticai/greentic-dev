@@ -1,6 +1,6 @@
 [package]
 name = "greentic-dev"
-version = "0.4.58"
+version = "0.4.59"
 edition = "2024"
 description = "Developer CLI and local tooling for Greentic flows, packs, and components"
 license = "MIT"

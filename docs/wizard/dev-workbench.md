@@ -5,7 +5,7 @@
 ## Launcher Paths
 
 - `pack` path delegates to `greentic-pack wizard`
-- `bundle` path delegates to `greentic-operator wizard`
+- `bundle` path delegates to `greentic-bundle wizard`
 
 ## Interactive Usage
 
@@ -54,4 +54,4 @@ greentic-dev wizard apply --answers answers.json
 
 - `wizard run` and `wizard replay` are removed.
 - Legacy `target.mode` orchestration is removed from `greentic-dev` wizard.
-- Lower-level repos keep ownership of component/flow/pack/operator apply logic.
+- Lower-level repos keep ownership of component/flow/pack/bundle apply logic.

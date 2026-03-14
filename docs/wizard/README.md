@@ -24,7 +24,7 @@ Plan identity is fixed to:
 Selection mapping:
 
 - `selected_action = "pack"` -> delegated command `greentic-pack wizard`
-- `selected_action = "bundle"` -> delegated command `greentic-operator wizard`
+- `selected_action = "bundle"` -> delegated command `greentic-bundle wizard`
 
 For dry-run plans, delegated args include `--dry-run`.
 
@@ -83,7 +83,7 @@ Example:
   - `greentic-pack`
   - `greentic-component`
   - `greentic-flow`
-  - `greentic-operator`
+- `greentic-bundle`
   - `greentic-runner-cli`
 - Non-allowlist programs require `--unsafe-commands`.
 - Destructive steps require `--allow-destructive`.

@@ -187,10 +187,10 @@ fn wizard_apply_emit_answers_writes_launcher_document() {
 
     write_stub_bin(
         &bin_dir,
-        "greentic-operator",
+        "greentic-bundle",
         r#"
 if [ "$1" = "--version" ]; then
-  echo "greentic-operator 0.4.test"
+  echo "greentic-bundle 0.4.test"
   exit 0
 fi
 exit 0

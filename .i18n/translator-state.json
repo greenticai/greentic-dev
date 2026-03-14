@@ -622,10 +622,10 @@
           "timestamp_epoch_secs": 1773487278
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "0a7f6ab67ea4ad0d5a4428c580e084d15bfba10d22f8e07a6fbb2a3489bf5990",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b546d981f36751d6436d0f6559071902d3449d0109d34d56237bdbbc2841f596",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487269
+          "timestamp_epoch_secs": 1773503264
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -706,10 +706,10 @@
           "timestamp_epoch_secs": 1773495391
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495391
+          "timestamp_epoch_secs": 1773503264
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -730,10 +730,10 @@
           "timestamp_epoch_secs": 1773495391
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495391
+          "timestamp_epoch_secs": 1773503264
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -790,10 +790,10 @@
           "timestamp_epoch_secs": 1773495391
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "f63e113a908b3a7f39cc32d69f9f0362bd311eaff641880aa99fa33425e2d9ac",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "3c7bc024bb4ba16a920c414eda66224af6a1f0cac154725b46f799bad580385f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495391
+          "timestamp_epoch_secs": 1773503264
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -1430,10 +1430,10 @@
           "timestamp_epoch_secs": 1773487285
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "7112062be3c9a632a1bd7c9cd16fed94bad057aa6874f2415041c324b9902d11",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "36586bb634381a7dd3aee9929b7522a9d2f8210c8ce0c1f0a51beae9631993d5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487278
+          "timestamp_epoch_secs": 1773503271
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -1514,10 +1514,10 @@
           "timestamp_epoch_secs": 1773495407
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495407
+          "timestamp_epoch_secs": 1773503271
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -1538,10 +1538,10 @@
           "timestamp_epoch_secs": 1773495407
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495407
+          "timestamp_epoch_secs": 1773503271
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -1598,10 +1598,10 @@
           "timestamp_epoch_secs": 1773495407
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "b6b93efd4757c365e14bc1d0826f3997d9ad52cc04552c98699ae26b8a12f49d",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "e5b28555aab76da5bfe487372b26c058470e613af7ff90b32384a44da755296a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495407
+          "timestamp_epoch_secs": 1773503271
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -2238,10 +2238,10 @@
           "timestamp_epoch_secs": 1773487293
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "0a7f6ab67ea4ad0d5a4428c580e084d15bfba10d22f8e07a6fbb2a3489bf5990",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "0e59a48eb3876b1e5164a0125d12c9128d1fb86393245e6a150fdda34f420b20",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487285
+          "timestamp_epoch_secs": 1773503278
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -2322,10 +2322,10 @@
           "timestamp_epoch_secs": 1773495424
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "8d12f4c68edd3c6e22d706c09d82dc98081a1378d3a2fb7b21f2709f8a42ece8",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495424
+          "timestamp_epoch_secs": 1773503278
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -2346,10 +2346,10 @@
           "timestamp_epoch_secs": 1773495424
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "af2f8e38f7f01cd5e550da528d9835c08cc9073736a40a5c603bede2b9b8e34f",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495424
+          "timestamp_epoch_secs": 1773503278
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -2406,10 +2406,10 @@
           "timestamp_epoch_secs": 1773495424
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "89743701ec3bef792859e1affef7f682f246f1605255d2633449597c8a874a43",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "69c344c1c9f7e51dc9d3883af5d409cdc99ea00c5e6a99f3f55697091221bbce",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495424
+          "timestamp_epoch_secs": 1773503278
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -3046,10 +3046,10 @@
           "timestamp_epoch_secs": 1773487300
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "ed0a7ac556df56e30df23f977a88dd961b3538759cc4880709f3c8913a0d32a4",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "f9f50f44fb47548d9bcc47ff94ec35eaab456e952c17b9d6c067734e14d71abe",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487293
+          "timestamp_epoch_secs": 1773503284
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -3130,10 +3130,10 @@
           "timestamp_epoch_secs": 1773495443
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495443
+          "timestamp_epoch_secs": 1773503284
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -3154,10 +3154,10 @@
           "timestamp_epoch_secs": 1773495443
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495443
+          "timestamp_epoch_secs": 1773503284
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -3214,10 +3214,10 @@
           "timestamp_epoch_secs": 1773495443
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "c0c07dc039587df718428f587e74dd6c10074fb61218792bd0d2acb827bd4447",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4174cf5e2a873152f71cea80063a155074b535bc97004b117a1a57213ddac604",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495443
+          "timestamp_epoch_secs": 1773503284
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -3854,10 +3854,10 @@
           "timestamp_epoch_secs": 1773487307
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "398c764c77e0aab2b1ae8afd03cc9bb5037f7468d57a1c43a0d40e7cd1c4d209",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b157a08a5a67c32b2c0135c79a1bcd09e96ada35d5673fc595ddf23ac8700e42",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487300
+          "timestamp_epoch_secs": 1773503292
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -3938,10 +3938,10 @@
           "timestamp_epoch_secs": 1773495461
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "508e919d9fe1c066cc96dbd86865b7e4ce0a7da05189c1c22b3887724749b9ad",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495461
+          "timestamp_epoch_secs": 1773503292
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -3962,10 +3962,10 @@
           "timestamp_epoch_secs": 1773495461
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "159ad85a19f839813e1dfebb0c36ab963e8a8eca211832f3da8714b24caf5a7e",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "7360a454a1e77801701a4452a5ee154a59cdb6d0b93687ee24961baa19e7bff9",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495461
+          "timestamp_epoch_secs": 1773503292
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -4022,10 +4022,10 @@
           "timestamp_epoch_secs": 1773495461
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "805b1a3efd6aa4575272fe76d936e7146c183077f6799fa6b31ecb3d0b72c78d",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "12a0f7a5666c02377ddf01acd595deb8f2c32120c8db786a63158360ffd88649",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495461
+          "timestamp_epoch_secs": 1773503292
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -4662,10 +4662,10 @@
           "timestamp_epoch_secs": 1773487314
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "ed0a7ac556df56e30df23f977a88dd961b3538759cc4880709f3c8913a0d32a4",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b546d981f36751d6436d0f6559071902d3449d0109d34d56237bdbbc2841f596",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487307
+          "timestamp_epoch_secs": 1773503298
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -4746,10 +4746,10 @@
           "timestamp_epoch_secs": 1773495479
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495479
+          "timestamp_epoch_secs": 1773503298
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -4770,10 +4770,10 @@
           "timestamp_epoch_secs": 1773495479
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495479
+          "timestamp_epoch_secs": 1773503298
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -4830,10 +4830,10 @@
           "timestamp_epoch_secs": 1773495479
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "22dd68d3bee2a530bc68e436f8aaca20096a224a10a48500dbde7c2679c89b11",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "7f5339d9d226b482ac35b5ed7eb4c29ad3f51af0cb24a583e8cafec199eef0fd",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495479
+          "timestamp_epoch_secs": 1773503298
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -5470,10 +5470,10 @@
           "timestamp_epoch_secs": 1773487321
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "0a7f6ab67ea4ad0d5a4428c580e084d15bfba10d22f8e07a6fbb2a3489bf5990",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "f30dcd6a7f4387817ccee53683daec5591ce9c7864156bb6c1d102b278367994",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487314
+          "timestamp_epoch_secs": 1773503305
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -5554,10 +5554,10 @@
           "timestamp_epoch_secs": 1773495498
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495498
+          "timestamp_epoch_secs": 1773503305
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -5578,10 +5578,10 @@
           "timestamp_epoch_secs": 1773495498
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495498
+          "timestamp_epoch_secs": 1773503305
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -5638,10 +5638,10 @@
           "timestamp_epoch_secs": 1773495498
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "36815a7dc9a87fb11a66aee41c4b32ac05c09179d38f4d9cc3febb00285515c1",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "056af734e4159583a8e8bf57d71c173f8323cdc21857b0e57ce7761737313511",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495498
+          "timestamp_epoch_secs": 1773503305
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -6278,10 +6278,10 @@
           "timestamp_epoch_secs": 1773487332
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "0a7f6ab67ea4ad0d5a4428c580e084d15bfba10d22f8e07a6fbb2a3489bf5990",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "36586bb634381a7dd3aee9929b7522a9d2f8210c8ce0c1f0a51beae9631993d5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487322
+          "timestamp_epoch_secs": 1773503311
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -6362,10 +6362,10 @@
           "timestamp_epoch_secs": 1773495517
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495517
+          "timestamp_epoch_secs": 1773503311
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -6386,10 +6386,10 @@
           "timestamp_epoch_secs": 1773495517
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91fbecdae90770756879f22f3271be029100c4a97ad600cb510bbc265860992",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495517
+          "timestamp_epoch_secs": 1773503311
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -6446,10 +6446,10 @@
           "timestamp_epoch_secs": 1773495517
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "832dd479446b09fecf4fb83786b1c3504bc4f4816bcff7dace5fdf72631a5b90",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "8df43d2ab9b9b697c097bc356f59ad927dc5063878261591aa7c982fc80778b6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495517
+          "timestamp_epoch_secs": 1773503311
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -7086,10 +7086,10 @@
           "timestamp_epoch_secs": 1773487340
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "7112062be3c9a632a1bd7c9cd16fed94bad057aa6874f2415041c324b9902d11",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b163921a3096ef947989672a60d5009d623dc4a4d18fe80c80878feb24c7b462",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487332
+          "timestamp_epoch_secs": 1773503318
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -7170,10 +7170,10 @@
           "timestamp_epoch_secs": 1773495534
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bfdabff3b48ea5283a360580205f1ecbb69639982116676249a62be3de1d3133",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "2a1b3aecbca5ef78c068153773e3ba143ef3393576dbd0fc4689645801722e14",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495534
+          "timestamp_epoch_secs": 1773503318
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -7194,10 +7194,10 @@
           "timestamp_epoch_secs": 1773495534
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "30a0ad030ae1ea222f4709eb25c759b32035b39f5e98ac7613f15a98d6532939",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "89b6fd17ab66d8c121d893502d68d5aacd8a8f10b651fe2a2a651edfbdd2a9b3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495534
+          "timestamp_epoch_secs": 1773503318
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -7254,10 +7254,10 @@
           "timestamp_epoch_secs": 1773495534
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "5222d63ce8098f639831b8589e4c838f56d7ee36044549d212c0935682b109af",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "8c7fe9b9398a79a9869beebb4c0e739f2352d4c551d0ef075e89a43a8f54352e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773495534
+          "timestamp_epoch_secs": 1773503318
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -7894,10 +7894,10 @@
           "timestamp_epoch_secs": 1773487350
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "f8902ce94e80aaffacd8fdf8c76ad238d63f6f86ffab040f51c8ffb4294e292b",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "dfe71f9345d0d3580ea14797946fb3f37e869754694c6b5e22e6da75258c19ac",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487341
+          "timestamp_epoch_secs": 1773503327
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -7978,10 +7978,10 @@
           "timestamp_epoch_secs": 1773489489
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "9e0930a7c76223f7391ba7e4bd77018cc71c240983c4bb9086e9edab9a7191a3",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "e08b7748f2bb02536c0f624728c8136a850824853262dbaf3506a92009e807b5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489489
+          "timestamp_epoch_secs": 1773503327
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -8002,10 +8002,10 @@
           "timestamp_epoch_secs": 1773489489
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "8727cbced15c576b628dadd56678e84b3e06493c411378de7b3f402269b46078",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "b7328aac83fe32aa34e25955325f163056aa379e5f892265ff2d0aae03ede08b",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489489
+          "timestamp_epoch_secs": 1773503327
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -8062,10 +8062,10 @@
           "timestamp_epoch_secs": 1773489489
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "fa910dc7f2b1ebfbf2808a19ae84e6d0be4a138479c047acb316c01f8d412045",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "be9a1e437813994e99b663f90e696381b7a84a501958510961551253d8cfb724",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489489
+          "timestamp_epoch_secs": 1773503327
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -8702,10 +8702,10 @@
           "timestamp_epoch_secs": 1773487358
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "5f3ab0578da45c172448d9971cb3e34acd730f7bf36f110df7d7fee168293cc6",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b733ed522ee6b2e0e2a92be1c4b956dcae80d78972982e8cfe64b55b0b935036",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487350
+          "timestamp_epoch_secs": 1773503334
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -8786,10 +8786,10 @@
           "timestamp_epoch_secs": 1773489523
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "3f2f31b93141a9fe8b68ce447bed9ee565059f8743f1231a19a84ea158f7983d",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "847a7209b1fd4cfa1fc5f73f7e2c7d1df5b647622291c3692d9f600d52a40836",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489523
+          "timestamp_epoch_secs": 1773503334
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -8810,10 +8810,10 @@
           "timestamp_epoch_secs": 1773489523
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "2a6eb3be38d8875d0a135033e7cedef0355d571c28e60680ffe3672917f6acd7",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "6993985685a1bd09c78719c735af11f16a7a124605e9ca7fcfb76ba6f1e5cbba",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489523
+          "timestamp_epoch_secs": 1773503334
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -8870,10 +8870,10 @@
           "timestamp_epoch_secs": 1773489523
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "715364a650857521d5c8678a251eade234c53ea325d4b03f53b1fed558490fcf",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "f1e0a31a7ddd495a91830094433d33d2573457d52a71cb9b734a59c0f041ebf0",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489523
+          "timestamp_epoch_secs": 1773503334
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -9510,10 +9510,10 @@
           "timestamp_epoch_secs": 1773487366
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "c86da36d9be0d0d4e93bebe067ea17522a14b367c5056cea6705a44140a0e591",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b1e8d15fcfd876a96406b80f2d9c5c48729178573b5fc5f3440727d962b9f899",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487359
+          "timestamp_epoch_secs": 1773503339
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -10318,10 +10318,10 @@
           "timestamp_epoch_secs": 1773487381
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "cbed2872f31b69bf865fb91af12ec8fa000eb067dc2af4cd76a83c48d347f063",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "cc2fa5d17ee0524f100fd4951843bd19173bf99e6916d72ed0a3088d27580900",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487367
+          "timestamp_epoch_secs": 1773503347
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -10402,10 +10402,10 @@
           "timestamp_epoch_secs": 1773489655
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "545c97b42461630798f69d36bcece198d3ffabe0b31d2eddf510b776a4c41299",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "6d0a99b66b8df22c1b9269bbc06ccc17c6b53d0c82ce4813921d0a0243cdf736",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489655
+          "timestamp_epoch_secs": 1773503347
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -10426,10 +10426,10 @@
           "timestamp_epoch_secs": 1773489655
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "d95445f851733d03a387a7a001b281094f447e1af915ce2bb82c08b2b9549389",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "77902982b05ca034f8e659f634875e0e23b09ec7c7b0fd5b83d4ef231f536c1d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489655
+          "timestamp_epoch_secs": 1773503347
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -10486,10 +10486,10 @@
           "timestamp_epoch_secs": 1773489655
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "d1014432f23848c70be0e508b1e99f31e47f48d7ff22bf5efba9acaef92e3b91",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "bd7ae32e2a2e3df4313bfb5115510fb6365246a39076cf87c6947e68d08cd1d2",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489655
+          "timestamp_epoch_secs": 1773503347
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -11126,10 +11126,10 @@
           "timestamp_epoch_secs": 1773487388
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "4ee845bca54887ea025a5b7daf2a6ed73f2a6302a25d74fe60e492a19371ee05",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "cbf17eacec524e8b972887d322c620e045cb1721ecaeee4c53902f2d724bc0f3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487381
+          "timestamp_epoch_secs": 1773503356
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -11210,10 +11210,10 @@
           "timestamp_epoch_secs": 1773489685
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "e6c28e4f373fa7d8db2c5f8a0730c294908a2191b8641a86d86ce77ca1fb1f31",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "e20511bbb7c8df87ad86f4657f09bbd36352f2fb07045d67f1667b7710aa21bb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489685
+          "timestamp_epoch_secs": 1773503356
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -11234,10 +11234,10 @@
           "timestamp_epoch_secs": 1773489685
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "6be88568e96103a023726ff95496188962a853a623754c97c40da356b800b5f8",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "1e6aa4624b41d3abf2c00d718e85fbe6169a82bacb8f73029e80d17b9837067d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489685
+          "timestamp_epoch_secs": 1773503356
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -11294,10 +11294,10 @@
           "timestamp_epoch_secs": 1773489685
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "929f91a1c78a8db76208570e7bf17055f06efb765c15ebbd363fb89fb5a42c1f",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "37b1f925ddbd9d9916f969509849b69f8c2ebef11afad6a4ecc20e21c4661e5f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489685
+          "timestamp_epoch_secs": 1773503356
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -11934,10 +11934,10 @@
           "timestamp_epoch_secs": 1773487394
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "003b5e42fb5b6b6ff08293c79a2ac709492b03527524b22daf54345e16365a07",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "eb0e2ba223cbb1cb713f0b39a662bd64857969dbc98e27e1dbc21665feb4fd5d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487388
+          "timestamp_epoch_secs": 1773503366
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -12018,10 +12018,10 @@
           "timestamp_epoch_secs": 1773489717
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "47272a36c13cd299b39a9e53ea3d21ef2024244589680a613c3c9d76bd7b0b25",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "d05736869f5da3950a449605e5a9f564548dcdf35f78391321b982a94e2ebf4e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489717
+          "timestamp_epoch_secs": 1773503366
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -12042,10 +12042,10 @@
           "timestamp_epoch_secs": 1773489717
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "758626b2eef64eb4909ec91cd98e95163c840c9a7eaa0f860b52ce23dcc97dce",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "fd86c60a8542f98a786d4d5f8c22484bddcc26252fd44437a3e55e28862c3ab6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489717
+          "timestamp_epoch_secs": 1773503366
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -12102,10 +12102,10 @@
           "timestamp_epoch_secs": 1773489717
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "3abc0eb46230e85447fcdc2f7c684875cb883bac725c1ac91488ce1c8d97fa6f",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "64ea128bc839e870c83063ac0e1536e75e79418bb01d002aa1d6fe6b2fd4b4ee",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489717
+          "timestamp_epoch_secs": 1773503366
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -12742,10 +12742,10 @@
           "timestamp_epoch_secs": 1773487402
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "57c5f915731193898eef32d0853cb6281b30ce37b15b141631ff40463a91789d",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "3e5523f550fdd91983a345a3fbbe8fa05858d71459cd30426fea31e3dfdd4296",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487395
+          "timestamp_epoch_secs": 1773503375
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -12826,10 +12826,10 @@
           "timestamp_epoch_secs": 1773489755
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "e6d0c283d99c5b99d6f761e9aae22b6a2c1b902a17984d113b0644d034f2d591",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "df78816355b84a700184c5d1079168ce9017212e1cc67a48a7aef91f1109f4bc",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489755
+          "timestamp_epoch_secs": 1773503375
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -12850,10 +12850,10 @@
           "timestamp_epoch_secs": 1773489755
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "36ba517f15380eadd6cb250e30511185e49e7fc27d9c4d83a14ce3f63e7ec256",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "db0bc7920446623e1f43dd56bb1500fe560d2fca2470fe2514c2a96ed40abf59",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489755
+          "timestamp_epoch_secs": 1773503375
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -12910,10 +12910,10 @@
           "timestamp_epoch_secs": 1773489755
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "4d56a648cff4d237cf464a6832c083a37bd1e1c8d3a25002e83bd87c52169e84",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "01cd687245738426bf331834d110c881768426d471a148f39d8ddaff7b685477",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489755
+          "timestamp_epoch_secs": 1773503375
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -13550,10 +13550,10 @@
           "timestamp_epoch_secs": 1773487409
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487402
+          "timestamp_epoch_secs": 1773503385
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -13634,10 +13634,10 @@
           "timestamp_epoch_secs": 1773489781
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489781
+          "timestamp_epoch_secs": 1773503385
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -13658,10 +13658,10 @@
           "timestamp_epoch_secs": 1773489781
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489781
+          "timestamp_epoch_secs": 1773503385
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -13718,10 +13718,10 @@
           "timestamp_epoch_secs": 1773489781
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489781
+          "timestamp_epoch_secs": 1773503385
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -14358,10 +14358,10 @@
           "timestamp_epoch_secs": 1773487417
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "1658befee9d14b6c47817d33712fda2f6fcf244574ab7cc23dfe621a263380f1",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "7114895cda555765b85da4595b4acd87fbb23efadccbde77017b84388b806809",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487409
+          "timestamp_epoch_secs": 1773503392
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -14442,10 +14442,10 @@
           "timestamp_epoch_secs": 1773489812
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "affb1e08e26e68b93a9248c5df85f6792b2721c44a8797d58f4ac00048caed91",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "73965f5272e3bd9c5c7f8edeb7297b7dd6caa06ca5d019e3fdf28629dd149c71",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489812
+          "timestamp_epoch_secs": 1773503392
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -14466,10 +14466,10 @@
           "timestamp_epoch_secs": 1773489812
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "e8880dacf5e12fcef034b4c98da5bcb1287f3040ba3d35b6f1334bb8d021edc0",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "51fe2db71ace95ea760e53307a7b47e1d4b03c0cb067dc3ca1b4a5c6c0903530",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489812
+          "timestamp_epoch_secs": 1773503392
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -14526,10 +14526,10 @@
           "timestamp_epoch_secs": 1773489812
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "1baf2395547d374a649cd604ee47dbf510e8c5972eb9bba6ecd56e4b56f304f5",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "c6bb9a9485e7a067a623eea67eb9dd983a18c940e8c4a5a4eb6b8da3010b8ac5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489812
+          "timestamp_epoch_secs": 1773503392
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -15166,10 +15166,10 @@
           "timestamp_epoch_secs": 1773487425
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "d3242fe07a154c725a27b28391b1700c22e88ad16e7722a3d352c9af120318be",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "2025345d37a36762697dc9c90dc46f8364369b1f1233f38453c90291c9913f9f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487417
+          "timestamp_epoch_secs": 1773503400
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -15250,10 +15250,10 @@
           "timestamp_epoch_secs": 1773489874
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "83373d09ed8de7b9c1040a654f560b6c0e0d88c0992c06523b7f62dcb06b7775",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "5d262a9c7726c6b876bad34dd34f178ae310ac412cbe2e35a13edac336038732",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489874
+          "timestamp_epoch_secs": 1773503400
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -15274,10 +15274,10 @@
           "timestamp_epoch_secs": 1773489874
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "d95a92f7776b9e8425aedea8092f219f348d1fd90235d1deeef3ec61952be290",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "551bb0da70a13cf0684cbf341bd7cb1df86199e919163bdcf38751b5fd7971b7",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489874
+          "timestamp_epoch_secs": 1773503400
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -15334,10 +15334,10 @@
           "timestamp_epoch_secs": 1773489874
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "a80e49be5d04c40ccefaadb01cf7e1dbc44a28898e75b7903c36e8342c17a5a2",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "5a02662afa9156887e90f578704ae553eca07ed959f80da9356cc4539a14cafd",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489874
+          "timestamp_epoch_secs": 1773503400
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -15974,10 +15974,10 @@
           "timestamp_epoch_secs": 1773487433
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "b3dd6f2e453a695f03185e9d209898d01d7f25694de6726f2e23f73ce2a2a772",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "23b265ef441c19b0b20bc8a767c70db0f79e9ee786d0e72f59573b64e01d3710",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487425
+          "timestamp_epoch_secs": 1773503407
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -16058,10 +16058,10 @@
           "timestamp_epoch_secs": 1773489904
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "2e2b7ac19423bcbb89d97ce7a85d2880066f7e9ea81a3d84e7998bdd5add040d",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "75a3b199e20023d6cf71998ead4f92bf32f799d9f45ae098f55adea68437f0a3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489904
+          "timestamp_epoch_secs": 1773503407
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -16082,10 +16082,10 @@
           "timestamp_epoch_secs": 1773489904
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "5bd2aab871bd82a91802692c3446780bf746f91238b637b64ddc3bc4a681ad92",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "a9315af7a79e1b9db326c40bec45add2f77c046c9f9b83ff24721bfb8aa2d899",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489904
+          "timestamp_epoch_secs": 1773503407
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -16142,10 +16142,10 @@
           "timestamp_epoch_secs": 1773489904
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "ec766cedba26ccfe8bbefa8ecc685a15fa4f3919b5b29e07c3f50a4af0e33c1b",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "80799156336434b349b415811d8089e20948a390ec863c05d2f6057cbab64713",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489904
+          "timestamp_epoch_secs": 1773503407
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -16782,10 +16782,10 @@
           "timestamp_epoch_secs": 1773487443
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "1ddc2528444772b9b37acff73921bf23f90c60a552285a8d5394fcb610a74d2b",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "5db6243d79a6e5f36e0e298ead059196b10ca33f29faa1e855cea8516fbaf1db",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487433
+          "timestamp_epoch_secs": 1773503414
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -16866,10 +16866,10 @@
           "timestamp_epoch_secs": 1773489972
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "cb46849f98c72a8fc91c20ed2be70d01d6cea75062f4e6e14576464af70d9672",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "71b6b96bb3ab71d588e0c2e419a672ff25d667dc11a69f7f907b83ececcb4055",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489972
+          "timestamp_epoch_secs": 1773503414
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -16890,10 +16890,10 @@
           "timestamp_epoch_secs": 1773489972
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "ce1151df7aa642da0872f88d5a7e19f8ed3ea0032e319afbabd7e540eb5d7219",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "5413f04b99f6ec77e47555c8e4f20c9743b9e3902b0505768806466d7c54f765",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489972
+          "timestamp_epoch_secs": 1773503414
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -16950,10 +16950,10 @@
           "timestamp_epoch_secs": 1773489972
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "48b79e22d7477185aabe9f887aeff27702ba0a23537f55a46a338834f04180a2",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "237853646a1b883e8790d5b77a2146dee54bfaaf5f88c46af3901d3ac25cfc89",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773489972
+          "timestamp_epoch_secs": 1773503414
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -17590,10 +17590,10 @@
           "timestamp_epoch_secs": 1773487459
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "2659af8e8e848668c0142b59ab5c9a719d99459df8fb88045fe57a58c983486f",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "7b27875a3e838ee8da97c2566fc52297b3bcef66e9b9f8fb974af18b5204c132",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487444
+          "timestamp_epoch_secs": 1773503426
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -17674,10 +17674,10 @@
           "timestamp_epoch_secs": 1773490003
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "4b3a9aa167f1c29b8cba74938c570b7a9ae84a5120dc874862bbf77332234f8b",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "53f519a2b685419f4d93fd45001a5ef91233adf0bb7856c6cfa98887a58536de",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490003
+          "timestamp_epoch_secs": 1773503426
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -17698,10 +17698,10 @@
           "timestamp_epoch_secs": 1773490003
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "1db83cf1a673e4463315c8ca3681e460453410118784dbf5b9b1cb0f0e5d1311",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "53a839244e258391627743869c1c51fcbd699774319dd683199a1cd246b91e9d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490003
+          "timestamp_epoch_secs": 1773503426
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -17758,10 +17758,10 @@
           "timestamp_epoch_secs": 1773490003
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "4953c92f604851ae9c8ee36192795273d1a3682077ebca69129f7a6857a800bf",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "aedf2a4c1bc4a3f48a789459ad3b77813e49b4a390fb7a6ab25211ca000ebcc5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490003
+          "timestamp_epoch_secs": 1773503426
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -18398,10 +18398,10 @@
           "timestamp_epoch_secs": 1773487472
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "7420eb2aa471223d44edfd328fdddc99dac1caafb323080ecd1da0a3ead709af",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "34625e16644331ec082060ae49a74131a824211beaba7aed735623551ed44613",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487460
+          "timestamp_epoch_secs": 1773503438
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -18482,10 +18482,10 @@
           "timestamp_epoch_secs": 1773490113
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "44cf69f6dd3664a033c8305d24385cad11ae4f088786c225d11d2f800eca4c1b",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "f275f3f4859ab29cfac39cb63b301e6d92ca958b22700badf63caf38a9e5de13",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490113
+          "timestamp_epoch_secs": 1773503438
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -18506,10 +18506,10 @@
           "timestamp_epoch_secs": 1773490113
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "cfd4ce89f3243ad0cf94ddc1d89555f1fd6c3a0ab6f9c89a003c0b9cb43bf79f",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "92c8b1106d380108da6e37184cf4d649a7bd49564f4c4e2612e84f24c961148d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490113
+          "timestamp_epoch_secs": 1773503438
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -18566,10 +18566,10 @@
           "timestamp_epoch_secs": 1773490113
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "9bcad5b42a5f0566d1ff43f7808e259bf4221e18123aa629580db6e729588798",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "c50f6623d4a936c0c33225adc790d5ab379c1a00680ce65dbd95ca22fa09aff3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490113
+          "timestamp_epoch_secs": 1773503438
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -19206,10 +19206,10 @@
           "timestamp_epoch_secs": 1773487480
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "e5d71caedd57c5ba50ec72bb8a250e53f9a70abfd3272a95470ba3d090c68533",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b8c5b64bb9feb55372dd6e83c0829407a533316ff831e1e5d203e4f0908eaab3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487472
+          "timestamp_epoch_secs": 1773503448
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -20014,10 +20014,10 @@
           "timestamp_epoch_secs": 1773487489
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "e67df861faa3de990b2432af6c2aa38acd5a2863f5fbcf7e670ae4e5493e1eff",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "9b0e4e617b6a796e6286083e66733a676ce7bacead83dbbb8616648429d8fa36",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487480
+          "timestamp_epoch_secs": 1773503455
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -20822,10 +20822,10 @@
           "timestamp_epoch_secs": 1773487504
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "9c34964e153909382442d4caaa5aa43b6049e9d779834df3ae82d9fba2111f18",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "3fdf5421253a1365fcee23b3691a7e972479d769902b1bb4820a213cf570b5d4",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487489
+          "timestamp_epoch_secs": 1773503464
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -20906,10 +20906,10 @@
           "timestamp_epoch_secs": 1773490367
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "c1282765d555d703db495648363abd7911834cad7ba7d99de6b17f73079eceb9",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "257efc56c3467a0ee56db541bd4a47f7954199873e30dd1e43b7f80c54679cb4",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490367
+          "timestamp_epoch_secs": 1773503464
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -20930,10 +20930,10 @@
           "timestamp_epoch_secs": 1773490367
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "5995a29b1eee72b8217579f2f2ee0f86de2e0b0155d448b2bb6656cea7976708",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "8b9b212d9eae48b35fe45fd31031e80584dc3475c226ebfb5d4039b2a066259c",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490367
+          "timestamp_epoch_secs": 1773503464
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -20990,10 +20990,10 @@
           "timestamp_epoch_secs": 1773490367
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "cbc21986cbea6b801b93cc16e2c81fb93ebdf167729cf371fdd3180094388900",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "d8fcb16124462eaa8664cb714575e02051cfb797ffbcf52aff466eb9ff3e022f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490367
+          "timestamp_epoch_secs": 1773503464
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -21630,10 +21630,10 @@
           "timestamp_epoch_secs": 1773487512
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "a12f4495b8269f06368dca2a815b5b08cf43408f24d1e019c0db65eb788f9edd",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "3d57581cdea8fc93e154bef0ebb7a56b558c9bffc9b361742e4187a051e553ce",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487504
+          "timestamp_epoch_secs": 1773503471
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -21714,10 +21714,10 @@
           "timestamp_epoch_secs": 1773490400
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "53edc1bde6a077fcaf1a4147799d81eb099747624b22dfbadd1e01f83e454ad4",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "4667c83230047390a68fa999a417e3ee1c371610cdc73e342ac3d9073ae3f2c1",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490400
+          "timestamp_epoch_secs": 1773503471
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -21738,10 +21738,10 @@
           "timestamp_epoch_secs": 1773490400
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b91b206f733904916cf8a77cc4151a5837e3105b0f8341bf3126800a01b530f9",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "5baaa963c400ec8cbe9f5c6f32d9d9555652613c742055efb1570ca8c630d0c6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490400
+          "timestamp_epoch_secs": 1773503471
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -21798,10 +21798,10 @@
           "timestamp_epoch_secs": 1773490400
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "2685bf57de88d14c771081de145385dc3993db0d5dc79ff74f7c760f2cc51423",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "3c06d78307f15bf789507b3cc2551e49a533ec2ef7a79ea274fead9ef7beb931",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490400
+          "timestamp_epoch_secs": 1773503471
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -22438,10 +22438,10 @@
           "timestamp_epoch_secs": 1773487522
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "03be048ac2111558dbb64ebb9521d9d6c2d6b379da011eb93d22b732ed1454b2",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "ac35aba029b04df164d8aa2dc21b38e8267f08d2b05f32d1acb52b11e41800e0",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487513
+          "timestamp_epoch_secs": 1773503488
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -22522,10 +22522,10 @@
           "timestamp_epoch_secs": 1773490436
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "e135a4e02f7b91f64664b4c95256cb87013c3d3a2ea8c4ac640134a89fc48093",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "6ca3fb844b153e8f10791b0b19c91644114b3de15f7fcd7e3e0066e2bb4c35c9",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490436
+          "timestamp_epoch_secs": 1773503488
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -22546,10 +22546,10 @@
           "timestamp_epoch_secs": 1773490436
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "7a0b58875b6e7202cc996c73a0a426f00fa7b1bf3cbb9b7b39c12d991c02e088",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "e6599b32259e110bec91c5401faf3d704125253dffb9f13754feac41a00c4e75",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490436
+          "timestamp_epoch_secs": 1773503488
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -22606,10 +22606,10 @@
           "timestamp_epoch_secs": 1773490436
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "9b54109446f4452dde6a11d233e6f32af2e8fb4ea998234293d9a5876db69101",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4b0cb2855b4b9bc6fe8d8c35f6b597494413b2f385e23b68bb675ae62fc890c6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490436
+          "timestamp_epoch_secs": 1773503488
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -23246,10 +23246,10 @@
           "timestamp_epoch_secs": 1773487528
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "f35e4c0622ee3630d78c1942bef978169ea8c87f4dfd65728db4631eee13286e",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "42c26447912d26767e5206874e2dc65e55805fbddb29cd841c589e32f66c1edd",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487522
+          "timestamp_epoch_secs": 1773503495
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -23330,10 +23330,10 @@
           "timestamp_epoch_secs": 1773490466
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "772d05e50625020a3ee8fad5771731b5a194e8a6a910874f4185c72bd1eddca9",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "6d3079fe58f45ebd891a1dd29f2ba9d49fd2f82b48d3d82999c131dca5817ccb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490466
+          "timestamp_epoch_secs": 1773503495
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -23354,10 +23354,10 @@
           "timestamp_epoch_secs": 1773490466
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "d12d1e031cf50a073f5c1a7441f6b1b2fd2744da2ff891572b6b4e28146b2fae",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "b46095a3e41cd9cec0c16ec3e0965daa5caae62b1560aae7c4af32dca2f15768",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490466
+          "timestamp_epoch_secs": 1773503495
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -23414,10 +23414,10 @@
           "timestamp_epoch_secs": 1773490466
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "6b2c040b24a703a34d15821f6e4e392acf620b62ae85d475afc4017414ffce9b",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "c8bbcd37daaacfa8120f2e07721e844774fe6058958cef517d6e66fcf737f843",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490466
+          "timestamp_epoch_secs": 1773503495
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -24054,10 +24054,10 @@
           "timestamp_epoch_secs": 1773487535
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "8b173bfb317c354073c7b9771e72dd9823220bf7cff7dcac8efb4371347853e9",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "034a03fb4e349c74f99b1ef101c412ff69a2d6c1ae9fa20412677f152bc86b52",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487528
+          "timestamp_epoch_secs": 1773503500
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -24138,10 +24138,10 @@
           "timestamp_epoch_secs": 1773490496
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "bb06a645fa06ccab057b3562867c248595e5684c2eb073619a368786bf3f3296",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "da7a4e16e62ea64aa3086236276f5f1b454f8e3fad8376fccc8fdcf75824e247",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490496
+          "timestamp_epoch_secs": 1773503500
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -24162,10 +24162,10 @@
           "timestamp_epoch_secs": 1773490496
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "305df6528c2acfa61f14e52219e74b34897b0e7a15d0be88e5cdf3f2576c7e12",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "8ca1a71de85e18fc82a937f51c64010c525450fddd4b1e432ca3e8e64382d228",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490496
+          "timestamp_epoch_secs": 1773503500
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -24222,10 +24222,10 @@
           "timestamp_epoch_secs": 1773490496
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "1230c7a4ca5f62c597e78bd6b4f633027c174346376b5fbcd12b02be02aac4e9",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "76e810c85eaa414ae8194685b717bde624be748eee765cf0d50fbdab32a278d8",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490496
+          "timestamp_epoch_secs": 1773503500
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -24862,10 +24862,10 @@
           "timestamp_epoch_secs": 1773487543
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "065e8df1302c7ca20e3187354607cf86151be060f1fdd4a0f56e92bdf7f3ac98",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "d8f7274eee653680fd29ce364b519101ec726baa6e86d94f11719b0a7afac134",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487535
+          "timestamp_epoch_secs": 1773503505
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -25670,10 +25670,10 @@
           "timestamp_epoch_secs": 1773487552
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "79498a6c99728d00a12436cb95dd7b579b92a3a764cb7a39ba388e32d0bc0043",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "2f73cc2817b9e59f23e6fdf671a3fb4415082ee37b572b3567fda24ff272c83e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487543
+          "timestamp_epoch_secs": 1773503513
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -25754,10 +25754,10 @@
           "timestamp_epoch_secs": 1773490647
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "b57dd5415d58051c18cce8937315cc3bcdf98a0a5b7fe5fc00a1533c012152bc",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "a63afa16188ee4b57ca5f3494381a1daad01094118edc9c273d580e334893828",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490647
+          "timestamp_epoch_secs": 1773503513
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -25778,10 +25778,10 @@
           "timestamp_epoch_secs": 1773490647
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "754954f53f722feb397fcb6b8cb94815388f9f13b1214491d1b0e3abe55f8c18",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "3d18f71a5e97bea3140bacfa326ca374704a8779a385773494253fa7881bbeac",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490647
+          "timestamp_epoch_secs": 1773503513
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -25838,10 +25838,10 @@
           "timestamp_epoch_secs": 1773490647
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "06b8901c3e656b64cf326f07cd98012e852562ba45c442f1cba0675ddc018087",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4606e8eda255d8d1a0a85d84df900a98a5334cb7338c1d948756c41e08c5e4a6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490647
+          "timestamp_epoch_secs": 1773503513
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -26478,10 +26478,10 @@
           "timestamp_epoch_secs": 1773487570
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "faaab01acf44a825ea64678dcdb761fa06c6784d75cb427560edc4e32bfb5848",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "3c1b1ce0f2845c39cff92d489d3b51d56b0e40e4cb8edc7ba17f7c1b73622689",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487553
+          "timestamp_epoch_secs": 1773503517
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -27286,10 +27286,10 @@
           "timestamp_epoch_secs": 1773487577
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "0cabcace966182f4dcee8f6fb93829347dc271a09049de838153998f40dccddf",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "ca2734d426bb8fdad0b6b8416b9ee2f4b025583917797b1b6aa4c0da94364eeb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487571
+          "timestamp_epoch_secs": 1773503522
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -28094,10 +28094,10 @@
           "timestamp_epoch_secs": 1773487593
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "7009be8658fac131973ea695181eb897a79b69f32af071ed23293c2eb5b4a662",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "db60e72b7e01df0864857f8d4c5c3ed40def830d2c622311c63d9d366b9680c2",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773487577
+          "timestamp_epoch_secs": 1773503533
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -28178,10 +28178,10 @@
           "timestamp_epoch_secs": 1773490940
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "1c62b88dedeefb6d2d8785924652818e4820eb838fd87e48bbaefd5cb4b451ba",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "4c37fbbe571b196300a952ae89cb46cee6b52353feff6f6df2407701bf000273",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490940
+          "timestamp_epoch_secs": 1773503533
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -28202,10 +28202,10 @@
           "timestamp_epoch_secs": 1773490940
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "f56f952953d54ebc00424ccc39ff6afb4a36c78b6c67ba321242b0dc04c9670c",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "662e796d1d950fcf97cc89c7dc27df67e6f7fd7399bdf737b6c0c55305138ee9",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490940
+          "timestamp_epoch_secs": 1773503533
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -28262,10 +28262,10 @@
           "timestamp_epoch_secs": 1773490940
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "5dfd78b7eeb1b732a8eea2719a2a4aa49540fb2b949de148480ba87dd87a19d1",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "0516e16b6063c6e0264a9fc165ba8a4ce547509b6014c871d1c34e7da84791df",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773490940
+          "timestamp_epoch_secs": 1773503533
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -28902,10 +28902,10 @@
           "timestamp_epoch_secs": 1773487609
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "511b7407d840459654ea02b0ecff5fd6a8d69b5f9eeadb94619b1333d24dd1c3",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "41ff8c6f2bde4107c3d454e63c14cbc84b36e34c10b33af1baf6fef598da5605",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485731
+          "timestamp_epoch_secs": 1773503539
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -28986,10 +28986,10 @@
           "timestamp_epoch_secs": 1773491010
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "e9240d45567082e04537b7d48dc101f219a8bbd24de1de4003d7393fe3f26cc3",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "50e64c94d08d86b298d950a5c6897c0d05c14bcbbb105af222127c75f76ec073",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491010
+          "timestamp_epoch_secs": 1773503539
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -29010,10 +29010,10 @@
           "timestamp_epoch_secs": 1773491010
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "62aeb2340e903685446b07f869ae8529f594eba3da589295731afd0eb03f3b7f",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "59247d8297b4e4a24342a9e3f87a9b4479055cb0dd2de25539bd1d475b6111d8",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491010
+          "timestamp_epoch_secs": 1773503539
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -29070,10 +29070,10 @@
           "timestamp_epoch_secs": 1773491010
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "0fa36f3277bf295cd2c5fd2abcd7e164e71776e0a155a94d4afdc4e6281ec9e8",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "ddd61f6bbb8c53c0085d49f01ad4749b6d496526366372ae88d3bc73cff4cd40",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491010
+          "timestamp_epoch_secs": 1773503539
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -29710,10 +29710,10 @@
           "timestamp_epoch_secs": 1773487619
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "9d757ada7ab69b909669e71d08eb90f343fe804eb8dc8654d9c76094d5f3d803",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b8bd28719a3174122757ee959e3c807762349a846788229acb8cbb513250dd27",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485759
+          "timestamp_epoch_secs": 1773503545
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -29794,10 +29794,10 @@
           "timestamp_epoch_secs": 1773491081
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "5cbea21df6f164b9a4a1ea5fffbc7d44f0dfcdccd714d7e2a6df5f9cf6840b9b",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "0056cff7f0b6f5decf4f662d52f1e1d22c229fb33ee25c6450829e3d2354b682",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491081
+          "timestamp_epoch_secs": 1773503545
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -29818,10 +29818,10 @@
           "timestamp_epoch_secs": 1773491081
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "4f9ab3569ee62e581abfb56d6de92ec5885e5beac5f77e19294c5b960a7d4ba2",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "450c3ebe86a6e6bf7d57f46dacfa85fa69bc9bd172340cf78de76c5bb50878c2",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491081
+          "timestamp_epoch_secs": 1773503545
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -29878,10 +29878,10 @@
           "timestamp_epoch_secs": 1773491081
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "5c1ad04d4b96d4d58fa21c7f00b2b65936caa3dbb663da123eecc6d0b3a4acd6",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "8988b5f79847b1cfb5073841a9ab422f9f81223c37a55fea61e40ffeea80e7a8",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491081
+          "timestamp_epoch_secs": 1773503545
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -30518,10 +30518,10 @@
           "timestamp_epoch_secs": 1773487631
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "b642c99694daa755172d72fdaf301dad3c0c1d1cc3d59deed2c9c388df8c24ce",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "09fbbb64404e803bdd482688f132f9e8d3409b9aa38cb77352e02851066f8b19",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485787
+          "timestamp_epoch_secs": 1773503553
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -31326,10 +31326,10 @@
           "timestamp_epoch_secs": 1773487647
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "45a71e3d240c812be5a6a5c49e555678eaebb08c361599b3bd4c5b33a89c9061",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "1ff8ada21810320dbb979b87fbc10d95ebe7664624d85c214d17c61183cb4ffb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485816
+          "timestamp_epoch_secs": 1773503556
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -32134,10 +32134,10 @@
           "timestamp_epoch_secs": 1773487666
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "3b9d5372111fa1828049799858dc6d07ef2b37ba9ea3302c83a613fc832d1fe2",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "cb7b648fde79b855d1b6c7a081206de19ea2d1fadac1752e66d6b7ef77e6f9c4",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485840
+          "timestamp_epoch_secs": 1773503561
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -32218,10 +32218,10 @@
           "timestamp_epoch_secs": 1773491327
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "64d6ea14838615bce2d925bc9d57df3094f720262c582348b5313e33851281d5",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "46ea92a6f14d25b022e70cebc00ec0f92c6a988195827617bc3f3df11001f2e8",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491327
+          "timestamp_epoch_secs": 1773503561
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -32242,10 +32242,10 @@
           "timestamp_epoch_secs": 1773491327
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "30ff1e559aec9fd1d6baed6ad4fad1205631fda7a50201e74b1f7f2b8f96693e",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "03e89ed5116c811ba79ec9c293167f7fd1d2807d27a6763c3d80d52fc9cb8bfa",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491327
+          "timestamp_epoch_secs": 1773503561
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -32302,10 +32302,10 @@
           "timestamp_epoch_secs": 1773491327
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "6af5203f51f9f81e73fe3bbb2be7b2ef506c355276a2d23b42a2f6155f5c6d8a",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "55c13f77f8e18d63d4f64abeaea1dc8ad4faf955050b42da8d237e83edf7747f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491327
+          "timestamp_epoch_secs": 1773503561
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -32942,10 +32942,10 @@
           "timestamp_epoch_secs": 1773487678
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "b08b75e6093b5dcbbaa0a2d2b745d996f91e18ade1d58aee26a9e13bd05b8e0f",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "4cf667b2353abe4e893cee75cf17b5b4bbb6e28bc68ac95f7802cae7ecd6a101",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485874
+          "timestamp_epoch_secs": 1773503566
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -33750,10 +33750,10 @@
           "timestamp_epoch_secs": 1773487692
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "69b623f6e13c4d2723902c5e68387611e72bff6369130601c2701bb9ef139c73",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "2c9a176f74de7a4fc32ad240b09f42f7681d97fd54f70703f164a2a7634421e1",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485904
+          "timestamp_epoch_secs": 1773503573
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -33834,10 +33834,10 @@
           "timestamp_epoch_secs": 1773491482
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "070968babd595af0e92ad738df4b050431e22cdc70792e595f96f9a023b7898f",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "68df6a7081aba9c6aa6821c28605ba51481519d86a4df256e819d54071e1e53a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491482
+          "timestamp_epoch_secs": 1773503573
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -33858,10 +33858,10 @@
           "timestamp_epoch_secs": 1773491482
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "fec08f476be57a54214db3e3015d6e8b7421e259ed4d7c53df3a0712487862cb",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "88e6f9bbdb0f46853fea9b3697aa45554ec0023fc8a8cdc3d6e5359d72fa774b",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491482
+          "timestamp_epoch_secs": 1773503573
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -33918,10 +33918,10 @@
           "timestamp_epoch_secs": 1773491482
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "601b1156ff6132287bbcc321e446ce6d5492142edfb06e3cdc736f26851a214c",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "28535c31e6a6c4090f948ce0798c75d3ae755bad22ffbcc098e67ab13ba84439",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491482
+          "timestamp_epoch_secs": 1773503573
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -34558,10 +34558,10 @@
           "timestamp_epoch_secs": 1773487718
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "84027785ece709e2e4ba2cc4ea93e382360dc4b51bbb1f7ebbfd589132adf878",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "cbac05b5f1275564d35944eb6242f2990e3321f739942785d3c12d6005251484",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485932
+          "timestamp_epoch_secs": 1773503577
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -35366,10 +35366,10 @@
           "timestamp_epoch_secs": 1773487727
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "88ed6a1c01ccac553341f0a9043e5e78a22e9f0acda7340a276c8651a20f5226",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "5362f5ae9af52183ba7e76182bb4e3b5e08db985c44e9417fd9640c10328ec1f",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485956
+          "timestamp_epoch_secs": 1773503582
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -35450,10 +35450,10 @@
           "timestamp_epoch_secs": 1773491604
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "da30e6d2b4b23ca32ecad360e37749cd2171a90511414f17278d1c09e928ad5e",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "f10411c0d4a8e4c1f19a7929db72c9a27fe3b09aad908081936242fed661da0d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491604
+          "timestamp_epoch_secs": 1773503582
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -35474,10 +35474,10 @@
           "timestamp_epoch_secs": 1773491604
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "ea79df14f4def30cd9f8e938fa655ce413d15ef78db549fdaaee29cc1a098555",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "bb9656116ccd40bf3ac691aa97fc561a5b499f6012cd56defc372ae98cd6aa83",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491604
+          "timestamp_epoch_secs": 1773503582
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -35534,10 +35534,10 @@
           "timestamp_epoch_secs": 1773491604
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "da99dab7c68b3845718fefa24f4d3d51ab550212eec0a898d6b5eb0e57f2c8e7",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "8259cf91c3ebc681abec1ab6bc167436e9b8267d62a7f2ccba4aa77736bfa1fa",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491604
+          "timestamp_epoch_secs": 1773503582
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -36174,10 +36174,10 @@
           "timestamp_epoch_secs": 1773487736
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "30e92a6c9db31569f73e753447ec990c3b97388cac8f0b14ca0d21b9191939a4",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "945acc2bc368293e243ee72549d9d3ab7e876aefdbe5ad268201806553b8b2f1",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773485981
+          "timestamp_epoch_secs": 1773503600
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -36258,10 +36258,10 @@
           "timestamp_epoch_secs": 1773491636
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "6f4889b1f48589b39b48a771c07e5ca413698377f67e308d0b9ae4f05c9b0bfc",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "bcf18524beedae25ca88f7e8067588a85cf23a8a5193b6327ca3eef43b34b2f9",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491636
+          "timestamp_epoch_secs": 1773503600
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -36282,10 +36282,10 @@
           "timestamp_epoch_secs": 1773491636
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "6be88568e96103a023726ff95496188962a853a623754c97c40da356b800b5f8",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "1e6aa4624b41d3abf2c00d718e85fbe6169a82bacb8f73029e80d17b9837067d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491636
+          "timestamp_epoch_secs": 1773503600
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -36342,10 +36342,10 @@
           "timestamp_epoch_secs": 1773491636
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "4fc6d94dad1176e7818c3f486e0b686438eb5c34a42a79c4091cac046468e060",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "5a82e60f6566f498aec4e795ce7cc337b73c66238966ad96b2542e17105af42a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491636
+          "timestamp_epoch_secs": 1773503600
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -37874,10 +37874,10 @@
           "timestamp_epoch_secs": 1773491779
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "1a4028e30aaa51124e76a81b00be85044c2a9d1acf64d992e16513902674c80b",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "437594681106cc7291fab8ec6ddc8897371f487d0e4f4f819efdacd1a26278ce",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491779
+          "timestamp_epoch_secs": 1773503605
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -37898,10 +37898,10 @@
           "timestamp_epoch_secs": 1773491779
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "f309392a49453ed5472b538a02fe548a4eb053dbb4d82967e3b7c1595758a55b",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "35222181eeddf83bae1444e766a9a75780843b8a87b0ce40cc12b6c0002ed81c",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491779
+          "timestamp_epoch_secs": 1773503605
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -37958,10 +37958,10 @@
           "timestamp_epoch_secs": 1773491779
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "2887f9d86dca2350cf037542cc027d4b30cb3987f11bbfdf203acb9599242f8d",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "3beea39b50cf3e9052fb1e8fd46c9b0b7b40b8c616bf4d76dd415a0d24d29e3b",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491779
+          "timestamp_epoch_secs": 1773503605
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -38682,10 +38682,10 @@
           "timestamp_epoch_secs": 1773491808
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "fe2e8a31ebf65174eea997bc1176fffabbb13da6d86c90216be2249a20bde0ef",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "6bb426f5e40b14759cba08c84b1d2bcaec689c74a4e51f7b79f903cd1194596a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491808
+          "timestamp_epoch_secs": 1773503608
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -38706,10 +38706,10 @@
           "timestamp_epoch_secs": 1773491808
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "d214b885fcb3d6490503203c5829c266710513a96f1d003509cd74b3c9ab429f",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "573069a0239a4428be7d17899e265464704bf03b6fb886a4f8d5f40cb2b0f638",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491808
+          "timestamp_epoch_secs": 1773503608
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -38766,10 +38766,10 @@
           "timestamp_epoch_secs": 1773491808
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "fe15ebda568b7d20c3f9ed48e5946fa6e73485fd369749a6f33ed38f2922ed02",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "30ffafb6230c7c8228b53772d8c6a473a2a232348d1a3d178531d23c165ca834",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491808
+          "timestamp_epoch_secs": 1773503608
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -39490,10 +39490,10 @@
           "timestamp_epoch_secs": 1773491896
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "0f0fe0a92d7f6d1f607fccd8e82689e6888443d61389f449d678a5e165245ad2",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "fbb15389937bcd411eb10de5507c2f5d34433c8deeafb3c20821a9eceb3665e5",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491896
+          "timestamp_epoch_secs": 1773503615
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -39514,10 +39514,10 @@
           "timestamp_epoch_secs": 1773491896
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "238c092c19f023b0e210c3c49034cd3b110f4f592ad425951df01ce3f347c3f1",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "4ac940b356c57ca3a888af6ba56e6e7a993a9cc16440cb857b39fd2ae396cc96",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491896
+          "timestamp_epoch_secs": 1773503615
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -39574,10 +39574,10 @@
           "timestamp_epoch_secs": 1773491896
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "f28cdd7bf3472e6db2e3d926477ab54157b876acd842a69c8a58246051a648d3",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "a95a00c28ab7f73d312b7b63b320147ac180975517b6b0fd899d3be775399676",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491896
+          "timestamp_epoch_secs": 1773503615
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -40298,10 +40298,10 @@
           "timestamp_epoch_secs": 1773491925
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "d9fb12a9298e86f0c516b413f7066f095137a9e372348ca3c2cfe4d8989576fd",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "1253a21204aa8db54dc8c98d619233fdf25514bee442a9b8d152654a8aed3f51",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491925
+          "timestamp_epoch_secs": 1773503621
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -40322,10 +40322,10 @@
           "timestamp_epoch_secs": 1773491925
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "2ce108a090f48f45a6dcceb943269ef3f74dcae8ff81b9b11d8c24c1f3edad24",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "1f2f47ee9e701681e39d76e336fcb0e12493f8064faefe4099caa09c8530b220",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491925
+          "timestamp_epoch_secs": 1773503621
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -40382,10 +40382,10 @@
           "timestamp_epoch_secs": 1773491925
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "e8dd3e7aaab47a513a5fcff0420812a8e3bb9da2b1f85a796171caf958072fd0",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "dd17038d6403639cdf1178292a7e80b6e004dbf556b9b8357ca3fbd3130a6fc7",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491925
+          "timestamp_epoch_secs": 1773503621
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -41106,10 +41106,10 @@
           "timestamp_epoch_secs": 1773491955
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "752adf10fd19a9a5a78a8e4ec515303b74512f0970f4f7f3d3fc14ad938285ec",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "54778f23a5d60085d3f8c5956f6548e21895f2fa00497b820cc58cc9cc78aa95",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491955
+          "timestamp_epoch_secs": 1773503625
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -41130,10 +41130,10 @@
           "timestamp_epoch_secs": 1773491955
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "dc4ea59c160ce56706ac4c0312a04adda8dda7ff3b61eaa3f4f4d3f24e11daa4",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "7a46a6007aaf6df6353217e4adc981a021da8dea5a4a9b43924e4a775daf1376",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491955
+          "timestamp_epoch_secs": 1773503625
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -41190,10 +41190,10 @@
           "timestamp_epoch_secs": 1773491955
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "1cde9e8a81f4998400e00c294cca8fecb4b4189c5e7b9fbe48508ee254c9d33e",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "cce53f5d998b4feba218056c81d65d4e42ca3b382ff351c09f9e1cd171c52f18",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773491955
+          "timestamp_epoch_secs": 1773503625
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -42722,10 +42722,10 @@
           "timestamp_epoch_secs": 1773492145
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "00d4a11a6483b651f1ee5b2c9bb0b321434505708281a1b0b08b712b8dd46262",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "32e1cbd6c808c4c00ae8719d8b5031216bd684c9d09cc912efd9db52eec670c0",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492145
+          "timestamp_epoch_secs": 1773503629
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -42746,10 +42746,10 @@
           "timestamp_epoch_secs": 1773492145
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "73966665e5c910c0251ada67ce01fbc3d869137eb8158aa7e3e6e97fd2b5d0ed",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "3b53b109612e383162ae1e48d4bd39608981f5c8f8ac1eeee1490d7bab1b8883",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492145
+          "timestamp_epoch_secs": 1773503629
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -42806,10 +42806,10 @@
           "timestamp_epoch_secs": 1773492145
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "12a64e05142a1c27ebd9eb1b74d0e3b9068c08cf2b2f00ab816ef666aca0cccb",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4316f0cae622ac1d6976e1a79782c34deb02722d2a02c5b6d3b9a65345226ebe",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492145
+          "timestamp_epoch_secs": 1773503629
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -43530,10 +43530,10 @@
           "timestamp_epoch_secs": 1773492176
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "cb7fa31786cf26149a9593ddfb5ea2fc435861ec6b544bbfa6a978018b9f842f",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "039ea845546bf8137eb55f41b6189ef6ca708a688e58aead273ebf6ac2f9841c",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492176
+          "timestamp_epoch_secs": 1773503633
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -43554,10 +43554,10 @@
           "timestamp_epoch_secs": 1773492176
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "4361b5638d26e8e0d2b07809050b354c0eacd41692660231066941b5ae5960d2",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "c1bc03d6d20e49af6b4e122eba3e920d9be5db0c1d5d78142a9df333d83febf4",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492176
+          "timestamp_epoch_secs": 1773503633
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -43614,10 +43614,10 @@
           "timestamp_epoch_secs": 1773492176
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "1e3a991c8c1112cd26dc72a62f67d841bcf3cfaaa76cfa3047ef667633493344",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4d8c4d0cbe1a0670fad5f90079eb6e7ed179c40da29557c89c2070a09aaea9cd",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492176
+          "timestamp_epoch_secs": 1773503633
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -44338,10 +44338,10 @@
           "timestamp_epoch_secs": 1773492207
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "3fa5784321892338dbd3841d10078bce818acd3a06b2fe1711702b732f3e806d",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "a574d50084f3d5d04ada01185b64ec30d2fce827802adaa904ccadc65524026a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492207
+          "timestamp_epoch_secs": 1773503640
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -44362,10 +44362,10 @@
           "timestamp_epoch_secs": 1773492207
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "bb1490f13c81a8c5c59cf8f8865f5d845be587080910ee76899ec50cd9ff0e07",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "701a8b086e0d8846ed5dc42ca77506bb1ed583ac3dd07b377709b0dd4dfd3693",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492207
+          "timestamp_epoch_secs": 1773503640
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -44422,10 +44422,10 @@
           "timestamp_epoch_secs": 1773492207
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "b73841b8941f01a393bebbd575832b154d93a591afc7ab587eb3ac588b0cac53",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "cf0965758d39da6bbd193f2d4ee599fda43680f068068e8b3764e417d7c8c544",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492207
+          "timestamp_epoch_secs": 1773503640
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -46762,10 +46762,10 @@
           "timestamp_epoch_secs": 1773492445
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "69a09a45f833fec531dac59fd6f05304abdfcc89bbfa4f027b8e2b03ad970b31",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "f5671477eb938237f76fbce6027b6636118f450a6e26bdf4724d08517d4cf382",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492445
+          "timestamp_epoch_secs": 1773503647
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -46786,10 +46786,10 @@
           "timestamp_epoch_secs": 1773492445
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "81b6a341e582231392a9c502b7ba576b8ecc9f371e37422f3f97ac93bf2554e2",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "030adc5c0e063c86720fe3ab09abd09db7d48b6c2901e884ea81264a5e374870",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492445
+          "timestamp_epoch_secs": 1773503647
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -46846,10 +46846,10 @@
           "timestamp_epoch_secs": 1773492445
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "402eb26624dee955f79405f283bca256259181cfb1dbf5a60bb2c4ccbc18bddc",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "4732e58ba617ea1861e025d1bdb4edacf6c379610331930f925cead17cd48acf",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492445
+          "timestamp_epoch_secs": 1773503647
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -47570,10 +47570,10 @@
           "timestamp_epoch_secs": 1773492479
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "00774f9966ff107a05f518b21114bc9b448eee4fe5e1e209c98b6db49096732b",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "948e944ea79651f1771c7d48fdf334a32e8b311d7cd11d2144875ad4d730d850",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492479
+          "timestamp_epoch_secs": 1773503652
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -47594,10 +47594,10 @@
           "timestamp_epoch_secs": 1773492479
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "b16b44237cc3730177e85c4243ca53c1d3a0e8ad6d5af037f95c804882dfc85d",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "403d61823ad20028b4d19363372270c47fe7f38856d8fe6cb8633627bf33f889",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492479
+          "timestamp_epoch_secs": 1773503652
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -47654,10 +47654,10 @@
           "timestamp_epoch_secs": 1773492479
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "f291a4ba33464cadfb172214bc0985b4e6bdef93fdb38bf4346670ef4bfcd114",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "49c5da8935fdf561c933054a0c869c3be05673b9b768af0b9dadcf47f18edf37",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492479
+          "timestamp_epoch_secs": 1773503652
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -48294,10 +48294,10 @@
           "timestamp_epoch_secs": 1773487907
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "4bdf73f7f45464355393c86f1531fb7ba1707e299fe327abbe10e44616321bae",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "01384d55f29b398e0b9af12266dfdbf859c2fdf4be8e2c393f2c3e523a361fa9",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486438
+          "timestamp_epoch_secs": 1773503657
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -48378,10 +48378,10 @@
           "timestamp_epoch_secs": 1773492507
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "563b9fb93452e10ee1db75fc62dbfe49d99de1846a83a16c9644f6756c29470d",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "b7f15bbfd64e7ce988dd18a94990d6671e190f457d122f5339a3337bd10ec217",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492507
+          "timestamp_epoch_secs": 1773503657
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -48402,10 +48402,10 @@
           "timestamp_epoch_secs": 1773492507
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "ab64834761a03f06a9583a31e227c5caa2e1f7b99e58766ab44d7acd7a88ed55",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "989968d42c1e52b18105f855669fb6ad026a35dcff1f414de28bc29e96a5c39e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492507
+          "timestamp_epoch_secs": 1773503657
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -48462,10 +48462,10 @@
           "timestamp_epoch_secs": 1773492507
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "4425007cf935190a166384d1dfaa11a4030e7f04ea75fa323c437e52620e0a3e",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "abefdac3207f00a407cfc3ba6f3dfca94b8c8fdebe3849926332b122cd01e8e3",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492507
+          "timestamp_epoch_secs": 1773503657
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -49102,10 +49102,10 @@
           "timestamp_epoch_secs": 1773487919
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "db82b4992c7413d30f24480e91590d0e6fdbf8b8c334f28e69cfe25a569cc0fb",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "ba3ea686dc05c163abe0eb442e42ca81908e0fe34302024c7a8f325b63292037",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486467
+          "timestamp_epoch_secs": 1773503662
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -49186,10 +49186,10 @@
           "timestamp_epoch_secs": 1773492538
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "aea4c775e49c43186eafd2710ea3bec90b89d4e0efe32d4710c3fbef58292273",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "5d1b2c6f93b24a9df0678c54cf8f6b98fbf39ca80d7ee65efec5513aa2f54f6e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492538
+          "timestamp_epoch_secs": 1773503662
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -49210,10 +49210,10 @@
           "timestamp_epoch_secs": 1773492538
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "3d9e76f9a473d582575724c02dca517cf22f494ddf5dba2b0faaba895e09e719",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "852bb53cc88483acffefc17b7a2b9e33dbd7981c484002996626dde428962e8a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492538
+          "timestamp_epoch_secs": 1773503662
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -49270,10 +49270,10 @@
           "timestamp_epoch_secs": 1773492538
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "e8f6d2e22fdb40744e73b715e2e55c9d1eacca26a08d0d940a97dc61174dbd51",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "d7fca064d8e45255d296057c7d7c95ff5290b3e9319569525f3fd1a0d399c05e",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492538
+          "timestamp_epoch_secs": 1773503662
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -49910,10 +49910,10 @@
           "timestamp_epoch_secs": 1773487938
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "8d29dda41dc1d405bde3745c2b04afb3c365286ea8b14769894fffdaa5d2d869",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "a70ac8be92b72bb06fa230310200b0817e46c7046d724542f3f61dcb05c3a6aa",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486496
+          "timestamp_epoch_secs": 1773503666
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -50718,10 +50718,10 @@
           "timestamp_epoch_secs": 1773487947
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "f72b791f0e4638d74aff31720282a6b9acdccc851545140230e916ff37ae49dd",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "c5543095f34ebdff2683b54823d81f2a532be2878674b7dca6325b159cc4a010",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486521
+          "timestamp_epoch_secs": 1773503671
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -50802,10 +50802,10 @@
           "timestamp_epoch_secs": 1773492658
         },
         "runtime.tools.install.error.binstall_failed": {
-          "last_english_hash": "130f39364a313ee2f03da2f9e63c72842450590ab59785ab6d092d3af01fdd6d",
-          "last_bot_translation_hash": "ce328990a70fca48532e65162a04872c4e46d5254ad02fe29e43d1462a654fea",
+          "last_english_hash": "7d7d91c0df4a6bf4ac515d1acc6dddfd9313b9a1b7901dcd4d1106138d3baa7b",
+          "last_bot_translation_hash": "69575ef825023d69f24094571d2778213e2dc34268c1d91802224d7294633fbb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492658
+          "timestamp_epoch_secs": 1773503671
         },
         "runtime.tools.install.error.execute_binstall": {
           "last_english_hash": "d40141a5d46b528732173dd465bec03d897c5437a38d10abb2e79bd663b7b4e7",
@@ -50826,10 +50826,10 @@
           "timestamp_epoch_secs": 1773492658
         },
         "runtime.tools.install.installing": {
-          "last_english_hash": "87266cfa30e235580e7e68f4a320dcdbf1451f8e22b6e464247a3b5bde343bba",
-          "last_bot_translation_hash": "cec8ee5e95a6b086f378d8d184aae59461dabdf46fc352f247fea297dd4996c0",
+          "last_english_hash": "5dbfa7df13e4209767ada7975934df0043223cf797162ea37bd4a6b9f7c94f35",
+          "last_bot_translation_hash": "99ffe8a3a9936bab3d5bb3af7f4e47eb12d79aa28c97a888c8caea895c273601",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492658
+          "timestamp_epoch_secs": 1773503671
         },
         "runtime.tools.install.installing_binstall": {
           "last_english_hash": "d6c2451cb763a5d057a6891f964a755b13d80cf98f2c7bdef639be89f7165312",
@@ -50886,10 +50886,10 @@
           "timestamp_epoch_secs": 1773492658
         },
         "runtime.wizard.executor.error.replay_pin_mismatch": {
-          "last_english_hash": "ba7a002464039040c98bd0c3613364c5e46f05f42f5b9a933aa4da56bacf7b04",
-          "last_bot_translation_hash": "c93418eeab0408ee708a55fd7582300a861ded86e72f7863b3f9be3a8e6817bc",
+          "last_english_hash": "19d3da4e52a8522486960e94345b39ddbd67b9e3ad3bdd2ba07e63ba7c682759",
+          "last_bot_translation_hash": "c15bfe2cd321729007d828a3ec15ccc6623b11aee6faf586b2af711661e56d4a",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773492658
+          "timestamp_epoch_secs": 1773503671
         },
         "runtime.wizard.executor.error.step_failed": {
           "last_english_hash": "0d7510c323e5f0934563304f878cede2904a6b973809955c70fab7cefa52f70e",
@@ -51526,10 +51526,10 @@
           "timestamp_epoch_secs": 1773487953
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "ad1d8ce17da269ef18cbea6fc35a85fb82c37b70e15f3c9f0a345e313889ab9a",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "59f003827ed9b3de28cbba5e202b4c74fbabbc76ee07b44ad7686faf969e9acc",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486548
+          "timestamp_epoch_secs": 1773503674
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",

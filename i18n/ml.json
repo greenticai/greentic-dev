@@ -102,7 +102,7 @@
   "cli.option.locale": "പിന്തുണയുള്ളിടത്ത് വിവർത്തനം ചെയ്ത CLI സഹായത്തിനായി ഉപയോഗിക്കുന്ന ലൊക്കേൽ (BCP47)",
   "cli.root.about": "Greentic ഡെവലപ്പർ ടൂളിംഗ് CLI",
   "cli.version.flag": "പതിപ്പ് അച്ചടിക്കുക",
-  "cli.wizard.error.interactive_required": "wizard launcher-ന് interactive input ആവശ്യമാണ്. `wizard apply --answers <FILE>` അല്ലെങ്കിൽ `wizard validate --answers <FILE>` ഉപയോഗിക്കുക.",
+  "cli.wizard.error.interactive_required": "വിജാർഡ് ലോഞ്ചറിന് ഇന്ററാക്ടീവ് ഇൻപുട്ട് ആവശ്യമാണ്. `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, അല്ലെങ്കിൽ `wizard validate --answers <FILE>` ഉപയോഗിക്കുക.",
   "cli.wizard.error.invalid_selection": "അസാധുവായ തിരഞ്ഞെടുപ്പ്; 1 അല്ലെങ്കിൽ 2 ആയിരിക്കണം",
   "cli.wizard.launcher.option_bundle": "2) ഒരു Production Bundle നിർമ്മിക്കുക / അപ്ഡേറ്റ് ചെയ്യുക",
   "cli.wizard.launcher.option_exit": "0) പുറത്തുകടക്കുക",

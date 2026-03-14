@@ -140,6 +140,9 @@ pub fn localized_help_command(locale: &str) -> clap::Command {
         })
         .mut_subcommand("wizard", |sub| {
             sub.about(crate::i18n::t(locale, "cli.command.wizard.about"))
+                .mut_arg("answers", |arg| {
+                    arg.help(crate::i18n::t(locale, "cli.command.wizard.answers"))
+                })
                 .mut_arg("frontend", |arg| {
                     arg.help(crate::i18n::t(locale, "cli.command.wizard.frontend"))
                 })
@@ -421,6 +424,9 @@ pub enum WizardSubcommand {
 
 #[derive(Args, Debug, Clone)]
 pub struct WizardLaunchArgs {
+    /// cli.command.wizard.answers
+    #[arg(long = "answers")]
+    pub answers: Option<PathBuf>,
     /// cli.command.wizard.frontend
     #[arg(long = "frontend", default_value = "json")]
     pub frontend: String,

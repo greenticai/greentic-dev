@@ -85,6 +85,8 @@ Default install locations:
 
 - `greentic-dev wizard`
 - `greentic-dev wizard --dry-run`
+- `greentic-dev wizard --answers <FILE>`
+- `greentic-dev wizard --answers <FILE> --dry-run`
 - `greentic-dev wizard validate --answers <FILE>`
 - `greentic-dev wizard apply --answers <FILE>`
 
@@ -93,7 +95,9 @@ Behavior:
 - `wizard` is interactive and prompts for launcher action:
   - pack path -> delegates to `greentic-pack wizard`
   - bundle path -> delegates to `greentic-bundle wizard`
+- `wizard --answers <FILE>` loads a launcher `AnswerDocument` and executes it directly.
 - `--dry-run` builds/renders plan without delegated execution.
+- `wizard --answers <FILE> --dry-run` builds plan from `AnswerDocument` without delegated execution.
 - `validate` builds plan from `AnswerDocument` without delegated execution.
 - `apply` builds and executes delegation from `AnswerDocument`.
 - `wizard run` and `wizard replay` are removed.

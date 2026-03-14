@@ -99,6 +99,34 @@ fn wizard_validate_answers_document_runs_dry_run_plan() {
 }
 
 #[test]
+fn wizard_top_level_answers_document_runs_dry_run_plan() {
+    let tmp = TempDir::new().expect("temp dir");
+    let out = tmp.path().join("wiz-top-level-validate");
+    let answers_doc = tmp.path().join("answers-doc.json");
+    write_launcher_answers(&answers_doc, "pack");
+
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.args([
+        "wizard",
+        "--answers",
+        answers_doc.to_str().expect("utf8 path"),
+        "--dry-run",
+        "--out",
+        out.to_str().expect("utf8 path"),
+    ]);
+    cmd.assert()
+        .success()
+        .stdout(contains("\"target\": \"launcher\""))
+        .stdout(contains("\"mode\": \"main\""))
+        .stdout(contains("\"program\": \"greentic-pack\""));
+
+    assert!(
+        !out.join("exec.log").exists(),
+        "top-level dry-run should not create exec.log"
+    );
+}
+
+#[test]
 fn wizard_apply_answers_document_executes_delegation() {
     let tmp = TempDir::new().expect("temp dir");
     let bin_dir = tmp.path().join("bin");
@@ -128,6 +156,49 @@ exit 0
     cmd.env("PATH", prepend_path(&bin_dir)).args([
         "wizard",
         "apply",
+        "--answers",
+        answers_doc.to_str().expect("utf8 path"),
+        "--non-interactive",
+        "--out",
+        out.to_str().expect("utf8 path"),
+    ]);
+    cmd.assert().success();
+
+    let exec_log = fs::read_to_string(out.join("exec.log")).expect("read exec log");
+    assert!(exec_log.contains("RUN greentic-pack wizard"));
+    let stub_log = fs::read_to_string(&runlog).expect("read stub run log");
+    assert!(stub_log.contains("wizard"));
+}
+
+#[test]
+fn wizard_top_level_answers_document_executes_delegation() {
+    let tmp = TempDir::new().expect("temp dir");
+    let bin_dir = tmp.path().join("bin");
+    fs::create_dir_all(&bin_dir).expect("create bin dir");
+    let out = tmp.path().join("wiz-top-level-apply");
+    let runlog = tmp.path().join("top-level-apply-runs.log");
+    let answers_doc = tmp.path().join("answers-doc.json");
+    write_launcher_answers(&answers_doc, "pack");
+
+    write_stub_bin(
+        &bin_dir,
+        "greentic-pack",
+        &format!(
+            r#"
+if [ "$1" = "--version" ]; then
+  echo "greentic-pack 0.4.test"
+  exit 0
+fi
+echo "$@" >> "{}"
+exit 0
+"#,
+            runlog.display()
+        ),
+    );
+
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.env("PATH", prepend_path(&bin_dir)).args([
+        "wizard",
         "--answers",
         answers_doc.to_str().expect("utf8 path"),
         "--non-interactive",

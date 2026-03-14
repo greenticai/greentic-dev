@@ -102,7 +102,7 @@
   "cli.option.locale": "जहाँ समर्थित हो वहाँ अनूदित CLI सहायता के लिए प्रयुक्त लोकेल (BCP47)",
   "cli.root.about": "Greentic डेवलपर टूलिंग CLI",
   "cli.version.flag": "संस्करण प्रिंट करें",
-  "cli.wizard.error.interactive_required": "wizard launcher को interactive input की आवश्यकता है। `wizard apply --answers <FILE>` या `wizard validate --answers <FILE>` का उपयोग करें।",
+  "cli.wizard.error.interactive_required": "विज़ार्ड लॉन्चर के लिए इंटरैक्टिव इनपुट आवश्यक है। `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, या `wizard validate --answers <FILE>` का उपयोग करें।",
   "cli.wizard.error.invalid_selection": "अमान्य चयन; 1 या 2 अपेक्षित था",
   "cli.wizard.launcher.option_bundle": "2) Production Bundle बनाएँ / अपडेट करें",
   "cli.wizard.launcher.option_exit": "0) बाहर निकलें",

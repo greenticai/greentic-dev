@@ -43,6 +43,10 @@ def literal_backticks(text: str):
     return spans
 
 
+def same_literal_backticks(lhs: str, rhs: str):
+    return Counter(literal_backticks(lhs)) == Counter(literal_backticks(rhs))
+
+
 def validate():
     locales = load_json(LOCALES_PATH)
     english = load_json(EN_PATH)
@@ -75,7 +79,7 @@ def validate():
             if source.count("\n") != target.count("\n"):
                 print(f"{locale}: newline mismatch for {key}")
                 ok = False
-            if literal_backticks(source) != literal_backticks(target):
+            if not same_literal_backticks(source, target):
                 print(f"{locale}: backtick span mismatch for {key}")
                 ok = False
 

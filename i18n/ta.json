@@ -102,7 +102,7 @@
   "cli.option.locale": "ஆதரவு உள்ள இடங்களில் மொழிபெயர்க்கப்பட்ட CLI உதவிக்காக பயன்படுத்தப்படும் locale (BCP47)",
   "cli.root.about": "Greentic developer tooling CLI",
   "cli.version.flag": "பதிப்பை அச்சிடு",
-  "cli.wizard.error.interactive_required": "wizard launcher க்கு தொடர்பாடக்கூடிய உள்ளீடு தேவை. `wizard apply --answers <FILE>` அல்லது `wizard validate --answers <FILE>` ஐ பயன்படுத்தவும்.",
+  "cli.wizard.error.interactive_required": "wizard launcher க்கு தொடர்பாடக்கூடிய உள்ளீடு தேவை. `wizard --answers <FILE>`, `wizard apply --answers <FILE>` அல்லது `wizard validate --answers <FILE>` ஐ பயன்படுத்தவும்.",
   "cli.wizard.error.invalid_selection": "தவறான தேர்வு; 1 அல்லது 2 என எதிர்பார்க்கப்பட்டது",
   "cli.wizard.launcher.option_bundle": "2) Production Bundle ஒன்றை Build / Update செய்யவும்",
   "cli.wizard.launcher.option_exit": "0) வெளியேறு",

@@ -108,6 +108,9 @@ echo "[check_local] fmt + clippy"
 cargo fmt --all -- --check
 cargo clippy --all --all-features ${LOCKED_FLAG} ${OFFLINE_FLAG} -- -D warnings
 
+echo "[check_local] i18n validate"
+tools/i18n.sh validate
+
 echo "[check_local] build (locked)"
 cargo build --workspace --all-features ${LOCKED_FLAG} ${OFFLINE_FLAG}
 

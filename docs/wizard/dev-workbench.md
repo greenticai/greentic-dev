@@ -26,12 +26,19 @@ greentic-dev wizard --dry-run
 Validate only:
 
 ```bash
-greentic-dev wizard validate --answers answers.json
+greentic-dev wizard --answers answers.json --dry-run
 ```
 
 Apply delegation:
 
 ```bash
+greentic-dev wizard --answers answers.json
+```
+
+Equivalent explicit subcommands:
+
+```bash
+greentic-dev wizard validate --answers answers.json
 greentic-dev wizard apply --answers answers.json
 ```
 

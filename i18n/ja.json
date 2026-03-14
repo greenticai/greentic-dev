@@ -102,7 +102,7 @@
   "cli.option.locale": "対応している場合に翻訳済み CLI ヘルプで使用するロケール（BCP47）",
   "cli.root.about": "Greentic 開発者ツール CLI",
   "cli.version.flag": "バージョンを表示する",
-  "cli.wizard.error.interactive_required": "ウィザード起動には対話入力が必要です。`wizard apply --answers <FILE>` または `wizard validate --answers <FILE>` を使用してください。",
+  "cli.wizard.error.interactive_required": "wizard launcher には対話入力が必要です。`wizard --answers <FILE>`、`wizard apply --answers <FILE>`、または `wizard validate --answers <FILE>` を使用してください。",
   "cli.wizard.error.invalid_selection": "無効な選択です。1 または 2 を指定してください",
   "cli.wizard.launcher.option_bundle": "2) 本番バンドルをビルド / 更新",
   "cli.wizard.launcher.option_exit": "0) 終了",

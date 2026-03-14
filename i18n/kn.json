@@ -102,7 +102,7 @@
   "cli.option.locale": "ಬೆಂಬಲಿತ ಸ್ಥಳಗಳಲ್ಲಿ ಅನುವಾದಿತ CLI ಸಹಾಯಕ್ಕಾಗಿ ಬಳಸುವ ಲೊಕೇಲ್ (BCP47)",
   "cli.root.about": "Greentic ಡೆವಲಪರ್ ಟೂಲಿಂಗ್ CLI",
   "cli.version.flag": "ಆವೃತ್ತಿಯನ್ನು ಮುದ್ರಿಸಿ",
-  "cli.wizard.error.interactive_required": "wizard launcher ಗೆ ಸಂವಾದಾತ್ಮಕ ಇನ್‌ಪುಟ್ ಅಗತ್ಯವಿದೆ. `wizard apply --answers <FILE>` ಅಥವಾ `wizard validate --answers <FILE>` ಬಳಸಿ.",
+  "cli.wizard.error.interactive_required": "ವಿಜಾರ್ಡ್ ಲಾಂಚರ್‌ಗೆ ಸಂವಹನಾತ್ಮಕ ಇನ್‌ಪುಟ್ ಅಗತ್ಯವಿದೆ. `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, ಅಥವಾ `wizard validate --answers <FILE>` ಅನ್ನು ಬಳಸಿ.",
   "cli.wizard.error.invalid_selection": "ಅಮಾನ್ಯ ಆಯ್ಕೆ; 1 ಅಥವಾ 2 ನಿರೀಕ್ಷಿಸಲಾಗಿದೆ",
   "cli.wizard.launcher.option_bundle": "2) Production Bundle ನಿರ್ಮಿಸಿ / ನವೀಕರಿಸಿ",
   "cli.wizard.launcher.option_exit": "0) ನಿರ್ಗಮಿಸಿ",

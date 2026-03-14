@@ -102,7 +102,7 @@
   "cli.option.locale": "সমর্থিত ক্ষেত্রে অনূদিত CLI সহায়তার জন্য ব্যবহৃত লোকেল (BCP47)",
   "cli.root.about": "Greentic ডেভেলপার টুলিং CLI",
   "cli.version.flag": "সংস্করণ মুদ্রণ করুন",
-  "cli.wizard.error.interactive_required": "wizard launcher-এর জন্য interactive input প্রয়োজন। `wizard apply --answers <FILE>` বা `wizard validate --answers <FILE>` ব্যবহার করুন।",
+  "cli.wizard.error.interactive_required": "wizard launcher-এর জন্য interactive input প্রয়োজন। `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, অথবা `wizard validate --answers <FILE>` ব্যবহার করুন।",
   "cli.wizard.error.invalid_selection": "অবৈধ নির্বাচন; 1 বা 2 প্রত্যাশিত",
   "cli.wizard.launcher.option_bundle": "2) একটি Production Bundle তৈরি / আপডেট করুন",
   "cli.wizard.launcher.option_exit": "0) প্রস্থান",

@@ -102,7 +102,7 @@
   "cli.option.locale": "在支持的情况下，用于翻译 CLI 帮助的区域设置（BCP47）",
   "cli.root.about": "Greentic 开发者工具 CLI",
   "cli.version.flag": "打印版本",
-  "cli.wizard.error.interactive_required": "wizard 启动器需要交互式输入。请使用 `wizard apply --answers <FILE>` 或 `wizard validate --answers <FILE>`。",
+  "cli.wizard.error.interactive_required": "向导启动器需要交互式输入。请使用 `wizard --answers <FILE>`、`wizard apply --answers <FILE>` 或 `wizard validate --answers <FILE>`。",
   "cli.wizard.error.invalid_selection": "无效选择；应为 1 或 2",
   "cli.wizard.launcher.option_bundle": "2) 构建 / 更新生产 Bundle",
   "cli.wizard.launcher.option_exit": "0) 退出",

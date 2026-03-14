@@ -107,7 +107,7 @@
   "cli.wizard.launcher.option_bundle": "2) Build / Update a Production Bundle",
   "cli.wizard.launcher.option_exit": "0) Exit",
   "cli.wizard.launcher.select_option": "Select option: ",
-  "cli.wizard.error.interactive_required": "wizard launcher requires interactive input. Use `wizard apply --answers <FILE>` or `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.interactive_required": "wizard launcher requires interactive input. Use `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, or `wizard validate --answers <FILE>`.",
   "cli.wizard.error.invalid_selection": "invalid selection; expected 1 or 2",
   "runtime.main.error.execute_external": "Failed to execute {exe}: {error}",
   "runtime.secrets.error.execute": "failed to execute greentic-secrets",

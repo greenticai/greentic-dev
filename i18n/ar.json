@@ -102,7 +102,7 @@
   "cli.install.summary.docs": "المستندات التي تم تنزيلها:",
   "cli.install.summary.tool_item": "- {id}: {path}",
   "cli.install.summary.tools": "الأدوات المثبتة:",
-  "cli.wizard.error.interactive_required": "يتطلب مشغل المعالج إدخالًا تفاعليًا. استخدم `wizard apply --answers <FILE>` أو `wizard validate --answers <FILE>`.",
+  "cli.wizard.error.interactive_required": "يتطلب مشغل المعالج إدخالًا تفاعليًا. استخدم `wizard --answers <FILE>` أو `wizard apply --answers <FILE>` أو `wizard validate --answers <FILE>`.",
   "cli.wizard.error.invalid_selection": "اختيار غير صالح؛ المتوقع 1 أو 2",
   "cli.wizard.launcher.option_bundle": "2) إنشاء / تحديث حزمة إنتاج",
   "cli.wizard.launcher.option_exit": "0) خروج",

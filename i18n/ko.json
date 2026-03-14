@@ -102,7 +102,7 @@
   "cli.option.locale": "지원되는 경우 번역된 CLI 도움말에 사용되는 로캘(BCP47)",
   "cli.root.about": "Greentic 개발자 도구 CLI",
   "cli.version.flag": "버전 출력",
-  "cli.wizard.error.interactive_required": "wizard launcher에는 대화형 입력이 필요합니다. `wizard apply --answers <FILE>` 또는 `wizard validate --answers <FILE>`를 사용하세요.",
+  "cli.wizard.error.interactive_required": "wizard 실행기는 대화형 입력이 필요합니다. `wizard --answers <FILE>`, `wizard apply --answers <FILE>`, 또는 `wizard validate --answers <FILE>`을 사용하세요.",
   "cli.wizard.error.invalid_selection": "잘못된 선택입니다. 1 또는 2여야 합니다",
   "cli.wizard.launcher.option_bundle": "2) 프로덕션 번들 빌드 / 업데이트",
   "cli.wizard.launcher.option_exit": "0) 종료",

@@ -66,6 +66,25 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
         ExecutionMode::Execute
     };
 
+    if let Some(answers_path) = args.answers.as_deref() {
+        let loaded =
+            load_answer_document(answers_path, args.schema_version.as_deref(), args.migrate)?;
+
+        return run_from_inputs(
+            args.frontend,
+            args.locale,
+            loaded,
+            args.out,
+            mode,
+            args.yes,
+            args.non_interactive,
+            args.unsafe_commands,
+            args.allow_destructive,
+            args.emit_answers,
+            args.schema_version,
+        );
+    }
+
     let locale = i18n::select_locale(args.locale.as_deref());
     if mode == ExecutionMode::DryRun {
         let Some(answers) = prompt_launcher_answers(mode, &locale)? else {

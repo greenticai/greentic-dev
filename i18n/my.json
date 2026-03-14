@@ -102,7 +102,7 @@
   "cli.option.locale": "ထောက်ပံ့ထားသည့်နေရာများတွင် ဘာသာပြန်ထားသော CLI အကူအညီအတွက် အသုံးပြုမည့် Locale (BCP47)",
   "cli.root.about": "Greentic developer tooling CLI",
   "cli.version.flag": "ဗားရှင်းကို ပြပါ",
-  "cli.wizard.error.interactive_required": "wizard launcher သည် interactive input လိုအပ်သည်။ `wizard apply --answers <FILE>` သို့မဟုတ် `wizard validate --answers <FILE>` ကို အသုံးပြုပါ။",
+  "cli.wizard.error.interactive_required": "wizard launcher သည် interactive input လိုအပ်သည်။ `wizard --answers <FILE>`၊ `wizard apply --answers <FILE>` သို့မဟုတ် `wizard validate --answers <FILE>` ကို အသုံးပြုပါ။",
   "cli.wizard.error.invalid_selection": "မမှန်ကန်သော ရွေးချယ်မှု; 1 သို့မဟုတ် 2 ဖြစ်ရမည်",
   "cli.wizard.launcher.option_bundle": "2) Production Bundle တစ်ခုကို တည်ဆောက် / အပ်ဒိတ်လုပ်ရန်",
   "cli.wizard.launcher.option_exit": "0) ထွက်ရန်",

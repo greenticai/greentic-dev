@@ -102,7 +102,7 @@
   "cli.option.locale": "మద్దతు ఉన్న చోట అనువదించిన CLI సహాయానికి ఉపయోగించే లోకేల్ (BCP47)",
   "cli.root.about": "Greentic డెవలపర్ టూలింగ్ CLI",
   "cli.version.flag": "వెర్షన్‌ను ముద్రించండి",
-  "cli.wizard.error.interactive_required": "wizard launcher కు ఇంటరాక్టివ్ ఇన్‌పుట్ అవసరం. `wizard apply --answers <FILE>` లేదా `wizard validate --answers <FILE>` ఉపయోగించండి.",
+  "cli.wizard.error.interactive_required": "wizard launcher కు ఇంటరాక్టివ్ ఇన్‌పుట్ అవసరం. `wizard --answers <FILE>`, `wizard apply --answers <FILE>` లేదా `wizard validate --answers <FILE>` ఉపయోగించండి.",
   "cli.wizard.error.invalid_selection": "చెల్లని ఎంపిక; 1 లేదా 2 కావాలి",
   "cli.wizard.launcher.option_bundle": "2) ప్రొడక్షన్ బండిల్‌ను నిర్మించు / నవీకరించు",
   "cli.wizard.launcher.option_exit": "0) నిష్క్రమించు",

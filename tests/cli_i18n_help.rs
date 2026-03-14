@@ -57,6 +57,17 @@ fn wizard_apply_help_uses_requested_locale() {
 }
 
 #[test]
+fn wizard_help_uses_requested_locale_for_answers_flag() {
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.args(["wizard", "--help", "--locale", "ar"]);
+    cmd.assert()
+        .success()
+        .stdout(contains("ملف الإجابات"))
+        .stdout(contains("وضع الواجهة الأمامية"))
+        .stdout(contains("اعرض المساعدة"));
+}
+
+#[test]
 fn secrets_runtime_error_uses_env_locale() {
     let mut cmd = cargo_bin_cmd!("greentic-dev");
     cmd.env("LC_ALL", "ar")

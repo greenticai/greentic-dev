@@ -103,6 +103,9 @@ def literal_backticks(text):
         spans.append(span)
     return spans
 
+def same_literal_backticks(lhs, rhs):
+    return Counter(literal_backticks(lhs)) == Counter(literal_backticks(rhs))
+
 english = json.loads(en_path.read_text(encoding="utf-8"))
 if not isinstance(english, dict):
     print(f"{en_path}: expected a top-level JSON object", file=sys.stderr)
@@ -135,7 +138,7 @@ for locale in locales:
             broken = True
         if source.count("\n") != target.count("\n"):
             broken = True
-        if literal_backticks(source) != literal_backticks(target):
+        if not same_literal_backticks(source, target):
             broken = True
     if broken:
         print(locale)

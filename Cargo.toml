@@ -49,7 +49,7 @@ greentic-types = { version = "0.4", features = ["serde"] }
 greentic-flow = "0.4"
 greentic-pack-lib = "0.4"
 greentic-component = { version = "0.4", features = ["prepare", "describe", "cli"] }
-jsonschema = "0.42"
+jsonschema = "0.44"
 tempfile = "3"
 dirs = "6"
 which = "8"

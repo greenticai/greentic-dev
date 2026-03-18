@@ -1763,7 +1763,7 @@ dependencies = [
 
 [[package]]
 name = "greentic-dev"
-version = "0.4.63"
+version = "0.4.64"
 dependencies = [
  "anyhow",
  "assert_cmd",
@@ -1814,9 +1814,9 @@ dependencies = [
 
 [[package]]
 name = "greentic-distributor-client"
-version = "0.4.36"
+version = "0.4.39"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d83083dcb2f3a9581a6d734dcf45ab3680ab21eab23f0bd166b58fe9c0113521"
+checksum = "4352579b21809eef9f170440488532ad846614e62bc1e3d9e5f7ded23fd42d08"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -1839,9 +1839,9 @@ dependencies = [
 
 [[package]]
 name = "greentic-flow"
-version = "0.4.53"
+version = "0.4.54"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e4543f926d6cff09334a4a84a9248affa8ef9a91e82e8b70734ceae35d8f8b54"
+checksum = "dd938ede9c37d45294bf511634a8e224efc0c9b8054c11ecf287a571c4e4c9da"
 dependencies = [
  "anyhow",
  "blake3",
@@ -1856,11 +1856,12 @@ dependencies = [
  "handlebars",
  "include_dir",
  "indexmap 2.13.0",
- "jsonschema 0.44.1",
+ "jsonschema 0.45.0",
  "lazy_static",
  "pathdiff",
  "qa-spec",
  "regex",
+ "reqwest 0.12.28",
  "semver",
  "serde",
  "serde_json",
@@ -1949,9 +1950,9 @@ dependencies = [
 
 [[package]]
 name = "greentic-pack-lib"
-version = "0.4.112"
+version = "0.4.113"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "919fe0c7e503709516770172b0de8d26e20cf444a0dd6240f79bc9c5209a21c1"
+checksum = "8f0d1834922dc0ab4bbf50264428f42a8d20e682bf9bae32d803c17493a8f24c"
 dependencies = [
  "anyhow",
  "base64 0.22.1",
@@ -2827,6 +2828,35 @@ dependencies = [
  "num-traits",
  "percent-encoding",
  "referencing 0.44.1",
+ "regex",
+ "regex-syntax",
+ "reqwest 0.13.2",
+ "rustls",
+ "serde",
+ "serde_json",
+ "unicode-general-category",
+ "uuid-simd",
+]
+
+[[package]]
+name = "jsonschema"
+version = "0.45.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6f29616f6e19415398eb186964fb7cbbeef572c79bede3622a8277667924bbe3"
+dependencies = [
+ "ahash",
+ "bytecount",
+ "data-encoding",
+ "email_address",
+ "fancy-regex",
+ "fraction",
+ "getrandom 0.3.4",
+ "idna",
+ "itoa",
+ "num-cmp",
+ "num-traits",
+ "percent-encoding",
+ "referencing 0.45.0",
  "regex",
  "regex-syntax",
  "reqwest 0.13.2",
@@ -3934,6 +3964,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "referencing"
+version = "0.45.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8a618c14f8ba29d8193bb55e2bf13e4fb2b1115313ecb7ae94b43100c7ac7d5"
+dependencies = [
+ "ahash",
+ "fluent-uri",
+ "getrandom 0.3.4",
+ "hashbrown 0.16.1",
+ "parking_lot",
+ "percent-encoding",
+ "serde_json",
+]
+
+[[package]]
 name = "regalloc2"
 version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4954,7 +4999,7 @@ dependencies = [
  "toml_datetime",
  "toml_parser",
  "toml_writer",
- "winnow",
+ "winnow 0.7.15",
 ]
 
 [[package]]
@@ -4976,23 +5021,23 @@ dependencies = [
  "toml_datetime",
  "toml_parser",
  "toml_writer",
- "winnow",
+ "winnow 0.7.15",
 ]
 
 [[package]]
 name = "toml_parser"
-version = "1.0.9+spec-1.1.0"
+version = "1.0.10+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "702d4415e08923e7e1ef96cd5727c0dfed80b4d2fa25db9647fe5eb6f7c5a4c4"
+checksum = "7df25b4befd31c4816df190124375d5a20c6b6921e2cad937316de3fccd63420"
 dependencies = [
- "winnow",
+ "winnow 1.0.0",
 ]
 
 [[package]]
 name = "toml_writer"
-version = "1.0.6+spec-1.1.0"
+version = "1.0.7+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab16f14aed21ee8bfd8ec22513f7287cd4a91aa92e44edfe2c17ddd004e92607"
+checksum = "f17aaa1c6e3dc22b1da4b6bba97d066e354c7945cac2f7852d4e4e7ca7a6b56d"
 
 [[package]]
 name = "tonic"
@@ -6369,6 +6414,12 @@ checksum = "df79d97927682d2fd8adb29682d1140b343be4ac0f08fd68b7765d9c059d3945"
 dependencies = [
  "memchr",
 ]
+
+[[package]]
+name = "winnow"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a90e88e4667264a994d34e6d1ab2d26d398dcdca8b7f52bec8668957517fc7d8"
 
 [[package]]
 name = "winx"

@@ -151,10 +151,11 @@ fn run_interactive_delegate(answers: &serde_json::Value, locale: &str) -> Result
     if status.success() {
         Ok(())
     } else {
+        let args = interactive_delegate_args(program, locale);
         bail!(
             "wizard step command failed: {} {:?} (exit code {:?})",
             program,
-            ["wizard"],
+            args,
             status.code()
         );
     }
@@ -162,11 +163,7 @@ fn run_interactive_delegate(answers: &serde_json::Value, locale: &str) -> Result
 
 fn interactive_delegate_args(program: &str, locale: &str) -> Vec<String> {
     if program == "greentic-bundle" {
-        vec![
-            "--locale".to_string(),
-            locale.to_string(),
-            "wizard".to_string(),
-        ]
+        vec!["--locale".to_string(), locale.to_string(), ".".to_string()]
     } else {
         vec!["wizard".to_string()]
     }
@@ -673,7 +670,7 @@ mod tests {
     fn bundle_delegate_receives_locale_flag() {
         assert_eq!(
             interactive_delegate_args("greentic-bundle", "en-GB"),
-            vec!["--locale", "en-GB", "wizard"]
+            vec!["--locale", "en-GB", "."]
         );
     }
 

@@ -176,7 +176,7 @@ fn interactive_delegate_args(program: &str, locale: &str) -> Vec<String> {
 
 pub fn validate(args: WizardValidateArgs) -> Result<()> {
     let loaded = load_answer_document(
-        args.answers.as_path(),
+        &args.answers,
         args.schema_version.as_deref(),
         args.migrate,
     )?;
@@ -198,7 +198,7 @@ pub fn validate(args: WizardValidateArgs) -> Result<()> {
 
 pub fn apply(args: WizardApplyArgs) -> Result<()> {
     let loaded = load_answer_document(
-        args.answers.as_path(),
+        &args.answers,
         args.schema_version.as_deref(),
         args.migrate,
     )?;
@@ -439,17 +439,40 @@ fn build_launcher_answers(mode: ExecutionMode, selected_action: &str) -> serde_j
 }
 
 fn load_answer_document(
-    path: &Path,
+    path_or_url: &str,
     requested_schema_version: Option<&str>,
     migrate: bool,
 ) -> Result<LoadedAnswers> {
-    let raw =
-        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?;
+    let raw = if path_or_url.starts_with("http://") || path_or_url.starts_with("https://") {
+        // Fetch from remote URL
+        let client = reqwest::blocking::Client::builder()
+            .timeout(std::time::Duration::from_secs(30))
+            .build()
+            .with_context(|| "failed to create HTTP client")?;
+        let response = client
+            .get(path_or_url)
+            .send()
+            .with_context(|| format!("failed to fetch {}", path_or_url))?;
+        if !response.status().is_success() {
+            bail!(
+                "failed to fetch {}: HTTP {}",
+                path_or_url,
+                response.status()
+            );
+        }
+        response
+            .text()
+            .with_context(|| format!("failed to read response from {}", path_or_url))?
+    } else {
+        // Read from local file
+        let path = Path::new(path_or_url);
+        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?
+    };
     let value: serde_json::Value = serde_json::from_str(&raw)
-        .with_context(|| format!("failed to parse {}", path.display()))?;
+        .with_context(|| format!("failed to parse {}", path_or_url))?;
 
     let mut doc: AnswerDocument = serde_json::from_value(value)
-        .with_context(|| format!("failed to parse AnswerDocument from {}", path.display()))?;
+        .with_context(|| format!("failed to parse AnswerDocument from {}", path_or_url))?;
     if is_launcher_answer_document(&doc) {
         if let Some(schema_version) = requested_schema_version
             && doc.schema_version != schema_version
@@ -468,7 +491,7 @@ fn load_answer_document(
         if !doc.answers.is_object() {
             bail!(
                 "AnswerDocument `answers` must be a JSON object in {}",
-                path.display()
+                path_or_url
             );
         }
 
@@ -491,16 +514,16 @@ fn load_answer_document(
         });
     }
 
-    validate_answer_document_identity(&doc, path)?;
+    validate_answer_document_identity(&doc, path_or_url)?;
     unreachable!("launcher identity validation must error for unsupported documents");
 }
 
-fn validate_answer_document_identity(doc: &AnswerDocument, path: &Path) -> Result<()> {
+fn validate_answer_document_identity(doc: &AnswerDocument, path_or_url: &str) -> Result<()> {
     if !is_launcher_answer_document(doc) {
         bail!(
             "unsupported wizard_id `{}` in {}; expected `{}`",
             doc.wizard_id,
-            path.display(),
+            path_or_url,
             WIZARD_ID
         );
     }
@@ -508,7 +531,7 @@ fn validate_answer_document_identity(doc: &AnswerDocument, path: &Path) -> Resul
         bail!(
             "unsupported schema_id `{}` in {}; expected `{}`",
             doc.schema_id,
-            path.display(),
+            path_or_url,
             SCHEMA_ID
         );
     }

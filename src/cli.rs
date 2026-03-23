@@ -424,9 +424,9 @@ pub enum WizardSubcommand {
 
 #[derive(Args, Debug, Clone)]
 pub struct WizardLaunchArgs {
-    /// cli.command.wizard.answers
+    /// cli.command.wizard.answers (local path or http/https URL)
     #[arg(long = "answers")]
-    pub answers: Option<PathBuf>,
+    pub answers: Option<String>,
     /// cli.command.wizard.frontend
     #[arg(long = "frontend", default_value = "json")]
     pub frontend: String,
@@ -464,9 +464,9 @@ pub struct WizardLaunchArgs {
 
 #[derive(Args, Debug, Clone)]
 pub struct WizardValidateArgs {
-    /// cli.command.wizard.answers
+    /// cli.command.wizard.answers (local path or http/https URL)
     #[arg(long = "answers")]
-    pub answers: PathBuf,
+    pub answers: String,
     /// cli.command.wizard.frontend
     #[arg(long = "frontend", default_value = "json")]
     pub frontend: String,
@@ -489,9 +489,9 @@ pub struct WizardValidateArgs {
 
 #[derive(Args, Debug, Clone)]
 pub struct WizardApplyArgs {
-    /// cli.command.wizard.answers
+    /// cli.command.wizard.answers (local path or http/https URL)
     #[arg(long = "answers")]
-    pub answers: PathBuf,
+    pub answers: String,
     /// cli.command.wizard.frontend
     #[arg(long = "frontend", default_value = "json")]
     pub frontend: String,

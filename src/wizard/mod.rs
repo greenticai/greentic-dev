@@ -630,7 +630,6 @@ fn annotate_execution_metadata(
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;
-    use std::path::Path;
 
     use serde_json::json;
 

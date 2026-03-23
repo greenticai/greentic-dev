@@ -692,7 +692,7 @@ mod tests {
             answers: json!({}),
             locks: serde_json::Map::new(),
         };
-        let err = validate_answer_document_identity(&doc, Path::new("answers.json")).unwrap_err();
+        let err = validate_answer_document_identity(&doc, "answers.json").unwrap_err();
         assert!(err.to_string().contains("unsupported wizard_id"));
     }
 

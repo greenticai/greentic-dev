@@ -72,14 +72,15 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
         let loaded =
             load_answer_document(answers_path, args.schema_version.as_deref(), args.migrate)?;
 
+        // When --answers is provided, imply --yes --non-interactive for automation
         return run_from_inputs(
             args.frontend,
             args.locale,
             loaded,
             args.out,
             mode,
-            args.yes,
-            args.non_interactive,
+            true,
+            true,
             args.unsafe_commands,
             args.allow_destructive,
             args.emit_answers,
@@ -626,7 +627,6 @@ fn annotate_execution_metadata(
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;
-    use std::path::Path;
 
     use serde_json::json;
 

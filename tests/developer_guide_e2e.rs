@@ -304,8 +304,10 @@ nodes:
     eprintln!("{}", inspect_pack_manifest(&gtpack_path));
 
     let artifacts_dir = pack_dir.join("dist/artifacts");
+    let runner_cli = write_runner_cli_stub(&pack_dir);
     let mut cmd = cargo_bin_cmd!("greentic-dev");
     let output = cmd
+        .env("GREENTIC_DEV_BIN_GREENTIC_RUNNER_CLI", &runner_cli)
         .args([
             "pack",
             "run",

@@ -72,6 +72,8 @@ and delegated through `wizard apply --answers <persisted-file>`.
 - `wizard` defaults to apply mode (unless `--dry-run`).
 - `validate` always dry-run.
 - `apply` executes delegation.
+- `--emit-answers <path>` is delegated during execute flows so the downstream pack/bundle wizard writes the emitted AnswerDocument.
+- `--emit-answers <path>` on dry-run / validate emits the launcher AnswerDocument directly from `greentic-dev`.
 - Execute confirmation rules:
   - Interactive TTY prompts unless `--yes`.
   - Non-interactive requires `--yes` or `--non-interactive`.

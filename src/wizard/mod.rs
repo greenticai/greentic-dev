@@ -119,11 +119,15 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
             return Ok(());
         };
 
-        run_interactive_delegate(&answers, &locale)?;
+        run_interactive_delegate(&answers, &locale, args.emit_answers.as_deref())?;
     }
 }
 
-fn run_interactive_delegate(answers: &serde_json::Value, locale: &str) -> Result<()> {
+fn run_interactive_delegate(
+    answers: &serde_json::Value,
+    locale: &str,
+    emit_answers: Option<&Path>,
+) -> Result<()> {
     let selected_action = answers
         .get("selected_action")
         .and_then(|value| value.as_str())
@@ -138,7 +142,7 @@ fn run_interactive_delegate(answers: &serde_json::Value, locale: &str) -> Result
     let bin = resolve_binary(program)?;
     let mut command = Command::new(&bin);
     command
-        .args(interactive_delegate_args(program, locale))
+        .args(interactive_delegate_args(program, locale, emit_answers))
         .env("LANG", locale)
         .env("LC_ALL", locale)
         .env("LC_MESSAGES", locale)
@@ -163,8 +167,12 @@ fn run_interactive_delegate(answers: &serde_json::Value, locale: &str) -> Result
     }
 }
 
-fn interactive_delegate_args(program: &str, locale: &str) -> Vec<String> {
-    if program == "greentic-bundle" {
+fn interactive_delegate_args(
+    program: &str,
+    locale: &str,
+    emit_answers: Option<&Path>,
+) -> Vec<String> {
+    let mut args = if program == "greentic-bundle" {
         vec![
             "--locale".to_string(),
             locale.to_string(),
@@ -172,7 +180,12 @@ fn interactive_delegate_args(program: &str, locale: &str) -> Vec<String> {
         ]
     } else {
         vec!["wizard".to_string()]
+    };
+    if let Some(path) = emit_answers {
+        args.push("--emit-answers".to_string());
+        args.push(path.display().to_string());
     }
+    args
 }
 
 pub fn validate(args: WizardValidateArgs) -> Result<()> {
@@ -627,6 +640,7 @@ fn annotate_execution_metadata(
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;
+    use std::path::Path;
 
     use serde_json::json;
 
@@ -765,7 +779,7 @@ mod tests {
     #[test]
     fn bundle_delegate_receives_locale_flag() {
         assert_eq!(
-            interactive_delegate_args("greentic-bundle", "en-GB"),
+            interactive_delegate_args("greentic-bundle", "en-GB", None),
             vec!["--locale", "en-GB", "wizard"]
         );
     }
@@ -773,8 +787,38 @@ mod tests {
     #[test]
     fn pack_delegate_keeps_plain_wizard_args() {
         assert_eq!(
-            interactive_delegate_args("greentic-pack", "en-GB"),
+            interactive_delegate_args("greentic-pack", "en-GB", None),
             vec!["wizard"]
+        );
+    }
+
+    #[test]
+    fn bundle_delegate_forwards_emit_answers_path() {
+        assert_eq!(
+            interactive_delegate_args(
+                "greentic-bundle",
+                "en-GB",
+                Some(Path::new("/tmp/emitted.json"))
+            ),
+            vec![
+                "--locale",
+                "en-GB",
+                "wizard",
+                "--emit-answers",
+                "/tmp/emitted.json",
+            ]
+        );
+    }
+
+    #[test]
+    fn pack_delegate_forwards_emit_answers_path() {
+        assert_eq!(
+            interactive_delegate_args(
+                "greentic-pack",
+                "en-GB",
+                Some(Path::new("/tmp/emitted.json"))
+            ),
+            vec!["wizard", "--emit-answers", "/tmp/emitted.json"]
         );
     }
 }

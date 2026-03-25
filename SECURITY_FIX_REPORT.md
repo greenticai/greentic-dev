@@ -1,41 +1,33 @@
-# SECURITY_FIX_REPORT
+# Security Fix Report
 
-Date (UTC): 2026-03-24
-Repository: `greentic-dev`
-
-## Scope
-- Analyze provided Dependabot alerts.
-- Analyze provided code scanning alerts.
-- Check PR dependency vulnerability inputs.
-- Apply minimal safe remediations where needed.
+Date: 2026-03-25 (UTC)
+Branch: `fix/wizard-emit-answers-delegated-bundle`
 
 ## Inputs Reviewed
-- `security-alerts.json`: `{"dependabot": [], "code_scanning": []}`
-- `dependabot-alerts.json`: `[]`
-- `code-scanning-alerts.json`: `[]`
-- `pr-vulnerable-changes.json`: `[]`
+- Dependabot alerts: `0`
+- Code scanning alerts: `0`
+- New PR dependency vulnerabilities: `0`
 
-## Dependency Files Reviewed
-- `Cargo.toml`
-- `Cargo.lock`
-- `xtask/Cargo.toml`
-- `tests/fixtures/dev-echo/Cargo.toml`
-
-## Verification Actions
-1. Confirmed provided security-alert inputs contain no Dependabot findings.
-2. Confirmed provided security-alert inputs contain no code-scanning findings.
-3. Confirmed PR dependency vulnerability input is empty (`[]`), indicating no newly introduced vulnerable dependency in this PR context.
-4. Reviewed repository dependency manifests for this Rust workspace and found no required remediation based on supplied CI alert sources.
+## Repository Security Review Performed
+- Identified dependency manifests/locks in repo:
+  - `Cargo.toml`
+  - `Cargo.lock`
+  - `xtask/Cargo.toml`
+  - `tests/fixtures/dev-echo/Cargo.toml`
+- Checked for PR-local changes to dependency files:
+  - `git diff --name-only -- Cargo.toml Cargo.lock xtask/Cargo.toml tests/fixtures/dev-echo/Cargo.toml`
+  - Result: no changed dependency files.
+- Attempted local Rust vulnerability audit:
+  - `cargo-audit` is not installed in this CI environment.
 
 ## Findings
-- No Dependabot alerts were present.
-- No code scanning alerts were present.
-- No new PR dependency vulnerabilities were present.
-- No actionable vulnerability requiring code or dependency remediation was identified from available CI inputs.
+- No security alerts were provided by Dependabot or code scanning.
+- No new dependency vulnerabilities were reported for the PR.
+- No dependency file changes were detected in this branch.
+- No actionable vulnerability remediation was required.
 
-## Remediation Applied
-- No source or dependency changes were required.
-- Report updated to document checks and outcomes.
+## Fixes Applied
+- None. No vulnerabilities to remediate from provided inputs or dependency diff scope.
 
-## Files Modified
-- `SECURITY_FIX_REPORT.md`
+## Residual Risk / Notes
+- If deeper registry-backed verification is required, install and run `cargo-audit` in CI (or equivalent SCA tooling) with network/database access.

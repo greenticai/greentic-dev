@@ -13,6 +13,7 @@ use std::process::{Command, Stdio};
 
 use anyhow::{Context, Result, bail};
 use serde::{Deserialize, Serialize};
+use tempfile::TempDir;
 
 use crate::cli::{WizardApplyArgs, WizardLaunchArgs, WizardValidateArgs};
 use crate::i18n;
@@ -119,7 +120,15 @@ pub fn launch(args: WizardLaunchArgs) -> Result<()> {
             return Ok(());
         };
 
-        run_interactive_delegate(&answers, &locale, args.emit_answers.as_deref())?;
+        run_interactive_delegate(
+            &answers,
+            &locale,
+            args.emit_answers.as_deref(),
+            args.schema_version.as_deref(),
+        )?;
+        if args.emit_answers.is_some() {
+            return Ok(());
+        }
     }
 }
 
@@ -127,6 +136,7 @@ fn run_interactive_delegate(
     answers: &serde_json::Value,
     locale: &str,
     emit_answers: Option<&Path>,
+    requested_schema_version: Option<&str>,
 ) -> Result<()> {
     let selected_action = answers
         .get("selected_action")
@@ -140,9 +150,14 @@ fn run_interactive_delegate(
     };
 
     let bin = resolve_binary(program)?;
+    let delegated_emit = delegated_emit_capture(emit_answers)?;
     let mut command = Command::new(&bin);
     command
-        .args(interactive_delegate_args(program, locale, emit_answers))
+        .args(interactive_delegate_args(
+            program,
+            locale,
+            delegated_emit.path.as_deref(),
+        ))
         .env("LANG", locale)
         .env("LC_ALL", locale)
         .env("LC_MESSAGES", locale)
@@ -155,9 +170,7 @@ fn run_interactive_delegate(
     let status = command
         .status()
         .map_err(|e| anyhow::anyhow!("failed to execute {}: {e}", bin.display()))?;
-    if status.success() {
-        Ok(())
-    } else {
+    if !status.success() {
         bail!(
             "wizard step command failed: {} {:?} (exit code {:?})",
             program,
@@ -165,6 +178,35 @@ fn run_interactive_delegate(
             status.code()
         );
     }
+
+    if let (Some(output_path), Some(delegated_emit_path)) =
+        (emit_answers, delegated_emit.path.as_deref())
+    {
+        let delegated_doc = read_answer_document(delegated_emit_path)?;
+        let Some(delegated_action) = delegated_selected_action(&delegated_doc) else {
+            bail!(
+                "unsupported delegated wizard_id `{}` in {}; expected `greentic-pack.*` or `greentic-bundle.*`",
+                delegated_doc.wizard_id,
+                delegated_emit_path.display()
+            );
+        };
+        if delegated_action != selected_action {
+            bail!(
+                "delegated answers wizard_id `{}` did not match selected_action `{selected_action}`",
+                delegated_doc.wizard_id
+            );
+        }
+        let schema_version = requested_schema_version.unwrap_or(DEFAULT_SCHEMA_VERSION);
+        let launcher_doc = build_interactive_answer_document(
+            locale,
+            schema_version,
+            selected_action,
+            &delegated_doc,
+        );
+        write_answer_document(output_path, &launcher_doc)?;
+    }
+
+    Ok(())
 }
 
 fn interactive_delegate_args(
@@ -182,6 +224,7 @@ fn interactive_delegate_args(
         vec!["wizard".to_string()]
     };
     if let Some(path) = emit_answers {
+        args.push("run".to_string());
         args.push("--emit-answers".to_string());
         args.push(path.display().to_string());
     }
@@ -449,36 +492,7 @@ fn load_answer_document(
     requested_schema_version: Option<&str>,
     migrate: bool,
 ) -> Result<LoadedAnswers> {
-    let raw = if path_or_url.starts_with("http://") || path_or_url.starts_with("https://") {
-        // Fetch from remote URL
-        let client = reqwest::blocking::Client::builder()
-            .timeout(std::time::Duration::from_secs(30))
-            .build()
-            .with_context(|| "failed to create HTTP client")?;
-        let response = client
-            .get(path_or_url)
-            .send()
-            .with_context(|| format!("failed to fetch {}", path_or_url))?;
-        if !response.status().is_success() {
-            bail!(
-                "failed to fetch {}: HTTP {}",
-                path_or_url,
-                response.status()
-            );
-        }
-        response
-            .text()
-            .with_context(|| format!("failed to read response from {}", path_or_url))?
-    } else {
-        // Read from local file
-        let path = Path::new(path_or_url);
-        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?
-    };
-    let value: serde_json::Value =
-        serde_json::from_str(&raw).with_context(|| format!("failed to parse {}", path_or_url))?;
-
-    let mut doc: AnswerDocument = serde_json::from_value(value)
-        .with_context(|| format!("failed to parse AnswerDocument from {}", path_or_url))?;
+    let mut doc = read_answer_document_from_path_or_url(path_or_url)?;
     if is_launcher_answer_document(&doc) {
         if let Some(schema_version) = requested_schema_version
             && doc.schema_version != schema_version
@@ -522,6 +536,46 @@ fn load_answer_document(
 
     validate_answer_document_identity(&doc, path_or_url)?;
     unreachable!("launcher identity validation must error for unsupported documents");
+}
+
+fn read_answer_document(path: &Path) -> Result<AnswerDocument> {
+    let raw =
+        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?;
+    let value: serde_json::Value = serde_json::from_str(&raw)
+        .with_context(|| format!("failed to parse {}", path.display()))?;
+    serde_json::from_value(value)
+        .with_context(|| format!("failed to parse AnswerDocument from {}", path.display()))
+}
+
+fn read_answer_document_from_path_or_url(path_or_url: &str) -> Result<AnswerDocument> {
+    let raw = if path_or_url.starts_with("http://") || path_or_url.starts_with("https://") {
+        // Fetch from remote URL
+        let client = reqwest::blocking::Client::builder()
+            .timeout(std::time::Duration::from_secs(30))
+            .build()
+            .with_context(|| "failed to create HTTP client")?;
+        let response = client
+            .get(path_or_url)
+            .send()
+            .with_context(|| format!("failed to fetch {}", path_or_url))?;
+        if !response.status().is_success() {
+            bail!(
+                "failed to fetch {}: HTTP {}",
+                path_or_url,
+                response.status()
+            );
+        }
+        response
+            .text()
+            .with_context(|| format!("failed to read response from {}", path_or_url))?
+    } else {
+        let path = Path::new(path_or_url);
+        fs::read_to_string(path).with_context(|| format!("failed to read {}", path.display()))?
+    };
+    let value: serde_json::Value =
+        serde_json::from_str(&raw).with_context(|| format!("failed to parse {}", path_or_url))?;
+    serde_json::from_value(value)
+        .with_context(|| format!("failed to parse AnswerDocument from {}", path_or_url))
 }
 
 fn validate_answer_document_identity(doc: &AnswerDocument, path_or_url: &str) -> Result<()> {
@@ -618,6 +672,45 @@ fn build_answer_document(
     }
 }
 
+fn build_interactive_answer_document(
+    locale: &str,
+    schema_version: &str,
+    selected_action: &str,
+    delegated_doc: &AnswerDocument,
+) -> AnswerDocument {
+    AnswerDocument {
+        wizard_id: WIZARD_ID.to_string(),
+        schema_id: SCHEMA_ID.to_string(),
+        schema_version: schema_version.to_string(),
+        locale: locale.to_string(),
+        answers: wrap_delegated_answer_document(selected_action, delegated_doc),
+        locks: serde_json::Map::new(),
+    }
+}
+
+struct DelegatedEmitCapture {
+    _temp_dir: Option<TempDir>,
+    path: Option<PathBuf>,
+}
+
+fn delegated_emit_capture(emit_answers: Option<&Path>) -> Result<DelegatedEmitCapture> {
+    let Some(_) = emit_answers else {
+        return Ok(DelegatedEmitCapture {
+            _temp_dir: None,
+            path: None,
+        });
+    };
+    let temp_dir = tempfile::Builder::new()
+        .prefix("greentic-dev-wizard-delegate-")
+        .tempdir()
+        .context("failed to create tempdir for delegated answers capture")?;
+    let path = temp_dir.path().join("delegated-answers.json");
+    Ok(DelegatedEmitCapture {
+        _temp_dir: Some(temp_dir),
+        path: Some(path),
+    })
+}
+
 fn write_answer_document(path: &Path, doc: &AnswerDocument) -> Result<()> {
     let rendered = serde_json::to_string_pretty(doc).context("render answers envelope JSON")?;
     fs::write(path, rendered).with_context(|| format!("failed to write {}", path.display()))
@@ -640,17 +733,49 @@ fn annotate_execution_metadata(
 #[cfg(test)]
 mod tests {
     use std::collections::BTreeMap;
+    use std::fs;
     use std::path::Path;
+    use std::path::PathBuf;
 
     use serde_json::json;
+    use tempfile::TempDir;
 
     use super::{
         AnswerDocument, LauncherMenuChoice, SCHEMA_ID, WIZARD_ID, build_answer_document,
-        build_launcher_answers, interactive_delegate_args, is_launcher_answer_document,
-        merge_answers, parse_launcher_menu_choice, validate_answer_document_identity,
+        build_interactive_answer_document, build_launcher_answers, interactive_delegate_args,
+        is_launcher_answer_document, merge_answers, parse_launcher_menu_choice,
+        run_interactive_delegate, validate_answer_document_identity,
         wrap_delegated_answer_document,
     };
     use crate::wizard::plan::{WizardFrontend, WizardPlan, WizardPlanMetadata};
+
+    fn write_stub_bin(dir: &Path, name: &str, body: &str) -> PathBuf {
+        #[cfg(windows)]
+        let path = dir.join(format!("{name}.cmd"));
+        #[cfg(not(windows))]
+        let path = dir.join(name);
+
+        #[cfg(windows)]
+        let script = format!("@echo off\r\n{body}\r\n");
+        #[cfg(not(windows))]
+        let script = format!("#!/bin/sh\n{body}\n");
+
+        fs::write(&path, script).expect("write stub");
+        #[cfg(not(windows))]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            let mut perms = fs::metadata(&path).expect("metadata").permissions();
+            perms.set_mode(0o755);
+            fs::set_permissions(&path, perms).expect("set perms");
+        }
+        path
+    }
+
+    fn prepend_path(dir: &Path) -> String {
+        let old = std::env::var("PATH").unwrap_or_default();
+        let sep = if cfg!(windows) { ';' } else { ':' };
+        format!("{}{}{}", dir.display(), sep, old)
+    }
 
     #[test]
     fn answer_precedence_cli_over_file() {
@@ -777,6 +902,29 @@ mod tests {
     }
 
     #[test]
+    fn build_interactive_answer_document_wraps_delegate() {
+        let delegated = AnswerDocument {
+            wizard_id: "greentic-bundle.wizard.main".to_string(),
+            schema_id: "greentic-bundle.main".to_string(),
+            schema_version: "1.0.0".to_string(),
+            locale: "en-US".to_string(),
+            answers: json!({"selected_action":"create"}),
+            locks: serde_json::Map::new(),
+        };
+
+        let doc = build_interactive_answer_document("en-US", "1.2.3", "bundle", &delegated);
+
+        assert_eq!(doc.wizard_id, WIZARD_ID);
+        assert_eq!(doc.schema_id, SCHEMA_ID);
+        assert_eq!(doc.schema_version, "1.2.3");
+        assert_eq!(doc.answers["selected_action"], "bundle");
+        assert_eq!(
+            doc.answers["delegate_answer_document"]["wizard_id"],
+            "greentic-bundle.wizard.main"
+        );
+    }
+
+    #[test]
     fn bundle_delegate_receives_locale_flag() {
         assert_eq!(
             interactive_delegate_args("greentic-bundle", "en-GB", None),
@@ -793,7 +941,7 @@ mod tests {
     }
 
     #[test]
-    fn bundle_delegate_forwards_emit_answers_path() {
+    fn bundle_delegate_emit_answers_uses_run_subcommand() {
         assert_eq!(
             interactive_delegate_args(
                 "greentic-bundle",
@@ -804,6 +952,7 @@ mod tests {
                 "--locale",
                 "en-GB",
                 "wizard",
+                "run",
                 "--emit-answers",
                 "/tmp/emitted.json",
             ]
@@ -811,14 +960,92 @@ mod tests {
     }
 
     #[test]
-    fn pack_delegate_forwards_emit_answers_path() {
+    fn pack_delegate_emit_answers_uses_run_subcommand() {
         assert_eq!(
             interactive_delegate_args(
                 "greentic-pack",
                 "en-GB",
                 Some(Path::new("/tmp/emitted.json"))
             ),
-            vec!["wizard", "--emit-answers", "/tmp/emitted.json"]
+            vec!["wizard", "run", "--emit-answers", "/tmp/emitted.json"]
+        );
+    }
+
+    #[test]
+    fn interactive_bundle_delegate_emit_answers_writes_launcher_document() {
+        let tmp = TempDir::new().expect("temp dir");
+        let bin_dir = tmp.path().join("bin");
+        fs::create_dir_all(&bin_dir).expect("create bin dir");
+        let emitted = tmp.path().join("answers-envelope.json");
+        let runlog = tmp.path().join("bundle-run.log");
+        let original_path = std::env::var_os("PATH");
+
+        write_stub_bin(
+            &bin_dir,
+            "greentic-bundle",
+            &format!(
+                r#"
+echo "$@" > "{}"
+if [ "$1" != "--locale" ] || [ "$2" != "en-US" ] || [ "$3" != "wizard" ] || [ "$4" != "run" ] || [ "$5" != "--emit-answers" ]; then
+  echo "unexpected argv: $@" >&2
+  exit 9
+fi
+cat > "$6" <<'EOF'
+{{
+  "wizard_id": "greentic-bundle.wizard.main",
+  "schema_id": "greentic-bundle.main",
+  "schema_version": "1.0.0",
+  "locale": "en-US",
+  "answers": {{
+    "selected_action": "create"
+  }},
+  "locks": {{}}
+}}
+EOF
+exit 0
+"#,
+                runlog.display()
+            ),
+        );
+
+        unsafe {
+            std::env::set_var("PATH", prepend_path(&bin_dir));
+        }
+        let result = run_interactive_delegate(
+            &json!({"selected_action":"bundle"}),
+            "en-US",
+            Some(&emitted),
+            Some("1.2.3"),
+        );
+        if let Some(path) = original_path {
+            unsafe {
+                std::env::set_var("PATH", path);
+            }
+        } else {
+            unsafe {
+                std::env::remove_var("PATH");
+            }
+        }
+
+        result.expect("interactive delegate succeeds");
+
+        let argv = fs::read_to_string(&runlog).expect("read run log");
+        assert!(argv.contains("wizard run --emit-answers"));
+        assert!(
+            !argv.contains("wizard --emit-answers"),
+            "bundle delegate should not receive unsupported bare wizard emit flags"
+        );
+
+        let emitted_doc: serde_json::Value =
+            serde_json::from_str(&fs::read_to_string(&emitted).expect("read emitted answers"))
+                .expect("parse emitted answers");
+        assert_eq!(emitted_doc["wizard_id"], WIZARD_ID);
+        assert_eq!(emitted_doc["schema_id"], SCHEMA_ID);
+        assert_eq!(emitted_doc["schema_version"], "1.2.3");
+        assert_eq!(emitted_doc["answers"]["selected_action"], "bundle");
+        assert_eq!(
+            emitted_doc["answers"]["delegate_answer_document"]["wizard_id"],
+            "greentic-bundle.wizard.main"
         );
     }
 }

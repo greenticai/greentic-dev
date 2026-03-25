@@ -102,7 +102,7 @@ Behavior:
 - `wizard --answers <FILE> --dry-run` builds plan from `AnswerDocument` without delegated execution.
 - `validate` builds plan from `AnswerDocument` without delegated execution.
 - `apply` builds and executes delegation from `AnswerDocument`.
-- `--emit-answers <FILE>` during execution is forwarded to the delegated wizard so the selected pack/bundle wizard writes its own AnswerDocument to that path.
+- `--emit-answers <FILE>` during interactive execution is captured through a delegated answers file and then written back as a launcher AnswerDocument envelope.
 - `--emit-answers <FILE>` during dry-run / validate writes the launcher AnswerDocument locally because no delegated wizard executes.
 - `wizard run` and `wizard replay` are removed.
 

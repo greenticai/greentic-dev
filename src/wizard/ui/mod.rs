@@ -352,9 +352,9 @@ fn ext_catalog_field() -> FormField {
         id: "extension_catalog_ref".into(),
         label: "Extension Catalog Reference".into(),
         kind: FieldKind::Text,
-        required: false,
-        default_value: None,
-        placeholder: Some("https://... or leave empty for bundled catalog".into()),
+        required: true,
+        default_value: Some("file://docs/extensions_capability_packs.catalog.v1.json".into()),
+        placeholder: Some("file://, https://, or oci:// catalog reference".into()),
         choices: vec![],
         depends_on: None,
     }

@@ -303,22 +303,45 @@
     });
   }
 
+  function clearErrors() {
+    app.querySelectorAll(".field-error").forEach(function (e) { e.remove(); });
+    app.querySelectorAll(".input-error").forEach(function (e) { e.classList.remove("input-error"); });
+  }
+
+  function showFieldError(el, msg) {
+    el.classList.add("input-error");
+    var err = document.createElement("p");
+    err.className = "field-error";
+    err.textContent = msg;
+    el.parentElement.appendChild(err);
+  }
+
   function validateStep() {
+    clearErrors();
     var step = state.steps[state.currentStep];
     var firstErr = null;
     for (var i = 0; i < step.fields.length; i++) {
       var f = step.fields[i];
-      if (!f.required || f.kind === "boolean") continue;
+      if (f.kind === "boolean") continue;
       if (f.depends_on) {
         var g = app.querySelector('[data-depends-field="' + f.depends_on.field + '"]');
         if (g && g.style.display === "none") continue;
       }
       var el = document.getElementById("f-" + f.id);
-      if (el && !el.value.trim()) {
-        el.classList.add("input-error");
+      if (!el) continue;
+      var val = el.value.trim();
+
+      // Required check
+      if (f.required && !val) {
+        showFieldError(el, f.label + " is required.");
         if (!firstErr) firstErr = el;
-      } else if (el) {
-        el.classList.remove("input-error");
+        continue;
+      }
+
+      // Catalog ref scheme check
+      if (f.id === "extension_catalog_ref" && val && !val.match(/^(file|https?|oci|fixture):\/\//)) {
+        showFieldError(el, "Must start with file://, https://, http://, or oci://");
+        if (!firstErr) firstErr = el;
       }
     }
     if (firstErr) { firstErr.focus(); return false; }

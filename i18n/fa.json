@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "بازنویسی مسیر فایل پیکربندی (پیش‌فرض: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "مسیر کلید پیکربندی (مثلاً defaults.component.org)",
   "cli.command.config.set.value": "مقداری که باید به کلید اختصاص داده شود (به‌صورت رشته ذخیره می‌شود)",
+  "cli.command.coverage.about": "بررسی‌های پوشش را در برابر coverage-policy.json اجرا کنید",
+  "cli.command.coverage.skip_run": "به‌جای اجرای دوبارهٔ آزمون‌ها، از گزارش موجود target/coverage/coverage.json دوباره استفاده کنید",
   "cli.command.flow.about": "عبور مستقیم فلو (greentic-flow)",
   "cli.command.gui.about": "عبور مستقیم رابط گرافیکی (greentic-gui)",
   "cli.command.install.about": "نصب دارایی‌های واگذارشده",

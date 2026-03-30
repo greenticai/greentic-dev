@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Gantikan laluan fail konfigurasi (lalai: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Laluan kunci konfigurasi (cth. defaults.component.org)",
   "cli.command.config.set.value": "Nilai untuk ditetapkan pada kunci (disimpan sebagai rentetan)",
+  "cli.command.coverage.about": "Jalankan semakan liputan terhadap coverage-policy.json",
+  "cli.command.coverage.skip_run": "Guna semula laporan target/coverage/coverage.json yang sedia ada daripada menjalankan semula ujian",
   "cli.command.flow.about": "Laluan terus aliran (greentic-flow)",
   "cli.command.gui.about": "Laluan terus GUI (greentic-gui)",
   "cli.command.install.about": "Pasang aset yang didelegasikan",

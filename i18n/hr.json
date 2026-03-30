@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Nadjačaj putanju konfiguracijske datoteke (zadano: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Putanja ključa konfiguracije (npr. defaults.component.org)",
   "cli.command.config.set.value": "Vrijednost za dodjelu ključu (pohranjuje se kao niz)",
+  "cli.command.coverage.about": "Pokreni provjere pokrivenosti prema coverage-policy.json",
+  "cli.command.coverage.skip_run": "Ponovno upotrijebi postojeći izvještaj target/coverage/coverage.json umjesto ponovnog pokretanja testova",
   "cli.command.flow.about": "Prosljeđivanje toka (greentic-flow)",
   "cli.command.gui.about": "Prosljeđivanje GUI-ja (greentic-gui)",
   "cli.command.install.about": "Instaliraj delegirane resurse",

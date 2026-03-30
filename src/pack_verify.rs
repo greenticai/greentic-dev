@@ -47,3 +47,29 @@ pub fn run(pack_path: &Path, policy: VerifyPolicy, emit_json: bool) -> Result<()
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{VerifyPolicy, run};
+    use crate::pack_build::{self, PackSigning};
+
+    #[test]
+    fn verify_can_emit_json_report() {
+        let root = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let flow_path = root.join("tests/fixtures/hello-pack/hello-flow.ygtc");
+        let component_dir = root.join("fixtures/components");
+
+        let temp = tempfile::tempdir().unwrap();
+        let pack_path = temp.path().join("verify-json.gtpack");
+        pack_build::run(
+            &flow_path,
+            &pack_path,
+            PackSigning::Dev,
+            None,
+            Some(component_dir.as_path()),
+        )
+        .unwrap();
+
+        run(&pack_path, VerifyPolicy::DevOk, true).unwrap();
+    }
+}

@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "تجاوز مسار ملف الإعدادات (الافتراضي: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "مسار مفتاح الإعدادات (مثال: defaults.component.org)",
   "cli.command.config.set.value": "القيمة التي سيتم إسنادها إلى المفتاح (تُخزَّن كسلسلة نصية)",
+  "cli.command.coverage.about": "شغّل فحوصات التغطية على coverage-policy.json",
+  "cli.command.coverage.skip_run": "عاود استعمل تقرير target/coverage/coverage.json الموجود بدل ما تعاود تشغّل الاختبارات",
   "cli.command.flow.about": "تمرير التدفق كما هو (greentic-flow)",
   "cli.command.gui.about": "تمرير الواجهة الرسومية كما هي (greentic-gui)",
   "cli.command.install.about": "تثبيت الأصول المفوّضة",

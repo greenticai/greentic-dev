@@ -51,6 +51,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489293
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884368
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "c22b3e659cd158213da062a6aed23d1a5760959f170edb194297f857a8fd5122",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884368
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "75d5057395adf77df228338dd31c72bfe31d95752f5f5b9349b3e85b6788bec6",
@@ -858,6 +870,18 @@
           "last_bot_translation_hash": "d3b5f1153a2e50b1fe8b4f84663cd1daee57750a872e25cd3da42e31ea65db8f",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489310
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884372
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a6ea363f940eca7806a7b45b62e5619c8f3740da256d5837c26b670cb7220079",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884372
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -1667,6 +1691,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489328
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884376
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "9f2d2dd188ea77822b1489070be13717d988ec7280b34c496d4bd3fa3b849602",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884376
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "75d5057395adf77df228338dd31c72bfe31d95752f5f5b9349b3e85b6788bec6",
@@ -2474,6 +2510,18 @@
           "last_bot_translation_hash": "d67f0a70c618e4e6d28d0419aaedf785c130daca1a059c0cae18a867f317d466",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489347
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884379
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "c22b3e659cd158213da062a6aed23d1a5760959f170edb194297f857a8fd5122",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884379
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -3283,6 +3331,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489367
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "03b22abf82d5f1e28bd0242aabd955ea79e436531ed0475bfe89187e171f423b",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884385
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "07d6164487ec799b354d15d50e28e3f520be7e6ca025dc1826c8d757e3da6651",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884385
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "75d5057395adf77df228338dd31c72bfe31d95752f5f5b9349b3e85b6788bec6",
@@ -4090,6 +4150,18 @@
           "last_bot_translation_hash": "d67f0a70c618e4e6d28d0419aaedf785c130daca1a059c0cae18a867f317d466",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489386
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "fb4b5271862443f9c8627c77fc3314ac27250c09cccb25cc9bfbadccae8f6319",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884391
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "c22b3e659cd158213da062a6aed23d1a5760959f170edb194297f857a8fd5122",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884391
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -4899,6 +4971,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489406
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884395
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a6ea363f940eca7806a7b45b62e5619c8f3740da256d5837c26b670cb7220079",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884395
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "75d5057395adf77df228338dd31c72bfe31d95752f5f5b9349b3e85b6788bec6",
@@ -5706,6 +5790,18 @@
           "last_bot_translation_hash": "d67f0a70c618e4e6d28d0419aaedf785c130daca1a059c0cae18a867f317d466",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489423
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "605e3994aa51cc3631007d5d9ef7e7b2dc9346e78c4736086b1279f6f93882a8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884398
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "9f2d2dd188ea77822b1489070be13717d988ec7280b34c496d4bd3fa3b849602",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884398
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -6515,6 +6611,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489442
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "03b22abf82d5f1e28bd0242aabd955ea79e436531ed0475bfe89187e171f423b",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884402
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "e481ed20bdeb4a56e111e59aa018fb91b72d431f0fe1ef85da2011f3043ae3c9",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884402
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "75d5057395adf77df228338dd31c72bfe31d95752f5f5b9349b3e85b6788bec6",
@@ -7322,6 +7430,18 @@
           "last_bot_translation_hash": "e66cbd60f4f063f621c1d04e3e12b611b35838ae8b2c8ccd9235b84b44bb0b33",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489489
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "3c650647501145f5c7230c7b896e43252d323aca676de7ff1d08f31eedb5e29d",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884407
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "ab2d215844f9c1b625fa271e4190cd68603a2950b56a09001e55209724813f56",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884407
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -8131,6 +8251,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489523
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "ffa24afcb832d36e25fb621ce8ef0a2bd85e364eec95479793bf785c8db5169f",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884413
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "4d56a75ad02a40d7df46148977cf780125c0c9f4d162a8f783c9ccd7dd0be1e2",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884413
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "8e9a0eea6e9adb2ac83ee66117d7000b5d0d5a72c0164895a5562bd271391a14",
@@ -8938,6 +9070,18 @@
           "last_bot_translation_hash": "125e06df36a1dd5d77a10fa2e8d7a907638c15b481a827b9b2a0d3b0c93812d6",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496667
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "4b703e8ed6155ded9933f6b5c34b3b372fd23428ec6007868ff60baf88350120",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884418
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "cde3cc2321b9f048380daba5272041c0eeaf44788b9d048da7b9b48f30a9c8b4",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884418
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -9747,6 +9891,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489655
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "06b9d1af642cbaa3c4259884562d6c03d3b93c6c1c876e01b3027c235b989cd8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884424
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "1d3bf9139968cc4e0291228f1aad98945ec95d2df0b017c3e04fcc79db946553",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884424
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "ce5e80acd69a54567dfae1aec70c20e76c0c85f810775f2d2d9fbfcedeb19f78",
@@ -10554,6 +10710,18 @@
           "last_bot_translation_hash": "ae53e472b73c1a5ec00e2d24abe1a9306c45bbe3aa6ed4bec274d6e77d752a19",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489685
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "04ec1ca24da650896632f24ecf4a29e99c7a6e98aa960daeb61d7d6edba4c335",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884429
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "4a41181f116246dfc4b9254b0b78fe1cb1f61c404e1f3e6db027f53ef9f1a3fc",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884429
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -11363,6 +11531,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489717
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "fb338b852e66db7cbbd0fd919177ccac95783cbccefbf73cf799a6b9c8ead75a",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884435
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a87ed746200e355750af405b1af53b39c7f8d2518665e801cfdd23c743250f7a",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884435
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "64e89ec4db8a987c5d30c20e022bb1c939089fd037211adf43b792208a90cb07",
@@ -12170,6 +12350,18 @@
           "last_bot_translation_hash": "168a94ad9c92bcfe5e8e0406769150124d2e6ec3b0959b80f30f20a7b100ac23",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489755
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "50f667a0c6eb56fcfeeb6d490bc0188e282f639d6064fbe4c02badc9689a8e73",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884442
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "9e5b809042b5ddd831e8a63db6f881e9c8fc4f3fd6a6421d9dc802839cdc01a4",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884442
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -12979,6 +13171,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489781
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884447
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884447
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -13786,6 +13990,18 @@
           "last_bot_translation_hash": "cb671bef9fcd2dc92e00574243b2d8a5e3d61296508fcbb8132262354e47cb52",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489812
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "5a1e72e52005ac891a276b082781a5f70db67209d825c9d25d5c30b4f9f0d578",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884452
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "65dc51b37e85984db3e6c14aa90fe74cb69d2e45140706beb9c02631eb3c4148",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884452
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -14595,6 +14811,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489874
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "6a2940c17e13d65327e629d5c4aef29bc65395ca97aea216a441e6c62fb2f786",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884457
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a8901b7ec6c143110dd9a2b71e2e61642e5b50247f8cfe068498f9a5f1e3c55c",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884457
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "4bbe7992c1a7a82b5a05f825113e37ac8bf90b97a69c654054c7163a3be1504c",
@@ -15402,6 +15630,18 @@
           "last_bot_translation_hash": "7a8d1f124dac865b83e0b583a1de4f7c26f5d74622e59211213f5f3eb5050fe4",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489904
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "b25075d355adb85ecd1fda86a288423b5c99ee062c143f1d3f28905aab67e056",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884462
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "632c051f39527dfb39f2d0504813c72ee58668b24c95a598a2a5b250e801a28e",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884462
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -16211,6 +16451,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773489972
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "f79f1658a15495b2429e7d0e5c7b96c4604c79175a2d3936dbcd8a14338f0408",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884467
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "191ac0d1d1d9fff351bfef976db2b1aab545fffe1e244ca3ff005e2587e2bbb8",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884467
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "5ab5ce812a979654948f2cfeb9e77541f5f1f639f049c3af74dbd96c9d9d4a2b",
@@ -17018,6 +17270,18 @@
           "last_bot_translation_hash": "9a6c345e5171122261c040e2ab962b4ff6135773d52a76f83727fdec86b98d8a",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490003
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "decb18fbeba66801bdf7efd036c4abb43652b8e0b95ad9d5a8b113d4aabf6342",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884472
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "e890d38514cf0653844d6cf45355874aa7b53857ab5aa5c23899bb816a1aca52",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884472
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -17827,6 +18091,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490113
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "98d145ab0598a60290aca4ad470f81f6bab8229d233f292f9dee74da937deb85",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884489
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "538b9ba8e7998bc5f5399111dc16b4cfe5671dd8a24d16ff3a930e18876228d4",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884489
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "654459fd7167e8962c90e19a7ab616924b0f9a7deecf675c97d929b0038245d2",
@@ -18634,6 +18910,18 @@
           "last_bot_translation_hash": "7cedd16bdf6ecb0f46c752de1aa54518f42c450ed806f4368ded084a9833f121",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496696
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "dad78349f48f3ab4fc487d37ecf581e25e08d6d311da7695d89201b6d6991196",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884495
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "ebc86ab3bfa9e7a50f70034b3182ffcbdbfa2aeed95593d51e8cc8b88fdff304",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884495
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -19443,6 +19731,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496728
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "fe05556b09aea59047148ff10c0e5e0f498e5203629d6364314543453e7cb936",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884502
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "cf4399c445e9afa130f4155ba9c63d84b9a6f59d622bb940292ec6618f4a851b",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884502
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "ad4016b4afdd00ffb548be458ee3fae428aebb64c22168a31c5fde3b058a99b2",
@@ -20250,6 +20550,18 @@
           "last_bot_translation_hash": "b8e06ba568b5c4e2529c4c592683161519367962f3ba93e930b0cf8f0379bf13",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490367
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "3ea8bb24ac2ee5c4981f2c53b970ff2d178587b4ae2c27742dce88fd859d5867",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884508
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "64b50954aa8d11d5c7b878b7eddab4614c642aebf450c42789e00c938fbf2813",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884508
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -21059,6 +21371,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490400
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "9e04d0930458909068c2fdee003bb77bdcd40df0754d91a634646c0e75483bbe",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884515
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "4da4ae1d8b64922e27a0410bbdb5c0f0d00aaaadeb54bfe558bba67f579fb054",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884515
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "5c43e371aca5bc7d32576a2c4b34ddad80e12efe122371b534d594d7550669ed",
@@ -21866,6 +22190,18 @@
           "last_bot_translation_hash": "3e00489c65b9b691bfdae648e11229e4ebfe9903333e30106c504c48a82d4a0b",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490436
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "1a0daca2ca3f1d56d4679bac6cf035d2f6afb06a1abc50142fd8edc4b25afca0",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884522
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "7a1a2c0a4989e0eda5da05380ba53b0e7b79c09f9fecba2959eb6fb47f5976f0",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884522
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -22675,6 +23011,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490466
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "e0c3c8ef82e51bd2be993155c9b1f8b6deb8743986a5b4c46bb1b593bb7f3eff",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884529
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "70c115e7b2c4cc01f964f1e44f64159ff4b3970b0dabf28f0b18a4b53d1f95b1",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884529
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "3f83e90213d4e1ae5f6a0ef14ef8680b26a6e18168e81737606b3a44682fd2a0",
@@ -23482,6 +23830,18 @@
           "last_bot_translation_hash": "e230ca4de5cebcc33b4dbc2d9ae2827c54c4e35ef43a1443674b509fd8cad9d7",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490496
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "192409888ab9203107e3e1126fb9507060f6d3dbdad97f92d70ba2846dfc86df",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884536
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "86601482ebc9ee811a697d7fa4e268cc0bbe8b57191b6aaddbb3cd5e3452d617",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884536
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -24291,6 +24651,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496808
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "d58fe6f27b1610124a38360f4ef0e8352d50f6a58a7948b5168a88db2eac9969",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884540
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "8146e2c94bd17278bf8f3a78e8015a82627b2c51afca264b771fb1d09f717402",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884540
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "b2854790a41e9805144adead28c5ee2833ee491149d4042ca65e2ef4b07136e9",
@@ -25098,6 +25470,18 @@
           "last_bot_translation_hash": "839a6f6b39a2e89c06963993cfcc9112ab4536d403505456fd602b8cd5ff94cd",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490647
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "7ad59f07baaa342429bb8c1877445fe15f8433d1aa19baa70d0c71bee5a5a45c",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884546
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "808a76340c0a95e484acee8b3694cbccf125ab71b481e61d8e1e0df28b5859cb",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884546
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -25907,6 +26291,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496850
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "dd6ef92bc92466005b2c44214629a32d5db7607add6fedaade26388ca31533e5",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884553
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "15713d247a4791f282cd3c49eaeca599fb50157327c6f50f0b7ec9f78c61a247",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884553
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "2ed504fb59a53e3b2dcf3ccb4324bc11e113cbf8fcc296863a630eeeeaaff1f5",
@@ -26714,6 +27110,18 @@
           "last_bot_translation_hash": "174863ba227f02fde098bb63e310b25ddfebbf8e9c61358b21f8e7bca6872967",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496909
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "13b4b0dc2f95ba33e6da10bd881c4fabcdefe8c82b6b3bd6443069ca30a09e53",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884558
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "e0434d52a421cd70bf1a780ba8bf4f6da015445469fc2c09801706d7b3ff7f42",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884558
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -27523,6 +27931,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773490940
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "4a01859d3342982504e3478948cdb4fac54fa62ba844e02f39c86d85b4774725",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884566
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "0310fa8bf4655a11f7e5f51442945b88b2be06382ce7603f2e881dac42fa5692",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884566
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "d68c2ce3f12d4527ee0f63c346c99ec8fc6dfac39bb6e03ba5e13f5b65d29ca3",
@@ -28330,6 +28750,18 @@
           "last_bot_translation_hash": "4842f5a88f8c78d06c95460ead0e18d9ce9bcc58e86a1f0bb7aa940c518eae73",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491010
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "15b1e2536b9dea8bbbc74ecca255d98f8c67ae52b556c87555251111a5842f5c",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884570
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "0a41d902a308a814b300d331bd1585a61a625a2d575963a5cb0cfed540cee6a3",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884570
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -29139,6 +29571,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491081
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "59df8601477f93802e2c544d157bb7b91c18eaad01849f1cb34e0832525e97a1",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884575
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "c66965ea0e93a138a3400996f232bef1b1546725abde4137f7879532d60eb3b5",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884575
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "16c620fb7d275d1c4f5a0c4406b70fac6bf4ca114128535001dbb42fe913d088",
@@ -29946,6 +30390,18 @@
           "last_bot_translation_hash": "5c4f21df06044571a391fed13c7733a7a2270c43d60bd8b893a94394bc8ca298",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496948
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "16f22c990b4a4ede95113c29c73f645d7bc85406ad90b65f89b1541f2f12082e",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884580
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "37092170f838a8541e6456a265145dae15cf88da0cfdf69f9c5ca3d6bca4e52f",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884580
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -30755,6 +31211,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773496986
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "dff5bd8902b2f8fa5d6b5273a244803224e917bf6cf2adc9f94dce1c1ceab11a",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884585
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "410a4c78b00e2d3f0415523a77ed502ad9721d0649d41ab2e84f409a7fe35acd",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884585
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "65decc0069be11027fff908dca5f9acbf4022e823e17383077e6c8317f9fb94e",
@@ -31562,6 +32030,18 @@
           "last_bot_translation_hash": "9a582c23ef394418bc1326d4b2f6f2145b11ccc7a171e4c259c49d76901d03de",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491327
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "862f9e798af0ae1466a6ec121ad73723173cc432bc74c2abd7fca26867c40cf5",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884589
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "01b99c83f9ce171e7694a33059b206696706020d99a57c71cfb6e00968bb12be",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884589
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -32371,6 +32851,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497026
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "754c01dd69cb43a8104e732a2d0868c678e1d8693906481561b7eee3eaf40443",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884594
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "8e3ed2ea6caaa5b25cef4f703c7c4944e410c5e7c09c821c79f674bd53f0bcf3",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884594
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -33178,6 +33670,18 @@
           "last_bot_translation_hash": "5d36fff00a67e143b75a63b6a82420d94cb9ec6f9a2b490e30edd1394a918ff5",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491482
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "59aa22f310d04f9d0539f7987d501bd65b1fc8eb9125ed5325ba7a0bfc32d7f3",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884603
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "600f53b865ee37b6e32c845a2df97304e1ee9b23204f68aa634c0db3b59121e4",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884603
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -33987,6 +34491,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497059
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "50c4d825c42d1a59d47a290fc2955c292224ea4f6eedc8f7cdc13414a87ddd09",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884606
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "7c444234635735a6da18fede41e612a5b10334323b3565d98b11d6f6cb2d2b5b",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884606
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "a88ada5353267e126261d666fef6203648eedad3be728b80055802d7d328e7f2",
@@ -34794,6 +35310,18 @@
           "last_bot_translation_hash": "a48c3c2d1350eb73fa371d45b747b98f56dc871ecc34ee4e359511337d6a1094",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491603
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "430d37e9f675bce2d2df925a05a53bfc7e81a3b9e987035615a487082faa737a",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884610
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "fa952d9fb50ea69b408ef7db8e6adb6c77926c13624fe83af7c6be00329dd2b9",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884610
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -35603,6 +36131,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491636
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "a91c11a076c9017646538205bc0d762b5983b17ca2aecc88a743fc076f340144",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884614
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "df2bd05f8c8f4ebcb6e3428f811169071115188fa76dcef6908f41d6aede9477",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884614
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "e2b1e79ff780b855881e2f0ec436c7fe74a346c97890f067f81fbbf76a7af6b4",
@@ -36411,6 +36951,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497100
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "efc3c82bd5dd0f18deb08381fc7b4e88d6dc32561c9cd18217ab01609641c631",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884620
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "11c16423a1ece99afc0a5fb36630177fd14840c8ef32d80f969a04fc35c77dd4",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884620
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "4a4e44fd654428765e6b41312bb9ad70bea2580f1179bd2ba0c2d7dc4dad0415",
@@ -36982,10 +37534,10 @@
           "timestamp_epoch_secs": 1773487749
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "6d00d365d1ab93bd2ab78b5885a935f12c11a79f77ce85a459e28d1681639187",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "10b33490ed37a32928c4c59ce49f258b19b7a3df328302684bb0e7de50f8d3d2",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486016
+          "timestamp_epoch_secs": 1774884620
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -37218,6 +37770,18 @@
           "last_bot_translation_hash": "3fa517fbef7a7ed5e2cf017c2830ba9e8f7cda7f80a6031d996400a43ca3723e",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491779
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "76204ed25ab6981a2f4fd0c94d83959b7b3272da92f5e8992006ff8e1999ee83",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884624
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "42491c39f7a26f244a133222e7ccbaea08f1f7ed603b2decbfbecb2338423005",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884624
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -37790,10 +38354,10 @@
           "timestamp_epoch_secs": 1773487762
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "7215aa49b043148ff65085a0469a1a7795a7546d916106c50c192d006b7ec354",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "04ff64469d6496f4a842bb158f4e00dc03bd14ccad94b44b019953d978547acb",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486047
+          "timestamp_epoch_secs": 1774884624
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -38026,6 +38590,18 @@
           "last_bot_translation_hash": "bc0b0ad6a92f5230897dbd7600dc93c112ea71979ced179f1b5d699cfad0be2f",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491808
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "c197a7e0a5f56c085743b3b190710f69cba12b8bd30232ed24aab75240b0e1b6",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884630
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "f433321594a515e49a6b7864c2802eec92d0828fd5e09790743ab39c6ad5da2e",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884630
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -38598,10 +39174,10 @@
           "timestamp_epoch_secs": 1773487771
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "4f6193aec32e02ba62f6a1e6b2e6af95a6ee3d999688f4546b66ed1e9fc0cf54",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "1b3d46d197d8a0902f358564b3a285e200e536d99c4e5d27b86dcee0db1e5f69",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486074
+          "timestamp_epoch_secs": 1774884630
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -38834,6 +39410,18 @@
           "last_bot_translation_hash": "0ce2d4a56dc92a4bc09338ea311bbde84ded26e7e9446ce9eadc2e6135784a8e",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491896
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "8202b896fbf7a99a672e789630a8e564cba2537c0bd569e713312b1712d57d46",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884639
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "72fb9a3ba360364416779c79468ddd8304b541d00342eff038b596abe11f2d5e",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884639
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -39406,10 +39994,10 @@
           "timestamp_epoch_secs": 1773487788
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "316588d2cdd4a1356a6bbfe2f8cce5bfddb19338edaf50f4371bd6bcdef988a2",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "0e29db6d0364b7153b5d246e2ee473fa2bc074f44cc5f8eac5aa715f778f075d",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486111
+          "timestamp_epoch_secs": 1774884639
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -39642,6 +40230,18 @@
           "last_bot_translation_hash": "58e91f2d050438967873c63f012f19d308d52fd5dc3f14d1c07b9087c4525d7f",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491925
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "3a77358cd0ac2d65a7532dad4026ce2f794f3ea36f491eaf7f6cfb25935af116",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884644
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "f1a38932023c5a4ce4d63de1f6eeac76b56fe18a95d1fae1358511002e972470",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884644
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -40214,10 +40814,10 @@
           "timestamp_epoch_secs": 1773487796
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "a38a8e7d01e7cd2beb293a4ef5658ea72ecca4b20323bbe019fc442c07949e63",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "feb4741dd4dbfedddc01ecf38a8c19c1523b64be1d35508250b200aa62c9e5ba",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486143
+          "timestamp_epoch_secs": 1774884644
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -40450,6 +41050,18 @@
           "last_bot_translation_hash": "78081d7d0b0ded055de91007fa14dc3405e461a0d521647074800c82ead8b571",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773491955
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "7c17e597771298bc9955af000c99a7b304eb06bda32d97123c124cf069d4dc3c",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884648
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "358bf4837324faae1304cfd665a188015ac057e508481dd6900ea12d08611e9c",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884648
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -41022,10 +41634,10 @@
           "timestamp_epoch_secs": 1773487806
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "1c56a5c643eb058b71282ec51749f9f66ac2fdb5088f4992af13fd7993076d8e",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "08c640d7b6610a524477cc0f360b444529688633b450d253503ddcbfdf9b735b",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486168
+          "timestamp_epoch_secs": 1774884648
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -41258,6 +41870,18 @@
           "last_bot_translation_hash": "fd6894f40f58dde9cfd5880ab08648cc7a1151d642650051770ee7cd104061a7",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497180
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "8a5e11770a0c5eece85a95f6a4d1fe3ea2adcf893f71417d0b444e24143d9614",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884655
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "09ce7cbf5080c589a3ae3bb040e15441495e3b40865075ebceae2c9d9a609d66",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884655
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -41830,10 +42454,10 @@
           "timestamp_epoch_secs": 1773487818
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "16675d042266fcf37f74e9ff8129c77042db55dd198839d53bc79a54678b4612",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "d8094d89eeef3906380c37c990a917c675a5e362107843c7915af5aca49219ef",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486202
+          "timestamp_epoch_secs": 1774884655
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -42066,6 +42690,18 @@
           "last_bot_translation_hash": "b5d5880c7fbbe1d9a6f6de8b17a4d87001240d27e0226cbcdb5fbfaeabba18cd",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492144
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "12bcc146730bb7d4f11cc5e48a18fd42f89efb003a7d1f9b34e121b63a4d911f",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884659
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "c8279b4f9ae192bc4bb35b32109b8121f2de520241fe5cc261d409e8a293202d",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884659
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -42638,10 +43274,10 @@
           "timestamp_epoch_secs": 1773487829
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "764a999a8d846c2edd905b87407772cc23fbe57a2e0e137aa3aff5133ae4dcc4",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "7c7dfd592d62eca2cd97f2623bad36bfe114e5112c25db32890e64124f9523d1",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486231
+          "timestamp_epoch_secs": 1774884659
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -42874,6 +43510,18 @@
           "last_bot_translation_hash": "9dc424d00447ca470a4d13599ec6d3d0d87ee72515168532759935d161bb27e6",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492176
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "3b56f3762590ed85a12b6f1f2248543baed0f1bf35044d452a84d35e8986194e",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884664
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a31bfd9eea461739f1499bd614e6d90c1d94ff6c66e9da066d8ded405515c537",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884664
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -43446,10 +44094,10 @@
           "timestamp_epoch_secs": 1773487839
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "ee40011aef454cbc463971e6962502e841b246d2224f0b665cc23ab5adc437b9",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "f8ad0fe57da5ab8ba1870f1c2d4b5ad6fe4d84f5b97d18223ec3a5b1e26dde49",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486258
+          "timestamp_epoch_secs": 1774884664
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -43682,6 +44330,18 @@
           "last_bot_translation_hash": "f845dd4e0b6efd39d471d9c4cedf7aebcbb0068f7d305cae912f8518eeaa9eb7",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492207
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "bd53e6b744bbb77b5e8ce9736403d2f9c6cc4af36e939d38468f3e6dadf8a965",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884668
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "d2dc923376c3bc7e6462d8e3cbfc12534803056e2deb373b865788e68fe7db0d",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884668
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -44254,10 +44914,10 @@
           "timestamp_epoch_secs": 1773487848
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "8c3a6f7a7f4634398d7e5c2d85c7134c44f9bbad1e998bfdd3fc4b403e2f78da",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "d789488a315ec0ebe75b6668e0a841128be6f169bb949e591dd69f5b699c9f3c",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486286
+          "timestamp_epoch_secs": 1774884668
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -44490,6 +45150,18 @@
           "last_bot_translation_hash": "b9fba2feb83ceaf839631a67b1f51ee74f193f5b4e27ae33f757941927bea9b3",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497224
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "588dc47e3a225cd92c1195db99c65eb23020ef0f5cb4c0158c7c310311ac5d0d",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884672
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "98bb42f03e27571ad5026b25d00ba7f893ea94fdba7bfe56310c51df8af7f946",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884672
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -45062,10 +45734,10 @@
           "timestamp_epoch_secs": 1773487857
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "3a6b273cab96940571773d480cde887d65a09987b5d4c91af7d36313c84bd566",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "4dd060798de1a4c2ee505176e91026840ca205cea7b44ee45bb6f3fe866eda42",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486318
+          "timestamp_epoch_secs": 1774884672
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -45298,6 +45970,18 @@
           "last_bot_translation_hash": "96f340366ea7a26ff7a71830e53b7a6aad05b36ccce986db8eda11e39754e589",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497256
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "1ffd4ea8008425bd9141b38f17e56e224e2f94961d9289480e7a20c6c621ea40",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884677
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "af9cab2f3d9cc68abb1eb10dc77dcbf3d6a7bf2116418169261a4b66a2923573",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884677
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -45870,10 +46554,10 @@
           "timestamp_epoch_secs": 1773487879
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "f3dceeb5d935c77e24b89e942668634794331e83ca7adf698a8c5c49376fa2b8",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "b834b4cbae789f566bab3112d27721c5e598052f4dfd6ee024b91e8ec05996df",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486349
+          "timestamp_epoch_secs": 1774884677
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -46106,6 +46790,18 @@
           "last_bot_translation_hash": "7a4822d7d8406bf1601ccf8aec6aac6f376e9586bd63a94d7a3c9fb8550ef212",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492445
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "d455dcdd0800332fd50372d8e05fef7e2675c7a3a02defe371f253c80b4030e1",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884681
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "bcdcd171c769367b86248e28011be79c91063a0e09631c4f765fe23fb97365e7",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884681
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -46678,10 +47374,10 @@
           "timestamp_epoch_secs": 1773487888
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "053170d442e0058bd100c8ce4da7f672239230721840542b03a785bc392ae1c0",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "e166ecb8818966f8df72f13adbb7317299fb13574d9dba88bcbcbe6da6f39eb6",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486381
+          "timestamp_epoch_secs": 1774884681
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -46914,6 +47610,18 @@
           "last_bot_translation_hash": "1109d83c6ea1b8728fbfa4a321a9c2a97040155a013031d4366d0db5f5581799",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492479
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "f9f2d8e99a3f36fda0d99529d9217ad850c3c800b29985f00a7012c091a3f56f",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884686
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "7793519a91805f4b70e08e344c95654c22a2a62bb4eb84dfdad6169c4a245366",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884686
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -47486,10 +48194,10 @@
           "timestamp_epoch_secs": 1773487899
         },
         "cli.wizard.error.interactive_required": {
-          "last_english_hash": "ee22786b194a4bf7556cf3ef3914a12f9e3f97b365a9b27a913beadcbca998e7",
-          "last_bot_translation_hash": "6f1258c2800fb7f1eae8e0b0b4b7073751ecc4b1d85111c10cbb94ffba007ccd",
+          "last_english_hash": "736a3620964e3f2bf3b28339e12382bfd0983974aa93d76523151b01641de356",
+          "last_bot_translation_hash": "90845802788741e215aac633b7898eb421bfb537df716f295c2026d03e6b3a06",
           "engine": "codex-cli",
-          "timestamp_epoch_secs": 1773486411
+          "timestamp_epoch_secs": 1774884686
         },
         "cli.wizard.error.invalid_selection": {
           "last_english_hash": "ecd4694ee81f4528228799dedd117f09e047a529ead87b7df42d09bfe23dea9d",
@@ -47722,6 +48430,18 @@
           "last_bot_translation_hash": "0cab67d7e376bfa02f7d4688d4407e15b954e56de443d94d6617e143a4617c8e",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492507
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "23295b3abdeb68404a36bd8f392115c0d7aff5dd80d6c80bac0e975f9831fb61",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884690
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "a19671aee529ae41151a7482f2771d16ab851afe4d46834558d08572c48d7b23",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884690
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -48531,6 +49251,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492538
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "a2aba69d91bb82ddded28879a656e977f5e2931895770c509e6ae5f950360de2",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884695
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "f93b22d89322ec1bafae72f66599d8f18f5e04bf0de6e3639307abca9e1f8ca7",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884695
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "0024d7da9413b4d0bc014642739a15ea9cbbd1dbfbf3d36eae88397318a8ca09",
@@ -49338,6 +50070,18 @@
           "last_bot_translation_hash": "c0af3304b367e96c665903ca6b236acc4ea7285aa248ec5b2971d59c0560128e",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497288
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "b5df5149c9c2ee42cb547d2c061063cde4ea385656d68eabac5d5b55f5aaf911",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884698
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "bd3f0c1f26779d1ec9f3bfeb4a55dad88072507f191645ac92b5c721e467d5ed",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884698
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
@@ -50147,6 +50891,18 @@
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773492658
         },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "5ea74105b56a349ae4f170553a9376e7833c562c06d5a3d8770886b88bdcb277",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884703
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "739feb5484d4e45bbf7702add0137b455481f66f8e651737ebe7108a9eaaedb9",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884703
+        },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",
           "last_bot_translation_hash": "563f95b82ba8c1ab3d9a3327db22d1ef8c8007741754a76c20c1871e6807d083",
@@ -50954,6 +51710,18 @@
           "last_bot_translation_hash": "316b1adb461e2abf881f20362ad3d06f5823a3aa42daeae8233d2306fbe49b05",
           "engine": "codex-cli",
           "timestamp_epoch_secs": 1773497312
+        },
+        "cli.command.coverage.about": {
+          "last_english_hash": "782506aaa2c181846bb2a946cfd6c1285e137e86ea3acebefba912a081263411",
+          "last_bot_translation_hash": "037b84f7138678b318ebd4c96dfbb07850710845eef2e4e8102b1c08af625177",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884706
+        },
+        "cli.command.coverage.skip_run": {
+          "last_english_hash": "18f61165579b0149d1c631333e9b0c4f505a76b115756f01101b3b2bb3dc49bd",
+          "last_bot_translation_hash": "cd913e1613d2fdb87d4fb8b4c56d51982bc8da7088d95910b655a280ebe06347",
+          "engine": "codex-cli",
+          "timestamp_epoch_secs": 1774884706
         },
         "cli.command.flow.about": {
           "last_english_hash": "b46bb5a4de23152752136aa1ccd60b0059650e5dade2a12f09c754016e23faa9",

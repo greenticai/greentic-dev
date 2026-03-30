@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Config archivo thakhi mayjt'ayaña (por defecto: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Config clave thakhi (akham sañäni: defaults.component.org)",
   "cli.command.config.set.value": "Clave ukar churata valor (qillqatajam imatani)",
+  "cli.command.coverage.about": "Cobertura uñakipañanakaxa coverage-policy.json contra apnaqaña",
+  "cli.command.coverage.skip_run": "Jichhür target/coverage/coverage.json yatiyawi mayampi apnaqaña, jan tests mayampi qhathayañataki",
   "cli.command.flow.about": "Flow passthrough (greentic-flow)",
   "cli.command.gui.about": "GUI passthrough (greentic-gui)",
   "cli.command.install.about": "Delegated assets ukanaka instalar",

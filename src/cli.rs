@@ -45,6 +45,7 @@ pub fn localized_help_command(locale: &str) -> clap::Command {
         ("pack", "cli.command.pack.about"),
         ("component", "cli.command.component.about"),
         ("config", "cli.command.config.about"),
+        ("coverage", "cli.command.coverage.about"),
         ("mcp", "cli.command.mcp.about"),
         ("gui", "cli.command.gui.about"),
         ("secrets", "cli.command.secrets.about"),
@@ -136,6 +137,12 @@ pub fn localized_help_command(locale: &str) -> clap::Command {
             sub.about(crate::i18n::t(locale, "cli.command.cbor.about"))
                 .mut_arg("path", |arg| {
                     arg.help(crate::i18n::t(locale, "cli.command.cbor.path"))
+                })
+        })
+        .mut_subcommand("coverage", |sub| {
+            sub.about(crate::i18n::t(locale, "cli.command.coverage.about"))
+                .mut_arg("skip_run", |arg| {
+                    arg.help(crate::i18n::t(locale, "cli.command.coverage.skip_run"))
                 })
         })
         .mut_subcommand("wizard", |sub| {
@@ -296,6 +303,8 @@ pub enum Command {
     /// cli.command.config.about
     #[command(subcommand)]
     Config(ConfigCommand),
+    /// cli.command.coverage.about
+    Coverage(CoverageArgs),
     /// cli.command.mcp.about
     #[command(subcommand)]
     Mcp(McpCommand),
@@ -404,6 +413,13 @@ pub struct CborArgs {
     /// cli.command.cbor.path
     #[arg(value_name = "PATH")]
     pub path: PathBuf,
+}
+
+#[derive(Args, Debug, Clone)]
+pub struct CoverageArgs {
+    /// cli.command.coverage.skip_run
+    #[arg(long = "skip-run")]
+    pub skip_run: bool,
 }
 
 #[derive(Args, Debug, Clone)]

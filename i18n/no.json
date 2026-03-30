@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Overstyr sti til konfigurasjonsfil (standard: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Sti til konfigurasjonsnøkkel (f.eks. defaults.component.org)",
   "cli.command.config.set.value": "Verdi som skal tilordnes nøkkelen (lagres som en streng)",
+  "cli.command.coverage.about": "Kjør dekningskontroller mot coverage-policy.json",
+  "cli.command.coverage.skip_run": "Gjenbruk en eksisterende rapport target/coverage/coverage.json i stedet for å kjøre testene på nytt",
   "cli.command.flow.about": "Flow-videresending (greentic-flow)",
   "cli.command.gui.about": "GUI-videresending (greentic-gui)",
   "cli.command.install.about": "Installer delegerte ressurser",

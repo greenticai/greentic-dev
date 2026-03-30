@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "config ફાઇલનો માર્ગ ઓવરરાઇડ કરો (ડિફૉલ્ટ: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Config કી માર્ગ (ઉદાહરણ તરીકે defaults.component.org)",
   "cli.command.config.set.value": "કી માટે સોંપવાનું મૂલ્ય (સ્ટ્રિંગ તરીકે સંગ્રહિત)",
+  "cli.command.coverage.about": "coverage-policy.json સામે કવરેજ ચકાસણીઓ ચલાવો",
+  "cli.command.coverage.skip_run": "ટેસ્ટ્સ ફરીથી ચલાવવાના બદલે અસ્તિત્વમાં રહેલી target/coverage/coverage.json રિપોર્ટનો પુનઃઉપયોગ કરો",
   "cli.command.flow.about": "ફ્લો પાસથ્રૂ (greentic-flow)",
   "cli.command.gui.about": "GUI પાસથ્રૂ (greentic-gui)",
   "cli.command.install.about": "સોંપાયેલ એસેટ્સ ઇન્સ્ટોલ કરો",

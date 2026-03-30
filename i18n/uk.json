@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Перевизначити шлях до файлу конфігурації (типово: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Шлях до ключа конфігурації (наприклад, defaults.component.org)",
   "cli.command.config.set.value": "Значення, яке слід призначити ключу (зберігається як рядок)",
+  "cli.command.coverage.about": "Запустити перевірки покриття за файлом coverage-policy.json",
+  "cli.command.coverage.skip_run": "Повторно використати наявний звіт target/coverage/coverage.json замість повторного запуску тестів",
   "cli.command.flow.about": "Наскрізна передача потоку (greentic-flow)",
   "cli.command.gui.about": "Наскрізна передача GUI (greentic-gui)",
   "cli.command.install.about": "Установити делеговані ресурси",

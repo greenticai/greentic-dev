@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Παράκαμψη διαδρομής αρχείου ρυθμίσεων (προεπιλογή: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Διαδρομή κλειδιού ρυθμίσεων (π.χ. defaults.component.org)",
   "cli.command.config.set.value": "Τιμή που θα ανατεθεί στο κλειδί (αποθηκεύεται ως συμβολοσειρά)",
+  "cli.command.coverage.about": "Εκτέλεση ελέγχων κάλυψης σε σχέση με το coverage-policy.json",
+  "cli.command.coverage.skip_run": "Επαναχρησιμοποίηση υπάρχουσας αναφοράς target/coverage/coverage.json αντί για επανεκτέλεση των δοκιμών",
   "cli.command.flow.about": "Διέλευση flow (greentic-flow)",
   "cli.command.gui.about": "Διέλευση GUI (greentic-gui)",
   "cli.command.install.about": "Εγκατάσταση εκχωρημένων πόρων",

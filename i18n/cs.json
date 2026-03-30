@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Přepíše cestu ke konfiguračnímu souboru (výchozí: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Cesta ke klíči konfigurace (např. defaults.component.org)",
   "cli.command.config.set.value": "Hodnota přiřazená ke klíči (uložená jako řetězec)",
+  "cli.command.coverage.about": "Spustit kontroly pokrytí vůči coverage-policy.json",
+  "cli.command.coverage.skip_run": "Znovu použít existující report target/coverage/coverage.json místo opětovného spuštění testů",
   "cli.command.flow.about": "Předání flow (greentic-flow)",
   "cli.command.gui.about": "Předání GUI (greentic-gui)",
   "cli.command.install.about": "Nainstalovat delegované prostředky",

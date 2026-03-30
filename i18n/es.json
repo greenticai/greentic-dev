@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Anula la ruta del archivo de configuración (predeterminado: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Ruta de la clave de configuración (p. ej. defaults.component.org)",
   "cli.command.config.set.value": "Valor que se asignará a la clave (almacenado como cadena)",
+  "cli.command.coverage.about": "Ejecuta comprobaciones de cobertura contra coverage-policy.json",
+  "cli.command.coverage.skip_run": "Reutiliza un informe existente target/coverage/coverage.json en lugar de volver a ejecutar las pruebas",
   "cli.command.flow.about": "Paso directo de flujos (greentic-flow)",
   "cli.command.gui.about": "Paso directo de GUI (greentic-gui)",
   "cli.command.install.about": "Instalar recursos delegados",

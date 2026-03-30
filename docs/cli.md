@@ -25,6 +25,22 @@
 
 - `cbor <file>.cbor` decodes a CBOR payload and prints pretty JSON.
 
+## Coverage
+
+- `greentic-dev coverage`
+- `greentic-dev coverage --skip-run`
+
+Behavior:
+
+- ensures `cargo-llvm-cov` and `cargo-nextest` are installed when the run is not skipped
+- ensures `llvm-tools-preview` is available through `rustup`
+- creates `target/coverage` when missing
+- fails with Codex-oriented instructions if `coverage-policy.json` is missing
+- writes the report to `target/coverage/coverage.json`
+- validates the report against the global floor, per-file defaults, exclusions, and overrides in `coverage-policy.json`
+- exits non-zero when setup fails, the coverage run fails, or the policy is violated
+- `--skip-run` reuses an existing `target/coverage/coverage.json` file and only evaluates policy compliance
+
 ## Install
 
 - `greentic-dev install`

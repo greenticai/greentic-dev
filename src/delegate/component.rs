@@ -92,3 +92,81 @@ fn resolve_program(config: &GreenticConfig) -> Result<ResolvedProgram> {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{ComponentDelegate, resolve_program};
+    use crate::config::GreenticConfig;
+    use crate::util::process::CommandOutput;
+    use std::ffi::OsString;
+    use std::process::ExitStatus;
+    use tempfile::tempdir;
+
+    #[cfg(unix)]
+    fn success_status() -> ExitStatus {
+        use std::os::unix::process::ExitStatusExt;
+        ExitStatus::from_raw(0)
+    }
+
+    #[cfg(unix)]
+    fn failure_status(code: i32) -> ExitStatus {
+        use std::os::unix::process::ExitStatusExt;
+        ExitStatus::from_raw(code << 8)
+    }
+
+    #[test]
+    fn resolve_program_uses_existing_configured_path() {
+        let dir = tempdir().unwrap();
+        let custom = dir.path().join("greentic-component");
+        std::fs::write(&custom, "stub").unwrap();
+
+        let mut config = GreenticConfig::default();
+        config.tools.greentic_component.path = Some(custom.clone());
+
+        let resolved = resolve_program(&config).unwrap();
+        assert_eq!(resolved.program, custom.into_os_string());
+    }
+
+    #[test]
+    fn resolve_program_rejects_missing_configured_path() {
+        let mut config = GreenticConfig::default();
+        config.tools.greentic_component.path =
+            Some(tempdir().unwrap().path().join("missing-component"));
+
+        let err = resolve_program(&config)
+            .err()
+            .expect("expected missing path");
+        assert!(err.to_string().contains("does not exist"));
+    }
+
+    #[test]
+    fn ensure_success_accepts_successful_status() {
+        let delegate = ComponentDelegate {
+            program: OsString::from("greentic-component"),
+        };
+        let output = CommandOutput {
+            status: success_status(),
+            stdout: None,
+            stderr: None,
+        };
+
+        delegate.ensure_success("doctor", false, &output).unwrap();
+    }
+
+    #[test]
+    fn ensure_success_reports_failure_code() {
+        let delegate = ComponentDelegate {
+            program: OsString::from("greentic-component"),
+        };
+        let output = CommandOutput {
+            status: failure_status(7),
+            stdout: None,
+            stderr: Some(b"boom".to_vec()),
+        };
+
+        let err = delegate
+            .ensure_success("doctor", true, &output)
+            .unwrap_err();
+        assert!(err.to_string().contains("exit code 7"));
+    }
+}

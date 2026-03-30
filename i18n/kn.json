@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "config ಕಡತದ ಪಥವನ್ನು ಓವರ್‌ರೈಡ್ ಮಾಡಿ (ಡೀಫಾಲ್ಟ್: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Config ಕೀ ಪಥ (ಉದಾ. defaults.component.org)",
   "cli.command.config.set.value": "ಕೀಗೆ ನಿಯೋಜಿಸಬೇಕಾದ ಮೌಲ್ಯ (ಸ್ಟ್ರಿಂಗ್ ಆಗಿ ಸಂಗ್ರಹಿಸಲಾಗುತ್ತದೆ)",
+  "cli.command.coverage.about": "coverage-policy.json ಗೆ ವಿರುದ್ಧ ಕವರೆಜ್ ಪರಿಶೀಲನೆಗಳನ್ನು ಚಾಲನೆ ಮಾಡಿ",
+  "cli.command.coverage.skip_run": "ಪರೀಕ್ಷೆಗಳನ್ನು ಮರುಚಾಲನೆ ಮಾಡುವ ಬದಲು ಈಗಿರುವ target/coverage/coverage.json ವರದಿಯನ್ನು ಮರುಬಳಸಿ",
   "cli.command.flow.about": "ಫ್ಲೋ ಪಾಸ್‌ಥ್ರೂ (greentic-flow)",
   "cli.command.gui.about": "GUI ಪಾಸ್‌ಥ್ರೂ (greentic-gui)",
   "cli.command.install.about": "ಹಂಚಿಕೆಯಾಗಿರುವ ಆಸ್ತಿಗಳನ್ನು ಸ್ಥಾಪಿಸಿ",

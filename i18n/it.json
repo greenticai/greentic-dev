@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Sovrascrivi il percorso del file di configurazione (predefinito: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Percorso della chiave di configurazione (ad es. defaults.component.org)",
   "cli.command.config.set.value": "Valore da assegnare alla chiave (memorizzato come stringa)",
+  "cli.command.coverage.about": "Esegui i controlli di copertura rispetto a coverage-policy.json",
+  "cli.command.coverage.skip_run": "Riutilizza un report esistente target/coverage/coverage.json invece di rieseguire i test",
   "cli.command.flow.about": "Pass-through del flusso (greentic-flow)",
   "cli.command.gui.about": "Pass-through della GUI (greentic-gui)",
   "cli.command.install.about": "Installa asset delegati",

@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "設定ファイルのパスを上書きします（既定: $XDG_CONFIG_HOME/greentic-dev/config.toml）",
   "cli.command.config.set.key": "設定キーのパス（例: defaults.component.org）",
   "cli.command.config.set.value": "キーに割り当てる値（文字列として保存されます）",
+  "cli.command.coverage.about": "coverage-policy.json に対してカバレッジチェックを実行する",
+  "cli.command.coverage.skip_run": "テストを再実行する代わりに、既存の target/coverage/coverage.json レポートを再利用する",
   "cli.command.flow.about": "フローのパススルー（greentic-flow）",
   "cli.command.gui.about": "GUI のパススルー（greentic-gui）",
   "cli.command.install.about": "委譲されたアセットをインストールする",

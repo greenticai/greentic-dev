@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Nepaisyti konfigūracijos failo kelio (numatytasis: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Konfigūracijos rakto kelias (pvz. defaults.component.org)",
   "cli.command.config.set.value": "Reikšmė, kurią priskirti raktui (saugoma kaip eilutė)",
+  "cli.command.coverage.about": "Vykdyti aprėpties patikras pagal coverage-policy.json",
+  "cli.command.coverage.skip_run": "Pakartotinai naudoti esamą target/coverage/coverage.json ataskaitą, užuot iš naujo paleidus testus",
   "cli.command.flow.about": "Srauto persiuntimas (greentic-flow)",
   "cli.command.gui.about": "GUI persiuntimas (greentic-gui)",
   "cli.command.install.about": "Įdiegti deleguotus išteklius",

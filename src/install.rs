@@ -1484,6 +1484,34 @@ mod tests {
     }
 
     #[test]
+    fn archive_name_matching_handles_versioned_binaries() {
+        assert!(archive_name_matches("greentic-x", "greentic-x"));
+        assert!(archive_name_matches("greentic-x", "greentic-x-v1.2.3"));
+        assert!(archive_name_matches("greentic-x.exe", "greentic-x.exe"));
+        assert!(!archive_name_matches("greentic-x", "other-tool"));
+    }
+
+    #[test]
+    fn safe_archive_relative_path_rejects_escaping_paths() {
+        assert_eq!(
+            safe_archive_relative_path(Path::new("bin/greentic-x")),
+            Some(PathBuf::from("bin/greentic-x"))
+        );
+        assert!(safe_archive_relative_path(Path::new("../escape")).is_none());
+        assert!(safe_archive_relative_path(Path::new("/absolute")).is_none());
+    }
+
+    #[test]
+    fn github_url_enforcement_allows_github_and_localhost_only() {
+        enforce_github_url("https://github.com/acme/project/releases/download/v1/tool.tgz")
+            .unwrap();
+        enforce_github_url("http://localhost:8080/test").unwrap();
+
+        let err = enforce_github_url("https://example.com/tool.tgz").unwrap_err();
+        assert!(format!("{err}").contains("GitHub-hosted assets"));
+    }
+
+    #[test]
     fn tenant_install_resolves_tool_and_doc_manifests_by_url() -> Result<()> {
         let temp = TempDir::new()?;
         let tool_archive = tar_gz_with_binary("greentic-x", b"bin");

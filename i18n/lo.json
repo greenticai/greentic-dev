@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "ແທນທີ່ເສັ້ນທາງໄຟລ໌ config (ຄ່າປົກກະຕິ: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "ເສັ້ນທາງຄີ config (ຕົວຢ່າງ: defaults.component.org)",
   "cli.command.config.set.value": "ຄ່າທີ່ຈະກຳນົດໃຫ້ຄີ (ຈັດເກັບເປັນສະຕຣິງ)",
+  "cli.command.coverage.about": "ດຳເນີນການກວດສອບ coverage ຕາມ coverage-policy.json",
+  "cli.command.coverage.skip_run": "ນຳໃຊ້ລາຍງານ target/coverage/coverage.json ທີ່ມີຢູ່ແລ້ວແທນການຮັນການທົດສອບໃໝ່",
   "cli.command.flow.about": "ສົ່ງຕໍ່ Flow (greentic-flow)",
   "cli.command.gui.about": "ສົ່ງຕໍ່ GUI (greentic-gui)",
   "cli.command.install.about": "ຕິດຕັ້ງຊັບສິນທີ່ຖືກມອບໝາຍ",

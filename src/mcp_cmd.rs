@@ -242,3 +242,95 @@ fn print_report(report: &ToolMapReport) {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{
+        ToolMap, ToolMapConfig, ToolMapReport, ToolRef, is_json, load_tool_map_config,
+        locate_toolmap,
+    };
+    use tempfile::tempdir;
+
+    fn sample_tool(name: &str) -> ToolRef {
+        ToolRef {
+            name: name.to_string(),
+            component: "component.wasm".to_string(),
+            entry: "run".to_string(),
+            timeout_ms: Some(500),
+            max_retries: Some(2),
+            retry_backoff_ms: Some(100),
+        }
+    }
+
+    #[test]
+    fn json_detection_prefers_extension_and_content() {
+        assert!(is_json(std::path::Path::new("toolmap.json"), "tools: []"));
+        assert!(!is_json(
+            std::path::Path::new("toolmap.yaml"),
+            "{\"tools\":[]}"
+        ));
+        assert!(is_json(
+            std::path::Path::new("toolmap"),
+            "  {\"tools\": []}"
+        ));
+    }
+
+    #[test]
+    fn duplicate_tool_names_are_rejected() {
+        let config = ToolMapConfig {
+            tools: vec![sample_tool("demo"), sample_tool("demo")],
+        };
+
+        let err = ToolMap::from_config(&config).unwrap_err();
+        assert!(err.to_string().contains("duplicate tool names"));
+    }
+
+    #[test]
+    fn load_tool_map_config_supports_json_and_yaml() {
+        let dir = tempdir().unwrap();
+        let json_path = dir.path().join("toolmap.json");
+        let yaml_path = dir.path().join("toolmap.yaml");
+        std::fs::write(
+            &json_path,
+            r#"{"tools":[{"name":"demo","component":"component.wasm","entry":"run"}]}"#,
+        )
+        .unwrap();
+        std::fs::write(
+            &yaml_path,
+            "tools:\n  - name: demo\n    component: component.wasm\n    entry: run\n",
+        )
+        .unwrap();
+
+        assert_eq!(load_tool_map_config(&json_path).unwrap().tools.len(), 1);
+        assert_eq!(load_tool_map_config(&yaml_path).unwrap().tools.len(), 1);
+    }
+
+    #[test]
+    fn locate_toolmap_finds_directory_default_files() {
+        let dir = tempdir().unwrap();
+        let provider_dir = dir.path().join("demo");
+        std::fs::create_dir_all(&provider_dir).unwrap();
+        let toolmap = provider_dir.join("toolmap.yaml");
+        std::fs::write(&toolmap, "tools: []\n").unwrap();
+
+        let located = locate_toolmap(dir.path(), "demo").unwrap();
+        assert_eq!(located, toolmap.canonicalize().unwrap());
+    }
+
+    #[test]
+    fn report_marks_missing_components_as_warnings() {
+        let dir = tempdir().unwrap();
+        let config_path = dir.path().join("toolmap.yaml");
+        std::fs::write(&config_path, "tools: []\n").unwrap();
+        let map = ToolMap::from_config(&ToolMapConfig {
+            tools: vec![sample_tool("demo")],
+        })
+        .unwrap();
+
+        let report = ToolMapReport::from_map(&config_path, &map);
+        assert_eq!(report.tool_count, 1);
+        assert_eq!(report.tools[0].name, "demo");
+        assert!(!report.tools[0].exists);
+        assert_eq!(report.warnings.len(), 1);
+    }
+}

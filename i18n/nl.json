@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Pad naar configuratiebestand overschrijven (standaard: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Pad van configuratiesleutel (bijv. defaults.component.org)",
   "cli.command.config.set.value": "Waarde die aan de sleutel moet worden toegewezen (opgeslagen als een string)",
+  "cli.command.coverage.about": "Voer dekkingscontroles uit op coverage-policy.json",
+  "cli.command.coverage.skip_run": "Hergebruik een bestaand target/coverage/coverage.json-rapport in plaats van tests opnieuw uit te voeren",
   "cli.command.flow.about": "Flow-doorvoer (greentic-flow)",
   "cli.command.gui.about": "GUI-doorvoer (greentic-gui)",
   "cli.command.install.about": "Gedelegeerde assets installeren",

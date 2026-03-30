@@ -7,6 +7,8 @@
   "cli.command.pack.about": "تمرير أوامر الحزم (greentic-pack؛ pack run يستخدم greentic-runner-cli)",
   "cli.command.component.about": "تمرير أوامر المكوّنات (greentic-component)",
   "cli.command.config.about": "إدارة إعدادات greentic-dev",
+  "cli.command.coverage.about": "شغّل فحوصات التغطية مقابل coverage-policy.json",
+  "cli.command.coverage.skip_run": "أعد استخدام تقرير target/coverage/coverage.json موجود بدلًا من إعادة تشغيل الاختبارات",
   "cli.command.mcp.about": "أدوات MCP",
   "cli.command.gui.about": "تمرير أوامر الواجهة الرسومية (greentic-gui)",
   "cli.command.secrets.about": "أغلفة ميسّرة للأسرار",

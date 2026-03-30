@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Ohita konfiguraatiotiedoston polku (oletus: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Konfiguraatioavaimen polku (esim. defaults.component.org)",
   "cli.command.config.set.value": "Avaimelle asetettava arvo (tallennetaan merkkijonona)",
+  "cli.command.coverage.about": "Suorita kattavuustarkistukset coverage-policy.json-tiedostoa vasten",
+  "cli.command.coverage.skip_run": "Käytä olemassa olevaa target/coverage/coverage.json-raporttia testien uudelleensuorittamisen sijaan",
   "cli.command.flow.about": "Vuon läpivienti (greentic-flow)",
   "cli.command.gui.about": "GUI:n läpivienti (greentic-gui)",
   "cli.command.install.about": "Asenna delegoidut resurssit",

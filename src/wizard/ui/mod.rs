@@ -595,21 +595,133 @@ fn build_answer_document(
     answers: &BTreeMap<String, serde_json::Value>,
     locale: &str,
 ) -> serde_json::Value {
-    let (wizard_id, schema_id) = match wizard_type {
-        "pack" => ("greentic-pack.wizard.run", "greentic-pack.wizard.answers"),
-        "bundle" => (
-            "greentic-bundle.wizard.run",
-            "greentic-bundle.wizard.answers",
-        ),
-        _ => ("unknown", "unknown"),
-    };
+    match wizard_type {
+        "pack" => build_pack_answer_document(answers, locale),
+        "bundle" => build_bundle_answer_document(answers, locale),
+        _ => serde_json::json!({}),
+    }
+}
+
+fn build_pack_answer_document(
+    answers: &BTreeMap<String, serde_json::Value>,
+    locale: &str,
+) -> serde_json::Value {
+    let pack_id = answers
+        .get("create_pack_id")
+        .and_then(|v| v.as_str())
+        .unwrap_or("my-pack");
+    let pack_dir = answers
+        .get("pack_dir")
+        .and_then(|v| v.as_str())
+        .unwrap_or("./");
+    let run_doctor = answers
+        .get("run_doctor")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(true);
+    let run_build = answers
+        .get("run_build")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(true);
+    let sign = answers
+        .get("sign")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(false);
+    let sign_key_path = answers
+        .get("sign_key_path")
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+
+    let mut doc_answers = serde_json::json!({
+        "selected_actions": [
+            "main.create_application_pack",
+            "create_application_pack.start"
+        ],
+        "create_pack_id": pack_id,
+        "create_pack_scaffold": true,
+        "pack_dir": pack_dir,
+        "run_delegate_flow": false,
+        "run_delegate_component": false,
+        "run_doctor": run_doctor,
+        "run_build": run_build,
+        "sign": sign,
+        "mode": "interactive"
+    });
+
+    if sign && !sign_key_path.is_empty() {
+        doc_answers["sign_key_path"] = serde_json::Value::String(sign_key_path.to_string());
+    }
 
     serde_json::json!({
-        "wizard_id": wizard_id,
-        "schema_id": schema_id,
+        "wizard_id": "greentic-pack.wizard.run",
+        "schema_id": "greentic-pack.wizard.answers",
         "schema_version": "1.0.0",
         "locale": locale,
-        "answers": answers,
+        "answers": doc_answers,
+        "locks": {}
+    })
+}
+
+fn build_bundle_answer_document(
+    answers: &BTreeMap<String, serde_json::Value>,
+    locale: &str,
+) -> serde_json::Value {
+    let bundle_name = answers
+        .get("bundle_name")
+        .and_then(|v| v.as_str())
+        .unwrap_or("My Bundle");
+    let bundle_id = answers
+        .get("bundle_id")
+        .and_then(|v| v.as_str())
+        .unwrap_or("my-bundle");
+    let output_dir = answers
+        .get("output_dir")
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+    let enable_assets = answers
+        .get("enable_bundle_assets")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(false);
+
+    let capabilities = if enable_assets {
+        serde_json::json!(["greentic.capability.bundle_assets_read_v1"])
+    } else {
+        serde_json::json!([])
+    };
+
+    let mut app_packs = Vec::new();
+    if let Some(reference) = answers.get("app_pack_reference").and_then(|v| v.as_str())
+        && !reference.is_empty()
+    {
+        let scope = answers
+            .get("app_pack_scope")
+            .and_then(|v| v.as_str())
+            .unwrap_or("global");
+        app_packs.push(serde_json::json!({
+            "reference": reference,
+            "mapping": {
+                "scope": scope
+            }
+        }));
+    }
+
+    serde_json::json!({
+        "wizard_id": "greentic-bundle.wizard.run",
+        "schema_id": "greentic-bundle.wizard.answers",
+        "schema_version": "1.0.0",
+        "locale": locale,
+        "answers": {
+            "mode": "create",
+            "bundle_name": bundle_name,
+            "bundle_id": bundle_id,
+            "output_dir": output_dir,
+            "app_pack_entries": app_packs,
+            "extension_provider_entries": [],
+            "access_rules": [],
+            "capabilities": capabilities,
+            "advanced_setup": false,
+            "setup_execution_intent": false,
+            "export_intent": false
+        },
         "locks": {}
     })
 }

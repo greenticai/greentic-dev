@@ -564,7 +564,6 @@ fn execute_wizard(
         "apply".to_string(),
         "--answers".to_string(),
         tmp.display().to_string(),
-        "--yes".to_string(),
     ]);
 
     match Command::new(&bin)

@@ -150,6 +150,7 @@
     state.subAction = action;
     state.answers = {};
     state.currentStep = 0;
+    state.catalog = null;
     fetch("/api/wizard/submenu/select", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -160,6 +161,12 @@
       .then(function (data) {
         if (data && data.steps && data.steps.length > 0) {
           state.steps = data.steps;
+          // For extension flows, try loading default catalog to populate selects
+          var isExt = action === "create_ext" || action === "update_ext" || action === "add_ext";
+          if (isExt) {
+            loadCatalogAndEnrichSteps(data.steps);
+            return;
+          }
           state.phase = "form";
           render();
         } else {
@@ -169,6 +176,63 @@
             render();
           });
         }
+      });
+  }
+
+  function loadCatalogAndEnrichSteps(steps) {
+    // Find the catalog ref default value from steps
+    var catalogRef = "file://docs/extensions_capability_packs.catalog.v1.json";
+    steps.forEach(function (step) {
+      step.fields.forEach(function (f) {
+        if (f.id === "extension_catalog_ref" && f.default_value) {
+          catalogRef = f.default_value;
+        }
+      });
+    });
+
+    fetch("/api/catalog/load", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ catalog_ref: catalogRef }),
+    }).then(function (r) { return r.json(); })
+      .then(function (catalog) {
+        state.catalog = catalog;
+        // Enrich type/template fields with choices from catalog
+        steps.forEach(function (step) {
+          step.fields.forEach(function (f) {
+            if (f.id === "extension_type_id" && catalog.types && catalog.types.length > 0) {
+              f.kind = "select";
+              f.choices = catalog.types.map(function (t) {
+                return { value: t.id, label: t.name + " — " + t.description };
+              });
+              f.default_value = catalog.types[0].id;
+              f.placeholder = null;
+            }
+            if (f.id === "extension_template_id" && catalog.types && catalog.types.length > 0) {
+              // Populate with all templates from first type; updated on type change
+              var allTemplates = [];
+              catalog.types.forEach(function (t) {
+                t.templates.forEach(function (tmpl) {
+                  allTemplates.push({ value: tmpl.id, label: t.id + " / " + tmpl.name });
+                });
+              });
+              if (allTemplates.length > 0) {
+                f.kind = "select";
+                f.choices = allTemplates;
+                f.default_value = allTemplates[0].value;
+                f.placeholder = null;
+              }
+            }
+          });
+        });
+        state.steps = steps;
+        state.phase = "form";
+        render();
+      }).catch(function () {
+        // Catalog load failed, fall back to text inputs
+        state.steps = steps;
+        state.phase = "form";
+        render();
       });
   }
 

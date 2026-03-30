@@ -595,6 +595,7 @@ fn build_router(state: Arc<UiState>) -> Router {
         .route("/api/wizard/submenu", get(get_submenu_options))
         .route("/api/wizard/submenu/select", post(post_submenu_select))
         .route("/api/wizard/steps", get(get_wizard_steps))
+        .route("/api/catalog/load", post(post_load_catalog))
         .route("/api/wizard/submit", post(post_submit_answers))
         .route("/api/wizard/execute", post(post_execute))
         .route("/api/wizard/result", get(get_execution_result))
@@ -795,6 +796,110 @@ async fn get_wizard_steps(State(state): State<Arc<UiState>>) -> Json<Option<Wiza
         wizard_type: wt,
         steps,
     }))
+}
+
+#[derive(Deserialize)]
+struct CatalogLoadRequest {
+    catalog_ref: String,
+}
+
+#[derive(Serialize, Default)]
+struct CatalogResponse {
+    types: Vec<CatalogType>,
+}
+
+#[derive(Serialize)]
+struct CatalogType {
+    id: String,
+    name: String,
+    description: String,
+    templates: Vec<CatalogTemplate>,
+}
+
+#[derive(Serialize)]
+struct CatalogTemplate {
+    id: String,
+    name: String,
+    description: String,
+}
+
+async fn post_load_catalog(Json(req): Json<CatalogLoadRequest>) -> Json<CatalogResponse> {
+    let result = tokio::task::spawn_blocking(move || load_catalog_types(&req.catalog_ref))
+        .await
+        .unwrap_or_default();
+    Json(result)
+}
+
+fn load_catalog_types(catalog_ref: &str) -> CatalogResponse {
+    let path = if let Some(p) = catalog_ref.strip_prefix("file://") {
+        std::path::PathBuf::from(p)
+    } else {
+        // For non-file refs, try resolving relative to greentic-pack install
+        return CatalogResponse { types: vec![] };
+    };
+
+    let content = match std::fs::read_to_string(&path) {
+        Ok(c) => c,
+        Err(_) => return CatalogResponse { types: vec![] },
+    };
+
+    let doc: serde_json::Value = match serde_json::from_str(&content) {
+        Ok(d) => d,
+        Err(_) => return CatalogResponse { types: vec![] },
+    };
+
+    let types = doc
+        .get("extension_types")
+        .and_then(|v| v.as_array())
+        .map(|arr| {
+            arr.iter()
+                .filter_map(|t| {
+                    let id = t.get("id")?.as_str()?.to_string();
+                    let name = t
+                        .get("name")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or(&id)
+                        .to_string();
+                    let description = t
+                        .get("description")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("")
+                        .to_string();
+                    let templates = t
+                        .get("templates")
+                        .and_then(|v| v.as_array())
+                        .map(|ta| {
+                            ta.iter()
+                                .filter_map(|tt| {
+                                    Some(CatalogTemplate {
+                                        id: tt.get("id")?.as_str()?.to_string(),
+                                        name: tt
+                                            .get("name")
+                                            .and_then(|v| v.as_str())
+                                            .unwrap_or("")
+                                            .to_string(),
+                                        description: tt
+                                            .get("description")
+                                            .and_then(|v| v.as_str())
+                                            .unwrap_or("")
+                                            .to_string(),
+                                    })
+                                })
+                                .collect()
+                        })
+                        .unwrap_or_default();
+                    Some(CatalogType {
+                        id,
+                        name,
+                        description,
+                        templates,
+                    })
+                })
+                .collect()
+        })
+        .unwrap_or_default();
+
+    CatalogResponse { types }
 }
 
 async fn post_submit_answers(

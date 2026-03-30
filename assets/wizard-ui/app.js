@@ -5,6 +5,7 @@
   var state = {
     phase: "launcher",
     wizardType: null,
+    subAction: null,
     steps: [],
     currentStep: 0,
     answers: {},
@@ -16,6 +17,7 @@
   function render() {
     switch (state.phase) {
       case "launcher": renderLauncher(); break;
+      case "submenu": renderSubmenu(); break;
       case "form": renderFormStep(); break;
       case "review": renderReview(); break;
       case "executing": renderExecuting(); break;
@@ -81,6 +83,7 @@
 
   function selectWizard(action) {
     state.wizardType = action;
+    state.subAction = null;
     state.answers = {};
     state.currentStep = 0;
     fetch("/api/launcher/select", {
@@ -88,13 +91,83 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ selected_action: action }),
     }).then(function () {
+      state.phase = "submenu";
+      render();
+    });
+  }
+
+  // ── Sub-menu ──
+
+  function renderSubmenu() {
+    fetch("/api/wizard/submenu")
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data) return;
+        var html =
+          '<div class="fade-in">' +
+            '<div class="step-header">' +
+              '<button class="btn btn-ghost btn-sm btn-back" id="btn-back-submenu">' +
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>' +
+                ' Back' +
+              '</button>' +
+            '</div>' +
+            '<div class="brand">' +
+              '<h1 class="brand-title">' + esc(data.title) + '</h1>' +
+              '<p class="brand-desc">Select an action to get started.</p>' +
+            '</div>' +
+            '<div class="card-group">';
+
+        data.options.forEach(function (opt) {
+          html +=
+            '<button class="option-card" data-sub="' + esc(opt.value) + '">' +
+              '<div class="option-card-content">' +
+                '<span class="option-card-title">' + esc(opt.label) + '</span>' +
+                '<span class="option-card-desc">' + esc(opt.description) + '</span>' +
+              '</div>' +
+              '<div class="option-card-arrow">' +
+                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>' +
+              '</div>' +
+            '</button>';
+        });
+
+        html += '</div></div>';
+        app.innerHTML = html;
+
+        document.getElementById("btn-back-submenu").addEventListener("click", function () {
+          state.phase = "launcher";
+          render();
+        });
+
+        app.querySelectorAll("[data-sub]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            selectSubAction(btn.getAttribute("data-sub"));
+          });
+        });
+      });
+  }
+
+  function selectSubAction(action) {
+    state.subAction = action;
+    state.answers = {};
+    state.currentStep = 0;
+    fetch("/api/wizard/submenu/select", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ selected_action: action }),
+    }).then(function () {
       return fetch("/api/wizard/steps");
     }).then(function (r) { return r.json(); })
       .then(function (data) {
-        if (data && data.steps) {
+        if (data && data.steps && data.steps.length > 0) {
           state.steps = data.steps;
           state.phase = "form";
           render();
+        } else {
+          app.innerHTML = '<div class="fade-in center-msg"><p>This wizard flow is not yet available in the web UI.</p><button class="btn btn-secondary" id="btn-back-unsupported">Back</button></div>';
+          document.getElementById("btn-back-unsupported").addEventListener("click", function () {
+            state.phase = "submenu";
+            render();
+          });
         }
       });
   }
@@ -192,7 +265,7 @@
         state.currentStep--;
         render();
       } else {
-        state.phase = "launcher";
+        state.phase = "submenu";
         render();
       }
     });

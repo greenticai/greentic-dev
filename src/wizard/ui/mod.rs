@@ -151,6 +151,69 @@ fn pack_create_steps() -> Vec<FormStep> {
     ]
 }
 
+fn pack_update_steps() -> Vec<FormStep> {
+    vec![FormStep {
+        id: "pack_update_basics".into(),
+        title: "Update Application Pack".into(),
+        description: "Update an existing application pack.".into(),
+        fields: vec![
+            FormField {
+                id: "pack_dir".into(),
+                label: "Pack Directory".into(),
+                kind: FieldKind::Text,
+                required: true,
+                default_value: Some(".".into()),
+                placeholder: Some("./my-app-pack".into()),
+                choices: vec![],
+                depends_on: None,
+            },
+            FormField {
+                id: "run_doctor".into(),
+                label: "Run doctor (validate pack)".into(),
+                kind: FieldKind::Boolean,
+                required: false,
+                default_value: Some("true".into()),
+                placeholder: None,
+                choices: vec![],
+                depends_on: None,
+            },
+            FormField {
+                id: "run_build".into(),
+                label: "Run build (compile pack)".into(),
+                kind: FieldKind::Boolean,
+                required: false,
+                default_value: Some("true".into()),
+                placeholder: None,
+                choices: vec![],
+                depends_on: None,
+            },
+            FormField {
+                id: "sign".into(),
+                label: "Sign package".into(),
+                kind: FieldKind::Boolean,
+                required: false,
+                default_value: Some("false".into()),
+                placeholder: None,
+                choices: vec![],
+                depends_on: None,
+            },
+            FormField {
+                id: "sign_key_path".into(),
+                label: "Signing key path".into(),
+                kind: FieldKind::Text,
+                required: false,
+                default_value: None,
+                placeholder: Some("./signing.key".into()),
+                choices: vec![],
+                depends_on: Some(FieldDependency {
+                    field: "sign".into(),
+                    value: "true".into(),
+                }),
+            },
+        ],
+    }]
+}
+
 fn bundle_create_steps() -> Vec<FormStep> {
     vec![
         FormStep {
@@ -248,6 +311,24 @@ fn bundle_create_steps() -> Vec<FormStep> {
     ]
 }
 
+fn bundle_update_steps() -> Vec<FormStep> {
+    vec![FormStep {
+        id: "bundle_update_basics".into(),
+        title: "Update Bundle".into(),
+        description: "Open an existing bundle directory or .gtbundle artifact to edit.".into(),
+        fields: vec![FormField {
+            id: "bundle_target".into(),
+            label: "Bundle Directory or .gtbundle Path".into(),
+            kind: FieldKind::Text,
+            required: true,
+            default_value: Some(".".into()),
+            placeholder: Some("./my-bundle or ./my-bundle.gtbundle".into()),
+            choices: vec![],
+            depends_on: None,
+        }],
+    }]
+}
+
 // ---------------------------------------------------------------------------
 // Server state
 // ---------------------------------------------------------------------------
@@ -255,6 +336,7 @@ fn bundle_create_steps() -> Vec<FormStep> {
 struct UiState {
     locale: String,
     wizard_type: Mutex<Option<String>>,
+    sub_action: Mutex<Option<String>>,
     answers: Mutex<BTreeMap<String, serde_json::Value>>,
     execution_output: Mutex<Option<ExecutionResult>>,
     shutdown_tx: broadcast::Sender<()>,
@@ -327,6 +409,7 @@ async fn run_server(locale: &str) -> Result<()> {
     let state = Arc::new(UiState {
         locale: locale.to_string(),
         wizard_type: Mutex::new(None),
+        sub_action: Mutex::new(None),
         answers: Mutex::new(BTreeMap::new()),
         execution_output: Mutex::new(None),
         shutdown_tx: shutdown_tx.clone(),
@@ -361,6 +444,8 @@ fn build_router(state: Arc<UiState>) -> Router {
         .route("/style.css", get(serve_css))
         .route("/api/launcher/options", get(get_launcher_options))
         .route("/api/launcher/select", post(post_launcher_select))
+        .route("/api/wizard/submenu", get(get_submenu_options))
+        .route("/api/wizard/submenu/select", post(post_submenu_select))
         .route("/api/wizard/steps", get(get_wizard_steps))
         .route("/api/wizard/submit", post(post_submit_answers))
         .route("/api/wizard/execute", post(post_execute))
@@ -424,6 +509,7 @@ async fn post_launcher_select(
     Json(req): Json<SelectRequest>,
 ) -> Json<StatusResponse> {
     *state.wizard_type.lock().unwrap() = Some(req.selected_action);
+    *state.sub_action.lock().unwrap() = None;
     *state.answers.lock().unwrap() = BTreeMap::new();
     *state.execution_output.lock().unwrap() = None;
     Json(StatusResponse {
@@ -432,14 +518,118 @@ async fn post_launcher_select(
     })
 }
 
-async fn get_wizard_steps(State(state): State<Arc<UiState>>) -> Json<Option<WizardStepsResponse>> {
+#[derive(Serialize)]
+struct SubmenuResponse {
+    wizard_type: String,
+    title: String,
+    options: Vec<SubmenuOption>,
+}
+
+#[derive(Serialize)]
+struct SubmenuOption {
+    value: String,
+    label: String,
+    description: String,
+}
+
+async fn get_submenu_options(State(state): State<Arc<UiState>>) -> Json<Option<SubmenuResponse>> {
     let wizard_type = state.wizard_type.lock().unwrap().clone();
     let Some(wt) = wizard_type else {
         return Json(None);
     };
-    let steps = match wt.as_str() {
-        "pack" => pack_create_steps(),
-        "bundle" => bundle_create_steps(),
+    let resp = match wt.as_str() {
+        "pack" => SubmenuResponse {
+            wizard_type: "pack".into(),
+            title: "Pack Wizard".into(),
+            options: vec![
+                SubmenuOption {
+                    value: "create_app".into(),
+                    label: "Create application pack".into(),
+                    description: "Scaffold a new application pack with flows and components."
+                        .into(),
+                },
+                SubmenuOption {
+                    value: "update_app".into(),
+                    label: "Update application pack".into(),
+                    description: "Update an existing application pack.".into(),
+                },
+                SubmenuOption {
+                    value: "create_ext".into(),
+                    label: "Create extension pack".into(),
+                    description: "Create a new extension pack from a catalog template.".into(),
+                },
+                SubmenuOption {
+                    value: "update_ext".into(),
+                    label: "Update extension pack".into(),
+                    description: "Update an existing extension pack.".into(),
+                },
+                SubmenuOption {
+                    value: "add_ext".into(),
+                    label: "Add extension to existing pack".into(),
+                    description: "Add an extension entry to an existing pack.".into(),
+                },
+            ],
+        },
+        "bundle" => SubmenuResponse {
+            wizard_type: "bundle".into(),
+            title: "Bundle Wizard".into(),
+            options: vec![
+                SubmenuOption {
+                    value: "create".into(),
+                    label: "Create bundle".into(),
+                    description: "Start a new bundle workspace.".into(),
+                },
+                SubmenuOption {
+                    value: "update".into(),
+                    label: "Update bundle".into(),
+                    description: "Open and edit an existing bundle.".into(),
+                },
+                SubmenuOption {
+                    value: "validate".into(),
+                    label: "Validate bundle".into(),
+                    description: "Preview the normalized bundle plan without writing files.".into(),
+                },
+                SubmenuOption {
+                    value: "doctor".into(),
+                    label: "Doctor".into(),
+                    description: "Run doctor checks against a bundle.".into(),
+                },
+                SubmenuOption {
+                    value: "inspect".into(),
+                    label: "Inspect".into(),
+                    description: "Inspect a bundle directory or .gtbundle artifact.".into(),
+                },
+            ],
+        },
+        _ => return Json(None),
+    };
+    Json(Some(resp))
+}
+
+async fn post_submenu_select(
+    State(state): State<Arc<UiState>>,
+    Json(req): Json<SelectRequest>,
+) -> Json<StatusResponse> {
+    *state.sub_action.lock().unwrap() = Some(req.selected_action);
+    *state.answers.lock().unwrap() = BTreeMap::new();
+    Json(StatusResponse {
+        status: "ok".into(),
+        message: None,
+    })
+}
+
+async fn get_wizard_steps(State(state): State<Arc<UiState>>) -> Json<Option<WizardStepsResponse>> {
+    let wizard_type = state.wizard_type.lock().unwrap().clone();
+    let sub_action = state.sub_action.lock().unwrap().clone();
+    let Some(wt) = wizard_type else {
+        return Json(None);
+    };
+    let sa = sub_action.unwrap_or_default();
+    let steps = match (wt.as_str(), sa.as_str()) {
+        ("pack", "create_app") => pack_create_steps(),
+        ("pack", "update_app") => pack_update_steps(),
+        ("bundle", "create") => bundle_create_steps(),
+        ("bundle", "update") => bundle_update_steps(),
         _ => vec![],
     };
     Json(Some(WizardStepsResponse {
@@ -464,6 +654,7 @@ async fn post_submit_answers(
 
 async fn post_execute(State(state): State<Arc<UiState>>) -> Json<StatusResponse> {
     let wizard_type = state.wizard_type.lock().unwrap().clone();
+    let sub_action = state.sub_action.lock().unwrap().clone();
     let answers = state.answers.lock().unwrap().clone();
     let locale = state.locale.clone();
 
@@ -474,7 +665,8 @@ async fn post_execute(State(state): State<Arc<UiState>>) -> Json<StatusResponse>
         });
     };
 
-    let result = tokio::task::spawn_blocking(move || execute_wizard(&wt, &answers, &locale))
+    let sa = sub_action.unwrap_or_default();
+    let result = tokio::task::spawn_blocking(move || execute_wizard(&wt, &sa, &answers, &locale))
         .await
         .unwrap_or_else(|e| ExecutionResult {
             success: false,
@@ -510,6 +702,7 @@ async fn post_shutdown(State(state): State<Arc<UiState>>) -> Json<StatusResponse
 
 fn execute_wizard(
     wizard_type: &str,
+    sub_action: &str,
     answers: &BTreeMap<String, serde_json::Value>,
     locale: &str,
 ) -> ExecutionResult {
@@ -538,7 +731,7 @@ fn execute_wizard(
         }
     };
 
-    let doc = build_answer_document(wizard_type, answers, locale);
+    let doc = build_answer_document(wizard_type, sub_action, answers, locale);
     let tmp = match write_temp_answers(&doc) {
         Ok(t) => t,
         Err(e) => {
@@ -592,17 +785,19 @@ fn execute_wizard(
 
 fn build_answer_document(
     wizard_type: &str,
+    sub_action: &str,
     answers: &BTreeMap<String, serde_json::Value>,
     locale: &str,
 ) -> serde_json::Value {
-    match wizard_type {
-        "pack" => build_pack_answer_document(answers, locale),
-        "bundle" => build_bundle_answer_document(answers, locale),
+    match (wizard_type, sub_action) {
+        ("pack", "create_app") => build_pack_create_answer_document(answers, locale),
+        ("pack", "update_app") => build_pack_update_answer_document(answers, locale),
+        ("bundle", "create") => build_bundle_answer_document(answers, locale),
         _ => serde_json::json!({}),
     }
 }
 
-fn build_pack_answer_document(
+fn build_pack_create_answer_document(
     answers: &BTreeMap<String, serde_json::Value>,
     locale: &str,
 ) -> serde_json::Value {
@@ -638,6 +833,59 @@ fn build_pack_answer_document(
         ],
         "create_pack_id": pack_id,
         "create_pack_scaffold": true,
+        "pack_dir": pack_dir,
+        "run_delegate_flow": false,
+        "run_delegate_component": false,
+        "run_doctor": run_doctor,
+        "run_build": run_build,
+        "sign": sign,
+        "mode": "interactive"
+    });
+
+    if sign && !sign_key_path.is_empty() {
+        doc_answers["sign_key_path"] = serde_json::Value::String(sign_key_path.to_string());
+    }
+
+    serde_json::json!({
+        "wizard_id": "greentic-pack.wizard.run",
+        "schema_id": "greentic-pack.wizard.answers",
+        "schema_version": "1.0.0",
+        "locale": locale,
+        "answers": doc_answers,
+        "locks": {}
+    })
+}
+
+fn build_pack_update_answer_document(
+    answers: &BTreeMap<String, serde_json::Value>,
+    locale: &str,
+) -> serde_json::Value {
+    let pack_dir = answers
+        .get("pack_dir")
+        .and_then(|v| v.as_str())
+        .unwrap_or(".");
+    let run_doctor = answers
+        .get("run_doctor")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(true);
+    let run_build = answers
+        .get("run_build")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(true);
+    let sign = answers
+        .get("sign")
+        .and_then(|v| v.as_bool())
+        .unwrap_or(false);
+    let sign_key_path = answers
+        .get("sign_key_path")
+        .and_then(|v| v.as_str())
+        .unwrap_or("");
+
+    let mut doc_answers = serde_json::json!({
+        "selected_actions": [
+            "main.update_application_pack",
+            "update_application_pack.start"
+        ],
         "pack_dir": pack_dir,
         "run_delegate_flow": false,
         "run_delegate_component": false,

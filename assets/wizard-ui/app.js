@@ -44,6 +44,7 @@
               renderOptionCard("pack", "Pack", "Build or update an application pack with flows and components.", data.options[0] ? data.options[0].label : "") +
               renderOptionCard("bundle", "Bundle", "Build or update a production bundle for deployment.", data.options[1] ? data.options[1].label : "") +
             '</div>' +
+            renderDetectedProjects(data.detected || []) +
             '<div class="launcher-footer">' +
               '<button class="btn btn-ghost" data-action="exit">Close Wizard</button>' +
             '</div>' +
@@ -58,6 +59,15 @@
             } else {
               selectWizard(action);
             }
+          });
+        });
+
+        // Detected project click → go to update flow with path pre-filled
+        app.querySelectorAll("[data-detected-kind]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var kind = btn.getAttribute("data-detected-kind");
+            var path = btn.getAttribute("data-detected-path");
+            openDetectedProject(kind, path);
           });
         });
       });
@@ -79,6 +89,70 @@
         '</div>' +
       '</button>'
     );
+  }
+
+  function openDetectedProject(kind, path) {
+    var wizardType = kind; // "pack" or "bundle"
+    var subAction = kind === "pack" ? "update_app" : "update";
+    state.wizardType = wizardType;
+    state.subAction = subAction;
+    state.answers = {};
+    state.currentStep = 0;
+
+    // Pre-fill the path
+    if (kind === "pack") {
+      state.answers.pack_dir = path;
+    } else {
+      state.answers.bundle_target = path;
+    }
+
+    fetch("/api/launcher/select", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ selected_action: wizardType }),
+    }).then(function () {
+      return fetch("/api/wizard/submenu/select", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ selected_action: subAction }),
+      });
+    }).then(function () {
+      return fetch("/api/wizard/steps");
+    }).then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && data.steps && data.steps.length > 0) {
+          state.steps = data.steps;
+          state.phase = "form";
+          render();
+        }
+      });
+  }
+
+  function renderDetectedProjects(projects) {
+    if (!projects || projects.length === 0) return "";
+    var html =
+      '<div class="detected-section">' +
+        '<div class="detected-header">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>' +
+          '<span>Detected in current directory</span>' +
+        '</div>' +
+        '<div class="detected-list">';
+    projects.forEach(function (p) {
+      var icon = p.kind === "bundle" ?
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>' :
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>';
+      html +=
+        '<button class="detected-item" data-detected-kind="' + esc(p.kind) + '" data-detected-path="' + esc(p.path) + '">' +
+          '<span class="detected-icon">' + icon + '</span>' +
+          '<span class="detected-info">' +
+            '<span class="detected-name">' + esc(p.name) + '</span>' +
+            '<span class="detected-path">' + esc(p.path) + '</span>' +
+          '</span>' +
+          '<span class="detected-badge">' + esc(p.kind) + '</span>' +
+        '</button>';
+    });
+    html += '</div></div>';
+    return html;
   }
 
   function selectWizard(action) {

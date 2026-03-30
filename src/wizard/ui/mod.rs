@@ -507,12 +507,20 @@ struct LauncherOptions {
     title: String,
     options: Vec<LauncherOption>,
     locale: String,
+    detected: Vec<DetectedProject>,
 }
 
 #[derive(Serialize)]
 struct LauncherOption {
     value: String,
     label: String,
+}
+
+#[derive(Serialize, Clone)]
+struct DetectedProject {
+    kind: String,
+    name: String,
+    path: String,
 }
 
 #[derive(Deserialize)]
@@ -637,6 +645,7 @@ async fn serve_css() -> impl IntoResponse {
 
 async fn get_launcher_options(State(state): State<Arc<UiState>>) -> Json<LauncherOptions> {
     let locale = &state.locale;
+    let detected = scan_existing_projects();
     Json(LauncherOptions {
         title: i18n::t(locale, "cli.wizard.launcher.title"),
         options: vec![
@@ -650,7 +659,86 @@ async fn get_launcher_options(State(state): State<Arc<UiState>>) -> Json<Launche
             },
         ],
         locale: locale.clone(),
+        detected,
     })
+}
+
+fn scan_existing_projects() -> Vec<DetectedProject> {
+    let mut found = Vec::new();
+    let cwd = match std::env::current_dir() {
+        Ok(p) => p,
+        Err(_) => return found,
+    };
+
+    // Check cwd itself
+    check_project_dir(&cwd, &mut found);
+
+    // Check 1 level of subdirectories
+    if let Ok(entries) = std::fs::read_dir(&cwd) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.is_dir() {
+                check_project_dir(&path, &mut found);
+            }
+        }
+    }
+
+    // Sort: bundles first, then packs
+    found.sort_by(|a, b| a.kind.cmp(&b.kind).then(a.name.cmp(&b.name)));
+    found
+}
+
+fn check_project_dir(dir: &std::path::Path, found: &mut Vec<DetectedProject>) {
+    let dir_name = dir
+        .file_name()
+        .map(|n| n.to_string_lossy().to_string())
+        .unwrap_or_else(|| ".".into());
+    let rel = dir
+        .strip_prefix(std::env::current_dir().unwrap_or_default())
+        .unwrap_or(dir);
+    let rel_str = if rel.as_os_str().is_empty() {
+        ".".to_string()
+    } else {
+        format!("./{}", rel.display())
+    };
+
+    // Check for bundle (bundle.yaml or bundle.lock.json)
+    if dir.join("bundle.yaml").is_file() || dir.join("bundle.lock.json").is_file() {
+        let name = read_yaml_field(dir, "bundle.yaml", "name").unwrap_or(dir_name.clone());
+        found.push(DetectedProject {
+            kind: "bundle".into(),
+            name,
+            path: rel_str.clone(),
+        });
+    }
+
+    // Check for pack (pack.yaml)
+    if dir.join("pack.yaml").is_file() {
+        let name = read_yaml_field(dir, "pack.yaml", "pack_id").unwrap_or(dir_name);
+        found.push(DetectedProject {
+            kind: "pack".into(),
+            name,
+            path: rel_str,
+        });
+    }
+}
+
+fn read_yaml_field(dir: &std::path::Path, file: &str, field: &str) -> Option<String> {
+    let content = std::fs::read_to_string(dir.join(file)).ok()?;
+    // Simple line-based extraction to avoid pulling in yaml parser
+    for line in content.lines() {
+        let trimmed = line.trim();
+        if let Some(rest) = trimmed.strip_prefix(field) {
+            let rest = rest.trim_start();
+            if let Some(val) = rest.strip_prefix(':') {
+                let val = val.trim().trim_matches('"').trim_matches('\'');
+                if !val.is_empty() {
+                    return Some(val.to_string());
+                }
+            }
+        }
+    }
+    None
 }
 
 async fn post_launcher_select(

@@ -66,6 +66,35 @@ body{font-family:var(--font);background:var(--bg);color:var(--fg);min-height:100
 
 .launcher-footer{text-align:center;margin-top:1.5rem}
 
+/* ── Detected projects ── */
+.detected-section{margin-top:1.5rem}
+.detected-header{
+  display:flex;align-items:center;gap:.375rem;
+  font-size:.75rem;font-weight:500;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.04em;
+  margin-bottom:.5rem;padding-left:.125rem;
+}
+.detected-list{display:flex;flex-direction:column;gap:.25rem}
+.detected-item{
+  display:flex;align-items:center;gap:.625rem;width:100%;
+  padding:.625rem .75rem;
+  background:transparent;border:1px solid var(--card-border);border-radius:calc(var(--radius) - 2px);
+  cursor:pointer;transition:all .15s;
+  text-align:left;font-family:var(--font);color:var(--fg);
+}
+.detected-item:hover{background:var(--card);border-color:var(--primary)}
+.detected-item:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.detected-icon{flex-shrink:0;color:var(--muted)}
+.detected-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.0625rem}
+.detected-name{font-size:.8125rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detected-path{font-size:.6875rem;color:var(--muted);font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.detected-badge{
+  flex-shrink:0;font-size:.625rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.04em;
+  padding:.125rem .4rem;border-radius:9999px;
+  background:var(--primary-muted);color:var(--primary);
+}
+
 /* ── Card ── */
 .card{
   background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);

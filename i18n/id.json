@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Timpa jalur file konfigurasi (default: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Jalur kunci konfigurasi (mis. defaults.component.org)",
   "cli.command.config.set.value": "Nilai yang akan ditetapkan ke kunci (disimpan sebagai string)",
+  "cli.command.coverage.about": "Jalankan pemeriksaan cakupan terhadap coverage-policy.json",
+  "cli.command.coverage.skip_run": "Gunakan kembali laporan target/coverage/coverage.json yang sudah ada alih-alih menjalankan ulang pengujian",
   "cli.command.flow.about": "Penerusan flow (greentic-flow)",
   "cli.command.gui.about": "Penerusan GUI (greentic-gui)",
   "cli.command.install.about": "Instal aset yang didelegasikan",

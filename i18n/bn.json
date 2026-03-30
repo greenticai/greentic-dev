@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "কনফিগ ফাইলের পথ ওভাররাইড করুন (ডিফল্ট: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "কনফিগ কী পথ (যেমন defaults.component.org)",
   "cli.command.config.set.value": "কীতে নির্ধারণ করার মান (স্ট্রিং হিসেবে সংরক্ষিত)",
+  "cli.command.coverage.about": "coverage-policy.json-এর বিরুদ্ধে কভারেজ পরীক্ষা চালান",
+  "cli.command.coverage.skip_run": "টেস্ট পুনরায় চালানোর পরিবর্তে বিদ্যমান target/coverage/coverage.json রিপোর্ট পুনঃব্যবহার করুন",
   "cli.command.flow.about": "ফ্লো পাসথ্রু (greentic-flow)",
   "cli.command.gui.about": "GUI পাসথ্রু (greentic-gui)",
   "cli.command.install.about": "অর্পিত অ্যাসেট ইনস্টল করুন",

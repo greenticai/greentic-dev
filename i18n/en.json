@@ -7,6 +7,8 @@
   "cli.command.pack.about": "Pack passthrough (greentic-pack; pack run uses greentic-runner-cli)",
   "cli.command.component.about": "Component passthrough (greentic-component)",
   "cli.command.config.about": "Manage greentic-dev configuration",
+  "cli.command.coverage.about": "Run coverage checks against coverage-policy.json",
+  "cli.command.coverage.skip_run": "Reuse an existing target/coverage/coverage.json report instead of rerunning tests",
   "cli.command.mcp.about": "MCP tooling",
   "cli.command.gui.about": "GUI passthrough (greentic-gui)",
   "cli.command.secrets.about": "Secrets convenience wrappers",

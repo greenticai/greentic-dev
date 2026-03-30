@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "global": {
+    "line_coverage_min": 60.0
+  },
+  "defaults": {
+    "per_file_line_coverage_min": 60.0
+  },
+  "exclusions": {
+    "files": [
+      {
+        "path": "src/main.rs",
+        "reason": "Binary bootstrap and process wiring."
+      },
+      {
+        "path": "xtask/src/main.rs",
+        "reason": "Developer tooling entrypoint."
+      },
+      {
+        "path": "src/cmd/component.rs",
+        "reason": "Thin command routing wrapper."
+      },
+      {
+        "path": "src/cmd/tools.rs",
+        "reason": "Thin command routing wrapper."
+      },
+      {
+        "path": "src/cbor_cmd.rs",
+        "reason": "CLI-oriented command surface with limited business logic."
+      },
+      {
+        "path": "src/coverage_cmd.rs",
+        "reason": "Thin wrapper around the shared coverage script."
+      },
+      {
+        "path": "src/secrets_cli.rs",
+        "reason": "Thin delegation wrapper over greentic-secrets."
+      },
+      {
+        "path": "src/mcp_cmd.rs",
+        "reason": "Developer tooling inspection command with limited runtime business logic."
+      },
+      {
+        "path": "src/delegate/component.rs",
+        "reason": "Process delegation wrapper with minimal domain logic."
+      },
+      {
+        "path": "src/util/process.rs",
+        "reason": "Generic subprocess helper used as infrastructure glue."
+      },
+      {
+        "path": "src/passthrough.rs",
+        "reason": "Delegation and tool-installation infrastructure glue."
+      },
+      {
+        "path": "src/dev_runner/runner.rs",
+        "reason": "Developer-runner orchestration glue rather than product logic."
+      },
+      {
+        "path": "src/dev_runner/transcript.rs",
+        "reason": "Developer-runner transcript persistence helper."
+      },
+      {
+        "path": "src/component_cli.rs",
+        "reason": "Standalone component CLI surface that is mostly command plumbing in this repo."
+      },
+      {
+        "path": "src/distributor.rs",
+        "reason": "Developer distributor client/integration plumbing."
+      },
+      {
+        "path": "src/pack_init.rs",
+        "reason": "Developer pack bootstrap workflow with heavy integration behavior."
+      }
+    ]
+  },
+  "per_file": {
+    "src/wizard/mod.rs": {
+      "line_coverage_min": 80.0,
+      "reason": "Primary interactive flow."
+    },
+    "src/wizard/executor.rs": {
+      "line_coverage_min": 80.0,
+      "reason": "Executes wizard plans."
+    },
+    "src/install.rs": {
+      "line_coverage_min": 65.0,
+      "reason": "High-risk install logic with a pragmatic near-term floor."
+    },
+    "src/component_resolver.rs": {
+      "line_coverage_min": 70.0,
+      "reason": "Core resolution behavior."
+    },
+    "src/pack_build.rs": {
+      "line_coverage_min": 70.0,
+      "reason": "Important build path."
+    }
+  }
+}

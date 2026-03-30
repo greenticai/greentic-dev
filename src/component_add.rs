@@ -317,3 +317,29 @@ fn to_resolve_response(stub: SimpleStub) -> greentic_distributor_client::Resolve
         secret_requirements: None,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{cache_slug_parts, parse_coordinate};
+
+    #[test]
+    fn parse_coordinate_defaults_to_wildcard_version() {
+        let (name, version) = parse_coordinate("demo.component").unwrap();
+        assert_eq!(name, "demo.component");
+        assert_eq!(version, "*");
+    }
+
+    #[test]
+    fn parse_coordinate_splits_explicit_version() {
+        let (name, version) = parse_coordinate("demo.component@1.2.3").unwrap();
+        assert_eq!(name, "demo.component");
+        assert_eq!(version, "1.2.3");
+    }
+
+    #[test]
+    fn cache_slug_normalizes_component_and_version() {
+        let slug = cache_slug_parts("org/demo.component", "1.2.3");
+        assert!(slug.contains("org-demo-component"));
+        assert!(slug.contains("1-2-3"));
+    }
+}

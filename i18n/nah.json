@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Xikpatla in ojtli tlen config archivo quitequitia (por defecto: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Ojtli para in config llave (ej. defaults.component.org)",
   "cli.command.config.set.value": "Valor tlen momacas in llave (mopiya quen se cadena)",
+  "cli.command.coverage.about": "Xikchihua tlayekoliztli tlen coverage ika coverage-policy.json",
+  "cli.command.coverage.skip_run": "Xijteki se reporta target/coverage/coverage.json tlen ya onka, amo occepa xijchihua in pruebas",
   "cli.command.flow.about": "Panoltiliztli de flujo (greentic-flow)",
   "cli.command.gui.about": "Panoltiliztli de GUI (greentic-gui)",
   "cli.command.install.about": "Xicinstalla in bienes delegados",

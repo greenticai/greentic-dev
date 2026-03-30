@@ -344,3 +344,48 @@ pub fn inspect(target: &str, compact_json: bool) -> Result<()> {
     }
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{component_target, extract_node_payload, parse_version_req};
+    use serde_json::json;
+    use tempfile::tempdir;
+
+    #[test]
+    fn empty_version_requirement_defaults_to_any() {
+        let req = parse_version_req("").unwrap();
+        assert!(req.matches(&semver::Version::parse("1.2.3").unwrap()));
+    }
+
+    #[test]
+    fn invalid_version_requirement_is_rejected() {
+        assert!(parse_version_req("not-a-semver").is_err());
+    }
+
+    #[test]
+    fn component_target_falls_back_to_short_name() {
+        let dir = tempdir().unwrap();
+        let short = dir.path().join("hello-world");
+        std::fs::write(&short, "stub").unwrap();
+
+        let target = component_target("ai.greentic.hello-world", Some(dir.path()));
+        match target {
+            super::ComponentTarget::Path(path) => assert_eq!(path, short),
+            _ => panic!("expected path target"),
+        }
+    }
+
+    #[test]
+    fn extract_node_payload_reads_component_payload() {
+        let document = json!({
+            "nodes": {
+                "n1": {
+                    "demo.component": { "enabled": true }
+                }
+            }
+        });
+
+        let payload = extract_node_payload(&document, "n1", "demo.component").unwrap();
+        assert_eq!(payload["enabled"], true);
+    }
+}

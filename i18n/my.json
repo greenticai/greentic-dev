@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "config ဖိုင်လမ်းကြောင်းကို အစားထိုးသတ်မှတ်မည် (မူလတန်ဖိုး: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Config ကီးလမ်းကြောင်း (ဥပမာ defaults.component.org)",
   "cli.command.config.set.value": "ကီးသို့ သတ်မှတ်မည့် တန်ဖိုး (string အဖြစ် သိမ်းဆည်းမည်)",
+  "cli.command.coverage.about": "coverage-policy.json နှင့်အညီ coverage စစ်ဆေးမှုများကို လုပ်ဆောင်ပါ",
+  "cli.command.coverage.skip_run": "tests များကို ထပ်မံမလုပ်ဆောင်ဘဲ ရှိပြီးသား target/coverage/coverage.json report ကို ပြန်လည်အသုံးပြုပါ",
   "cli.command.flow.about": "Flow passthrough (greentic-flow)",
   "cli.command.gui.about": "GUI passthrough (greentic-gui)",
   "cli.command.install.about": "လွှဲအပ်ထားသော asset များကို ထည့်သွင်းပါ",

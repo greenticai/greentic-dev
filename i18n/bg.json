@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Презаписване на пътя до конфигурационния файл (по подразбиране: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Път до конфигурационния ключ (напр. defaults.component.org)",
   "cli.command.config.set.value": "Стойност за присвояване на ключа (съхранява се като низ)",
+  "cli.command.coverage.about": "Изпълнява проверки за покритие спрямо coverage-policy.json",
+  "cli.command.coverage.skip_run": "Използва съществуващ отчет target/coverage/coverage.json вместо повторно изпълнение на тестовете",
   "cli.command.flow.about": "Препращане към поток (greentic-flow)",
   "cli.command.gui.about": "Препращане към GUI (greentic-gui)",
   "cli.command.install.about": "Инсталиране на делегирани ресурси",

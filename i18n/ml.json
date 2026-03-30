@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "കോൺഫിഗ് ഫയൽ പാത ഓവർറൈഡ് ചെയ്യുക (ഡിഫോൾട്ട്: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "കോൺഫിഗ് കീ പാത (ഉദാ. defaults.component.org)",
   "cli.command.config.set.value": "കീക്ക് നിയോഗിക്കേണ്ട മൂല്യം (ഒരു സ്ട്രിങ്ങായി സംഭരിക്കുന്നു)",
+  "cli.command.coverage.about": "coverage-policy.json ന് എതിരായി കവറേജ് പരിശോധനകൾ നടത്തുക",
+  "cli.command.coverage.skip_run": "ടെസ്റ്റുകൾ വീണ്ടും പ്രവർത്തിപ്പിക്കുന്നതിന് പകരം നിലവിലുള്ള target/coverage/coverage.json റിപ്പോർട്ട് വീണ്ടും ഉപയോഗിക്കുക",
   "cli.command.flow.about": "ഫ്ലോ പാസ്‌ത്രൂ (greentic-flow)",
   "cli.command.gui.about": "GUI പാസ്‌ത്രൂ (greentic-gui)",
   "cli.command.install.about": "പ്രതിനിധീകരിച്ച ആസറ്റുകൾ ഇൻസ്റ്റാൾ ചെയ്യുക",

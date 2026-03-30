@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Kirjuta konfiguratsioonifaili tee üle (vaikimisi: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Konfiguratsioonivõtme tee (nt defaults.component.org)",
   "cli.command.config.set.value": "Võtmele omistatav väärtus (salvestatakse stringina)",
+  "cli.command.coverage.about": "Käivita katvuse kontrollid faili coverage-policy.json suhtes",
+  "cli.command.coverage.skip_run": "Kasuta olemasolevat aruannet target/coverage/coverage.json testide uuesti käivitamise asemel",
   "cli.command.flow.about": "Voo läbisuunamine (greentic-flow)",
   "cli.command.gui.about": "GUI läbisuunamine (greentic-gui)",
   "cli.command.install.about": "Paigalda delegeeritud varad",

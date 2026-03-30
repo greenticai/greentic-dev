@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "覆盖配置文件路径（默认：$XDG_CONFIG_HOME/greentic-dev/config.toml）",
   "cli.command.config.set.key": "配置键路径（例如 defaults.component.org）",
   "cli.command.config.set.value": "分配给该键的值（存储为字符串）",
+  "cli.command.coverage.about": "根据 coverage-policy.json 运行覆盖率检查",
+  "cli.command.coverage.skip_run": "复用现有的 target/coverage/coverage.json 报告，而不是重新运行测试",
   "cli.command.flow.about": "流程透传（greentic-flow）",
   "cli.command.gui.about": "GUI 透传（greentic-gui）",
   "cli.command.install.about": "安装委托资源",

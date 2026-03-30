@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Ranplase chemen fichye konfigirasyon an (pa default: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Chemen kle konfigirasyon an (egz. defaults.component.org)",
   "cli.command.config.set.value": "Valè pou bay kle a (ap estoke kòm yon chèn)",
+  "cli.command.coverage.about": "Fè verifikasyon kouvèti kont coverage-policy.json",
+  "cli.command.coverage.skip_run": "Reitilize yon rapò target/coverage/coverage.json ki deja egziste olye pou rekouri tès yo",
   "cli.command.flow.about": "Passthrough flow (greentic-flow)",
   "cli.command.gui.about": "Passthrough GUI (greentic-gui)",
   "cli.command.install.about": "Enstale byen delege yo",

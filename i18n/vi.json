@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Ghi đè đường dẫn tệp cấu hình (mặc định: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Đường dẫn khóa cấu hình (ví dụ: defaults.component.org)",
   "cli.command.config.set.value": "Giá trị gán cho khóa (được lưu dưới dạng chuỗi)",
+  "cli.command.coverage.about": "Chạy kiểm tra độ bao phủ đối chiếu với coverage-policy.json",
+  "cli.command.coverage.skip_run": "Tái sử dụng báo cáo target/coverage/coverage.json hiện có thay vì chạy lại các bài kiểm thử",
   "cli.command.flow.about": "Chuyển tiếp flow (greentic-flow)",
   "cli.command.gui.about": "Chuyển tiếp GUI (greentic-gui)",
   "cli.command.install.about": "Cài đặt các tài nguyên được ủy quyền",

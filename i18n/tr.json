@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Yapılandırma dosyası yolunu geçersiz kıl (varsayılan: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Yapılandırma anahtarı yolu (örn. defaults.component.org)",
   "cli.command.config.set.value": "Anahtara atanacak değer (bir dize olarak saklanır)",
+  "cli.command.coverage.about": "Coverage kontrollerini coverage-policy.json dosyasına karşı çalıştır",
+  "cli.command.coverage.skip_run": "Testleri yeniden çalıştırmak yerine mevcut bir target/coverage/coverage.json raporunu yeniden kullan",
   "cli.command.flow.about": "Akış aktarma (greentic-flow)",
   "cli.command.gui.about": "GUI aktarma (greentic-gui)",
   "cli.command.install.about": "Devredilen varlıkları yükle",

@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Konfigurációs fájl elérési útjának felülbírálása (alapértelmezett: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Konfigurációs kulcs útvonala (pl. defaults.component.org)",
   "cli.command.config.set.value": "A kulcshoz rendelendő érték (karakterláncként tárolva)",
+  "cli.command.coverage.about": "Futtass lefedettség-ellenőrzéseket a coverage-policy.json ellen",
+  "cli.command.coverage.skip_run": "Használj fel egy meglévő target/coverage/coverage.json jelentést a tesztek újbóli futtatása helyett",
   "cli.command.flow.about": "Flow átengedés (greentic-flow)",
   "cli.command.gui.about": "GUI átengedés (greentic-gui)",
   "cli.command.install.about": "Delegált erőforrások telepítése",

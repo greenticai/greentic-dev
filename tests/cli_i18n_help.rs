@@ -45,6 +45,19 @@ fn tools_help_uses_requested_locale() {
 }
 
 #[test]
+fn coverage_help_uses_requested_locale() {
+    let mut cmd = cargo_bin_cmd!("greentic-dev");
+    cmd.args(["coverage", "--help", "--locale", "ar"]);
+    cmd.assert()
+        .success()
+        .stdout(contains("شغّل فحوصات التغطية مقابل coverage-policy.json"))
+        .stdout(contains(
+            "أعد استخدام تقرير target/coverage/coverage.json موجود",
+        ))
+        .stdout(contains("اعرض المساعدة"));
+}
+
+#[test]
 fn wizard_apply_help_uses_requested_locale() {
     let mut cmd = cargo_bin_cmd!("greentic-dev");
     cmd.args(["wizard", "apply", "--help", "--locale", "ar"]);

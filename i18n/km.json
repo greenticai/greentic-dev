@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "បដិសេធផ្លូវឯកសារ config (លំនាំដើម: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "ផ្លូវសោ config (ឧ. defaults.component.org)",
   "cli.command.config.set.value": "តម្លៃដែលត្រូវកំណត់ឱ្យសោ (រក្សាទុកជា string)",
+  "cli.command.coverage.about": "ដំណើរការការត្រួតពិនិត្យ coverage ទៅលើ coverage-policy.json",
+  "cli.command.coverage.skip_run": "ប្រើរបាយការណ៍ target/coverage/coverage.json ដែលមានស្រាប់ឡើងវិញ ជំនួសឱ្យការរត់តេស្តម្តងទៀត",
   "cli.command.flow.about": "បញ្ជូនបន្ត Flow (greentic-flow)",
   "cli.command.gui.about": "បញ្ជូនបន្ត GUI (greentic-gui)",
   "cli.command.install.about": "ដំឡើងធនធានដែលបានប្រគល់",

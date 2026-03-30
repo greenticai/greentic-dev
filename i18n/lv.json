@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Pārrakstīt konfigurācijas faila ceļu (noklusējums: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Konfigurācijas atslēgas ceļš (piem., defaults.component.org)",
   "cli.command.config.set.value": "Vērtība, ko piešķirt atslēgai (tiek glabāta kā virkne)",
+  "cli.command.coverage.about": "Palaist pārklājuma pārbaudes pret coverage-policy.json",
+  "cli.command.coverage.skip_run": "Atkārtoti izmantot esošu target/coverage/coverage.json atskaiti testu atkārtotas palaišanas vietā",
   "cli.command.flow.about": "Plūsmas starpniekpārsūtīšana (greentic-flow)",
   "cli.command.gui.about": "GUI starpniekpārsūtīšana (greentic-gui)",
   "cli.command.install.about": "Instalēt deleģētos resursus",

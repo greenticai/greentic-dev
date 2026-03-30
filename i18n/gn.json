@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "Emyengovia config marandurenda rape (ijypykuéva: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "Config mba'e rape (techapyrã: defaults.component.org)",
   "cli.command.config.set.value": "Tepy eme'ẽ hag̃ua pe mba'épe (ñeñongatúta peteĩ joaju hag̃uáicha)",
+  "cli.command.coverage.about": "Ejapo umi jehechajey hag̃ua cobertura rehe coverage-policy.json ndive",
+  "cli.command.coverage.skip_run": "Eipuru jey peteĩ marandu'i oĩmava target/coverage/coverage.json-pe emoambue rangue tembiapo'ã hag̃ua jey",
   "cli.command.flow.about": "Jehasa hag̃ua flujo (greentic-flow)",
   "cli.command.gui.about": "Jehasa hag̃ua GUI (greentic-gui)",
   "cli.command.install.about": "Emohenda mba'erepy oñeme'ẽva ambuépe",

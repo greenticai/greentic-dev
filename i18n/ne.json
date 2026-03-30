@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "कन्फिग फाइलको पथ ओभरराइड गर्नुहोस् (पूर्वनिर्धारित: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "कन्फिग कुञ्जी पथ (जस्तै defaults.component.org)",
   "cli.command.config.set.value": "कुञ्जीमा तोक्नुपर्ने मान (string को रूपमा भण्डारण गरिन्छ)",
+  "cli.command.coverage.about": "coverage-policy.json विरुद्ध कभरेज जाँचहरू चलाउनुहोस्",
+  "cli.command.coverage.skip_run": "परीक्षणहरू फेरि चलाउनुको सट्टा अवस्थित target/coverage/coverage.json प्रतिवेदन पुन: प्रयोग गर्नुहोस्",
   "cli.command.flow.about": "फ्लो पासथ्रु (greentic-flow)",
   "cli.command.gui.about": "GUI पासथ्रु (greentic-gui)",
   "cli.command.install.about": "प्रतिनिधि एसेटहरू स्थापना गर्नुहोस्",

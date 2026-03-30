@@ -5,6 +5,7 @@ pub mod component_add;
 pub mod component_cli;
 pub mod component_resolver;
 pub mod config;
+pub mod coverage_cmd;
 pub mod delegate;
 pub mod dev_runner;
 pub mod distributor;

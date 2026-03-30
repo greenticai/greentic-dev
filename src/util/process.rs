@@ -77,3 +77,47 @@ pub fn run(spec: CommandSpec) -> Result<CommandOutput> {
         _ => anyhow::bail!("mixed capture/inherit mode is not supported yet"),
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{CommandSpec, StreamMode, run};
+    use std::ffi::OsString;
+
+    #[test]
+    fn capture_mode_collects_stdout_and_stderr() {
+        let mut spec = CommandSpec::new("sh");
+        spec.args = vec![
+            OsString::from("-c"),
+            OsString::from("printf hello; printf world >&2"),
+        ];
+        spec.stdout = StreamMode::Capture;
+        spec.stderr = StreamMode::Capture;
+
+        let output = run(spec).unwrap();
+        assert!(output.status.success());
+        assert_eq!(output.stdout.unwrap(), b"hello");
+        assert_eq!(output.stderr.unwrap(), b"world");
+    }
+
+    #[test]
+    fn inherit_mode_returns_status_without_buffers() {
+        let mut spec = CommandSpec::new("sh");
+        spec.args = vec![OsString::from("-c"), OsString::from("exit 0")];
+
+        let output = run(spec).unwrap();
+        assert!(output.status.success());
+        assert!(output.stdout.is_none());
+        assert!(output.stderr.is_none());
+    }
+
+    #[test]
+    fn mixed_modes_are_rejected() {
+        let mut spec = CommandSpec::new("sh");
+        spec.args = vec![OsString::from("-c"), OsString::from("exit 0")];
+        spec.stdout = StreamMode::Capture;
+        spec.stderr = StreamMode::Inherit;
+
+        let err = run(spec).err().expect("expected mixed-mode failure");
+        assert!(err.to_string().contains("mixed capture/inherit mode"));
+    }
+}

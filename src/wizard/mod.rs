@@ -579,7 +579,7 @@ fn read_answer_document_from_path_or_url(path_or_url: &str) -> Result<AnswerDocu
 }
 
 fn validate_answer_document_identity(doc: &AnswerDocument, path_or_url: &str) -> Result<()> {
-    if !is_launcher_answer_document(doc) {
+    if doc.wizard_id != WIZARD_ID {
         bail!(
             "unsupported wizard_id `{}` in {}; expected `{}`",
             doc.wizard_id,
@@ -833,6 +833,21 @@ mod tests {
         };
         let err = validate_answer_document_identity(&doc, "answers.json").unwrap_err();
         assert!(err.to_string().contains("unsupported wizard_id"));
+    }
+
+    #[test]
+    fn reject_launcher_document_with_wrong_schema_id() {
+        let doc = AnswerDocument {
+            wizard_id: WIZARD_ID.to_string(),
+            schema_id: WIZARD_ID.to_string(),
+            schema_version: "1.0.0".to_string(),
+            locale: "en-US".to_string(),
+            answers: json!({}),
+            locks: serde_json::Map::new(),
+        };
+        let err = validate_answer_document_identity(&doc, "answers.json").unwrap_err();
+        assert!(err.to_string().contains("unsupported schema_id"));
+        assert!(!err.to_string().contains("unsupported wizard_id"));
     }
 
     #[test]

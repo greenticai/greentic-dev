@@ -12,6 +12,7 @@ use greentic_dev::passthrough::{resolve_binary, run_passthrough};
 use greentic_dev::cbor_cmd;
 use greentic_dev::cmd::config;
 use greentic_dev::cmd::tools;
+use greentic_dev::coverage_cmd;
 use greentic_dev::install;
 use greentic_dev::mcp_cmd;
 use greentic_dev::secrets_cli::run_secrets_command;
@@ -52,6 +53,7 @@ fn main() -> Result<()> {
             std::process::exit(status.code().unwrap_or(1));
         }
         Command::Config(config_cmd) => config::run(config_cmd),
+        Command::Coverage(args) => coverage_cmd::run(args),
         Command::Cbor(args) => cbor_cmd::run(args),
         Command::Mcp(mcp) => match mcp {
             McpCommand::Doctor(args) => mcp_cmd::doctor(&args.provider, args.json),
@@ -191,6 +193,7 @@ fn is_known_subcommand(subcmd: &str) -> bool {
             | "pack"
             | "component"
             | "config"
+            | "coverage"
             | "mcp"
             | "gui"
             | "secrets"

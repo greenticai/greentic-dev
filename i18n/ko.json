@@ -7,6 +7,8 @@
   "cli.command.config.set.file": "config 파일 경로를 재정의합니다(기본값: $XDG_CONFIG_HOME/greentic-dev/config.toml)",
   "cli.command.config.set.key": "config 키 경로(예: defaults.component.org)",
   "cli.command.config.set.value": "키에 할당할 값(문자열로 저장됨)",
+  "cli.command.coverage.about": "coverage-policy.json에 대해 커버리지 검사를 실행합니다",
+  "cli.command.coverage.skip_run": "테스트를 다시 실행하는 대신 기존 target/coverage/coverage.json 보고서를 재사용합니다",
   "cli.command.flow.about": "플로우 패스스루 (greentic-flow)",
   "cli.command.gui.about": "GUI 패스스루 (greentic-gui)",
   "cli.command.install.about": "위임된 에셋 설치",

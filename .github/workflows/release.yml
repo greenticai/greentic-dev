@@ -134,6 +134,10 @@ jobs:
           toolchain: 1.91.0
           targets: ${{ matrix.target }}
 
+      - name: Ensure Rust target is installed
+        shell: bash
+        run: rustup target add ${{ matrix.target }}
+
       - name: Install Linux ARM64 linker
         if: runner.os == 'Linux' && matrix.target == 'aarch64-unknown-linux-gnu'
         shell: bash

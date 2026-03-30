@@ -13,6 +13,7 @@ include = [
     "i18n/**",
     "src/**",
     "templates/**",
+    "assets/**",
     "README.md",
     "LICENSE*",
     "Cargo.toml",
@@ -66,6 +67,8 @@ async-trait = "0.1"
 rpassword = "7"
 sys-locale = "0.3"
 unic-langid = "0.9"
+axum = "0.8"
+open = "5"
 
 [workspace.metadata.dist]
 cargo-dist-version = "0.24"

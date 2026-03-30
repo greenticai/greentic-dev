@@ -4,6 +4,7 @@ mod persistence;
 pub mod plan;
 mod provider;
 mod registry;
+mod ui;
 
 use std::collections::BTreeMap;
 use std::fs;
@@ -63,6 +64,11 @@ struct AnswerDocument {
 }
 
 pub fn launch(args: WizardLaunchArgs) -> Result<()> {
+    if args.ui {
+        ui::launch_ui(&args)?;
+        return Ok(());
+    }
+
     let mode = if args.dry_run {
         ExecutionMode::DryRun
     } else {

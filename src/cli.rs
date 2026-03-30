@@ -460,6 +460,9 @@ pub struct WizardLaunchArgs {
     /// cli.command.wizard.allow_destructive
     #[arg(long = "allow-destructive")]
     pub allow_destructive: bool,
+    /// cli.command.wizard.ui
+    #[arg(long = "ui")]
+    pub ui: bool,
 }
 
 #[derive(Args, Debug, Clone)]

@@ -2,13 +2,11 @@ You are operating in a CI environment as a Security Reviewer.
 
 Task:
 1) Analyze the security alerts listed below.
-2) If this is a Pull Request, check the repo for any new vulnerabilities introduced in dependency files.
-3) Apply minimal, safe fixes to remediate vulnerabilities.
-4) Write SECURITY_FIX_REPORT.md summarizing your actions.
+2) Apply minimal, safe fixes to remediate vulnerabilities.
+3) Write SECURITY_FIX_REPORT.md summarizing your actions.
 
 Security alerts JSON:
-{"dependabot": [], "code_scanning": []}
-
-
-New PR Dependency Vulnerabilities:
-[]
+{
+  "dependabot": [],
+  "code_scanning": []
+}

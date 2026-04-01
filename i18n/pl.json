@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migruj AnswerDocument do wybranej wersji schematu, gdy to potrzebne",
   "cli.command.wizard.non_interactive": "Zezwalaj na wykonanie w kontekstach nieinteraktywnych",
   "cli.command.wizard.out": "Zastąp katalog wyjściowy (domyślnie: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Wyświetl bieżący schemat AnswerDocument launchera i zakończ",
+  "cli.command.wizard.schema_long": "Wyświetl bieżący schemat AnswerDocument launchera i zakończ.\n\nAgentowe narzędzia do programowania, takie jak Codex i Claude, powinny najpierw wywołać to polecenie, aby pobrać dokładny kontrakt launchera greentic-dev, w tym osadzone schematy odpowiedzi greentic-pack i greentic-bundle używane do delegowania.",
   "cli.command.wizard.schema_version": "Przypnij wersję schematu dla generowanego/walidowanego AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Zezwalaj na polecenia spoza domyślnej listy dozwolonych run-command",
   "cli.command.wizard.validate.about": "Zweryfikuj AnswerDocument launchera w trybie nieinteraktywnym",

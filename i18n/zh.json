@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "在需要时将 AnswerDocument 迁移到所选架构版本",
   "cli.command.wizard.non_interactive": "允许在非交互环境中执行",
   "cli.command.wizard.out": "覆盖输出目录（默认：`.greentic/wizard/<run-id>/`）",
+  "cli.command.wizard.schema": "打印当前启动器 AnswerDocument 模式并退出",
+  "cli.command.wizard.schema_long": "打印当前启动器 AnswerDocument 模式并退出。\n\nCodex 和 Claude 等代理式编码工具应首先调用此命令，以获取精确的 greentic-dev 启动器契约，包括用于委派的内嵌 greentic-pack 和 greentic-bundle 答案模式。",
   "cli.command.wizard.schema_version": "为输出/验证的 AnswerDocument 固定架构版本",
   "cli.command.wizard.unsafe_commands": "允许默认 run-command 允许列表之外的命令",
   "cli.command.wizard.validate.about": "以非交互方式验证启动器 AnswerDocument",

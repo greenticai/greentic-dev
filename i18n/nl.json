@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "AnswerDocument migreren naar de geselecteerde schemaversie wanneer nodig",
   "cli.command.wizard.non_interactive": "Uitvoering in niet-interactieve contexten toestaan",
   "cli.command.wizard.out": "Uitvoermap overschrijven (standaard: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Druk het huidige launcher-AnswerDocument-schema af en sluit af",
+  "cli.command.wizard.schema_long": "Druk het huidige launcher-AnswerDocument-schema af en sluit af.\n\nAgentische codeertools zoals Codex en Claude moeten dit eerst aanroepen om het exacte greentic-dev-launchercontract op te halen, inclusief de ingebedde antwoordschema's van greentic-pack en greentic-bundle die voor delegatie worden gebruikt.",
   "cli.command.wizard.schema_version": "Schemaversie vastzetten voor uitgevoerd/gevalideerd AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Commando's buiten de standaard allowlist voor run-command toestaan",
   "cli.command.wizard.validate.about": "Een launcher-AnswerDocument niet-interactief valideren",

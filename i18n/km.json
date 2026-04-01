@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ផ្លាស់ប្តូរ AnswerDocument ទៅកំណែ schema ដែលបានជ្រើស នៅពេលចាំបាច់",
   "cli.command.wizard.non_interactive": "អនុញ្ញាតការប្រតិបត្តិក្នុងបរិបទដែលមិនមានអន្តរកម្ម",
   "cli.command.wizard.out": "បដិសេធថត output (លំនាំដើម: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "បោះពុម្ពស្គីមា AnswerDocument បច្ចុប្បន្នរបស់ launcher ហើយចេញ",
+  "cli.command.wizard.schema_long": "បោះពុម្ពស្គីមា AnswerDocument បច្ចុប្បន្នរបស់ launcher ហើយចេញ។\n\nឧបករណ៍សរសេរកូដបែប agentic ដូចជា Codex និង Claude គួរតែហៅវាជាមុនសិន ដើម្បីទាញយកកិច្ចសន្យា launcher greentic-dev ពិតប្រាកដ រួមទាំងស្គីមាចម្លើយ greentic-pack និង greentic-bundle ដែលបានបង្កប់ និងត្រូវបានប្រើសម្រាប់ការផ្ទេរភារកិច្ច។",
   "cli.command.wizard.schema_version": "កំណត់កំណែ schema សម្រាប់ AnswerDocument ដែលបានបញ្ចេញ/ផ្ទៀងផ្ទាត់",
   "cli.command.wizard.unsafe_commands": "អនុញ្ញាតពាក្យបញ្ជាក្រៅពី allowlist លំនាំដើមរបស់ run-command",
   "cli.command.wizard.validate.about": "ផ្ទៀងផ្ទាត់ launcher AnswerDocument ដោយមិនមានអន្តរកម្ម",

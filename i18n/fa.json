@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "در صورت نیاز AnswerDocument را به نسخه schema انتخاب‌شده مهاجرت بده",
   "cli.command.wizard.non_interactive": "اجازه اجرای در زمینه‌های غیرتعاملی",
   "cli.command.wizard.out": "بازنویسی پوشه خروجی (پیش‌فرض: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "طرح‌وارهٔ فعلی AnswerDocument راه‌انداز را چاپ کرده و خارج شود",
+  "cli.command.wizard.schema_long": "طرح‌وارهٔ فعلی AnswerDocument راه‌انداز را چاپ کرده و خارج شود.\n\nابزارهای کدنویسی عامل‌محور مانند Codex و Claude باید ابتدا این را فراخوانی کنند تا قرارداد دقیق راه‌انداز greentic-dev، شامل طرح‌واره‌های پاسخِ greentic-pack و greentic-bundle تعبیه‌شده که برای واگذاری استفاده می‌شوند، دریافت شود.",
   "cli.command.wizard.schema_version": "ثابت کردن نسخه schema برای AnswerDocument تولید/اعتبارسنجی‌شده",
   "cli.command.wizard.unsafe_commands": "اجازه فرمان‌های خارج از allowlist پیش‌فرض run-command",
   "cli.command.wizard.validate.about": "اعتبارسنجی یک AnswerDocument لانچر به‌صورت غیرتعاملی",

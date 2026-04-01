@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Munasiñapäkchi ukhaxa AnswerDocument ajllita schema versión ukar migraraña",
   "cli.command.wizard.non_interactive": "Jan interacción contextos ukan ejecutañ munayaña",
   "cli.command.wizard.out": "Mistuwi directorio mayjt'ayaña (por defecto: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Jichha lanzadoran AnswerDocument esquema ukar imprimiña ukat mistuña",
+  "cli.command.wizard.schema_long": "Jichha lanzadoran AnswerDocument esquema ukar imprimiña ukat mistuña.\n\nCodex ukat Claude ukanakjam agentic coding herramientas ukanakax nayraqat ak lurapxañapawa, chiqap greentic-dev lanzador contrato apsuñataki, ukax greentic-pack ukat greentic-bundle answer esquemas ukanak delegaciónataki apnaqata ukamp chikanchatawa.",
   "cli.command.wizard.schema_version": "Emitido/validado AnswerDocument ukatak schema versión fijaña",
   "cli.command.wizard.unsafe_commands": "Default run-command allowlist anqäxankir comandos munañataki",
   "cli.command.wizard.validate.about": "Launcher AnswerDocument jan mayamp jiskt'asa validar",

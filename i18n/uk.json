@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Мігрувати AnswerDocument до вибраної версії схеми, коли це потрібно",
   "cli.command.wizard.non_interactive": "Дозволити виконання в неінтерактивних контекстах",
   "cli.command.wizard.out": "Перевизначити каталог виводу (типово: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Вивести поточну схему AnswerDocument лаунчера та вийти",
+  "cli.command.wizard.schema_long": "Вивести поточну схему AnswerDocument лаунчера та вийти.\n\nАгентні інструменти для програмування, такі як Codex і Claude, мають спочатку викликати це, щоб отримати точний контракт лаунчера greentic-dev, включно з вбудованими схемами відповідей greentic-pack і greentic-bundle, які використовуються для делегування.",
   "cli.command.wizard.schema_version": "Зафіксувати версію схеми для створеного/перевіреного AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Дозволити команди поза типовим списком дозволених run-command",
   "cli.command.wizard.validate.about": "Перевірити AnswerDocument лаунчера в неінтерактивному режимі",

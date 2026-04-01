@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migroi AnswerDocument valittuun skeemaversioon tarvittaessa",
   "cli.command.wizard.non_interactive": "Salli suoritus ei-vuorovaikutteisissa yhteyksissä",
   "cli.command.wizard.out": "Ohita tulostehakemisto (oletus: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Tulosta nykyinen käynnistimen AnswerDocument-skeema ja poistu",
+  "cli.command.wizard.schema_long": "Tulosta nykyinen käynnistimen AnswerDocument-skeema ja poistu.\n\nAgenttipohjaisten koodaustyökalujen, kuten Codexin ja Clauden, tulisi kutsua tätä ensin hakeakseen tarkan greentic-dev-käynnistimen sopimuksen, mukaan lukien delegoinnissa käytettävät upotetut greentic-pack- ja greentic-bundle-vastausskeemat.",
   "cli.command.wizard.schema_version": "Kiinnitä skeemaversio tulostettavalle/validoitavalle AnswerDocumentille",
   "cli.command.wizard.unsafe_commands": "Salli komennot oletusarvoisen run-command-sallintalistan ulkopuolelta",
   "cli.command.wizard.validate.about": "Validoi launcherin AnswerDocument ilman vuorovaikutusta",

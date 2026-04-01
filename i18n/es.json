@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migra AnswerDocument a la versión de esquema seleccionada cuando sea necesario",
   "cli.command.wizard.non_interactive": "Permite la ejecución en contextos no interactivos",
   "cli.command.wizard.out": "Anula el directorio de salida (predeterminado: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Imprime el esquema actual de AnswerDocument del lanzador y sale",
+  "cli.command.wizard.schema_long": "Imprime el esquema actual de AnswerDocument del lanzador y sale.\n\nLas herramientas de programación agentica como Codex y Claude deben llamar a esto primero para obtener el contrato exacto del lanzador de greentic-dev, incluidos los esquemas de respuesta incrustados de greentic-pack y greentic-bundle usados para la delegación.",
   "cli.command.wizard.schema_version": "Fija la versión del esquema para el AnswerDocument emitido/validado",
   "cli.command.wizard.unsafe_commands": "Permite comandos fuera de la lista predeterminada de comandos permitidos",
   "cli.command.wizard.validate.about": "Valida un AnswerDocument del lanzador de forma no interactiva",

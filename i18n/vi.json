@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Di chuyển AnswerDocument sang phiên bản schema đã chọn khi cần",
   "cli.command.wizard.non_interactive": "Cho phép thực thi trong ngữ cảnh không tương tác",
   "cli.command.wizard.out": "Ghi đè thư mục đầu ra (mặc định: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "In lược đồ AnswerDocument hiện tại của launcher và thoát",
+  "cli.command.wizard.schema_long": "In lược đồ AnswerDocument hiện tại của launcher và thoát.\n\nCác công cụ lập trình tác nhân như Codex và Claude nên gọi lệnh này trước để lấy chính xác hợp đồng launcher của greentic-dev, bao gồm các lược đồ câu trả lời greentic-pack và greentic-bundle được nhúng dùng cho việc ủy quyền.",
   "cli.command.wizard.schema_version": "Ghim phiên bản schema cho AnswerDocument được phát ra/xác thực",
   "cli.command.wizard.unsafe_commands": "Cho phép các lệnh ngoài danh sách cho phép run-command mặc định",
   "cli.command.wizard.validate.about": "Xác thực AnswerDocument của launcher mà không tương tác",

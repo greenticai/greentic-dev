@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ಅಗತ್ಯವಿದ್ದಾಗ ಆಯ್ಕೆ ಮಾಡಿದ schema ಆವೃತ್ತಿಗೆ AnswerDocument ಅನ್ನು ಸ್ಥಳಾಂತರಿಸಿ",
   "cli.command.wizard.non_interactive": "non-interactive ಸಂದರ್ಭಗಳಲ್ಲಿ ಕಾರ್ಯಗತಗೊಳಿಸುವಿಕೆಯನ್ನು ಅನುಮತಿಸಿ",
   "cli.command.wizard.out": "ಔಟ್‌ಪುಟ್ ಡೈರೆಕ್ಟರಿಯನ್ನು ಓವರ್‌ರೈಡ್ ಮಾಡಿ (ಡೀಫಾಲ್ಟ್: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "ಪ್ರಸ್ತುತ ಲಾಂಚರ್ AnswerDocument ಸ್ಕೀಮಾವನ್ನು ಮುದ್ರಿಸಿ ಮತ್ತು ನಿರ್ಗಮಿಸಿ",
+  "cli.command.wizard.schema_long": "ಪ್ರಸ್ತುತ ಲಾಂಚರ್ AnswerDocument ಸ್ಕೀಮಾವನ್ನು ಮುದ್ರಿಸಿ ಮತ್ತು ನಿರ್ಗಮಿಸಿ.\n\nCodex ಮತ್ತು Claude ಮುಂತಾದ ಏಜೆಂಟಿಕ್ ಕೋಡಿಂಗ್ ಸಾಧನಗಳು ಪ್ರತಿನಿಧಿಕರಣಕ್ಕೆ ಬಳಸುವ ಅಡಗಿಸಿದ greentic-pack ಮತ್ತು greentic-bundle ಉತ್ತರ ಸ್ಕೀಮಾಗಳನ್ನು ಒಳಗೊಂಡ ನಿಖರವಾದ greentic-dev ಲಾಂಚರ್ ಒಪ್ಪಂದವನ್ನು ಪಡೆಯಲು ಮೊದಲು ಇದನ್ನು ಕರೆಯಬೇಕು.",
   "cli.command.wizard.schema_version": "ಹೊರಹಾಕಿದ/ಮಾನ್ಯಗೊಳಿಸಿದ AnswerDocument ಗಾಗಿ schema ಆವೃತ್ತಿಯನ್ನು ಸ್ಥಿರಗೊಳಿಸಿ",
   "cli.command.wizard.unsafe_commands": "ಡೀಫಾಲ್ಟ್ run-command allowlist ಹೊರಗಿನ commands ಅನ್ನು ಅನುಮತಿಸಿ",
   "cli.command.wizard.validate.about": "launcher AnswerDocument ಅನ್ನು non-interactive ರೀತಿಯಲ್ಲಿ ಮಾನ್ಯಗೊಳಿಸಿ",

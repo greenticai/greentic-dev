@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrasikan AnswerDocument ke versi skema yang dipilih bila diperlukan",
   "cli.command.wizard.non_interactive": "Izinkan eksekusi dalam konteks non-interaktif",
   "cli.command.wizard.out": "Timpa direktori output (default: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Cetak skema AnswerDocument peluncur saat ini lalu keluar",
+  "cli.command.wizard.schema_long": "Cetak skema AnswerDocument peluncur saat ini lalu keluar.\n\nAlat coding agentik seperti Codex dan Claude harus memanggil ini terlebih dahulu untuk mengambil kontrak peluncur greentic-dev yang tepat, termasuk skema jawaban greentic-pack dan greentic-bundle tersemat yang digunakan untuk delegasi.",
   "cli.command.wizard.schema_version": "Sematkan versi skema untuk AnswerDocument yang dikeluarkan/divalidasi",
   "cli.command.wizard.unsafe_commands": "Izinkan perintah di luar daftar izin run-command default",
   "cli.command.wizard.validate.about": "Validasi AnswerDocument launcher secara non-interaktif",

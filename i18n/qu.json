@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Munasqa kaptin AnswerDocument akllasqa schema versiónman migray",
   "cli.command.wizard.non_interactive": "Mana interactivo contexto nisqakunapi ejecuciónta saqiy",
   "cli.command.wizard.out": "Lluqsiy apaykachata hukmanyaray (ñawpaq kaq: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Kunan kaq launcher AnswerDocument esquema-ta qillqay hinaspa lluqsiy",
+  "cli.command.wizard.schema_long": "Kunan kaq launcher AnswerDocument esquema-ta qillqay hinaspa lluqsiy.\n\nCodex hinallataq Claude hina agentic coding herramientasqa kayta ñawpaqta waqyananku tiyan exacto greentic-dev launcher contrato jap'inankupaq, chaypi embedded greentic-pack hinallataq greentic-bundle answer esquemakuna delegacionpaq llamk'achisqa kasqankuta ima.",
   "cli.command.wizard.schema_version": "Lluqsichisqa/validasqa AnswerDocumentpaq schema versiónta takyay",
   "cli.command.wizard.unsafe_commands": "Ñawpaq run-command allowlist nisqamanta hawapi kamachikunata saqiy",
   "cli.command.wizard.validate.about": "Launcher AnswerDocument mana rimaywan validay",

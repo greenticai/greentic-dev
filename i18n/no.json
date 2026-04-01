@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrer AnswerDocument til valgt skjemaversjon ved behov",
   "cli.command.wizard.non_interactive": "Tillat kjøring i ikke-interaktive kontekster",
   "cli.command.wizard.out": "Overstyr utdatakatalog (standard: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Skriv ut gjeldende AnswerDocument-skjema for launcheren og avslutt",
+  "cli.command.wizard.schema_long": "Skriv ut gjeldende AnswerDocument-skjema for launcheren og avslutt.\n\nAgentiske kodeverktøy som Codex og Claude bør kalle dette først for å hente den nøyaktige launcher-kontrakten for greentic-dev, inkludert de innebygde svarskjemaene for greentic-pack og greentic-bundle som brukes til delegering.",
   "cli.command.wizard.schema_version": "Lås skjemaversjon for sendt ut/validert AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Tillat kommandoer utenfor standard tillatelsesliste for kjørekommandoer",
   "cli.command.wizard.validate.about": "Valider et launcher-AnswerDocument ikke-interaktivt",

@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Kai reikia, migruoti AnswerDocument į pasirinktą schemos versiją",
   "cli.command.wizard.non_interactive": "Leisti vykdymą neinteraktyviuose kontekstuose",
   "cli.command.wizard.out": "Nepaisyti išvesties katalogo (numatytasis: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Atspausdinti dabartinę paleidyklės AnswerDocument schemą ir išeiti",
+  "cli.command.wizard.schema_long": "Atspausdinti dabartinę paleidyklės AnswerDocument schemą ir išeiti.\n\nAgentiniai programavimo įrankiai, tokie kaip Codex ir Claude, turėtų pirmiausia tai iškviesti, kad gautų tikslų greentic-dev paleidyklės kontraktą, įskaitant įterptąsias greentic-pack ir greentic-bundle atsakymų schemas, naudojamas delegavimui.",
   "cli.command.wizard.schema_version": "Prisegti schemos versiją išvestam / validuojamam AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Leisti komandas už numatytojo run-command leidžiamų komandų sąrašo ribų",
   "cli.command.wizard.validate.about": "Validuoti paleidimo AnswerDocument neinteraktyviai",

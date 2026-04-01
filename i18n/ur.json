@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ضرورت پڑنے پر AnswerDocument کو منتخب schema version میں migrate کریں",
   "cli.command.wizard.non_interactive": "non-interactive contexts میں execution کی اجازت دیں",
   "cli.command.wizard.out": "output directory کو اووررائیڈ کریں (ڈیفالٹ: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "موجودہ لانچر AnswerDocument اسکیما پرنٹ کریں اور خارج ہو جائیں",
+  "cli.command.wizard.schema_long": "موجودہ لانچر AnswerDocument اسکیما پرنٹ کریں اور خارج ہو جائیں۔\n\nCodex اور Claude جیسے ایجنٹک کوڈنگ ٹولز کو ڈیلیگیشن کے لیے استعمال ہونے والے ایمبیڈڈ greentic-pack اور greentic-bundle جواب اسکیماز سمیت، عین greentic-dev لانچر کنٹریکٹ حاصل کرنے کے لیے پہلے یہی کال کرنی چاہیے۔",
   "cli.command.wizard.schema_version": "emitted/validated AnswerDocument کے لیے schema version pin کریں",
   "cli.command.wizard.unsafe_commands": "ڈیفالٹ run-command allowlist سے باہر commands کی اجازت دیں",
   "cli.command.wizard.validate.about": "launcher AnswerDocument کو non-interactively validate کریں",

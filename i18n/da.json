@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrer AnswerDocument til den valgte skemaversion, når det er nødvendigt",
   "cli.command.wizard.non_interactive": "Tillad kørsel i ikke-interaktive kontekster",
   "cli.command.wizard.out": "Tilsidesæt outputmappe (standard: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Udskriv det aktuelle launcher-AnswerDocument-skema og afslut",
+  "cli.command.wizard.schema_long": "Udskriv det aktuelle launcher-AnswerDocument-skema og afslut.\n\nAgentiske kodningsværktøjer såsom Codex og Claude bør kalde dette først for at hente den nøjagtige greentic-dev launcher-kontrakt, inklusive de indlejrede svarskemaer for greentic-pack og greentic-bundle, som bruges til delegering.",
   "cli.command.wizard.schema_version": "Fastlås skemaversion for udskrevet/valideret AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Tillad kommandoer uden for standardtilladelseslisten for kør-kommander",
   "cli.command.wizard.validate.about": "Valider et launcher-AnswerDocument uden interaktion",

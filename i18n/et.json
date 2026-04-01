@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migreeri AnswerDocument vajadusel valitud skeemiversioonile",
   "cli.command.wizard.non_interactive": "Luba käivitamine mitteinteraktiivsetes kontekstides",
   "cli.command.wizard.out": "Kirjuta väljundkataloog üle (vaikimisi: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Prindi praegune käiviti AnswerDocument skeem ja välju",
+  "cli.command.wizard.schema_long": "Prindi praegune käiviti AnswerDocument skeem ja välju.\n\nAgentpõhised kodeerimistööriistad nagu Codex ja Claude peaksid selle esmalt kutsuma, et tuua täpne greentic-dev käiviti leping, sealhulgas delegeerimiseks kasutatavad manustatud greentic-packi ja greentic-bundle'i vastuseskeemid.",
   "cli.command.wizard.schema_version": "Kinnita väljastatava/valideeritava AnswerDocument skeemiversioon",
   "cli.command.wizard.unsafe_commands": "Luba käsud väljaspool vaikimisi run-command lubamisnimekirja",
   "cli.command.wizard.validate.about": "Valideeri launcheri AnswerDocument mitteinteraktiivselt",

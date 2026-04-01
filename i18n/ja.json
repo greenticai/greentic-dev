@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "必要に応じてAnswerDocumentを選択したスキーマバージョンに移行します",
   "cli.command.wizard.non_interactive": "非対話コンテキストでの実行を許可します",
   "cli.command.wizard.out": "出力ディレクトリを上書きします（既定: `.greentic/wizard/<run-id>/`）",
+  "cli.command.wizard.schema": "現在のランチャー AnswerDocument スキーマを出力して終了します",
+  "cli.command.wizard.schema_long": "現在のランチャー AnswerDocument スキーマを出力して終了します。\n\nCodex や Claude などのエージェント型コーディングツールは、委任に使用される埋め込みの greentic-pack および greentic-bundle の回答スキーマを含む、正確な greentic-dev ランチャー契約を取得するために、最初にこれを呼び出す必要があります。",
   "cli.command.wizard.schema_version": "出力/検証するAnswerDocumentのスキーマバージョンを固定します",
   "cli.command.wizard.unsafe_commands": "既定の run-command 許可リスト外のコマンドを許可します",
   "cli.command.wizard.validate.about": "ランチャーのAnswerDocumentを非対話的に検証します",

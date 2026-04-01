@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "필요한 경우 AnswerDocument를 선택한 스키마 버전으로 마이그레이션합니다",
   "cli.command.wizard.non_interactive": "비대화식 컨텍스트에서 실행을 허용합니다",
   "cli.command.wizard.out": "출력 디렉터리를 재정의합니다(기본값: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "현재 런처 AnswerDocument 스키마를 출력하고 종료합니다",
+  "cli.command.wizard.schema_long": "현재 런처 AnswerDocument 스키마를 출력하고 종료합니다.\n\nCodex 및 Claude와 같은 에이전트형 코딩 도구는 위임에 사용되는 내장 greentic-pack 및 greentic-bundle 답변 스키마를 포함해 정확한 greentic-dev 런처 계약을 가져오기 위해 먼저 이를 호출해야 합니다.",
   "cli.command.wizard.schema_version": "출력/검증되는 AnswerDocument의 스키마 버전을 고정합니다",
   "cli.command.wizard.unsafe_commands": "기본 run-command 허용 목록 외부의 명령을 허용합니다",
   "cli.command.wizard.validate.about": "런처 AnswerDocument를 비대화식으로 검증합니다",

@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migra AnswerDocument alla versione di schema selezionata quando necessario",
   "cli.command.wizard.non_interactive": "Consenti l'esecuzione in contesti non interattivi",
   "cli.command.wizard.out": "Sovrascrivi la directory di output (predefinita: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Stampa lo schema AnswerDocument corrente del launcher ed esci",
+  "cli.command.wizard.schema_long": "Stampa lo schema AnswerDocument corrente del launcher ed esci.\n\nStrumenti di coding agentico come Codex e Claude dovrebbero chiamare prima questo per recuperare il contratto esatto del launcher di greentic-dev, inclusi gli schemi di risposta incorporati di greentic-pack e greentic-bundle usati per la delega.",
   "cli.command.wizard.schema_version": "Fissa la versione dello schema per AnswerDocument emesso/convalidato",
   "cli.command.wizard.unsafe_commands": "Consenti comandi fuori dalla allowlist predefinita dei comandi eseguibili",
   "cli.command.wizard.validate.about": "Convalida un AnswerDocument del launcher in modo non interattivo",

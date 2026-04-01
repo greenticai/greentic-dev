@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrează AnswerDocument la versiunea de schemă selectată când este necesar",
   "cli.command.wizard.non_interactive": "Permite execuția în contexte neinteractive",
   "cli.command.wizard.out": "Suprascrie directorul de ieșire (implicit: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Afișează schema curentă AnswerDocument a launcher-ului și ieși",
+  "cli.command.wizard.schema_long": "Afișează schema curentă AnswerDocument a launcher-ului și ieși.\n\nInstrumentele de programare agentică, precum Codex și Claude, ar trebui să apeleze mai întâi aceasta pentru a obține contractul exact al launcher-ului greentic-dev, inclusiv schemele de răspuns încorporate greentic-pack și greentic-bundle utilizate pentru delegare.",
   "cli.command.wizard.schema_version": "Fixează versiunea schemei pentru AnswerDocument emis/validat",
   "cli.command.wizard.unsafe_commands": "Permite comenzi în afara listei implicite de comenzi permise",
   "cli.command.wizard.validate.about": "Validează un AnswerDocument de launcher în mod neinteractiv",

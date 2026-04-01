@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ຍ້າຍ AnswerDocument ໄປຫາເວີຊັນ schema ທີ່ເລືອກເມື່ອຈຳເປັນ",
   "cli.command.wizard.non_interactive": "ອະນຸຍາດໃຫ້ດຳເນີນການໃນບໍລິບົດແບບບໍ່ໂຕ້ຕອບ",
   "cli.command.wizard.out": "ແທນທີ່ໄດເລກະທໍຣີຜົນລັບ (ຄ່າປົກກະຕິ: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "ພິມສະຄີມາ AnswerDocument ຂອງ launcher ປັດຈຸບັນ ແລະ ອອກ",
+  "cli.command.wizard.schema_long": "ພິມສະຄີມາ AnswerDocument ຂອງ launcher ປັດຈຸບັນ ແລະ ອອກ.\n\nເຄື່ອງມື coding ແບບ agentic ເຊັ່ນ Codex ແລະ Claude ຄວນເອີ້ນໃຊ້ສິ່ງນີ້ກ່ອນ ເພື່ອດຶງສັນຍາ launcher ຂອງ greentic-dev ທີ່ແມ່ນຖືກຕ້ອງແນ່ນອນ, ລວມທັງສະຄີມາຄຳຕອບຂອງ greentic-pack ແລະ greentic-bundle ທີ່ຝັງຢູ່ ເຊິ່ງໃຊ້ສຳລັບການມອບໝາຍວຽກ.",
   "cli.command.wizard.schema_version": "ລັອກເວີຊັນ schema ສຳລັບ AnswerDocument ທີ່ສົ່ງອອກ/ກວດສອບ",
   "cli.command.wizard.unsafe_commands": "ອະນຸຍາດຄຳສັ່ງນອກເໜືອຈາກ allowlist run-command ຄ່າປົກກະຕິ",
   "cli.command.wizard.validate.about": "ກວດສອບ launcher AnswerDocument ແບບບໍ່ໂຕ້ຕອບ",

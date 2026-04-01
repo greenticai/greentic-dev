@@ -11,7 +11,7 @@ permissions:
 jobs:
   nightly:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
@@ -23,14 +23,23 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: Install tomlq
-        run: cargo install tomlq --locked
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Install required binary tools via binstall
+        run: |
+          cargo binstall --locked -y tomlq
+          cargo binstall --locked -y cargo-llvm-cov
+          cargo binstall --locked -y cargo-nextest
 
       - name: Build + Test (full, conformance on)
         run: |
           cargo build --workspace --locked --all-features
           cargo run -p greentic-dev --locked -- install tools --latest
           GOLDEN_ACCEPT=0 cargo test --workspace --locked --all-features
+
+      - name: Coverage policy (nightly)
+        run: bash ci/coverage.sh
 
       - name: Validate all example flows (dry run)
         run: |
@@ -48,5 +57,6 @@ jobs:
           name: nightly-artifacts
           path: |
             .greentic/transcripts
+            target/coverage/**
             target/**/*.dSYM
           if-no-files-found: ignore

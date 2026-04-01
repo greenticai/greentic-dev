@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Szükség esetén az AnswerDocument migrálása a kiválasztott sémaverzióra",
   "cli.command.wizard.non_interactive": "Végrehajtás engedélyezése nem interaktív környezetekben",
   "cli.command.wizard.out": "Kimeneti könyvtár felülbírálása (alapértelmezett: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Kiírja a jelenlegi launcher AnswerDocument sémát, majd kilép",
+  "cli.command.wizard.schema_long": "Kiírja a jelenlegi launcher AnswerDocument sémát, majd kilép.\n\nAz olyan agentikus kódolóeszközöknek, mint a Codex és a Claude, ezt kell először meghívniuk, hogy lekérjék a pontos greentic-dev launcher szerződést, beleértve a delegáláshoz használt beágyazott greentic-pack és greentic-bundle válaszsémákat is.",
   "cli.command.wizard.schema_version": "Sémaverzió rögzítése a kibocsátott/ellenőrzött AnswerDocumenthez",
   "cli.command.wizard.unsafe_commands": "A parancsok engedélyezése az alapértelmezett futtatási engedélyezési lista határain kívül",
   "cli.command.wizard.validate.about": "Launcher AnswerDocument ellenőrzése nem interaktív módon",

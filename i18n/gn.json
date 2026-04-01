@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Emongu'e AnswerDocument pe schema versión ojeporavóvape tekotevẽramo",
   "cli.command.wizard.non_interactive": "Emoneĩ ejecución contexto jepokuaa'ỹvape",
   "cli.command.wizard.out": "Emyengovia osẽha marandurenda (ijypykuéva: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Embohasáke pe esquema ko'ãgagua launcher AnswerDocument ha esẽ",
+  "cli.command.wizard.schema_long": "Embohasáke pe esquema ko'ãgagua launcher AnswerDocument ha esẽ.\n\nTembipuru agentic rehegua ojejapóva código hag̃ua, Codex ha Claude-icha, ohenói va'erã kóva raẽ ogueru hag̃ua pe contrato exacto launcher greentic-dev rehegua, oikehápe pehẽngue greentic-pack ha greentic-bundle answer schema ojeporúva delegación-pe.",
   "cli.command.wizard.schema_version": "Embohenda schema versión AnswerDocument osẽva/ojehechajeyva hag̃ua",
   "cli.command.wizard.unsafe_commands": "Emoneĩ comando oĩva default run-command allowlist okápe",
   "cli.command.wizard.validate.about": "Ehechajey peteĩ launcher AnswerDocument jepokuaa'ỹ hag̃uáicha",

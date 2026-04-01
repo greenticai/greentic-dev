@@ -13,6 +13,7 @@ use std::process::{Command, Stdio};
 
 use anyhow::{Context, Result, bail};
 use serde::{Deserialize, Serialize};
+use serde_json::{Value, json};
 use tempfile::TempDir;
 
 use crate::cli::{WizardApplyArgs, WizardLaunchArgs, WizardValidateArgs};
@@ -63,6 +64,11 @@ struct AnswerDocument {
 }
 
 pub fn launch(args: WizardLaunchArgs) -> Result<()> {
+    if args.schema {
+        emit_launcher_schema(args.locale.as_deref(), args.schema_version.as_deref())?;
+        return Ok(());
+    }
+
     let mode = if args.dry_run {
         ExecutionMode::DryRun
     } else {
@@ -207,6 +213,143 @@ fn run_interactive_delegate(
     }
 
     Ok(())
+}
+
+fn emit_launcher_schema(
+    cli_locale: Option<&str>,
+    requested_schema_version: Option<&str>,
+) -> Result<()> {
+    let locale = i18n::select_locale(cli_locale);
+    let schema_version = requested_schema_version.unwrap_or(DEFAULT_SCHEMA_VERSION);
+    let schema = launcher_answer_schema(schema_version, &locale)?;
+    println!(
+        "{}",
+        serde_json::to_string_pretty(&schema).context("render launcher wizard schema")?
+    );
+    Ok(())
+}
+
+fn launcher_answer_schema(schema_version: &str, locale: &str) -> Result<Value> {
+    let pack_schema =
+        capture_delegate_schema_json("greentic-pack", &["wizard", "--schema"], locale)
+            .context("failed to fetch greentic-pack wizard schema")?;
+    let bundle_schema = capture_delegate_schema_json(
+        "greentic-bundle",
+        &["--locale", locale, "wizard", "--schema"],
+        locale,
+    )
+    .context("failed to fetch greentic-bundle wizard schema")?;
+
+    Ok(json!({
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://greenticai.github.io/greentic-dev/schemas/wizard.answers.schema.json",
+        "title": "greentic-dev launcher wizard answers",
+        "type": "object",
+        "additionalProperties": false,
+        "$comment": "This launcher delegates to greentic-pack or greentic-bundle. The embedded greentic-pack schema already composes greentic-flow and greentic-component so callers can fetch one top-level contract from greentic-dev.",
+        "properties": {
+            "wizard_id": {
+                "type": "string",
+                "const": WIZARD_ID
+            },
+            "schema_id": {
+                "type": "string",
+                "const": SCHEMA_ID
+            },
+            "schema_version": {
+                "type": "string",
+                "const": schema_version
+            },
+            "locale": {
+                "type": "string",
+                "minLength": 1
+            },
+            "answers": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "selected_action": {
+                        "type": "string",
+                        "enum": ["pack", "bundle"],
+                        "description": "Which underlying wizard greentic-dev should delegate to."
+                    },
+                    "delegate_answer_document": {
+                        "description": "Optional nested AnswerDocument for non-interactive replay. When present, it must match the selected_action schema embedded under $defs.",
+                        "oneOf": [
+                            { "$ref": "#/$defs/greentic_pack_wizard_answers" },
+                            { "$ref": "#/$defs/greentic_bundle_wizard_answers" }
+                        ]
+                    }
+                },
+                "required": ["selected_action"],
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "selected_action": { "const": "pack" }
+                            },
+                            "required": ["selected_action", "delegate_answer_document"]
+                        },
+                        "then": {
+                            "properties": {
+                                "delegate_answer_document": {
+                                    "$ref": "#/$defs/greentic_pack_wizard_answers"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "if": {
+                            "properties": {
+                                "selected_action": { "const": "bundle" }
+                            },
+                            "required": ["selected_action", "delegate_answer_document"]
+                        },
+                        "then": {
+                            "properties": {
+                                "delegate_answer_document": {
+                                    "$ref": "#/$defs/greentic_bundle_wizard_answers"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "locks": {
+                "type": "object",
+                "additionalProperties": true
+            }
+        },
+        "required": ["wizard_id", "schema_id", "schema_version", "locale", "answers"],
+        "$defs": {
+            "greentic_pack_wizard_answers": pack_schema,
+            "greentic_bundle_wizard_answers": bundle_schema
+        }
+    }))
+}
+
+fn capture_delegate_schema_json(program: &str, args: &[&str], locale: &str) -> Result<Value> {
+    let bin = resolve_binary(program)?;
+    let output = Command::new(&bin)
+        .args(args)
+        .env("LANG", locale)
+        .env("LC_ALL", locale)
+        .env("LC_MESSAGES", locale)
+        .output()
+        .with_context(|| format!("failed to execute {} {}", bin.display(), args.join(" ")))?;
+    if !output.status.success() {
+        let stderr = String::from_utf8_lossy(&output.stderr);
+        bail!(
+            "delegate schema command failed: {} {} (exit code {:?}){}{}",
+            program,
+            args.join(" "),
+            output.status.code(),
+            if stderr.trim().is_empty() { "" } else { ": " },
+            stderr.trim()
+        );
+    }
+    serde_json::from_slice(&output.stdout)
+        .with_context(|| format!("failed to parse {program} schema output as JSON"))
 }
 
 fn interactive_delegate_args(

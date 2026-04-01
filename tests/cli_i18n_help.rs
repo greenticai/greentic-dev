@@ -76,6 +76,7 @@ fn wizard_help_uses_requested_locale_for_answers_flag() {
     cmd.assert()
         .success()
         .stdout(contains("ملف الإجابات"))
+        .stdout(contains("اطبع مخطط AnswerDocument الحالي"))
         .stdout(contains("وضع الواجهة الأمامية"))
         .stdout(contains("اعرض المساعدة"));
 }

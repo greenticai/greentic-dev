@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "V případě potřeby migruje AnswerDocument na vybranou verzi schématu",
   "cli.command.wizard.non_interactive": "Povolí spuštění v neinteraktivních kontextech",
   "cli.command.wizard.out": "Přepíše výstupní adresář (výchozí: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Vytiskne aktuální schéma launcheru AnswerDocument a ukončí se",
+  "cli.command.wizard.schema_long": "Vytiskne aktuální schéma launcheru AnswerDocument a ukončí se.\n\nAgentní nástroje pro programování, jako jsou Codex a Claude, by to měly zavolat nejdříve, aby načetly přesný kontrakt launcheru greentic-dev, včetně vložených schémat odpovědí greentic-pack a greentic-bundle používaných pro delegování.",
   "cli.command.wizard.schema_version": "Připne verzi schématu pro vypisovaný/validovaný AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Povolí příkazy mimo výchozí allowlist pro run-command",
   "cli.command.wizard.validate.about": "Ověří AnswerDocument launcheru neinteraktivně",

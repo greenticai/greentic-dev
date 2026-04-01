@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Gerektiğinde AnswerDocument'i seçilen şema sürümüne taşı",
   "cli.command.wizard.non_interactive": "Etkileşimsiz bağlamlarda yürütmeye izin ver",
   "cli.command.wizard.out": "Çıktı dizinini geçersiz kıl (varsayılan: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Geçerli başlatıcı AnswerDocument şemasını yazdır ve çık",
+  "cli.command.wizard.schema_long": "Geçerli başlatıcı AnswerDocument şemasını yazdır ve çık.\n\nCodex ve Claude gibi etmen tabanlı kodlama araçları, temsil için kullanılan yerleşik greentic-pack ve greentic-bundle yanıt şemaları dahil olmak üzere, greentic-dev başlatıcı sözleşmesini tam olarak almak için bunu önce çağırmalıdır.",
   "cli.command.wizard.schema_version": "Üretilen/doğrulanan AnswerDocument için şema sürümünü sabitle",
   "cli.command.wizard.unsafe_commands": "Varsayılan komut izin listesi dışındaki komutlara izin ver",
   "cli.command.wizard.validate.about": "Bir başlatıcı AnswerDocument'ini etkileşimsiz olarak doğrula",

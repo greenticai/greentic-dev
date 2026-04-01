@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrera AnswerDocument till vald schemaversion vid behov",
   "cli.command.wizard.non_interactive": "Tillåt körning i icke-interaktiva sammanhang",
   "cli.command.wizard.out": "Åsidosätt utdatakatalogen (standard: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Skriv ut den aktuella AnswerDocument-scheman för launchern och avsluta",
+  "cli.command.wizard.schema_long": "Skriv ut den aktuella AnswerDocument-scheman för launchern och avsluta.\n\nAgentbaserade kodverktyg som Codex och Claude bör anropa detta först för att hämta det exakta launcher-kontraktet för greentic-dev, inklusive de inbäddade svarsschemana för greentic-pack och greentic-bundle som används för delegering.",
   "cli.command.wizard.schema_version": "Lås schemaversion för skickat/validerat AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Tillåt kommandon utanför standardlistan över tillåtna run-command-kommandon",
   "cli.command.wizard.validate.about": "Validera ett launcher-AnswerDocument utan interaktion",

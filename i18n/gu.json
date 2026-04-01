@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "જરૂર પડે ત્યારે AnswerDocument ને પસંદ કરેલા schema version પર migrate કરો",
   "cli.command.wizard.non_interactive": "non-interactive contexts માં execution ની મંજૂરી આપો",
   "cli.command.wizard.out": "output ડિરેક્ટરી ઓવરરાઇડ કરો (ડિફૉલ્ટ: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "હાલની લૉન્ચર AnswerDocument સ્કીમા પ્રિન્ટ કરો અને બહાર નીકળો",
+  "cli.command.wizard.schema_long": "હાલની લૉન્ચર AnswerDocument સ્કીમા પ્રિન્ટ કરો અને બહાર નીકળો.\n\nCodex અને Claude જેવા એજેન્ટિક કોડિંગ સાધનોને ડેલિગેશન માટે ઉપયોગમાં લેવાતી એમ્બેડેડ greentic-pack અને greentic-bundle answer સ્કીમાઓ સહિત ચોક્કસ greentic-dev લૉન્ચર કરાર મેળવવા માટે પ્રથમ આ કૉલ કરવો જોઈએ.",
   "cli.command.wizard.schema_version": "આપેલ/validated AnswerDocument માટે schema version pin કરો",
   "cli.command.wizard.unsafe_commands": "ડિફૉલ્ટ run-command allowlist બહારના commands ની મંજૂરી આપો",
   "cli.command.wizard.validate.about": "launcher AnswerDocument ને non-interactive રીતે validate કરો",

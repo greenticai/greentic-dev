@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ਲੋੜ ਪੈਣ ਤੇ AnswerDocument ਨੂੰ ਚੁਣੀ schema version ਵਿੱਚ migrate ਕਰੋ",
   "cli.command.wizard.non_interactive": "non-interactive contexts ਵਿੱਚ execution ਦੀ ਆਗਿਆ ਦਿਓ",
   "cli.command.wizard.out": "output ਡਾਇਰੈਕਟਰੀ ਓਵਰਰਾਈਡ ਕਰੋ (ਡਿਫਾਲਟ: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "ਮੌਜੂਦਾ ਲਾਂਚਰ AnswerDocument ਸਕੀਮਾ ਪ੍ਰਿੰਟ ਕਰੋ ਅਤੇ ਬਾਹਰ ਨਿਕਲੋ",
+  "cli.command.wizard.schema_long": "ਮੌਜੂਦਾ ਲਾਂਚਰ AnswerDocument ਸਕੀਮਾ ਪ੍ਰਿੰਟ ਕਰੋ ਅਤੇ ਬਾਹਰ ਨਿਕਲੋ।\n\nCodex ਅਤੇ Claude ਵਰਗੇ agentic coding ਟੂਲਾਂ ਨੂੰ delegation ਲਈ ਵਰਤੇ ਜਾਣ ਵਾਲੇ embedded greentic-pack ਅਤੇ greentic-bundle answer schemas ਸਮੇਤ ਸਹੀ greentic-dev launcher contract ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਇਹ ਕਾਲ ਕਰਨਾ ਚਾਹੀਦਾ ਹੈ।",
   "cli.command.wizard.schema_version": "ਨਿਕਾਸ/ਪ੍ਰਮਾਣਿਤ AnswerDocument ਲਈ schema version ਨਿਸ਼ਚਿਤ ਕਰੋ",
   "cli.command.wizard.unsafe_commands": "ਡਿਫਾਲਟ run-command allowlist ਤੋਂ ਬਾਹਰ ਵਾਲੀਆਂ commands ਦੀ ਆਗਿਆ ਦਿਓ",
   "cli.command.wizard.validate.about": "launcher AnswerDocument ਨੂੰ non-interactively ਪ੍ਰਮਾਣਿਤ ਕਰੋ",

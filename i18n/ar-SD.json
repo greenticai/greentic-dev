@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ترحيل AnswerDocument إلى إصدار المخطط المحدد عند الحاجة",
   "cli.command.wizard.non_interactive": "السماح بالتنفيذ في السياقات غير التفاعلية",
   "cli.command.wizard.out": "تجاوز دليل الإخراج (الافتراضي: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "اطبع مخطط AnswerDocument الحالي للمشغّل ثم اخرج",
+  "cli.command.wizard.schema_long": "اطبع مخطط AnswerDocument الحالي للمشغّل ثم اخرج.\n\nيجب على أدوات البرمجة المعتمدة على الوكلاء مثل Codex و Claude استدعاء هذا أولاً لجلب عقد مشغّل greentic-dev الدقيق، بما في ذلك مخططات إجابات greentic-pack و greentic-bundle المضمّنة والمستخدمة للتفويض.",
   "cli.command.wizard.schema_version": "تثبيت إصدار المخطط لـ AnswerDocument المُخرَج/المتحقَّق منه",
   "cli.command.wizard.unsafe_commands": "السماح بالأوامر خارج قائمة السماح الافتراضية لأوامر التشغيل",
   "cli.command.wizard.validate.about": "التحقق من صحة AnswerDocument الخاص بالمشغّل بدون تفاعل",

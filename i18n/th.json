@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ย้าย AnswerDocument ไปเป็นเวอร์ชันสคีมาที่เลือกเมื่อจำเป็น",
   "cli.command.wizard.non_interactive": "อนุญาตให้ทำงานในบริบทที่ไม่โต้ตอบ",
   "cli.command.wizard.out": "แทนที่ไดเรกทอรีเอาต์พุต (ค่าเริ่มต้น: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "พิมพ์สคีมา AnswerDocument ปัจจุบันของ launcher แล้วออก",
+  "cli.command.wizard.schema_long": "พิมพ์สคีมา AnswerDocument ปัจจุบันของ launcher แล้วออก\n\nเครื่องมือเขียนโค้ดแบบเอเจนติก เช่น Codex และ Claude ควรเรียกสิ่งนี้ก่อนเพื่อดึงสัญญา launcher ของ greentic-dev ที่ถูกต้องแบบตรงตัว ซึ่งรวมถึงสคีมาคำตอบของ greentic-pack และ greentic-bundle ที่ฝังอยู่ซึ่งใช้สำหรับการมอบหมายงาน",
   "cli.command.wizard.schema_version": "ตรึงเวอร์ชันสคีมาสำหรับ AnswerDocument ที่ส่งออก/ตรวจสอบ",
   "cli.command.wizard.unsafe_commands": "อนุญาตคำสั่งนอกเหนือจาก allowlist run-command เริ่มต้น",
   "cli.command.wizard.validate.about": "ตรวจสอบ AnswerDocument ของ launcher แบบไม่โต้ตอบ",

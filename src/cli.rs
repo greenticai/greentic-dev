@@ -159,6 +159,10 @@ pub fn localized_help_command(locale: &str) -> clap::Command {
                 .mut_arg("emit_answers", |arg| {
                     arg.help(crate::i18n::t(locale, "cli.command.wizard.emit_answers"))
                 })
+                .mut_arg("schema", |arg| {
+                    arg.help(crate::i18n::t(locale, "cli.command.wizard.schema"))
+                        .long_help(crate::i18n::t(locale, "cli.command.wizard.schema_long"))
+                })
                 .mut_arg("schema_version", |arg| {
                     arg.help(crate::i18n::t(locale, "cli.command.wizard.schema_version"))
                 })
@@ -452,6 +456,9 @@ pub struct WizardLaunchArgs {
     /// cli.command.wizard.emit_answers
     #[arg(long = "emit-answers")]
     pub emit_answers: Option<PathBuf>,
+    /// cli.command.wizard.schema
+    #[arg(long = "schema")]
+    pub schema: bool,
     /// cli.command.wizard.schema_version
     #[arg(long = "schema-version")]
     pub schema_version: Option<String>,

@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migre AnswerDocument nan vèsyon chema chwazi a lè sa nesesè",
   "cli.command.wizard.non_interactive": "Pèmèt ekzekisyon nan kontèks ki pa entèaktif",
   "cli.command.wizard.out": "Ranplase repètwa sòti a (pa default: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Enprime chema AnswerDocument aktyèl lansè a epi soti",
+  "cli.command.wizard.schema_long": "Enprime chema AnswerDocument aktyèl lansè a epi soti.\n\nZouti kodaj ajan tankou Codex ak Claude ta dwe rele sa an premye pou rekipere kontra egzak lansè greentic-dev la, ki gen ladan chema repons entegre greentic-pack ak greentic-bundle yo itilize pou delegasyon.",
   "cli.command.wizard.schema_version": "Fikse vèsyon chema pou AnswerDocument ki sòti/valide",
   "cli.command.wizard.unsafe_commands": "Pèmèt kòmand ki deyò lis otorizasyon default run-command la",
   "cli.command.wizard.validate.about": "Valide yon AnswerDocument lansè san entèraksyon",

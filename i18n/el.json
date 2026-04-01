@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Μετάβαση του AnswerDocument στην επιλεγμένη έκδοση σχήματος όταν χρειάζεται",
   "cli.command.wizard.non_interactive": "Να επιτρέπεται η εκτέλεση σε μη διαδραστικά περιβάλλοντα",
   "cli.command.wizard.out": "Παράκαμψη καταλόγου εξόδου (προεπιλογή: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Εκτύπωση του τρέχοντος σχήματος AnswerDocument του launcher και έξοδος",
+  "cli.command.wizard.schema_long": "Εκτύπωση του τρέχοντος σχήματος AnswerDocument του launcher και έξοδος.\n\nΕργαλεία agentic προγραμματισμού όπως τα Codex και Claude πρέπει να καλέσουν πρώτα αυτό για να ανακτήσουν το ακριβές συμβόλαιο launcher του greentic-dev, συμπεριλαμβανομένων των ενσωματωμένων σχημάτων απαντήσεων greentic-pack και greentic-bundle που χρησιμοποιούνται για ανάθεση.",
   "cli.command.wizard.schema_version": "Καθορισμός έκδοσης σχήματος για το παραγόμενο/επικυρωμένο AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Να επιτρέπονται εντολές εκτός της προεπιλεγμένης λίστας επιτρεπόμενων run-command",
   "cli.command.wizard.validate.about": "Επικύρωση ενός launcher AnswerDocument χωρίς αλληλεπίδραση",

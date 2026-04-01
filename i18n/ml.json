@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "ആവശ്യമായപ്പോൾ AnswerDocument തിരഞ്ഞെടുക്കപ്പെട്ട സ്കീമ പതിപ്പിലേക്ക് മൈഗ്രേറ്റ് ചെയ്യുക",
   "cli.command.wizard.non_interactive": "ഇന്ററാക്ഷൻ ഇല്ലാത്ത സാഹചര്യങ്ങളിൽ പ്രവർത്തനം അനുവദിക്കുക",
   "cli.command.wizard.out": "ഔട്ട്പുട്ട് ഡയറക്ടറി ഓവർറൈഡ് ചെയ്യുക (ഡിഫോൾട്ട്: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "നിലവിലെ ലോഞ്ചർ AnswerDocument സ്കീമ പ്രിന്റ് ചെയ്ത് പുറത്ത് കടക്കുക",
+  "cli.command.wizard.schema_long": "നിലവിലെ ലോഞ്ചർ AnswerDocument സ്കീമ പ്രിന്റ് ചെയ്ത് പുറത്ത് കടക്കുക.\n\nCodex, Claude പോലുള്ള agentic coding ടൂളുകൾ, delegation-നായി ഉപയോഗിക്കുന്ന embedded greentic-pack, greentic-bundle answer സ്കീമകൾ ഉൾപ്പെടെ, കൃത്യമായ greentic-dev ലോഞ്ചർ കോൺട്രാക്ട് ലഭ്യമാക്കാൻ ആദ്യം ഇത് വിളിക്കണം.",
   "cli.command.wizard.schema_version": "പുറപ്പെടുവിക്കുന്ന/സാധൂകരിക്കുന്ന AnswerDocument-നായി സ്കീമ പതിപ്പ് നിശ്ചയിക്കുക",
   "cli.command.wizard.unsafe_commands": "ഡിഫോൾട്ട് run-command allowlist-ന് പുറത്തുള്ള കമാൻഡുകൾ അനുവദിക്കുക",
   "cli.command.wizard.validate.about": "ഒരു ലോഞ്ചർ AnswerDocument ഇന്ററാക്ഷൻ കൂടാതെ സാധൂകരിക്കുക",

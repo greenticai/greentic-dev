@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "I-migrate ang AnswerDocument sa napiling schema version kapag kailangan",
   "cli.command.wizard.non_interactive": "Payagan ang execution sa mga non-interactive na konteksto",
   "cli.command.wizard.out": "I-override ang output directory (default: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "I-print ang kasalukuyang AnswerDocument schema ng launcher at lumabas",
+  "cli.command.wizard.schema_long": "I-print ang kasalukuyang AnswerDocument schema ng launcher at lumabas.\n\nDapat itong tawagin muna ng mga agentic coding tool gaya ng Codex at Claude upang kunin ang eksaktong kontrata ng launcher ng greentic-dev, kasama ang naka-embed na mga answer schema ng greentic-pack at greentic-bundle na ginagamit para sa delegasyon.",
   "cli.command.wizard.schema_version": "I-pin ang schema version para sa inilabas/na-validate na AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Payagan ang mga command sa labas ng default run-command allowlist",
   "cli.command.wizard.validate.about": "I-validate ang launcher AnswerDocument nang non-interactive",

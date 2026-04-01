@@ -34,6 +34,8 @@
   "cli.command.wizard.frontend": "Frontend mode (text/json/adaptive-card)",
   "cli.command.wizard.locale": "Locale (BCP47), passed to providers and recorded in plan metadata",
   "cli.command.wizard.emit_answers": "Emit a portable AnswerDocument envelope JSON file",
+  "cli.command.wizard.schema": "Print the current launcher AnswerDocument schema and exit",
+  "cli.command.wizard.schema_long": "Print the current launcher AnswerDocument schema and exit.\n\nAgentic coding tools such as Codex and Claude should call this first to fetch the exact greentic-dev launcher contract, including the embedded greentic-pack and greentic-bundle answer schemas used for delegation.",
   "cli.command.wizard.schema_version": "Pin schema version for emitted/validated AnswerDocument",
   "cli.command.wizard.migrate": "Migrate AnswerDocument to the selected schema version when needed",
   "cli.command.wizard.out": "Override output directory (default: `.greentic/wizard/<run-id>/`)",

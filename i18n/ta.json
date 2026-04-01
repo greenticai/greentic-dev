@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "தேவையானபோது AnswerDocument-ஐ தேர்ந்த schema version-க்கு migrate செய்யவும்",
   "cli.command.wizard.non_interactive": "non-interactive சூழல்களில் இயக்க அனுமதிக்கவும்",
   "cli.command.wizard.out": "output அடைவை மாற்றிக்குறிக்கவும் (இயல்புநிலை: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "தற்போதைய launcher AnswerDocument schema-வை அச்சிட்டு வெளியேறு",
+  "cli.command.wizard.schema_long": "தற்போதைய launcher AnswerDocument schema-வை அச்சிட்டு வெளியேறு.\n\nCodex மற்றும் Claude போன்ற agentic coding கருவிகள், delegation-க்கு பயன்படுத்தப்படும் உட்பொதிக்கப்பட்ட greentic-pack மற்றும் greentic-bundle answer schema-களையும் உட்பட, துல்லியமான greentic-dev launcher contract-ஐ பெற முதலில் இதை அழைக்க வேண்டும்.",
   "cli.command.wizard.schema_version": "வெளியிடப்படும்/சரிபார்க்கப்படும் AnswerDocument-க்கு schema version-ஐ நிர்ணயிக்கவும்",
   "cli.command.wizard.unsafe_commands": "இயல்புநிலை run-command allowlist-க்கு வெளியிலுள்ள commands-ஐ அனுமதிக்கவும்",
   "cli.command.wizard.validate.about": "launcher AnswerDocument-ஐ non-interactive முறையில் சரிபார்க்கவும்",

@@ -34,6 +34,8 @@
   "cli.command.wizard.frontend": "وضع الواجهة الأمامية (text/json/adaptive-card)",
   "cli.command.wizard.locale": "اللغة (BCP47) الممررة إلى المزوّدات والمسجلة في بيانات الخطة",
   "cli.command.wizard.emit_answers": "أخرج ملف JSON محمولًا لغلاف AnswerDocument",
+  "cli.command.wizard.schema": "اطبع مخطط AnswerDocument الحالي لمشغّل launcher ثم اخرج",
+  "cli.command.wizard.schema_long": "اطبع مخطط AnswerDocument الحالي لمشغّل launcher ثم اخرج.\n\nيجب على أدوات البرمجة الوكيلة مثل Codex وClaude استدعاء هذا أولاً لجلب عقد greentic-dev launcher الدقيق، بما في ذلك مخططات إجابات greentic-pack وgreentic-bundle المضمّنة والمستخدمة للتفويض.",
   "cli.command.wizard.schema_version": "ثبّت إصدار المخطط لـ AnswerDocument المُصدّرة/المتحقق منها",
   "cli.command.wizard.migrate": "هاجر AnswerDocument إلى إصدار المخطط المحدد عند الحاجة",
   "cli.command.wizard.out": "تجاوز دليل الإخراج (الافتراضي: `.greentic/wizard/<run-id>/`)",

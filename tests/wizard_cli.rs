@@ -1,5 +1,6 @@
 use assert_cmd::cargo::cargo_bin_cmd;
 use predicates::str::contains;
+use serde_json::Value;
 use std::fs;
 use std::path::{Path, PathBuf};
 use tempfile::TempDir;
@@ -515,4 +516,88 @@ exit 0
     assert!(envelope.contains("\"wizard_id\": \"greentic-dev.wizard.launcher.main\""));
     assert!(envelope.contains("\"schema_id\": \"greentic-dev.launcher.main\""));
     assert!(envelope.contains("\"selected_action\": \"bundle\""));
+}
+
+#[test]
+fn wizard_schema_combines_pack_and_bundle_delegate_schemas() {
+    let tmp = TempDir::new().expect("temp dir");
+    let bin_dir = tmp.path().join("bin");
+    fs::create_dir_all(&bin_dir).expect("create bin dir");
+
+    write_stub_bin(
+        &bin_dir,
+        "greentic-pack",
+        r#"
+if [ "$1" = "wizard" ] && [ "$2" = "--schema" ]; then
+  cat <<'JSON'
+{"title":"greentic-pack wizard answers","type":"object","properties":{"schema_id":{"const":"greentic-pack.wizard.answers"}}}
+JSON
+  exit 0
+fi
+echo "unexpected argv: $@" >&2
+exit 9
+"#,
+    );
+
+    write_stub_bin(
+        &bin_dir,
+        "greentic-bundle",
+        r#"
+if [ "$1" = "--locale" ] && [ "$3" = "wizard" ] && [ "$4" = "--schema" ]; then
+  cat <<'JSON'
+{"title":"greentic-bundle wizard answers","type":"object","properties":{"schema_id":{"const":"greentic-bundle.main"}}}
+JSON
+  exit 0
+fi
+echo "unexpected argv: $@" >&2
+exit 9
+"#,
+    );
+
+    let output = cargo_bin_cmd!("greentic-dev")
+        .env("PATH", prepend_path(&bin_dir))
+        .args(["wizard", "--schema", "--schema-version", "1.2.3"])
+        .output()
+        .expect("run wizard --schema");
+
+    assert!(
+        output.status.success(),
+        "stdout={} stderr={}",
+        String::from_utf8_lossy(&output.stdout),
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let schema: Value = serde_json::from_slice(&output.stdout).expect("parse schema");
+    assert_eq!(
+        schema.get("title").and_then(Value::as_str),
+        Some("greentic-dev launcher wizard answers")
+    );
+    assert_eq!(
+        schema
+            .pointer("/properties/schema_version/const")
+            .and_then(Value::as_str),
+        Some("1.2.3")
+    );
+    assert_eq!(
+        schema
+            .pointer("/properties/answers/properties/selected_action/enum")
+            .and_then(Value::as_array)
+            .expect("selected_action enum")
+            .iter()
+            .filter_map(Value::as_str)
+            .collect::<Vec<_>>(),
+        vec!["pack", "bundle"]
+    );
+    assert_eq!(
+        schema
+            .pointer("/$defs/greentic_pack_wizard_answers/title")
+            .and_then(Value::as_str),
+        Some("greentic-pack wizard answers")
+    );
+    assert_eq!(
+        schema
+            .pointer("/$defs/greentic_bundle_wizard_answers/title")
+            .and_then(Value::as_str),
+        Some("greentic-bundle wizard answers")
+    );
 }

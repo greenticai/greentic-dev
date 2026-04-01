@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migriraj AnswerDocument na odabranu verziju sheme kada je potrebno",
   "cli.command.wizard.non_interactive": "Dopusti izvršavanje u neinteraktivnim kontekstima",
   "cli.command.wizard.out": "Nadjačaj izlazni direktorij (zadano: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Ispiši trenutačnu AnswerDocument shemu pokretača i izađi",
+  "cli.command.wizard.schema_long": "Ispiši trenutačnu AnswerDocument shemu pokretača i izađi.\n\nAgentni alati za programiranje kao što su Codex i Claude trebaju prvo pozvati ovo kako bi dohvatili točan ugovor pokretača greentic-dev, uključujući ugrađene AnswerDocument sheme odgovora za greentic-pack i greentic-bundle koje se koriste za delegiranje.",
   "cli.command.wizard.schema_version": "Prikvači verziju sheme za emitirani/validirani AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Dopusti naredbe izvan zadanog popisa dopuštenih naredbi za pokretanje",
   "cli.command.wizard.validate.about": "Validiraj launcher AnswerDocument neinteraktivno",

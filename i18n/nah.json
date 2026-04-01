@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Xikmigrar AnswerDocument campa in versión de schema tlen monextia quema monequi",
   "cli.command.wizard.non_interactive": "Xikcahua ejecución ipan contextos amo interactivos",
   "cli.command.wizard.out": "Xikpatla directorio de salida (por defecto: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Xicteixmati in axkan launcher AnswerDocument schema huan xiquisa",
+  "cli.command.wizard.schema_long": "Xicteixmati in axkan launcher AnswerDocument schema huan xiquisa.\n\nAgentic coding tools quen Codex ihuan Claude monequi quichihuaseh ni achtoh para quicuiseh in melahuac greentic-dev launcher contract, ihuan in caltic cateh greentic-pack ihuan greentic-bundle answer schemas tlen mopiah para delegation.",
   "cli.command.wizard.schema_version": "Xikfijar versión de schema para AnswerDocument tlen mochiua/movalida",
   "cli.command.wizard.unsafe_commands": "Xikcahua comandos kalten amo kateh ipan allowlist por defecto de run-command",
   "cli.command.wizard.validate.about": "Xikvalida se launcher AnswerDocument amo interactivo",

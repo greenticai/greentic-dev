@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "అవసరమైతే AnswerDocument ను ఎంపిక చేసిన schema version కు migrate చేయండి",
   "cli.command.wizard.non_interactive": "non-interactive సందర్భాల్లో అమలు అనుమతించండి",
   "cli.command.wizard.out": "output డైరెక్టరీని ఓవర్‌రైడ్ చేయండి (డిఫాల్ట్: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "ప్రస్తుత లాంచర్ AnswerDocument స్కీమాను ముద్రించి నిష్క్రమించు",
+  "cli.command.wizard.schema_long": "ప్రస్తుత లాంచర్ AnswerDocument స్కీమాను ముద్రించి నిష్క్రమించు.\n\nCodex మరియు Claude వంటి ఏజెంటిక్ కోడింగ్ సాధనాలు, ప్రతినియోగం కోసం ఉపయోగించే ఎంబెడెడ్ greentic-pack మరియు greentic-bundle జవాబు స్కీమాలు సహా, ఖచ్చితమైన greentic-dev లాంచర్ ఒప్పందాన్ని పొందడానికి ముందుగా దీనిని కాల్ చేయాలి.",
   "cli.command.wizard.schema_version": "వెలువరించిన/ధృవీకరించిన AnswerDocument కోసం schema version ను స్థిరపరచండి",
   "cli.command.wizard.unsafe_commands": "డిఫాల్ట్ run-command allowlist వెలుపల ఉన్న commands ను అనుమతించండి",
   "cli.command.wizard.validate.about": "launcher AnswerDocument ను non-interactive గా ధృవీకరించండి",

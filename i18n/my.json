@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "လိုအပ်ပါက AnswerDocument ကို ရွေးချယ်ထားသော schema version သို့ ပြောင်းရွှေ့မည်",
   "cli.command.wizard.non_interactive": "အပြန်အလှန်မရှိသော context များတွင် လုပ်ဆောင်မှုကို ခွင့်ပြုမည်",
   "cli.command.wizard.out": "output directory ကို အစားထိုးသတ်မှတ်မည် (မူလတန်ဖိုး: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "လက်ရှိ launcher AnswerDocument schema ကို ထုတ်ပြပြီး ပိတ်မည်",
+  "cli.command.wizard.schema_long": "လက်ရှိ launcher AnswerDocument schema ကို ထုတ်ပြပြီး ပိတ်မည်။\n\nCodex နှင့် Claude ကဲ့သို့သော agentic coding tools များသည် delegation အတွက် အသုံးပြုသော embedded greentic-pack နှင့် greentic-bundle answer schemas အပါအဝင် တိကျသော greentic-dev launcher contract ကို ရယူရန် ဤအရာကို အရင်ဆုံး ခေါ်သင့်သည်။",
   "cli.command.wizard.schema_version": "ထုတ်မည့်/စစ်ဆေးမည့် AnswerDocument အတွက် schema version ကို သတ်မှတ်ထားမည်",
   "cli.command.wizard.unsafe_commands": "မူလ run-command allowlist ပြင်ပရှိ commands များကို ခွင့်ပြုမည်",
   "cli.command.wizard.validate.about": "launcher AnswerDocument ကို အပြန်အလှန်မလိုဘဲ စစ်ဆေးမည်",

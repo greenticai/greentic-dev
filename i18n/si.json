@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "අවශ්‍ය විට AnswerDocument තෝරාගත් schema අනුවාදයට මාරු කරන්න",
   "cli.command.wizard.non_interactive": "අන්තර්ක්‍රියාකාරී නොවන සන්දර්භවල ක්‍රියාත්මක කිරීමට අවසර දෙන්න",
   "cli.command.wizard.out": "ප්‍රතිදාන නාමාවලිය අභිබවා සකසන්න (පෙරනිමි: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "වත්මන් launcher AnswerDocument schema මුද්‍රණය කර නික්මන්න",
+  "cli.command.wizard.schema_long": "වත්මන් launcher AnswerDocument schema මුද්‍රණය කර නික්මන්න.\n\nCodex සහ Claude වැනි agentic coding tools ප්‍රථමයෙන් මෙය කැඳවිය යුතුය, එවිට delegation සඳහා භාවිත වන ඇතුළත් greentic-pack සහ greentic-bundle answer schemas සමඟ නිවැරදි greentic-dev launcher contract එක ලබාගත හැක.",
   "cli.command.wizard.schema_version": "නිකුත් කරන/වලංගු කරන AnswerDocument සඳහා schema අනුවාදය ස්ථිර කරන්න",
   "cli.command.wizard.unsafe_commands": "පෙරනිමි run-command allowlist එකෙන් පිටත ඇති විධානවලට අවසර දෙන්න",
   "cli.command.wizard.validate.about": "launcher AnswerDocument එක අන්තර්ක්‍රියාකාරී නොවන ලෙස වලංගු කරන්න",

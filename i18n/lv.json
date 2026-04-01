@@ -42,6 +42,8 @@
   "cli.command.wizard.migrate": "Migrēt AnswerDocument uz izvēlēto shēmas versiju, ja nepieciešams",
   "cli.command.wizard.non_interactive": "Atļaut izpildi neinteraktīvos kontekstos",
   "cli.command.wizard.out": "Pārrakstīt izvades direktoriju (noklusējums: `.greentic/wizard/<run-id>/`)",
+  "cli.command.wizard.schema": "Izdrukāt pašreizējo palaidēja AnswerDocument shēmu un iziet",
+  "cli.command.wizard.schema_long": "Izdrukāt pašreizējo palaidēja AnswerDocument shēmu un iziet.\n\nAģentiskajiem kodēšanas rīkiem, piemēram, Codex un Claude, vispirms vajadzētu izsaukt šo, lai iegūtu precīzu greentic-dev palaidēja līgumu, tostarp iegultās greentic-pack un greentic-bundle atbilžu shēmas, kas tiek izmantotas deleģēšanai.",
   "cli.command.wizard.schema_version": "Fiksēt shēmas versiju izvadītajam/validētajam AnswerDocument",
   "cli.command.wizard.unsafe_commands": "Atļaut komandas ārpus noklusējuma run-command atļauto saraksta",
   "cli.command.wizard.validate.about": "Validēt palaidēja AnswerDocument neinteraktīvi",

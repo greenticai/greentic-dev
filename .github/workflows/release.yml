@@ -19,8 +19,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
   publish:
-    name: CI (build/test) + Publish
+    name: Publish
+    needs: ci
     runs-on: ubuntu-latest
     env:
       CARGO_TERM_COLOR: always
@@ -58,12 +62,8 @@ jobs:
             ${{ env.CARGO_TARGET_DIR }}
           key: release-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Verify build (locked)
-        run: |
-          cargo fetch --locked
-          cargo build --workspace --locked --all-features
-          cargo run -p greentic-dev --locked -- install tools --latest
-          cargo test --workspace --locked --all-features -- --quiet
+      - name: Fetch dependencies
+        run: cargo fetch --locked
 
       - name: Cargo package (dry-run)
         run: cargo package --locked --allow-dirty --no-verify || true

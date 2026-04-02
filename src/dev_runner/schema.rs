@@ -1,18 +1,41 @@
 use serde_json::Value as JsonValue;
 use serde_yaml_bw::Value as YamlValue;
 
-pub fn validate_yaml_against_schema(node: &YamlValue, schema_json: &str) -> Result<(), String> {
+pub struct CompiledSchema {
+    pub validator: jsonschema::Validator,
+    pub schema_id: Option<String>,
+}
+
+pub fn compile_schema(schema_json: &str) -> Result<CompiledSchema, String> {
     let schema: JsonValue = serde_json::from_str(schema_json)
         .map_err(|error| format!("invalid schema JSON: {error}"))?;
-    let node_json = serde_json::to_value(node)
-        .map_err(|error| format!("failed to convert YAML to JSON: {error}"))?;
-
+    let schema_id = schema
+        .get("$id")
+        .and_then(|value| value.as_str())
+        .map(ToOwned::to_owned);
     let validator = jsonschema::validator_for(&schema)
         .map_err(|error| format!("schema did not compile: {error}"))?;
 
+    Ok(CompiledSchema {
+        validator,
+        schema_id,
+    })
+}
+
+pub fn validate_yaml_against_compiled_schema(
+    node: &YamlValue,
+    validator: &jsonschema::Validator,
+) -> Result<(), String> {
+    let node_json = serde_json::to_value(node)
+        .map_err(|error| format!("failed to convert YAML to JSON: {error}"))?;
     validator
         .validate(&node_json)
         .map_err(|error| error.to_string())
+}
+
+pub fn validate_yaml_against_schema(node: &YamlValue, schema_json: &str) -> Result<(), String> {
+    let compiled = compile_schema(schema_json)?;
+    validate_yaml_against_compiled_schema(node, &compiled.validator)
 }
 
 pub fn schema_id_from_json(schema_json: &str) -> Option<String> {

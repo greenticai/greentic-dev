@@ -1,11 +1,12 @@
 use std::collections::HashMap;
 use std::fs;
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 use serde_yaml_bw::Value as YamlValue;
 
 use super::registry::DescribeRegistry;
-use super::schema::{schema_id_from_json, validate_yaml_against_schema};
+use super::schema::{CompiledSchema, compile_schema, validate_yaml_against_compiled_schema};
 use crate::path_safety::normalize_under_root;
 
 #[derive(Clone, Debug, Default)]
@@ -65,6 +66,14 @@ impl Default for StaticComponentDescriber {
 pub struct FlowValidator<D> {
     describer: D,
     registry: DescribeRegistry,
+}
+
+#[derive(Clone)]
+struct ComponentValidationPlan {
+    schema_json: Option<String>,
+    schema_id: Option<String>,
+    defaults: Option<YamlValue>,
+    compiled_schema: Option<Arc<CompiledSchema>>,
 }
 
 #[derive(Clone, Debug)]
@@ -136,6 +145,8 @@ where
         };
 
         let mut validated_nodes = Vec::with_capacity(nodes.len());
+        let mut schema_cache: HashMap<String, Arc<CompiledSchema>> = HashMap::new();
+        let mut component_plan_cache: HashMap<String, ComponentValidationPlan> = HashMap::new();
 
         for (index, node) in nodes.iter().enumerate() {
             let node_mapping = match node.as_mapping() {
@@ -148,39 +159,70 @@ where
             let component = component_name(node_mapping)
                 .ok_or(FlowValidationError::MissingComponent { index })?;
 
-            let schema = self.describer.describe(component).map_err(|error| {
-                FlowValidationError::DescribeFailed {
-                    component: component.to_owned(),
-                    error,
-                }
-            })?;
+            if !component_plan_cache.contains_key(component) {
+                let schema = self.describer.describe(component).map_err(|error| {
+                    FlowValidationError::DescribeFailed {
+                        component: component.to_owned(),
+                        error,
+                    }
+                })?;
+                let schema_json = self
+                    .registry
+                    .get_schema(component)
+                    .map(|schema| schema.to_owned())
+                    .or_else(|| schema.node_schema.clone());
+                let compiled_schema = if let Some(schema_json) = schema_json.as_deref() {
+                    if let Some(compiled) = schema_cache.get(schema_json) {
+                        Some(Arc::clone(compiled))
+                    } else {
+                        let compiled = compile_schema(schema_json).map_err(|message| {
+                            FlowValidationError::SchemaValidation {
+                                component: component.to_owned(),
+                                index,
+                                message,
+                            }
+                        })?;
+                        let compiled = Arc::new(compiled);
+                        schema_cache.insert(schema_json.to_owned(), Arc::clone(&compiled));
+                        Some(compiled)
+                    }
+                } else {
+                    None
+                };
+                let schema_id = compiled_schema
+                    .as_ref()
+                    .and_then(|compiled| compiled.schema_id.clone());
+                let defaults = self.registry.get_defaults(component).cloned();
+                component_plan_cache.insert(
+                    component.to_owned(),
+                    ComponentValidationPlan {
+                        schema_json,
+                        schema_id,
+                        defaults,
+                        compiled_schema,
+                    },
+                );
+            }
 
-            let schema_json = self
-                .registry
-                .get_schema(component)
-                .map(|schema| schema.to_owned())
-                .or_else(|| schema.node_schema.clone());
-
-            let schema_id = schema_json.as_deref().and_then(schema_id_from_json);
-
-            if let Some(schema_json) = schema_json.as_deref() {
-                validate_yaml_against_schema(node, schema_json).map_err(|message| {
-                    FlowValidationError::SchemaValidation {
+            let plan = component_plan_cache
+                .get(component)
+                .expect("component plan cache must contain computed entry");
+            if let Some(compiled) = plan.compiled_schema.as_deref() {
+                validate_yaml_against_compiled_schema(node, &compiled.validator).map_err(
+                    |message| FlowValidationError::SchemaValidation {
                         component: component.to_owned(),
                         index,
                         message,
-                    }
-                })?;
+                    },
+                )?;
             }
-
-            let defaults = self.registry.get_defaults(component).cloned();
 
             validated_nodes.push(ValidatedNode {
                 component: component.to_owned(),
                 node_config: node.clone(),
-                schema_json,
-                schema_id,
-                defaults,
+                schema_json: plan.schema_json.clone(),
+                schema_id: plan.schema_id.clone(),
+                defaults: plan.defaults.clone(),
             });
         }
 

@@ -752,11 +752,20 @@ fn select_release_target<'a>(
 }
 
 fn verify_sha256(bytes: &[u8], expected: &str) -> Result<()> {
-    let actual = format!("{:x}", Sha256::digest(bytes));
+    let actual = sha256_hex(bytes);
     if actual != expected.to_ascii_lowercase() {
         bail!("sha256 mismatch: expected {expected}, got {actual}");
     }
     Ok(())
+}
+
+fn sha256_hex(bytes: &[u8]) -> String {
+    let digest = Sha256::digest(bytes);
+    let mut output = String::with_capacity(digest.len() * 2);
+    for byte in digest {
+        output.push_str(&format!("{byte:02x}"));
+    }
+    output
 }
 
 fn sanitize_relative_path(path: &str) -> Result<PathBuf> {
@@ -1429,7 +1438,7 @@ mod tests {
     fn tenant_install_happy_path_writes_binary_doc_manifest_and_state() -> Result<()> {
         let temp = TempDir::new()?;
         let tool_archive = tar_gz_with_binary("greentic-x", b"bin");
-        let sha = format!("{:x}", Sha256::digest(&tool_archive));
+        let sha = sha256_hex(&tool_archive);
         let tool_url =
             "https://github.com/acme/releases/download/v1.2.3/greentic-x-linux-x86_64.tar.gz";
         let doc_url = "https://raw.githubusercontent.com/acme/docs/main/onboarding.md";
@@ -1461,7 +1470,7 @@ mod tests {
     fn install_rejects_path_traversal_in_docs() -> Result<()> {
         let temp = TempDir::new()?;
         let archive = tar_gz_with_binary("greentic-x", b"bin");
-        let sha = format!("{:x}", Sha256::digest(&archive));
+        let sha = sha256_hex(&archive);
         let tool_url =
             "https://github.com/acme/releases/download/v1.2.3/greentic-x-linux-x86_64.tar.gz";
         let doc_url = "https://raw.githubusercontent.com/acme/docs/main/onboarding.md";
@@ -1515,7 +1524,7 @@ mod tests {
     fn tenant_install_resolves_tool_and_doc_manifests_by_url() -> Result<()> {
         let temp = TempDir::new()?;
         let tool_archive = tar_gz_with_binary("greentic-x", b"bin");
-        let sha = format!("{:x}", Sha256::digest(&tool_archive));
+        let sha = sha256_hex(&tool_archive);
         let tool_url =
             "https://github.com/acme/releases/download/v1.2.3/greentic-x-linux-x86_64.tar.gz";
         let doc_url = "https://raw.githubusercontent.com/acme/docs/main/onboarding.md";
@@ -1584,7 +1593,7 @@ mod tests {
     fn locale_uses_language_specific_doc_translation() -> Result<()> {
         let temp = TempDir::new()?;
         let tool_archive = tar_gz_with_binary("greentic-x", b"bin");
-        let sha = format!("{:x}", Sha256::digest(&tool_archive));
+        let sha = sha256_hex(&tool_archive);
         let en_doc_url = "https://raw.githubusercontent.com/acme/docs/main/onboarding.md";
         let nl_doc_url = "https://raw.githubusercontent.com/acme/docs/main/onboarding.nl.md";
         let manifest = serde_json::to_vec(&TenantInstallManifest {

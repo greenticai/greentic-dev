@@ -1,2 +1,11 @@
-.github/workflows/ci.yml
-.github/workflows/release.yml
+.github/workflows/perf.yml
+Cargo.lock
+Cargo.toml
+benches/perf.rs
+src/component_cli.rs
+src/dev_runner/runner.rs
+src/dev_runner/schema.rs
+src/install.rs
+tests/perf_scaling.rs
+tests/perf_timeout.rs
+tests/support/perf_harness.rs

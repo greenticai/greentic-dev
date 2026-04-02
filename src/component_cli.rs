@@ -654,7 +654,7 @@ fn validate_component(workspace_root: &Path, path: &Path, build: bool) -> Result
 
     let wasm_bytes = fs::read(&artifact_path)
         .with_context(|| format!("failed to read {}", artifact_path.display()))?;
-    let sha256 = format!("{:x}", Sha256::digest(&wasm_bytes));
+    let sha256 = sha256_hex(&wasm_bytes);
 
     let decoded = decode_component(&wasm_bytes).context("failed to decode component")?;
     let (resolve, world_id) = match decoded {
@@ -719,6 +719,15 @@ fn validate_component(workspace_root: &Path, path: &Path, build: bool) -> Result
         world,
         packages,
     })
+}
+
+fn sha256_hex(bytes: &[u8]) -> String {
+    let digest = Sha256::digest(bytes);
+    let mut output = String::with_capacity(digest.len() * 2);
+    for byte in digest {
+        output.push_str(&format!("{byte:02x}"));
+    }
+    output
 }
 
 fn resolve_path(base: &Path, raw: impl AsRef<Path>) -> PathBuf {

@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "ຍ້າຍແທັກ GHCR ໄປຫາລຸ້ນປ່ອຍຂອງຊຸດເຄື່ອງມື Greentic ທີ່ມີຢູ່",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "ສ້າງ ແລະ ເຜີຍແຜ່ແມນິເຟສລຸ້ນປ່ອຍຂອງຊຸດເຄື່ອງມື Greentic",
   "cli.command.release.release": "ເວີຊັນລຸ້ນປ່ອຍທີ່ຈະສ້າງ, ເຜີຍແຜ່, ຫຼື ສົ່ງເສີມ",
   "cli.command.release.repo": "ຄັງແມນິເຟສຊຸດເຄື່ອງມື GHCR",

@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "GHCR 태그를 기존 Greentic 툴체인 릴리스로 이동",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Greentic 툴체인 릴리스 매니페스트를 생성하고 게시",
   "cli.command.release.release": "생성, 게시 또는 승격할 릴리스 버전",
   "cli.command.release.repo": "GHCR 툴체인 매니페스트 저장소",

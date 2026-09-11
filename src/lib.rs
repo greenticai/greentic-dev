@@ -19,6 +19,7 @@ pub mod pack_verify;
 pub mod passthrough;
 pub mod path_safety;
 pub mod release_cmd;
+pub mod release_github_source;
 pub mod secrets_cli;
 pub mod security_cmd;
 pub mod toolchain_catalogue;

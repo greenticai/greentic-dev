@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "Di chuyển thẻ GHCR sang một bản phát hành chuỗi công cụ Greentic hiện có",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Tạo và phát hành manifest bản phát hành chuỗi công cụ Greentic",
   "cli.command.release.release": "Phiên bản phát hành để tạo, phát hành hoặc quảng bá",
   "cli.command.release.repo": "Kho lưu trữ manifest chuỗi công cụ GHCR",

@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "Premjesti GHCR oznaku na postojeće izdanje Greentic toolchaina",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Generiraj i objavi manifest izdanja Greentic toolchaina",
   "cli.command.release.release": "Verzija izdanja za generiranje, objavljivanje ili promoviranje",
   "cli.command.release.repo": "Repozitorij manifesta GHCR toolchaina",

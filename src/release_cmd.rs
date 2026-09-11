@@ -17,7 +17,7 @@ use time::format_description::well_known::Rfc3339;
 
 use crate::cli::{
     ReleaseGenerateArgs, ReleaseLatestArgs, ReleasePromoteArgs, ReleasePublishArgs,
-    ReleaseSnapshotArgs, ReleaseViewArgs,
+    ReleaseSnapshotArgs, ReleaseViewArgs, SnapshotSource,
 };
 use crate::install::block_on_maybe_runtime;
 use crate::passthrough::{ToolchainChannel, delegated_binary_name_for_channel};
@@ -72,6 +72,23 @@ pub struct ToolchainPackage {
     pub crate_name: String,
     pub bins: Vec<String>,
     pub version: String,
+    /// Release archives for this exact version, one per target. gtc installs
+    /// from these instead of `cargo binstall` when the running target has an
+    /// entry — which is what lets a manifest pin a build crates.io never
+    /// received. Written by `release snapshot --source github-releases`; see
+    /// `release_github_source`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub artifacts: Option<Vec<PackageArtifactRef>>,
+}
+
+/// One release archive of a toolchain package, exactly as GitHub reports it.
+/// Same shape as [`GtcArtifactRef`], which gtc already consumes for self-update.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct PackageArtifactRef {
+    pub target: String,
+    pub url: String,
+    /// Hex sha256 without the `sha256:` prefix.
+    pub sha256: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -437,9 +454,31 @@ fn snapshot_with_checker(
     checker: &dyn ReleaseAssetChecker,
 ) -> Result<()> {
     let channel = parse_channel(&args.channel)?;
-    let resolver = CratesIoApiVersionResolver::default();
-    let mut manifest =
-        snapshot_manifest(&args.release, channel, &resolver, Some(created_at_now()?))?;
+    let mut manifest = match args.source {
+        SnapshotSource::CratesIo => {
+            let resolver = CratesIoApiVersionResolver::default();
+            snapshot_manifest(&args.release, channel, &resolver, Some(created_at_now()?))?
+        }
+        SnapshotSource::GithubReleases => {
+            // Only the dev lane publishes a GitHub release per build with the
+            // `<crate>-dev-v<version>-<target>` archives this reads; stable and
+            // research are released through crates.io, and pinning either from
+            // here would name archives that do not exist.
+            if channel != ToolchainChannel::Development {
+                bail!(
+                    "--source github-releases resolves the dev channel only, not `{}`",
+                    args.channel
+                );
+            }
+            let source =
+                crate::release_github_source::GithubDevReleaseSource::new(args.token.as_deref())?;
+            crate::release_github_source::snapshot_manifest_from_github_releases(
+                &args.release,
+                &source,
+                Some(created_at_now()?),
+            )?
+        }
+    };
 
     // Snapshot resolves pins from crates.io, which does NOT imply a finished
     // release build. Most repos gate `publish_crates` on `needs: [release]`, but
@@ -588,6 +627,7 @@ pub fn snapshot_manifest<R: CrateVersionResolver>(
             crate_name: crate_in_manifest,
             bins: manifest_bins_for_source(from, package.bins),
             version,
+            artifacts: None,
         });
     }
     Ok(ToolchainManifest {
@@ -694,6 +734,7 @@ fn latest_manifest_packages() -> Vec<ToolchainPackage> {
             ToolchainChannel::Development,
         )],
         version: "latest".to_string(),
+        artifacts: None,
     })
     .chain(GREENTIC_TOOLCHAIN_PACKAGES.iter().map(|package| {
         ToolchainPackage {
@@ -707,6 +748,7 @@ fn latest_manifest_packages() -> Vec<ToolchainPackage> {
                 .map(|bin| delegated_binary_name_for_channel(bin, ToolchainChannel::Development))
                 .collect(),
             version: "latest".to_string(),
+            artifacts: None,
         }
     }))
     .collect()
@@ -774,6 +816,7 @@ where
             crate_name: crate_in_manifest,
             bins: manifest_bins_for_source(from, package.bins),
             version,
+            artifacts: None,
         });
     }
     Ok(ToolchainManifest {
@@ -798,7 +841,7 @@ fn channel_from_source_tag(from: &str) -> ToolchainChannel {
     }
 }
 
-fn manifest_bins_for_source(from: &str, bins: &[&str]) -> Vec<String> {
+pub(crate) fn manifest_bins_for_source(from: &str, bins: &[&str]) -> Vec<String> {
     let channel = channel_from_source_tag(from);
     bins.iter()
         .map(|bin| delegated_binary_name_for_channel(bin, channel))
@@ -880,7 +923,7 @@ fn ref_version_for_package(
 /// the stable one. Reuses `delegated_binary_name_for_channel` because the
 /// rule is identical for crates and binaries (`-dev` suffix, with the
 /// special carve-out that `greentic-dev` itself becomes `greentic-dev-dev`).
-fn manifest_crate_name_for_source(from: &str, crate_name: &str) -> String {
+pub(crate) fn manifest_crate_name_for_source(from: &str, crate_name: &str) -> String {
     if from == "dev" {
         delegated_binary_name_for_channel(crate_name, ToolchainChannel::Development)
     } else {
@@ -1174,7 +1217,7 @@ fn verify_manifest_releases(
 /// `greentic-mcp-generator-*`), so it cannot drive a per-binary check either.
 /// The residual window is one `gh release upload` invocation — all assets go up
 /// in a single call — against the 35-45 minutes of build time this does cover.
-fn check_release_assets(assets: &[String], version: &str) -> Result<(), String> {
+pub(crate) fn check_release_assets(assets: &[String], version: &str) -> Result<(), String> {
     let names: BTreeSet<&str> = assets.iter().map(String::as_str).collect();
     let version_marker = format!("-v{version}-");
     let archives: Vec<&str> = names
@@ -1557,7 +1600,7 @@ impl CrateVersionResolver for CratesIoApiVersionResolver {
 /// keeps them at their latest dev build instead of regressing to old stable.
 /// The `(major, minor)` lane a release belongs to. greentic versions its
 /// toolchain lanes by minor: 1.2.x is dev, 1.3.x is research.
-fn lane_of(release: &str) -> Option<(u64, u64)> {
+pub(crate) fn lane_of(release: &str) -> Option<(u64, u64)> {
     let mut parts = release.split('.');
     let major = parts.next()?.parse().ok()?;
     let minor = parts.next()?.parse().ok()?;
@@ -1774,7 +1817,7 @@ fn should_notify_updater(version: &str, channel: &str) -> bool {
 /// Resolve a GitHub token from `--token`, then the ambient CI environment. An
 /// empty or whitespace-only value counts as absent. Reads of public release
 /// metadata work without one; only the dispatch strictly needs it.
-fn ambient_github_token(raw_token: Option<&str>) -> Option<String> {
+pub(crate) fn ambient_github_token(raw_token: Option<&str>) -> Option<String> {
     resolve_registry_token(raw_token)
         .ok()
         .flatten()
@@ -2225,6 +2268,7 @@ mod tests {
                 crate_name: "greentic-dev".to_string(),
                 bins: vec!["greentic-dev".to_string()],
                 version: "0.5.9".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
@@ -2441,6 +2485,7 @@ mod tests {
                 crate_name: "greentic-operator-dev".to_string(),
                 bins: vec!["greentic-operator-dev".to_string()],
                 version: "0.5.123".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
@@ -2453,6 +2498,7 @@ mod tests {
                 crate_name: "greentic-operator".to_string(),
                 bins: vec!["greentic-operator".to_string()],
                 version: "latest".to_string(),
+                artifacts: None,
             }],
             ..with_pins
         };
@@ -2845,6 +2891,7 @@ mod tests {
                 crate_name: "greentic-dev".to_string(),
                 bins: vec!["greentic-dev".to_string()],
                 version: "0.6.0".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
@@ -3104,6 +3151,7 @@ mod tests {
                     crate_name: (*crate_name).to_string(),
                     bins: vec![(*crate_name).to_string()],
                     version: (*version).to_string(),
+                    artifacts: None,
                 })
                 .collect(),
             extension_packs: None,

@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "Deplase yon tag GHCR nan yon lage toolchain Greentic ki deja egziste",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Jenere epi pibliye yon manifest lage toolchain Greentic",
   "cli.command.release.release": "Vèsyon lage pou jenere, pibliye, oswa pwomouvwa",
   "cli.command.release.repo": "Repozitwa manifest toolchain GHCR",

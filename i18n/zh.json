@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "将 GHCR 标签移动到现有的 Greentic 工具链版本",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "生成并发布 Greentic 工具链发布清单",
   "cli.command.release.release": "要生成、发布或推广的发布版本",
   "cli.command.release.repo": "GHCR 工具链清单仓库",

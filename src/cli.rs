@@ -771,6 +771,22 @@ pub struct ReleaseSnapshotArgs {
     /// cli.command.release.no_notify_updater
     #[arg(long = "no-notify-updater")]
     pub no_notify_updater: bool,
+    /// cli.command.release.snapshot.source
+    #[arg(long = "source", value_enum, default_value_t = SnapshotSource::CratesIo)]
+    pub source: SnapshotSource,
+}
+
+// Where `release snapshot` reads the versions it pins. Plain comments, not doc
+// comments: clap turns `///` into help text, and `tests/cli_i18n_audit.rs`
+// requires every help string in this file to be an i18n key. The flag's help is
+// `cli.command.release.snapshot.source`.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, clap::ValueEnum)]
+pub enum SnapshotSource {
+    // The newest version of each crate on crates.io.
+    CratesIo,
+    // The newest complete dev-lane GitHub release of each package, pinned
+    // together with its archive URLs and digests.
+    GithubReleases,
 }
 
 #[derive(Args, Debug)]

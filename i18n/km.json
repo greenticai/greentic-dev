@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "ផ្លាស់ទីស្លាក GHCR ទៅកាន់ការចេញផ្សាយ toolchain របស់ Greentic ដែលមានស្រាប់",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "បង្កើត និងបោះពុម្ពផ្សាយ manifest ការចេញផ្សាយ toolchain របស់ Greentic",
   "cli.command.release.release": "កំណែចេញផ្សាយដែលត្រូវបង្កើត បោះពុម្ពផ្សាយ ឬលើកកម្ពស់",
   "cli.command.release.repo": "ឃ្លាំង manifest toolchain របស់ GHCR",

@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "GHCR ਟੈਗ ਨੂੰ ਮੌਜੂਦਾ Greentic ਟੂਲਚੇਨ ਰਿਲੀਜ਼ 'ਤੇ ਲਿਜਾਓ",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Greentic ਟੂਲਚੇਨ ਰਿਲੀਜ਼ ਮੈਨਿਫੈਸਟ ਬਣਾਓ ਅਤੇ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰੋ",
   "cli.command.release.release": "ਬਣਾਉਣ, ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਨ ਜਾਂ ਪ੍ਰਮੋਟ ਕਰਨ ਲਈ ਰਿਲੀਜ਼ ਵਰਜਨ",
   "cli.command.release.repo": "GHCR ਟੂਲਚੇਨ ਮੈਨਿਫੈਸਟ ਰਿਪੋਜ਼ਟਰੀ",

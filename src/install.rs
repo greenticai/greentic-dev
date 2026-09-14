@@ -24,7 +24,6 @@ use tar::Archive;
 use zip::ZipArchive;
 
 use crate::cli::InstallArgs;
-use crate::cmd::tools;
 use crate::i18n;
 
 const CUSTOMERS_TOOLS_REPO: &str = "ghcr.io/greentic-biz/customers-tools";
@@ -44,7 +43,50 @@ pub fn run(args: InstallArgs) -> Result<()> {
         return Ok(());
     };
 
-    tools::install(false, &locale)?;
+    // The toolchain is NOT installed here, and must not be reintroduced.
+    //
+    // This line used to read `tools::install(false, &locale)?`, which ran the
+    // whole delegated toolchain through `cargo binstall` before a single
+    // tenant artifact was fetched. It caused two distinct failures on the
+    // development channel, and the second one is the expensive one:
+    //
+    // 1. **It was fatal.** `install_all_delegated_tools` propagates the first
+    //    binstall failure with `?`, so `install --tenant` aborted having
+    //    installed nothing of what it was asked for, with an error naming a
+    //    crate the operator could do nothing about. The same shape was already
+    //    fixed once for the EXTERNAL tools loop — see the comment above
+    //    `GREENTIC_EXTERNAL_TOOL_PACKAGES` in `passthrough.rs` — and the
+    //    toolchain loop above it kept it.
+    //
+    // 2. **It DOWNGRADED a correct installation, silently.** binstall resolves
+    //    from crates.io, and crates.io has carried no Greentic dev build since
+    //    the publishing account was locked on 2026-09-08. So on the dev
+    //    channel it resolves the newest version the index still knows —
+    //    older than whatever the operator installed from the GitHub release
+    //    archives — and installs it OVER the newer binary. Nothing reports
+    //    that; the operator simply finds the toolchain has moved backwards.
+    //    Observed 2026-09-12: a tenant install replaced `greentic-bundle-dev`
+    //    and `greentic-dev-dev` with 6 September builds on its way to failing
+    //    on `greentic-setup-dev`, which had no prebuilt archive to fall back
+    //    to and tried to compile from source instead.
+    //
+    // Both end here because this command installs TENANT ARTIFACTS. That is
+    // what its name says, what `gtc install --install-tenant-only` asks for
+    // (an intent that was being discarded at this delegation boundary), and
+    // what the help text three lines above already tells the operator: the
+    // toolchain lives behind `greentic-dev install tools`, and pinned customer
+    // releases behind `gtc install`. Doing a second job here bought nothing
+    // that either of those does not do on request, and cost the two failures
+    // above.
+    //
+    // If the toolchain should be refreshed from this path in future, it must
+    // resolve the way `gtc install --channel dev` does — from the dev
+    // manifest's GitHub release artifacts (`release snapshot --source
+    // github-releases`) — and never from crates.io while the index is frozen.
+    eprintln!(
+        "note: installing tenant artifacts only. Run `greentic-dev install tools` \
+         if you also want the development toolchain refreshed."
+    );
 
     let token = resolve_token(args.token, &locale)
         .context(i18n::t(&locale, "cli.install.error.tenant_requires_token"))?;

@@ -200,6 +200,7 @@ pub fn run_passthrough(bin: &Path, args: &[OsString], verbose: bool) -> Result<E
 
 pub fn install_all_delegated_tools(latest: bool, locale: &str) -> Result<()> {
     ensure_cargo_binstall()?;
+    let mut failed: Vec<String> = Vec::new();
     let channel = current_toolchain_channel();
     // The research (`rnd`) lane publishes `<crate>-rnd` at `X.Y.Z-research`
     // PRERELEASE versions. `cargo binstall`/cargo will not select a pre-release
@@ -240,29 +241,45 @@ pub fn install_all_delegated_tools(latest: bool, locale: &str) -> Result<()> {
             None => None,
         };
         for bin_name in package.bins {
-            install_with_binstall(
-                &crate_name,
-                &delegated_binary_name_for_channel(bin_name, channel),
-                latest,
-                version.as_deref(),
-                locale,
-            )?;
+            let bin = delegated_binary_name_for_channel(bin_name, channel);
+            // Collected, not propagated. With `?` the loop stopped at the
+            // first crate binstall could not resolve, having ALREADY replaced
+            // every binary before it in the list — so a single unpublishable
+            // crate left the toolchain half-moved and the command reporting
+            // only the crate that failed. That is the same failure the
+            // external-tools loop below was fixed for; the difference is only
+            // that these are required, so the run still ends in an error.
+            //
+            // It matters most on the development channel: crates.io has
+            // carried no Greentic dev build since the publishing account was
+            // locked on 2026-09-08, so binstall there resolves whatever older
+            // version the index still knows. Finishing the list is what keeps
+            // one frozen crate from deciding how far the rest got.
+            if let Err(err) =
+                install_with_binstall(&crate_name, &bin, latest, version.as_deref(), locale)
+            {
+                eprintln!("error: `{bin}` (crate `{crate_name}`) could not be installed: {err}");
+                failed.push(bin);
+            }
         }
     }
     // External tools ship a single unsuffixed binary — install by plain name.
     //
-    // A failure here MUST NOT abort the run. `greentic-mcp-generator` is not
-    // published to crates.io at all — it ships as a private GitHub release and
-    // reaches a customer through `install --tenant` — so `cargo binstall` can
-    // never resolve it and exits 76 every time. With `?`, that took the whole
-    // command down, including `install --tenant`, which calls this before
-    // fetching a single tenant artifact: every tenant install failed having
-    // installed nothing, and the error named a crate the operator could do
-    // nothing about.
+    // A failure here MUST NOT abort the run, and must not even be counted.
+    // `greentic-mcp-generator` is not published to crates.io at all — it ships
+    // as a private GitHub release and reaches a customer through
+    // `install --tenant` — so `cargo binstall` can never resolve it and exits
+    // 76 every time. With `?`, that took the whole command down, and at the
+    // time `install --tenant` called this before fetching a single tenant
+    // artifact, so every tenant install failed having installed nothing, with
+    // an error naming a crate the operator could do nothing about. (That
+    // second half no longer applies: `install --tenant` installs tenant
+    // artifacts only — see the comment at its call site in `install.rs`.)
     //
-    // The core toolchain above stays fatal on purpose — those binaries are
-    // required. These are optional, and an operator who needs one gets it from
-    // the tenant install path that is designed to carry it.
+    // The core toolchain above is still REQUIRED and still ends the run in an
+    // error; the difference is that it now finishes the list first, so one
+    // unresolvable crate does not decide how far the rest got. These are
+    // optional, so they are skipped with a note and never reach `failed`.
     for package in GREENTIC_EXTERNAL_TOOL_PACKAGES {
         for bin_name in package.bins {
             if let Err(err) =
@@ -275,6 +292,19 @@ pub fn install_all_delegated_tools(latest: bool, locale: &str) -> Result<()> {
                 );
             }
         }
+    }
+
+    if !failed.is_empty() {
+        // Named individually rather than as a count: on the development
+        // channel the usual cause is that crates.io has carried no Greentic
+        // dev build since the publishing account was locked on 2026-09-08, and
+        // which binaries that leaves behind is the whole of what an operator
+        // needs to know to side-load them from the GitHub release archives.
+        anyhow::bail!(
+            "could not install {} required toolchain binaries: {}",
+            failed.len(),
+            failed.join(", ")
+        );
     }
     Ok(())
 }

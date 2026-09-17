@@ -1,7 +1,7 @@
 use std::fs;
 use std::future::Future;
 use std::io::IsTerminal;
-use std::io::{Cursor, Read};
+use std::io::{Cursor, Read, Write};
 use std::path::{Component, Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -626,7 +626,7 @@ where
         }
 
         let manifest_path = self.env.manifests_dir.join(format!("tenant-{tenant}.json"));
-        fs::write(&manifest_path, &manifest_bytes).with_context(|| {
+        write_atomically(&manifest_path, &manifest_bytes, DATA_FILE_MODE).with_context(|| {
             i18n::tf(
                 &self.env.locale,
                 "cli.install.error.write_file",
@@ -644,7 +644,7 @@ where
             &self.env.locale,
             "cli.install.error.serialize_state",
         ))?;
-        fs::write(&self.env.state_path, state_json).with_context(|| {
+        write_atomically(&self.env.state_path, &state_json, DATA_FILE_MODE).with_context(|| {
             i18n::tf(
                 &self.env.locale,
                 "cli.install.error.write_file",
@@ -769,8 +769,7 @@ where
             self.env
                 .downloads_dir
                 .join(format!("{}-{}", tool.id, file_name_hint(&target.url)));
-        fs::write(&staged_path, &bytes)
-            .with_context(|| format!("failed to write {}", staged_path.display()))?;
+        write_atomically(&staged_path, &bytes, DATA_FILE_MODE)?;
 
         let installed_path = if target.url.ends_with(".tar.gz") || target.url.ends_with(".tgz") {
             extract_tar_gz_binary(&bytes, &target_name, &self.env.bin_dir)?
@@ -778,8 +777,7 @@ where
             extract_zip_binary(&bytes, &target_name, &self.env.bin_dir)?
         } else {
             let dest_path = self.env.bin_dir.join(&target_name);
-            fs::write(&dest_path, &bytes)
-                .with_context(|| format!("failed to write {}", dest_path.display()))?;
+            write_atomically(&dest_path, &bytes, BINARY_FILE_MODE)?;
             dest_path
         };
 
@@ -804,8 +802,7 @@ where
                 .with_context(|| format!("failed to create {}", parent.display()))?;
         }
         let bytes = self.downloader.download(&doc.source.url, token).await?;
-        fs::write(&dest_path, &bytes)
-            .with_context(|| format!("failed to write {}", dest_path.display()))?;
+        write_atomically(&dest_path, &bytes, DATA_FILE_MODE)?;
         Ok(dest_path)
     }
 }
@@ -1012,8 +1009,7 @@ fn extract_tar_gz_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Re
         entry
             .read_to_end(&mut buf)
             .with_context(|| format!("failed to extract `{name}` from tar.gz"))?;
-        fs::write(&out_path, buf)
-            .with_context(|| format!("failed to write {}", out_path.display()))?;
+        write_atomically(&out_path, &buf, extracted_entry_mode(binary_name, &name))?;
         extracted.push(out_path.clone());
         if name == binary_name {
             return Ok(out_path);
@@ -1059,8 +1055,7 @@ fn extract_zip_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Resul
         let mut buf = Vec::new();
         file.read_to_end(&mut buf)
             .with_context(|| format!("failed to extract `{name}` from zip"))?;
-        fs::write(&out_path, buf)
-            .with_context(|| format!("failed to write {}", out_path.display()))?;
+        write_atomically(&out_path, &buf, extracted_entry_mode(binary_name, &name))?;
         extracted.push(out_path.clone());
         if name == binary_name {
             return Ok(out_path);
@@ -1081,6 +1076,81 @@ fn extract_zip_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Resul
         debug_dir.display(),
         entries.join(", ")
     );
+}
+
+/// Unix mode for an installed executable.
+const BINARY_FILE_MODE: u32 = 0o755;
+/// Unix mode for every other installed file (docs, manifests, state, staged downloads).
+const DATA_FILE_MODE: u32 = 0o644;
+
+/// Mode for an archive entry: executable when it is (or may turn out to be) the
+/// requested binary. `ensure_executable` still runs on whichever entry wins, so an
+/// entry picked only as the last-resort "first extracted" fallback is covered too.
+fn extracted_entry_mode(binary_name: &str, entry_name: &str) -> u32 {
+    if entry_name == binary_name || archive_name_matches(binary_name, entry_name) {
+        BINARY_FILE_MODE
+    } else {
+        DATA_FILE_MODE
+    }
+}
+
+/// Replace `dest` with `bytes` without ever rewriting the existing file in place.
+///
+/// The bytes go to a uniquely named temporary file in the SAME directory, are
+/// fsynced, get their final permissions, and are then renamed over `dest`. The
+/// rename is atomic, and the result is a fresh inode.
+///
+/// That fresh inode is the point (greenticai/greentic-dev#368). macOS caches a
+/// binary's code signature per vnode, so truncating and rewriting a signed binary
+/// that has already been executed invalidates it, and the next exec is SIGKILLed
+/// (`Killed: 9`) until the file is recreated. A plain `fs::write` over an existing
+/// file does exactly that truncation.
+///
+/// On any failure the temporary file is removed (dropping a `NamedTempFile` or a
+/// `PersistError` deletes it) and `dest` is left untouched.
+fn write_atomically(dest: &Path, bytes: &[u8], mode: u32) -> Result<()> {
+    let dir = match dest.parent() {
+        Some(parent) if !parent.as_os_str().is_empty() => parent,
+        _ => Path::new("."),
+    };
+    let mut temp = tempfile::Builder::new()
+        .prefix(".greentic-dev-")
+        .suffix(".tmp")
+        .tempfile_in(dir)
+        .with_context(|| format!("failed to create a temporary file in {}", dir.display()))?;
+    temp.write_all(bytes)
+        .with_context(|| format!("failed to write {}", temp.path().display()))?;
+    set_file_mode(temp.as_file(), mode)
+        .with_context(|| format!("failed to set permissions on {}", temp.path().display()))?;
+    temp.as_file()
+        .sync_all()
+        .with_context(|| format!("failed to sync {}", temp.path().display()))?;
+    temp.persist(dest).map_err(|err| {
+        let running_exe_hint =
+            cfg!(windows) && err.error.kind() == std::io::ErrorKind::PermissionDenied;
+        let error = anyhow::Error::new(err.error);
+        if running_exe_hint {
+            error.context(format!(
+                "failed to replace {}: the file is in use (is that program still running?); \
+                 close it and retry",
+                dest.display()
+            ))
+        } else {
+            error.context(format!("failed to replace {}", dest.display()))
+        }
+    })?;
+    Ok(())
+}
+
+#[cfg(unix)]
+fn set_file_mode(file: &fs::File, mode: u32) -> std::io::Result<()> {
+    use std::os::unix::fs::PermissionsExt;
+    file.set_permissions(fs::Permissions::from_mode(mode))
+}
+
+#[cfg(not(unix))]
+fn set_file_mode(_file: &fs::File, _mode: u32) -> std::io::Result<()> {
+    Ok(())
 }
 
 fn archive_name_matches(expected: &str, actual: &str) -> bool {
@@ -1750,6 +1820,96 @@ mod tests {
         assert_eq!(spec.repo, "greentic-mcp-generator");
         assert_eq!(spec.tag, "v1.0.0");
         assert_eq!(spec.asset_name, "greentic-mcp-generator.json");
+    }
+
+    fn temp_litter(dir: &Path) -> Result<Vec<String>> {
+        let mut litter = Vec::new();
+        for entry in fs::read_dir(dir)? {
+            let name = entry?.file_name().to_string_lossy().into_owned();
+            if name.starts_with(".greentic-dev-") {
+                litter.push(name);
+            }
+        }
+        Ok(litter)
+    }
+
+    #[test]
+    fn write_atomically_creates_a_new_file() -> Result<()> {
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        write_atomically(&dest, b"fresh", BINARY_FILE_MODE)?;
+        assert_eq!(fs::read(&dest)?, b"fresh");
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            assert_eq!(fs::metadata(&dest)?.permissions().mode() & 0o777, 0o755);
+        }
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn write_atomically_replaces_an_existing_file_with_a_new_inode() -> Result<()> {
+        use std::os::unix::fs::{MetadataExt, PermissionsExt};
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        fs::write(&dest, b"old binary contents")?;
+        fs::set_permissions(&dest, fs::Permissions::from_mode(0o600))?;
+        // Keep the old inode alive so the filesystem cannot hand its number
+        // straight back to the replacement and make the comparison vacuous.
+        let old_handle = fs::File::open(&dest)?;
+        let old_ino = old_handle.metadata()?.ino();
+
+        write_atomically(&dest, b"new", BINARY_FILE_MODE)?;
+
+        let meta = fs::metadata(&dest)?;
+        assert_ne!(meta.ino(), old_ino, "the destination must be a fresh inode");
+        assert_eq!(meta.permissions().mode() & 0o777, 0o755);
+        assert_eq!(fs::read(&dest)?, b"new");
+        // The old inode was never truncated or rewritten.
+        let mut old_bytes = Vec::new();
+        (&old_handle).read_to_end(&mut old_bytes)?;
+        assert_eq!(old_bytes, b"old binary contents");
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[test]
+    fn write_atomically_failure_leaves_the_destination_intact_and_no_temp_file() -> Result<()> {
+        let temp = TempDir::new()?;
+        // A non-empty directory cannot be renamed over by a file on any platform.
+        let dest = temp.path().join("greentic-x");
+        fs::create_dir(&dest)?;
+        fs::write(dest.join("keep.txt"), b"original")?;
+
+        let err = write_atomically(&dest, b"new", BINARY_FILE_MODE)
+            .expect_err("renaming a file over a non-empty directory must fail");
+        assert!(format!("{err:#}").contains("failed to replace"), "{err:#}");
+
+        assert!(dest.is_dir());
+        assert_eq!(fs::read(dest.join("keep.txt"))?, b"original");
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn extracting_over_an_installed_binary_replaces_its_inode() -> Result<()> {
+        use std::os::unix::fs::MetadataExt;
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        fs::write(&dest, b"previous release")?;
+        let old_handle = fs::File::open(&dest)?;
+        let old_ino = old_handle.metadata()?.ino();
+
+        let archive = tar_gz_with_binary("greentic-x", b"next release");
+        let out = extract_tar_gz_binary(&archive, "greentic-x", temp.path())?;
+
+        assert_eq!(out, dest);
+        assert_ne!(fs::metadata(&out)?.ino(), old_ino);
+        assert_eq!(fs::read(&out)?, b"next release");
+        Ok(())
     }
 
     #[test]

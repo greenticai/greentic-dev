@@ -432,11 +432,106 @@ fn ensure_cargo_binstall() -> Result<()> {
     }
 }
 
+/// Last cargo-binstall release whose bundled lockfile still builds on the
+/// toolchains this fleet pins. 1.22.0 pins `vergen 10.0.2`, whose MSRV is
+/// rustc 1.96.0, so from 1.22.0 onward the source build fails on 1.95.0.
+/// Only reached when the prebuilt bootstrap below is unavailable.
+const BINSTALL_SOURCE_FALLBACK_VERSION: &str = "1.21.1";
+
+/// URL of cargo-binstall's official prebuilt-release installer.
+const BINSTALL_RELEASE_INSTALLER_SH: &str = "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh";
+const BINSTALL_RELEASE_INSTALLER_PS1: &str = "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.ps1";
+
+/// Installs cargo-binstall, preferring the prebuilt release binary.
+///
+/// `cargo install cargo-binstall` *compiles* it, which inherits the MSRV of
+/// binstall's bundled lockfile rather than its declared `rust-version`. When
+/// 1.22.0 shipped a lock pinning `vergen 10.0.2` (rustc 1.96.0) that source
+/// build started failing on every toolchain pinned below it, including the
+/// 1.95.0 this repo pins — it took the nightly pack-smoke down with no change
+/// on our side. The prebuilt path compiles nothing, so it cannot be broken by
+/// an MSRV bump anywhere in binstall's dependency tree.
+///
+/// The source build stays as a fallback for hosts without the shell tooling the
+/// installer needs, pinned to the last version that still compiles here. A host
+/// that keeps falling back re-attempts on each run, because the pinned version
+/// is genuinely older than the latest — that is the honest state, not a loop.
+/// `coverage_cmd` needs the same bootstrap; exposed so the two paths cannot
+/// drift back apart.
+pub(crate) fn install_cargo_binstall_public() -> Result<()> {
+    install_cargo_binstall()
+}
+
 fn install_cargo_binstall() -> Result<()> {
-    let status = Command::new("cargo")
-        .arg("install")
-        .arg("cargo-binstall")
-        .arg("--locked")
+    if install_cargo_binstall_prebuilt() {
+        return Ok(());
+    }
+    install_cargo_binstall_from_source(Some(BINSTALL_SOURCE_FALLBACK_VERSION))
+}
+
+/// Runs cargo-binstall's official installer. Returns whether it left a working
+/// `cargo binstall` behind; every failure is non-fatal and falls through to the
+/// source build.
+fn install_cargo_binstall_prebuilt() -> bool {
+    let status = if cfg!(windows) {
+        Command::new("powershell")
+            .arg("-NoProfile")
+            .arg("-Command")
+            .arg(format!(
+                "Set-ExecutionPolicy Unrestricted -Scope Process -Force; \
+                 iex (iwr \"{BINSTALL_RELEASE_INSTALLER_PS1}\").Content"
+            ))
+            .stdin(Stdio::null())
+            .stdout(Stdio::inherit())
+            .stderr(Stdio::inherit())
+            .status()
+    } else {
+        // The installer is downloaded to a file and run separately rather than
+        // piped straight into a shell: a pipeline reports the *shell's* status,
+        // and a shell succeeds on empty input, so `curl | sh` would report a
+        // failed download as success.
+        let script = env::temp_dir().join("greentic-dev-install-binstall.sh");
+        let script = script.to_string_lossy().to_string();
+        Command::new("sh")
+            .arg("-c")
+            .arg(format!(
+                "set -e; curl -L --proto '=https' --tlsv1.2 -sSf \
+                 {BINSTALL_RELEASE_INSTALLER_SH} -o '{script}'; sh '{script}'; \
+                 rm -f '{script}'"
+            ))
+            .stdin(Stdio::null())
+            .stdout(Stdio::inherit())
+            .stderr(Stdio::inherit())
+            .status()
+    };
+
+    match status {
+        Ok(status) if status.success() => {
+            // Trust the binary, not the installer's exit code.
+            matches!(installed_cargo_binstall_version(), Ok(Some(_)))
+        }
+        _ => false,
+    }
+}
+
+/// Argv for the source-build fallback, split out so the pin is testable.
+fn cargo_binstall_source_args(version: Option<&str>) -> Vec<String> {
+    let mut args = vec![
+        "install".to_string(),
+        "cargo-binstall".to_string(),
+        "--locked".to_string(),
+    ];
+    if let Some(version) = version {
+        args.push("--version".to_string());
+        args.push(version.to_string());
+    }
+    args
+}
+
+fn install_cargo_binstall_from_source(version: Option<&str>) -> Result<()> {
+    let mut command = Command::new("cargo");
+    command.args(cargo_binstall_source_args(version));
+    let status = command
         .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
@@ -546,6 +641,35 @@ mod tests {
             package.crate_name == "greentic-runner" && package.bins.contains(&"greentic-runner")
         });
         assert!(found);
+    }
+
+    #[test]
+    fn source_fallback_pins_a_version_that_builds_on_the_pinned_toolchain() {
+        // Unpinned, this is the exact command that broke the nightly: cargo
+        // resolves the latest cargo-binstall, and from 1.22.0 its bundled
+        // lockfile needs rustc 1.96.0 while this repo pins 1.95.0.
+        assert_eq!(
+            cargo_binstall_source_args(None),
+            vec!["install", "cargo-binstall", "--locked"]
+        );
+        assert_eq!(
+            cargo_binstall_source_args(Some(BINSTALL_SOURCE_FALLBACK_VERSION)),
+            vec![
+                "install",
+                "cargo-binstall",
+                "--locked",
+                "--version",
+                BINSTALL_SOURCE_FALLBACK_VERSION
+            ]
+        );
+        // The pin is only meaningful while it stays below 1.22.0.
+        let pinned: semver::Version = BINSTALL_SOURCE_FALLBACK_VERSION
+            .parse()
+            .expect("fallback version parses");
+        assert!(
+            pinned < semver::Version::parse("1.22.0").expect("bound parses"),
+            "fallback {pinned} must predate the vergen 10.0.2 MSRV bump"
+        );
     }
 
     #[test]

@@ -37,7 +37,7 @@ fn dev_binary_path(dir: &Path) -> PathBuf {
     #[cfg(not(windows))]
     {
         let target = dir.join("greentic-dev-dev");
-        fs::hard_link(&source, &target).expect("link greentic-dev binary");
+        fs::copy(&source, &target).expect("copy greentic-dev binary");
         use std::os::unix::fs::PermissionsExt;
         let mut perms = fs::metadata(&target).expect("metadata").permissions();
         perms.set_mode(0o755);

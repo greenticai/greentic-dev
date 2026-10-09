@@ -46,6 +46,7 @@
   "cli.command.release.promote.about": "Move a GHCR tag to an existing Greentic toolchain release",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.release": "Release version to generate, publish, or promote",
   "cli.command.release.from": "Source tag used for metadata or version constraints",
   "cli.command.release.tag": "GHCR tag to move to the release",
@@ -188,5 +189,13 @@
   "cli.command.security.security_severity": "Comma-separated security severity filter, such as critical,high,medium,low",
   "cli.command.security.state": "Comma-separated GitHub alert state filter: open,dismissed,fixed,resolved,auto_dismissed",
   "cli.command.security.repo": "GitHub repository as OWNER/REPO; defaults to origin",
-  "cli.command.security.branch": "Git branch name for code scanning alerts; defaults to the current branch"
+  "cli.command.security.branch": "Git branch name for code scanning alerts; defaults to the current branch",
+  "cli.command.mcp.gen.about": "Generate an MCP router component from an OpenAPI/Swagger spec (passthrough to greentic-mcp-gen)",
+  "runtime.mcp.gen.error.not_installed": "greentic-mcp-gen was not found. It is not published to crates.io, so `cargo binstall` cannot fetch it \u2014 it ships with your tenant's authorized tools. Install it with `gtc install --tenant <TENANT> --key <KEY>`.",
+  "cli.command.mcp.doctor.generator.header": "MCP generator (greentic-mcp-gen):",
+  "cli.command.mcp.doctor.generator.found": "found: {path} ({version})",
+  "cli.command.mcp.doctor.generator.missing": "not installed — run `greentic-dev install` or `cargo binstall greentic-mcp-generator`",
+  "cli.command.mcp.doctor.toolchain.ready": "wasm toolchain ready (cargo + wasm32-wasip2)",
+  "cli.command.mcp.doctor.toolchain.cargo_missing": "cargo not found on PATH",
+  "cli.command.mcp.doctor.toolchain.wasm_missing": "wasm32-wasip2 target missing — run: rustup target add wasm32-wasip2"
 }

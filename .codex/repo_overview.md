@@ -36,8 +36,8 @@
   **Key functionality:** Deserializes tool paths and default component settings; helper to locate config path.
 
 - **Path:** `src/cmd/*`, `src/component_cli.rs`, `src/delegate/*`, `src/util/*`, `src/passthrough.rs`  
-  **Role:** Glue/passthrough and helper functions for CLI subcommands (pack scaffolding via `packc`, component passthrough, config set command, etc.).  
-  **Key functionality:** Thin wrappers around external tools and internal helpers. Delegated tools are resolved from PATH (or explicit env override) and are installed explicitly via `greentic-dev tools install` / `greentic-dev install tools` (no auto-install fallback).
+  **Role:** Glue/passthrough and helper functions for CLI subcommands (pack scaffolding via `packc`, component passthrough, config set command, MCP subcommands, etc.).  
+  **Key functionality:** Thin wrappers around external tools and internal helpers. Delegated tools are resolved from PATH (or explicit env override) and are installed explicitly via `greentic-dev tools install` / `greentic-dev install tools` (no auto-install fallback). `src/cmd/mcp_cmd.rs` implements the `mcp` subcommand tree: `mcp gen` is a full argv passthrough to the `greentic-mcp-gen` binary (override via `GREENTIC_DEV_BIN_GREENTIC_MCP_GEN`), which generates MCP components from OpenAPI/Swagger specs; `mcp doctor` is an extended built-in that reports MCP generator binary availability and version alongside the existing `wasm32-wasip2` target and `cargo` readiness checks.
 
 - **Path:** `src/dw_cmd.rs`, `src/distributor.rs`
   **Role:** Native HTTP store-API clients (no upstream CLI exists; mirrors the `distributor.rs` HTTP precedent).
@@ -45,7 +45,7 @@
 
 - **Path:** `src/toolchain_catalogue.rs`, `src/release_cmd.rs`
   **Role:** Canonical public toolchain catalogue plus GHCR release manifest workflows.
-  **Key functionality:** `GREENTIC_TOOLCHAIN_PACKAGES` is shared by development/bootstrap installation and release manifest generation. `GREENTIC_EXTENSION_PACK_PACKAGES` and `GREENTIC_COMPONENT_PACKAGES` track published GHCR pack/component package names for manifest/release orchestration. `greentic-dev release generate/publish/promote` creates pinned `gtc` toolchain manifests, pushes them as OCI artifacts, and moves generic GHCR tags without installing local tools. Toolchain manifests carry human-editable `extension_packs` and `components` version refs generated from those catalogues; release generation preserves source manifest pins when present, otherwise resolves pack/component versions from the highest semver tag on GHCR, with no embedded digests or canonical OCI refs.
+  **Key functionality:** `GREENTIC_TOOLCHAIN_PACKAGES` is shared by development/bootstrap installation and release manifest generation. `GREENTIC_EXTENSION_PACK_PACKAGES` and `GREENTIC_COMPONENT_PACKAGES` track published GHCR pack/component package names for manifest/release orchestration. `GREENTIC_EXTERNAL_TOOL_PACKAGES` is a separate catalogue for private developer-tooling binaries (currently includes `greentic-mcp-generator`) that are installed via `greentic-dev install` but are not part of the public operator toolchain. `greentic-dev release generate/publish/promote` creates pinned `gtc` toolchain manifests, pushes them as OCI artifacts, and moves generic GHCR tags without installing local tools. Toolchain manifests carry human-editable `extension_packs` and `components` version refs generated from those catalogues; release generation preserves source manifest pins when present, otherwise resolves pack/component versions from the highest semver tag on GHCR, with no embedded digests or canonical OCI refs.
 
 - **Path:** `crates/dev-viewer/`  
   **Role:** Standalone CLI to render flow transcripts.  

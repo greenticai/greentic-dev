@@ -1,26 +1,29 @@
 use std::fs;
 use std::future::Future;
 use std::io::IsTerminal;
-use std::io::{Cursor, Read};
+use std::io::{Cursor, Read, Write};
 use std::path::{Component, Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use anyhow::{Context, Result, anyhow, bail};
 use async_trait::async_trait;
 use flate2::read::GzDecoder;
+use greentic_distributor_client::oci_client::Reference;
+use greentic_distributor_client::oci_client::client::{
+    Client, ClientConfig, ClientProtocol, ImageData,
+};
+use greentic_distributor_client::oci_client::errors::OciDistributionError;
+use greentic_distributor_client::oci_client::manifest::{
+    IMAGE_MANIFEST_MEDIA_TYPE, OCI_IMAGE_MEDIA_TYPE,
+};
+use greentic_distributor_client::oci_client::secrets::RegistryAuth;
 use greentic_distributor_client::oci_packs::{OciPackFetcher, PackFetchOptions, RegistryClient};
-use oci_distribution::Reference;
-use oci_distribution::client::{Client, ClientConfig, ClientProtocol, ImageData};
-use oci_distribution::errors::OciDistributionError;
-use oci_distribution::manifest::{IMAGE_MANIFEST_MEDIA_TYPE, OCI_IMAGE_MEDIA_TYPE};
-use oci_distribution::secrets::RegistryAuth;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use tar::Archive;
 use zip::ZipArchive;
 
 use crate::cli::InstallArgs;
-use crate::cmd::tools;
 use crate::i18n;
 
 const CUSTOMERS_TOOLS_REPO: &str = "ghcr.io/greentic-biz/customers-tools";
@@ -40,7 +43,50 @@ pub fn run(args: InstallArgs) -> Result<()> {
         return Ok(());
     };
 
-    tools::install(false, &locale)?;
+    // The toolchain is NOT installed here, and must not be reintroduced.
+    //
+    // This line used to read `tools::install(false, &locale)?`, which ran the
+    // whole delegated toolchain through `cargo binstall` before a single
+    // tenant artifact was fetched. It caused two distinct failures on the
+    // development channel, and the second one is the expensive one:
+    //
+    // 1. **It was fatal.** `install_all_delegated_tools` propagates the first
+    //    binstall failure with `?`, so `install --tenant` aborted having
+    //    installed nothing of what it was asked for, with an error naming a
+    //    crate the operator could do nothing about. The same shape was already
+    //    fixed once for the EXTERNAL tools loop — see the comment above
+    //    `GREENTIC_EXTERNAL_TOOL_PACKAGES` in `passthrough.rs` — and the
+    //    toolchain loop above it kept it.
+    //
+    // 2. **It DOWNGRADED a correct installation, silently.** binstall resolves
+    //    from crates.io, and crates.io has carried no Greentic dev build since
+    //    the publishing account was locked on 2026-09-08. So on the dev
+    //    channel it resolves the newest version the index still knows —
+    //    older than whatever the operator installed from the GitHub release
+    //    archives — and installs it OVER the newer binary. Nothing reports
+    //    that; the operator simply finds the toolchain has moved backwards.
+    //    Observed 2026-09-12: a tenant install replaced `greentic-bundle-dev`
+    //    and `greentic-dev-dev` with 6 September builds on its way to failing
+    //    on `greentic-setup-dev`, which had no prebuilt archive to fall back
+    //    to and tried to compile from source instead.
+    //
+    // Both end here because this command installs TENANT ARTIFACTS. That is
+    // what its name says, what `gtc install --install-tenant-only` asks for
+    // (an intent that was being discarded at this delegation boundary), and
+    // what the help text three lines above already tells the operator: the
+    // toolchain lives behind `greentic-dev install tools`, and pinned customer
+    // releases behind `gtc install`. Doing a second job here bought nothing
+    // that either of those does not do on request, and cost the two failures
+    // above.
+    //
+    // If the toolchain should be refreshed from this path in future, it must
+    // resolve the way `gtc install --channel dev` does — from the dev
+    // manifest's GitHub release artifacts (`release snapshot --source
+    // github-releases`) — and never from crates.io while the index is frozen.
+    eprintln!(
+        "note: installing tenant artifacts only. Run `greentic-dev install tools` \
+         if you also want the development toolchain refreshed."
+    );
 
     let token = resolve_token(args.token, &locale)
         .context(i18n::t(&locale, "cli.install.error.tenant_requires_token"))?;
@@ -239,6 +285,19 @@ struct TenantInstallManifest {
     tools: Vec<TenantToolDescriptor>,
     #[serde(default)]
     docs: Vec<TenantDocDescriptor>,
+    /// Declared by the tenant manifest and NOT installed by this tool. Modelled
+    /// only so the entries can be reported instead of vanishing: there is no
+    /// `deny_unknown_fields` here, so before this they decoded cleanly and were
+    /// dropped with nothing logged, and an operator could not tell a store pack
+    /// that failed to install from one that was never attempted.
+    #[serde(default)]
+    store_assets: Vec<StoreAssetRef>,
+}
+
+/// Only the id is modelled — the entries are reported, never fetched.
+#[derive(Debug, Clone, Deserialize, Serialize)]
+struct StoreAssetRef {
+    id: String,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -545,8 +604,29 @@ where
             }
         }
 
+        if !manifest.store_assets.is_empty() {
+            let ids: Vec<&str> = manifest
+                .store_assets
+                .iter()
+                .map(|asset| asset.id.as_str())
+                .collect();
+            // Not a warning any more, and the wording matters. When this was
+            // written nothing installed store assets at all, so "skipping" was
+            // the whole truth. `gtc install --tenant` now pulls them straight
+            // after this delegate returns — so saying they are skipped tells an
+            // operator their entitlement was dropped when it was not. It stays
+            // reported because running greentic-dev DIRECTLY really does leave
+            // them uninstalled; the message names who handles them instead.
+            eprintln!(
+                "note: tenant `{tenant}` declares {} store asset(s); these are installed by \
+                 `gtc install --tenant`, not here: {}",
+                ids.len(),
+                ids.join(", ")
+            );
+        }
+
         let manifest_path = self.env.manifests_dir.join(format!("tenant-{tenant}.json"));
-        fs::write(&manifest_path, &manifest_bytes).with_context(|| {
+        write_atomically(&manifest_path, &manifest_bytes, DATA_FILE_MODE).with_context(|| {
             i18n::tf(
                 &self.env.locale,
                 "cli.install.error.write_file",
@@ -564,7 +644,7 @@ where
             &self.env.locale,
             "cli.install.error.serialize_state",
         ))?;
-        fs::write(&self.env.state_path, state_json).with_context(|| {
+        write_atomically(&self.env.state_path, &state_json, DATA_FILE_MODE).with_context(|| {
             i18n::tf(
                 &self.env.locale,
                 "cli.install.error.write_file",
@@ -689,8 +769,7 @@ where
             self.env
                 .downloads_dir
                 .join(format!("{}-{}", tool.id, file_name_hint(&target.url)));
-        fs::write(&staged_path, &bytes)
-            .with_context(|| format!("failed to write {}", staged_path.display()))?;
+        write_atomically(&staged_path, &bytes, DATA_FILE_MODE)?;
 
         let installed_path = if target.url.ends_with(".tar.gz") || target.url.ends_with(".tgz") {
             extract_tar_gz_binary(&bytes, &target_name, &self.env.bin_dir)?
@@ -698,8 +777,7 @@ where
             extract_zip_binary(&bytes, &target_name, &self.env.bin_dir)?
         } else {
             let dest_path = self.env.bin_dir.join(&target_name);
-            fs::write(&dest_path, &bytes)
-                .with_context(|| format!("failed to write {}", dest_path.display()))?;
+            write_atomically(&dest_path, &bytes, BINARY_FILE_MODE)?;
             dest_path
         };
 
@@ -724,8 +802,7 @@ where
                 .with_context(|| format!("failed to create {}", parent.display()))?;
         }
         let bytes = self.downloader.download(&doc.source.url, token).await?;
-        fs::write(&dest_path, &bytes)
-            .with_context(|| format!("failed to write {}", dest_path.display()))?;
+        write_atomically(&dest_path, &bytes, DATA_FILE_MODE)?;
         Ok(dest_path)
     }
 }
@@ -830,10 +907,34 @@ fn strip_version_suffix(name: &str) -> String {
         return name.to_string();
     };
     if is_version_segment(last) {
-        prefix.to_string()
+        return prefix.to_string();
+    }
+    // A prerelease identifier sits AFTER the version (`…-v1.2.49-dev`), so the
+    // version is one segment further left and the single strip above misses it.
+    //
+    // That mattered: `greentic-admin-v1.2.49-dev` did not reduce to
+    // `greentic-admin`, so `extract_tar_gz_binary` never matched a file by that
+    // name and fell through to "first file in the archive" — which happened to
+    // be the binary. It worked by luck of ordering; an archive that listed
+    // LICENSE first would have installed LICENSE as the binary, executable bit
+    // and all. Every tool pinned to a `-dev` or `-research` tag was exposed.
+    let Some((head, version)) = prefix.rsplit_once('-') else {
+        return name.to_string();
+    };
+    if is_version_segment(version) && is_prerelease_segment(last) {
+        head.to_string()
     } else {
         name.to_string()
     }
+}
+
+/// A semver prerelease identifier — `dev`, `research`, `rc1`.
+///
+/// Deliberately narrower than "any word": it is only ever consulted when the
+/// segment to its LEFT is already a version, so it cannot swallow the tail of a
+/// binary whose name simply ends in one (`greentic-mcp-gen` stays intact).
+fn is_prerelease_segment(segment: &str) -> bool {
+    !segment.is_empty() && segment.chars().all(|ch| ch.is_ascii_alphanumeric())
 }
 
 fn is_version_segment(segment: &str) -> bool {
@@ -908,8 +1009,7 @@ fn extract_tar_gz_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Re
         entry
             .read_to_end(&mut buf)
             .with_context(|| format!("failed to extract `{name}` from tar.gz"))?;
-        fs::write(&out_path, buf)
-            .with_context(|| format!("failed to write {}", out_path.display()))?;
+        write_atomically(&out_path, &buf, extracted_entry_mode(binary_name, &name))?;
         extracted.push(out_path.clone());
         if name == binary_name {
             return Ok(out_path);
@@ -955,8 +1055,7 @@ fn extract_zip_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Resul
         let mut buf = Vec::new();
         file.read_to_end(&mut buf)
             .with_context(|| format!("failed to extract `{name}` from zip"))?;
-        fs::write(&out_path, buf)
-            .with_context(|| format!("failed to write {}", out_path.display()))?;
+        write_atomically(&out_path, &buf, extracted_entry_mode(binary_name, &name))?;
         extracted.push(out_path.clone());
         if name == binary_name {
             return Ok(out_path);
@@ -977,6 +1076,81 @@ fn extract_zip_binary(bytes: &[u8], binary_name: &str, dest_dir: &Path) -> Resul
         debug_dir.display(),
         entries.join(", ")
     );
+}
+
+/// Unix mode for an installed executable.
+const BINARY_FILE_MODE: u32 = 0o755;
+/// Unix mode for every other installed file (docs, manifests, state, staged downloads).
+const DATA_FILE_MODE: u32 = 0o644;
+
+/// Mode for an archive entry: executable when it is (or may turn out to be) the
+/// requested binary. `ensure_executable` still runs on whichever entry wins, so an
+/// entry picked only as the last-resort "first extracted" fallback is covered too.
+fn extracted_entry_mode(binary_name: &str, entry_name: &str) -> u32 {
+    if entry_name == binary_name || archive_name_matches(binary_name, entry_name) {
+        BINARY_FILE_MODE
+    } else {
+        DATA_FILE_MODE
+    }
+}
+
+/// Replace `dest` with `bytes` without ever rewriting the existing file in place.
+///
+/// The bytes go to a uniquely named temporary file in the SAME directory, are
+/// fsynced, get their final permissions, and are then renamed over `dest`. The
+/// rename is atomic, and the result is a fresh inode.
+///
+/// That fresh inode is the point (greenticai/greentic-dev#368). macOS caches a
+/// binary's code signature per vnode, so truncating and rewriting a signed binary
+/// that has already been executed invalidates it, and the next exec is SIGKILLed
+/// (`Killed: 9`) until the file is recreated. A plain `fs::write` over an existing
+/// file does exactly that truncation.
+///
+/// On any failure the temporary file is removed (dropping a `NamedTempFile` or a
+/// `PersistError` deletes it) and `dest` is left untouched.
+fn write_atomically(dest: &Path, bytes: &[u8], mode: u32) -> Result<()> {
+    let dir = match dest.parent() {
+        Some(parent) if !parent.as_os_str().is_empty() => parent,
+        _ => Path::new("."),
+    };
+    let mut temp = tempfile::Builder::new()
+        .prefix(".greentic-dev-")
+        .suffix(".tmp")
+        .tempfile_in(dir)
+        .with_context(|| format!("failed to create a temporary file in {}", dir.display()))?;
+    temp.write_all(bytes)
+        .with_context(|| format!("failed to write {}", temp.path().display()))?;
+    set_file_mode(temp.as_file(), mode)
+        .with_context(|| format!("failed to set permissions on {}", temp.path().display()))?;
+    temp.as_file()
+        .sync_all()
+        .with_context(|| format!("failed to sync {}", temp.path().display()))?;
+    temp.persist(dest).map_err(|err| {
+        let running_exe_hint =
+            cfg!(windows) && err.error.kind() == std::io::ErrorKind::PermissionDenied;
+        let error = anyhow::Error::new(err.error);
+        if running_exe_hint {
+            error.context(format!(
+                "failed to replace {}: the file is in use (is that program still running?); \
+                 close it and retry",
+                dest.display()
+            ))
+        } else {
+            error.context(format!("failed to replace {}", dest.display()))
+        }
+    })?;
+    Ok(())
+}
+
+#[cfg(unix)]
+fn set_file_mode(file: &fs::File, mode: u32) -> std::io::Result<()> {
+    use std::os::unix::fs::PermissionsExt;
+    file.set_permissions(fs::Permissions::from_mode(mode))
+}
+
+#[cfg(not(unix))]
+fn set_file_mode(_file: &fs::File, _mode: u32) -> std::io::Result<()> {
+    Ok(())
 }
 
 fn archive_name_matches(expected: &str, actual: &str) -> bool {
@@ -1305,12 +1479,15 @@ fn convert_image(image: ImageData) -> greentic_distributor_client::oci_packs::Pu
             let digest = format!("sha256:{}", layer.sha256_digest());
             greentic_distributor_client::oci_packs::PulledLayer {
                 media_type: layer.media_type,
-                data: layer.data,
+                data: layer.data.to_vec(),
                 digest: Some(digest),
             }
         })
         .collect();
-    let manifest_annotations = image.manifest.and_then(|m| m.annotations);
+    let manifest_annotations = image
+        .manifest
+        .and_then(|m| m.annotations)
+        .map(|annotations| annotations.into_iter().collect());
     greentic_distributor_client::oci_packs::PulledImage {
         digest: image.digest,
         layers,
@@ -1488,6 +1665,7 @@ mod tests {
             schema: Some("https://raw.githubusercontent.com/greenticai/customers-tools/main/schemas/tenant-tools.schema.json".to_string()),
             schema_version: "1".to_string(),
             tenant: "acme".to_string(),
+            store_assets: Vec::new(),
             tools: vec![TenantToolDescriptor::Expanded(TenantToolEntry {
                 schema: Some(
                     "https://raw.githubusercontent.com/greenticai/customers-tools/main/schemas/tool.schema.json".to_string(),
@@ -1531,6 +1709,7 @@ mod tests {
             schema: Some("https://raw.githubusercontent.com/greenticai/customers-tools/main/schemas/tenant-tools.schema.json".to_string()),
             schema_version: "1".to_string(),
             tenant: "acme".to_string(),
+            store_assets: Vec::new(),
             tools: vec![TenantToolDescriptor::Ref(RemoteManifestRef {
                 id: "greentic-x-cli".to_string(),
                 url: tool_manifest_url.to_string(),
@@ -1641,6 +1820,96 @@ mod tests {
         assert_eq!(spec.repo, "greentic-mcp-generator");
         assert_eq!(spec.tag, "v1.0.0");
         assert_eq!(spec.asset_name, "greentic-mcp-generator.json");
+    }
+
+    fn temp_litter(dir: &Path) -> Result<Vec<String>> {
+        let mut litter = Vec::new();
+        for entry in fs::read_dir(dir)? {
+            let name = entry?.file_name().to_string_lossy().into_owned();
+            if name.starts_with(".greentic-dev-") {
+                litter.push(name);
+            }
+        }
+        Ok(litter)
+    }
+
+    #[test]
+    fn write_atomically_creates_a_new_file() -> Result<()> {
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        write_atomically(&dest, b"fresh", BINARY_FILE_MODE)?;
+        assert_eq!(fs::read(&dest)?, b"fresh");
+        #[cfg(unix)]
+        {
+            use std::os::unix::fs::PermissionsExt;
+            assert_eq!(fs::metadata(&dest)?.permissions().mode() & 0o777, 0o755);
+        }
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn write_atomically_replaces_an_existing_file_with_a_new_inode() -> Result<()> {
+        use std::os::unix::fs::{MetadataExt, PermissionsExt};
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        fs::write(&dest, b"old binary contents")?;
+        fs::set_permissions(&dest, fs::Permissions::from_mode(0o600))?;
+        // Keep the old inode alive so the filesystem cannot hand its number
+        // straight back to the replacement and make the comparison vacuous.
+        let old_handle = fs::File::open(&dest)?;
+        let old_ino = old_handle.metadata()?.ino();
+
+        write_atomically(&dest, b"new", BINARY_FILE_MODE)?;
+
+        let meta = fs::metadata(&dest)?;
+        assert_ne!(meta.ino(), old_ino, "the destination must be a fresh inode");
+        assert_eq!(meta.permissions().mode() & 0o777, 0o755);
+        assert_eq!(fs::read(&dest)?, b"new");
+        // The old inode was never truncated or rewritten.
+        let mut old_bytes = Vec::new();
+        (&old_handle).read_to_end(&mut old_bytes)?;
+        assert_eq!(old_bytes, b"old binary contents");
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[test]
+    fn write_atomically_failure_leaves_the_destination_intact_and_no_temp_file() -> Result<()> {
+        let temp = TempDir::new()?;
+        // A non-empty directory cannot be renamed over by a file on any platform.
+        let dest = temp.path().join("greentic-x");
+        fs::create_dir(&dest)?;
+        fs::write(dest.join("keep.txt"), b"original")?;
+
+        let err = write_atomically(&dest, b"new", BINARY_FILE_MODE)
+            .expect_err("renaming a file over a non-empty directory must fail");
+        assert!(format!("{err:#}").contains("failed to replace"), "{err:#}");
+
+        assert!(dest.is_dir());
+        assert_eq!(fs::read(dest.join("keep.txt"))?, b"original");
+        assert!(temp_litter(temp.path())?.is_empty());
+        Ok(())
+    }
+
+    #[cfg(unix)]
+    #[test]
+    fn extracting_over_an_installed_binary_replaces_its_inode() -> Result<()> {
+        use std::os::unix::fs::MetadataExt;
+        let temp = TempDir::new()?;
+        let dest = temp.path().join("greentic-x");
+        fs::write(&dest, b"previous release")?;
+        let old_handle = fs::File::open(&dest)?;
+        let old_ino = old_handle.metadata()?.ino();
+
+        let archive = tar_gz_with_binary("greentic-x", b"next release");
+        let out = extract_tar_gz_binary(&archive, "greentic-x", temp.path())?;
+
+        assert_eq!(out, dest);
+        assert_ne!(fs::metadata(&out)?.ino(), old_ino);
+        assert_eq!(fs::read(&out)?, b"next release");
+        Ok(())
     }
 
     #[test]
@@ -1906,6 +2175,7 @@ mod tests {
             schema: None,
             schema_version: "1".to_string(),
             tenant: "acme".to_string(),
+            store_assets: Vec::new(),
             tools: vec![TenantToolDescriptor::Expanded(TenantToolEntry {
                 schema: None,
                 id: "greentic-x-cli".to_string(),
@@ -1983,6 +2253,7 @@ mod tests {
             schema: None,
             schema_version: "1".to_string(),
             tenant: "3point".to_string(),
+            store_assets: Vec::new(),
             tools: vec![TenantToolDescriptor::Simple(SimpleTenantToolEntry {
                 id: "greentic-fast2flow".to_string(),
                 binary_name: None,
@@ -2027,6 +2298,22 @@ mod tests {
             "https://github.com/greentic-biz/greentic-fast2flow/releases/download/v0.4.1/greentic-fast2flow-v0.4.1-x86_64-unknown-linux-gnu.tar.gz",
         );
         assert_eq!(name, "greentic-fast2flow");
+    }
+
+    #[test]
+    fn expected_binary_name_strips_a_prerelease_version() {
+        let name = expected_binary_name(
+            "greentic-admin",
+            "https://github.com/greentic-biz/greentic-admin/releases/download/v1.2.49-dev/greentic-admin-v1.2.49-dev-x86_64-unknown-linux-gnu.tar.gz",
+        );
+        assert_eq!(name, "greentic-admin");
+    }
+
+    #[test]
+    fn strip_version_suffix_keeps_a_trailing_word_that_is_not_a_prerelease() {
+        // `gen` is part of the binary's own name, and the segment to its left is
+        // not a version — so nothing may be stripped here.
+        assert_eq!(strip_version_suffix("greentic-mcp-gen"), "greentic-mcp-gen");
     }
 
     #[test]

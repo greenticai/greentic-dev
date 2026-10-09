@@ -75,6 +75,7 @@ fn build_flow() -> Result<Flow> {
             node_id: secret_id.clone(),
         },
         telemetry: Default::default(),
+        conversational: false,
     };
     let secret = Node {
         id: secret_id.clone(),
@@ -93,6 +94,7 @@ fn build_flow() -> Result<Flow> {
             default: Some(external_id.clone()),
         },
         telemetry: Default::default(),
+        conversational: false,
     };
     let external = Node {
         id: external_id.clone(),
@@ -113,6 +115,7 @@ fn build_flow() -> Result<Flow> {
             default: Some(finish_id.clone()),
         },
         telemetry: Default::default(),
+        conversational: false,
     };
     let finish = Node {
         id: finish_id.clone(),
@@ -126,6 +129,7 @@ fn build_flow() -> Result<Flow> {
         err_map: None,
         routing: Routing::End,
         telemetry: Default::default(),
+        conversational: false,
     };
     let err = Node {
         id: err_id.clone(),
@@ -139,6 +143,7 @@ fn build_flow() -> Result<Flow> {
         err_map: None,
         routing: Routing::End,
         telemetry: Default::default(),
+        conversational: false,
     };
 
     let mut nodes: indexmap::IndexMap<NodeId, Node, FlowHasher> = indexmap::IndexMap::default();

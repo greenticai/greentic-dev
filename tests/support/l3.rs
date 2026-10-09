@@ -74,6 +74,7 @@ fn build_flow() -> Result<Flow> {
             node_id: tool_id.clone(),
         },
         telemetry: Default::default(),
+        conversational: false,
     };
     let tool = Node {
         id: tool_id.clone(),
@@ -94,6 +95,7 @@ fn build_flow() -> Result<Flow> {
             default: Some(tmpl_id.clone()),
         },
         telemetry: Default::default(),
+        conversational: false,
     };
     let tmpl = Node {
         id: tmpl_id.clone(),
@@ -107,6 +109,7 @@ fn build_flow() -> Result<Flow> {
         err_map: None,
         routing: Routing::End,
         telemetry: Default::default(),
+        conversational: false,
     };
     let err = Node {
         id: err_id.clone(),
@@ -120,6 +123,7 @@ fn build_flow() -> Result<Flow> {
         err_map: None,
         routing: Routing::End,
         telemetry: Default::default(),
+        conversational: false,
     };
 
     let mut nodes: indexmap::IndexMap<NodeId, Node, FlowHasher> = indexmap::IndexMap::default();

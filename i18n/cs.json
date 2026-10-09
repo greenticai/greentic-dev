@@ -36,6 +36,7 @@
   "cli.command.release.promote.about": "Přesunout značku GHCR na existující vydání nástrojového řetězce Greentic",
   "cli.command.release.snapshot.about": "Snapshot the latest crates.io versions for a channel into a new toolchain manifest and publish it",
   "cli.command.release.snapshot.channel": "Toolchain channel to snapshot (`dev` for `<crate>-dev` aliases, `stable` for plain crate names)",
+  "cli.command.release.snapshot.source": "Where to read versions from: `crates-io` (default) or `github-releases` (dev channel only; pins each package's GitHub release archives and digests, for builds crates.io never received)",
   "cli.command.release.publish.about": "Generovat a publikovat manifest vydání nástrojového řetězce Greentic",
   "cli.command.release.release": "Verze vydání ke generování, publikování nebo propagaci",
   "cli.command.release.repo": "Repozitář manifestu nástrojového řetězce GHCR",
@@ -188,5 +189,13 @@
   "runtime.dw.error.sha_mismatch": "artifact sha256 mismatch: expected {expected}, got {actual}",
   "runtime.dw.error.create_out_dir": "failed to create output directory {path}",
   "runtime.dw.error.write_artifact": "failed to write artifact to {path}",
-  "runtime.dw.install.success": "installed {path} (sha256 {sha})"
+  "runtime.dw.install.success": "installed {path} (sha256 {sha})",
+  "cli.command.mcp.gen.about": "Generate an MCP router component from an OpenAPI/Swagger spec (passthrough to greentic-mcp-gen)",
+  "runtime.mcp.gen.error.not_installed": "greentic-mcp-gen was not found. It is not published to crates.io, so `cargo binstall` cannot fetch it \u2014 it ships with your tenant's authorized tools. Install it with `gtc install --tenant <TENANT> --key <KEY>`.",
+  "cli.command.mcp.doctor.generator.header": "MCP generator (greentic-mcp-gen):",
+  "cli.command.mcp.doctor.generator.found": "found: {path} ({version})",
+  "cli.command.mcp.doctor.generator.missing": "not installed — run `greentic-dev install` or `cargo binstall greentic-mcp-generator`",
+  "cli.command.mcp.doctor.toolchain.ready": "wasm toolchain ready (cargo + wasm32-wasip2)",
+  "cli.command.mcp.doctor.toolchain.cargo_missing": "cargo not found on PATH",
+  "cli.command.mcp.doctor.toolchain.wasm_missing": "wasm32-wasip2 target missing — run: rustup target add wasm32-wasip2"
 }

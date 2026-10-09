@@ -63,7 +63,8 @@ Use `greentic-dev install tools` to bootstrap development tools from the canonic
 - `greentic-dev pack …` → `greentic-pack` (components, update, build, doctor/inspect, run via greentic-runner-cli)
 - `greentic-dev gui …` → `greentic-gui` helpers
 - `greentic-dev secrets …` → `greentic-secrets` helpers
-- `greentic-dev mcp doctor …` → built-in MCP doctor
+- `greentic-dev mcp doctor …` → built-in MCP doctor (reports generator + wasm-toolchain status)
+- `greentic-dev mcp gen …` → `greentic-mcp-gen` passthrough (OpenAPI → MCP component generator)
 - `greentic-dev mcp --compose …` → `greentic-mcp compose …`
 - `greentic-dev mcp …` → `greentic-mcp` passthrough for other MCP commands
 - `greentic-dev release …` → generate, publish, and promote GHCR toolchain release manifests
@@ -73,6 +74,29 @@ Links to upstream CLI docs for the full flag sets:
 - [`greentic-component/docs/cli.md`](../greentic-component/docs/cli.md)
 - [`greentic-flow/docs/cli.md`](../greentic-flow/docs/cli.md)
 - [`greentic-pack/docs/cli.md`](../greentic-pack/docs/cli.md)
+
+---
+
+## Generate MCP components from OpenAPI (`mcp gen`)
+
+`greentic-dev mcp gen` is a passthrough to the `greentic-mcp-gen` binary
+(from `greentic-mcp-generator`). Every argument after `gen` is forwarded
+verbatim, so the full generator surface is available:
+
+```bash
+# Generate from an OpenAPI/Swagger spec
+greentic-dev mcp gen --spec ./api.yaml --output-dir ./out
+
+# Google Discovery pipeline
+greentic-dev mcp gen discovery --url "https://sheets.googleapis.com/$discovery/rest?version=v4" --profile sheets-crm --out ./out
+```
+
+The generator is a separate, private tool. Install it once with
+`cargo binstall greentic-mcp-generator` (set `GITHUB_TOKEN` for the private
+repo) or via `greentic-dev install`. Override the resolved binary with
+`GREENTIC_DEV_BIN_GREENTIC_MCP_GEN`. Building the resulting `.wasm` requires
+`cargo` + the `wasm32-wasip2` target; run `greentic-dev mcp doctor <toolmap>`
+to check readiness.
 
 ---
 
@@ -99,7 +123,7 @@ Everything is validated before execution: flows are checked against component de
 
 ## Requirements
 
-- Rust 1.95+ (repo pins `rust-toolchain.toml`)
+- Rust 1.96+ (repo pins `rust-toolchain.toml`)
 - `wasm32-wasip2` target for component builds: `rustup target add wasm32-wasip2`
 - Network optional: most flows/components can run offline; remote component pulls require connectivity unless cached.
 

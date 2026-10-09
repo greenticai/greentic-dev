@@ -5,7 +5,7 @@ use std::ffi::OsString;
 use std::path::{Path, PathBuf};
 use std::process::{Command, ExitStatus, Stdio};
 
-use crate::toolchain_catalogue::GREENTIC_TOOLCHAIN_PACKAGES;
+use crate::toolchain_catalogue::{GREENTIC_EXTERNAL_TOOL_PACKAGES, GREENTIC_TOOLCHAIN_PACKAGES};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum ToolchainChannel {
@@ -111,6 +111,53 @@ pub fn resolve_binary_for_channel(name: &str, channel: ToolchainChannel) -> Resu
     )
 }
 
+/// Environment-override key for an external tool, e.g. `greentic-mcp-gen`
+/// → `GREENTIC_DEV_BIN_GREENTIC_MCP_GEN`.
+pub(crate) fn external_tool_env_key(name: &str) -> String {
+    format!("GREENTIC_DEV_BIN_{}", name.replace('-', "_").to_uppercase())
+}
+
+/// Resolve an external (non-Greentic-channel) tool binary by its plain name.
+///
+/// Unlike [`resolve_binary`], this never appends the toolchain channel suffix
+/// (`-dev`/`-rnd`): external tools such as `greentic-mcp-gen` ship a single,
+/// unsuffixed binary. Resolution order: `GREENTIC_DEV_BIN_<NAME>` env override,
+/// then `PATH`.
+pub fn resolve_external_tool(name: &str) -> Result<PathBuf> {
+    let locale = crate::i18n::select_locale(None);
+    let env_key = external_tool_env_key(name);
+    if let Ok(path) = env::var(&env_key) {
+        let pb = PathBuf::from(path);
+        if pb.exists() {
+            return Ok(pb);
+        }
+        bail!(
+            "{}",
+            crate::i18n::tf(
+                &locale,
+                "runtime.passthrough.error.env_binary_missing",
+                &[
+                    ("env_key", env_key.clone()),
+                    ("path", pb.display().to_string()),
+                ],
+            )
+        );
+    }
+
+    if let Ok(path) = which::which(name) {
+        return Ok(path);
+    }
+
+    bail!(
+        "{}",
+        crate::i18n::tf(
+            &locale,
+            "runtime.passthrough.error.binary_not_found",
+            &[("name", name.to_string()), ("env_key", env_key)],
+        )
+    )
+}
+
 pub fn run_passthrough(bin: &Path, args: &[OsString], verbose: bool) -> Result<ExitStatus> {
     let locale = crate::i18n::select_locale(None);
     if verbose {
@@ -153,6 +200,7 @@ pub fn run_passthrough(bin: &Path, args: &[OsString], verbose: bool) -> Result<E
 
 pub fn install_all_delegated_tools(latest: bool, locale: &str) -> Result<()> {
     ensure_cargo_binstall()?;
+    let mut failed: Vec<String> = Vec::new();
     let channel = current_toolchain_channel();
     // The research (`rnd`) lane publishes `<crate>-rnd` at `X.Y.Z-research`
     // PRERELEASE versions. `cargo binstall`/cargo will not select a pre-release
@@ -193,14 +241,70 @@ pub fn install_all_delegated_tools(latest: bool, locale: &str) -> Result<()> {
             None => None,
         };
         for bin_name in package.bins {
-            install_with_binstall(
-                &crate_name,
-                &delegated_binary_name_for_channel(bin_name, channel),
-                latest,
-                version.as_deref(),
-                locale,
-            )?;
+            let bin = delegated_binary_name_for_channel(bin_name, channel);
+            // Collected, not propagated. With `?` the loop stopped at the
+            // first crate binstall could not resolve, having ALREADY replaced
+            // every binary before it in the list — so a single unpublishable
+            // crate left the toolchain half-moved and the command reporting
+            // only the crate that failed. That is the same failure the
+            // external-tools loop below was fixed for; the difference is only
+            // that these are required, so the run still ends in an error.
+            //
+            // It matters most on the development channel: crates.io has
+            // carried no Greentic dev build since the publishing account was
+            // locked on 2026-09-08, so binstall there resolves whatever older
+            // version the index still knows. Finishing the list is what keeps
+            // one frozen crate from deciding how far the rest got.
+            if let Err(err) =
+                install_with_binstall(&crate_name, &bin, latest, version.as_deref(), locale)
+            {
+                eprintln!("error: `{bin}` (crate `{crate_name}`) could not be installed: {err}");
+                failed.push(bin);
+            }
         }
+    }
+    // External tools ship a single unsuffixed binary — install by plain name.
+    //
+    // A failure here MUST NOT abort the run, and must not even be counted.
+    // `greentic-mcp-generator` is not published to crates.io at all — it ships
+    // as a private GitHub release and reaches a customer through
+    // `install --tenant` — so `cargo binstall` can never resolve it and exits
+    // 76 every time. With `?`, that took the whole command down, and at the
+    // time `install --tenant` called this before fetching a single tenant
+    // artifact, so every tenant install failed having installed nothing, with
+    // an error naming a crate the operator could do nothing about. (That
+    // second half no longer applies: `install --tenant` installs tenant
+    // artifacts only — see the comment at its call site in `install.rs`.)
+    //
+    // The core toolchain above is still REQUIRED and still ends the run in an
+    // error; the difference is that it now finishes the list first, so one
+    // unresolvable crate does not decide how far the rest got. These are
+    // optional, so they are skipped with a note and never reach `failed`.
+    for package in GREENTIC_EXTERNAL_TOOL_PACKAGES {
+        for bin_name in package.bins {
+            if let Err(err) =
+                install_with_binstall(package.crate_name, bin_name, latest, None, locale)
+            {
+                eprintln!(
+                    "note: optional external tool `{bin_name}` (crate `{}`) is unavailable; \
+                     skipping it: {err}",
+                    package.crate_name
+                );
+            }
+        }
+    }
+
+    if !failed.is_empty() {
+        // Named individually rather than as a count: on the development
+        // channel the usual cause is that crates.io has carried no Greentic
+        // dev build since the publishing account was locked on 2026-09-08, and
+        // which binaries that leaves behind is the whole of what an operator
+        // needs to know to side-load them from the GitHub release archives.
+        anyhow::bail!(
+            "could not install {} required toolchain binaries: {}",
+            failed.len(),
+            failed.join(", ")
+        );
     }
     Ok(())
 }
@@ -262,6 +366,8 @@ fn binstall_args(
         "binstall".to_string(),
         "-y".to_string(),
         "--locked".to_string(),
+        "--maximum-resolution-timeout".to_string(),
+        "60".to_string(),
         crate_name.to_string(),
         "--bin".to_string(),
         bin_name.to_string(),
@@ -326,106 +432,11 @@ fn ensure_cargo_binstall() -> Result<()> {
     }
 }
 
-/// Last cargo-binstall release whose bundled lockfile still builds on the
-/// toolchains this fleet pins. 1.22.0 pins `vergen 10.0.2`, whose MSRV is
-/// rustc 1.96.0, so from 1.22.0 onward the source build fails on 1.95.0.
-/// Only reached when the prebuilt bootstrap below is unavailable.
-const BINSTALL_SOURCE_FALLBACK_VERSION: &str = "1.21.1";
-
-/// URL of cargo-binstall's official prebuilt-release installer.
-const BINSTALL_RELEASE_INSTALLER_SH: &str = "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh";
-const BINSTALL_RELEASE_INSTALLER_PS1: &str = "https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.ps1";
-
-/// Installs cargo-binstall, preferring the prebuilt release binary.
-///
-/// `cargo install cargo-binstall` *compiles* it, which inherits the MSRV of
-/// binstall's bundled lockfile rather than its declared `rust-version`. When
-/// 1.22.0 shipped a lock pinning `vergen 10.0.2` (rustc 1.96.0) that source
-/// build started failing on every toolchain pinned below it, including the
-/// 1.95.0 this repo pins — it took the nightly pack-smoke down with no change
-/// on our side. The prebuilt path compiles nothing, so it cannot be broken by
-/// an MSRV bump anywhere in binstall's dependency tree.
-///
-/// The source build stays as a fallback for hosts without the shell tooling the
-/// installer needs, pinned to the last version that still compiles here. A host
-/// that keeps falling back re-attempts on each run, because the pinned version
-/// is genuinely older than the latest — that is the honest state, not a loop.
-/// `coverage_cmd` needs the same bootstrap; exposed so the two paths cannot
-/// drift back apart.
-pub(crate) fn install_cargo_binstall_public() -> Result<()> {
-    install_cargo_binstall()
-}
-
 fn install_cargo_binstall() -> Result<()> {
-    if install_cargo_binstall_prebuilt() {
-        return Ok(());
-    }
-    install_cargo_binstall_from_source(Some(BINSTALL_SOURCE_FALLBACK_VERSION))
-}
-
-/// Runs cargo-binstall's official installer. Returns whether it left a working
-/// `cargo binstall` behind; every failure is non-fatal and falls through to the
-/// source build.
-fn install_cargo_binstall_prebuilt() -> bool {
-    let status = if cfg!(windows) {
-        Command::new("powershell")
-            .arg("-NoProfile")
-            .arg("-Command")
-            .arg(format!(
-                "Set-ExecutionPolicy Unrestricted -Scope Process -Force; \
-                 iex (iwr \"{BINSTALL_RELEASE_INSTALLER_PS1}\").Content"
-            ))
-            .stdin(Stdio::null())
-            .stdout(Stdio::inherit())
-            .stderr(Stdio::inherit())
-            .status()
-    } else {
-        // The installer is downloaded to a file and run separately rather than
-        // piped straight into a shell: a pipeline reports the *shell's* status,
-        // and a shell succeeds on empty input, so `curl | sh` would report a
-        // failed download as success.
-        let script = env::temp_dir().join("greentic-dev-install-binstall.sh");
-        let script = script.to_string_lossy().to_string();
-        Command::new("sh")
-            .arg("-c")
-            .arg(format!(
-                "set -e; curl -L --proto '=https' --tlsv1.2 -sSf \
-                 {BINSTALL_RELEASE_INSTALLER_SH} -o '{script}'; sh '{script}'; \
-                 rm -f '{script}'"
-            ))
-            .stdin(Stdio::null())
-            .stdout(Stdio::inherit())
-            .stderr(Stdio::inherit())
-            .status()
-    };
-
-    match status {
-        Ok(status) if status.success() => {
-            // Trust the binary, not the installer's exit code.
-            matches!(installed_cargo_binstall_version(), Ok(Some(_)))
-        }
-        _ => false,
-    }
-}
-
-/// Argv for the source-build fallback, split out so the pin is testable.
-fn cargo_binstall_source_args(version: Option<&str>) -> Vec<String> {
-    let mut args = vec![
-        "install".to_string(),
-        "cargo-binstall".to_string(),
-        "--locked".to_string(),
-    ];
-    if let Some(version) = version {
-        args.push("--version".to_string());
-        args.push(version.to_string());
-    }
-    args
-}
-
-fn install_cargo_binstall_from_source(version: Option<&str>) -> Result<()> {
-    let mut command = Command::new("cargo");
-    command.args(cargo_binstall_source_args(version));
-    let status = command
+    let status = Command::new("cargo")
+        .arg("install")
+        .arg("cargo-binstall")
+        .arg("--locked")
         .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())
         .stderr(Stdio::inherit())
@@ -523,9 +534,9 @@ fn parse_latest_cargo_binstall_version(stdout: &str) -> Result<Version> {
 #[cfg(test)]
 mod tests {
     use super::{
-        BINSTALL_SOURCE_FALLBACK_VERSION, ToolchainChannel, binstall_args,
-        cargo_binstall_source_args, delegated_binary_name_for_channel,
+        ToolchainChannel, binstall_args, delegated_binary_name_for_channel, external_tool_env_key,
         parse_installed_cargo_binstall_version, parse_latest_cargo_binstall_version,
+        resolve_external_tool,
     };
     use crate::toolchain_catalogue::GREENTIC_TOOLCHAIN_PACKAGES;
 
@@ -538,35 +549,6 @@ mod tests {
     }
 
     #[test]
-    fn source_fallback_pins_a_version_that_builds_on_the_pinned_toolchain() {
-        // Unpinned, this is the exact command that broke the nightly: cargo
-        // resolves the latest cargo-binstall, and from 1.22.0 its bundled
-        // lockfile needs rustc 1.96.0 while this repo pins 1.95.0.
-        assert_eq!(
-            cargo_binstall_source_args(None),
-            vec!["install", "cargo-binstall", "--locked"]
-        );
-        assert_eq!(
-            cargo_binstall_source_args(Some(BINSTALL_SOURCE_FALLBACK_VERSION)),
-            vec![
-                "install",
-                "cargo-binstall",
-                "--locked",
-                "--version",
-                BINSTALL_SOURCE_FALLBACK_VERSION
-            ]
-        );
-        // The pin is only meaningful while it stays below 1.22.0.
-        let pinned: semver::Version = BINSTALL_SOURCE_FALLBACK_VERSION
-            .parse()
-            .expect("fallback version parses");
-        assert!(
-            pinned < semver::Version::parse("1.22.0").expect("bound parses"),
-            "fallback {pinned} must predate the vergen 10.0.2 MSRV bump"
-        );
-    }
-
-    #[test]
     fn binstall_args_include_force_only_when_latest_requested() {
         assert_eq!(
             binstall_args("greentic-runner", "greentic-runner", false, None),
@@ -574,6 +556,8 @@ mod tests {
                 "binstall",
                 "-y",
                 "--locked",
+                "--maximum-resolution-timeout",
+                "60",
                 "greentic-runner",
                 "--bin",
                 "greentic-runner"
@@ -585,6 +569,8 @@ mod tests {
                 "binstall",
                 "-y",
                 "--locked",
+                "--maximum-resolution-timeout",
+                "60",
                 "greentic-runner",
                 "--bin",
                 "greentic-runner",
@@ -608,6 +594,8 @@ mod tests {
                 "binstall",
                 "-y",
                 "--locked",
+                "--maximum-resolution-timeout",
+                "60",
                 "greentic-start-rnd",
                 "--bin",
                 "greentic-start-rnd",
@@ -688,5 +676,24 @@ mod tests {
         )
         .expect("parse should succeed");
         assert_eq!(parsed.to_string(), "1.15.7");
+    }
+
+    #[test]
+    fn external_tool_env_key_is_plain_uppercase_no_channel_suffix() {
+        // The key derives from the plain binary name; it must never carry a
+        // `-dev`/`-rnd` channel suffix.
+        assert_eq!(
+            external_tool_env_key("greentic-mcp-gen"),
+            "GREENTIC_DEV_BIN_GREENTIC_MCP_GEN"
+        );
+    }
+
+    #[test]
+    fn resolve_external_tool_errors_with_plain_name_when_absent() {
+        // A name that is not on PATH and has no env override resolves to an error
+        // that mentions the plain (unsuffixed) name.
+        let err = resolve_external_tool("greentic-mcp-gen-absent-xyz")
+            .expect_err("expected resolution to fail");
+        assert!(err.to_string().contains("greentic-mcp-gen-absent-xyz"));
     }
 }

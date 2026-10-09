@@ -19,6 +19,8 @@ jobs:
     with:
       package: greentic-dev
       binary: greentic-dev
+      rust-version: "1.96.0"
+      include-macos-intel: true
       windows-archive-format: zip
       extra-files: |
         README.md

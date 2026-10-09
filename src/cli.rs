@@ -139,6 +139,9 @@ pub fn localized_help_command(locale: &str) -> clap::Command {
                             arg.help(crate::i18n::t(locale, "cli.command.mcp.doctor.json"))
                         })
                 })
+                .mut_subcommand("gen", |sub| {
+                    sub.about(crate::i18n::t(locale, "cli.command.mcp.gen.about"))
+                })
         })
         .mut_subcommand("tools", |sub| {
             sub.about(crate::i18n::t(locale, "cli.command.tools.about"))
@@ -528,12 +531,14 @@ pub struct PassthroughArgs {
 pub enum McpCommand {
     /// cli.command.mcp.doctor.about
     Doctor(McpDoctorArgs),
+    /// cli.command.mcp.gen.about
+    Gen(PassthroughArgs),
 }
 
 #[derive(Args, Debug)]
 pub struct McpDoctorArgs {
     /// cli.command.mcp.doctor.provider
-    pub provider: String,
+    pub provider: Option<String>,
     /// cli.command.mcp.doctor.json
     #[arg(long = "json")]
     pub json: bool,
@@ -766,6 +771,22 @@ pub struct ReleaseSnapshotArgs {
     /// cli.command.release.no_notify_updater
     #[arg(long = "no-notify-updater")]
     pub no_notify_updater: bool,
+    /// cli.command.release.snapshot.source
+    #[arg(long = "source", value_enum, default_value_t = SnapshotSource::CratesIo)]
+    pub source: SnapshotSource,
+}
+
+// Where `release snapshot` reads the versions it pins. Plain comments, not doc
+// comments: clap turns `///` into help text, and `tests/cli_i18n_audit.rs`
+// requires every help string in this file to be an i18n key. The flag's help is
+// `cli.command.release.snapshot.source`.
+#[derive(Clone, Copy, Debug, Eq, PartialEq, clap::ValueEnum)]
+pub enum SnapshotSource {
+    // The newest version of each crate on crates.io.
+    CratesIo,
+    // The newest complete dev-lane GitHub release of each package, pinned
+    // together with its archive URLs and digests.
+    GithubReleases,
 }
 
 #[derive(Args, Debug)]

@@ -75,7 +75,18 @@ fn main() -> Result<()> {
         }
         Command::Cbor(args) => cbor_cmd::run(args),
         Command::Mcp(mcp) => match mcp {
-            McpCommand::Doctor(args) => mcp_cmd::doctor(&args.provider, args.json),
+            McpCommand::Doctor(args) => mcp_cmd::doctor(args.provider.as_deref(), args.json),
+            McpCommand::Gen(args) => {
+                let bin = greentic_dev::passthrough::resolve_external_tool("greentic-mcp-gen")
+                    .map_err(|_| {
+                        anyhow::anyhow!(greentic_dev::i18n::t(
+                            &selected_locale,
+                            "runtime.mcp.gen.error.not_installed"
+                        ))
+                    })?;
+                let status = run_passthrough(&bin, &args.args, false)?;
+                std::process::exit(status.code().unwrap_or(1));
+            }
         },
         Command::Tools(command) => match command {
             ToolsCommand::Install(args) => tools::install(args.latest, &selected_locale),
@@ -137,10 +148,39 @@ fn maybe_delegate_mcp_passthrough(argv: &[OsString]) -> Result<()> {
         return Ok(());
     }
 
+    if mcp_arg == "gen" {
+        let locale = greentic_dev::i18n::select_locale(
+            greentic_dev::i18n::cli_locale_from_argv(argv).as_deref(),
+        );
+        // Safe: `mcp_gen_args` returns Some here because argv[1]=="mcp" && argv[2]=="gen".
+        let forwarded = mcp_gen_args(argv).unwrap_or_default();
+        let bin =
+            greentic_dev::passthrough::resolve_external_tool("greentic-mcp-gen").map_err(|_| {
+                anyhow::anyhow!(greentic_dev::i18n::t(
+                    &locale,
+                    "runtime.mcp.gen.error.not_installed"
+                ))
+            })?;
+        let status = run_passthrough(&bin, &forwarded, false)?;
+        std::process::exit(status.code().unwrap_or(1));
+    }
+
     let bin = resolve_binary("greentic-mcp")?;
     let delegated_args = rewritten_mcp_passthrough_args(&argv[2..]);
     let status = run_passthrough(&bin, &delegated_args, false)?;
     std::process::exit(status.code().unwrap_or(1));
+}
+
+/// If `argv` is `greentic-dev mcp gen …`, return the tokens after `gen`
+/// (everything to forward to the generator). Otherwise `None`.
+fn mcp_gen_args(argv: &[OsString]) -> Option<Vec<OsString>> {
+    if argv.get(1)?.to_str()? != "mcp" {
+        return None;
+    }
+    if argv.get(2)?.to_str()? != "gen" {
+        return None;
+    }
+    Some(argv[3..].to_vec())
 }
 
 fn rewritten_mcp_passthrough_args(args: &[OsString]) -> Vec<OsString> {
@@ -308,4 +348,57 @@ fn try_delegate_to_prefixed(subcmd: &str, rest: &[OsString]) {
     };
 
     std::process::exit(status.code().unwrap_or(1));
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::ffi::OsString;
+
+    fn argv(parts: &[&str]) -> Vec<OsString> {
+        parts.iter().map(OsString::from).collect()
+    }
+
+    #[test]
+    fn mcp_gen_args_captures_everything_after_gen() {
+        let a = argv(&[
+            "greentic-dev",
+            "mcp",
+            "gen",
+            "--spec",
+            "./api.yaml",
+            "--output-dir",
+            "./out",
+        ]);
+        let forwarded = mcp_gen_args(&a).expect("mcp gen should be recognized");
+        assert_eq!(
+            forwarded,
+            argv(&["--spec", "./api.yaml", "--output-dir", "./out"])
+        );
+    }
+
+    #[test]
+    fn mcp_gen_args_forwards_subcommand_style_args_verbatim() {
+        let a = argv(&[
+            "greentic-dev",
+            "mcp",
+            "gen",
+            "discovery",
+            "--url",
+            "https://x/y",
+            "--dry-run",
+        ]);
+        let forwarded = mcp_gen_args(&a).expect("mcp gen should be recognized");
+        assert_eq!(
+            forwarded,
+            argv(&["discovery", "--url", "https://x/y", "--dry-run"])
+        );
+    }
+
+    #[test]
+    fn mcp_gen_args_ignores_non_gen() {
+        assert!(mcp_gen_args(&argv(&["greentic-dev", "mcp", "doctor", "providers"])).is_none());
+        assert!(mcp_gen_args(&argv(&["greentic-dev", "flow", "gen"])).is_none());
+        assert!(mcp_gen_args(&argv(&["greentic-dev", "mcp"])).is_none());
+    }
 }

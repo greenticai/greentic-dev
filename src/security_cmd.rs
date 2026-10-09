@@ -327,7 +327,7 @@ impl Runner for ShellRunner {
 
 fn install_foxguard() -> Result<(), OperationalError> {
     let output = Command::new("cargo")
-        .args(["binstall", "foxguard"])
+        .args(["binstall", "--maximum-resolution-timeout", "60", "foxguard"])
         .output()
         .map_err(|err| OperationalError::new(format!("failed to execute cargo binstall: {err}")))?;
     if output.status.success() {

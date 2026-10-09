@@ -5,9 +5,11 @@ use std::str::FromStr;
 
 use anyhow::{Context, Result, anyhow, bail};
 use async_trait::async_trait;
-use oci_distribution::Reference;
-use oci_distribution::client::{Client, ClientConfig, ClientProtocol, Config, ImageLayer};
-use oci_distribution::secrets::RegistryAuth;
+use greentic_distributor_client::oci_client::Reference;
+use greentic_distributor_client::oci_client::client::{
+    Client, ClientConfig, ClientProtocol, Config, ImageLayer,
+};
+use greentic_distributor_client::oci_client::secrets::RegistryAuth;
 use semver::Version;
 use serde::{Deserialize, Serialize};
 use time::OffsetDateTime;
@@ -15,7 +17,7 @@ use time::format_description::well_known::Rfc3339;
 
 use crate::cli::{
     ReleaseGenerateArgs, ReleaseLatestArgs, ReleasePromoteArgs, ReleasePublishArgs,
-    ReleaseSnapshotArgs, ReleaseViewArgs,
+    ReleaseSnapshotArgs, ReleaseViewArgs, SnapshotSource,
 };
 use crate::install::block_on_maybe_runtime;
 use crate::passthrough::{ToolchainChannel, delegated_binary_name_for_channel};
@@ -44,6 +46,24 @@ pub struct ToolchainManifest {
     pub extension_packs: Option<Vec<ExtensionPackRef>>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub components: Option<Vec<ComponentRef>>,
+    /// The gtc binary this manifest pins, named per target.
+    ///
+    /// gtc used to rebuild these names from the version using the STABLE
+    /// convention (`gtc-<target>.tgz`) — while the dev lane publishes
+    /// `gtc-dev-v<version>-<target>.tgz`. One convention in the consumer, two
+    /// publishers: every dev self-update fetched a 404. Stating the name here
+    /// removes the guess.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub gtc: Option<Vec<GtcArtifactRef>>,
+}
+
+/// One gtc release artifact, exactly as GitHub reports it.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct GtcArtifactRef {
+    pub target: String,
+    pub url: String,
+    /// Hex sha256 without the `sha256:` prefix.
+    pub sha256: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -52,6 +72,23 @@ pub struct ToolchainPackage {
     pub crate_name: String,
     pub bins: Vec<String>,
     pub version: String,
+    /// Release archives for this exact version, one per target. gtc installs
+    /// from these instead of `cargo binstall` when the running target has an
+    /// entry — which is what lets a manifest pin a build crates.io never
+    /// received. Written by `release snapshot --source github-releases`; see
+    /// `release_github_source`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub artifacts: Option<Vec<PackageArtifactRef>>,
+}
+
+/// One release archive of a toolchain package, exactly as GitHub reports it.
+/// Same shape as [`GtcArtifactRef`], which gtc already consumes for self-update.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct PackageArtifactRef {
+    pub target: String,
+    pub url: String,
+    /// Hex sha256 without the `sha256:` prefix.
+    pub sha256: String,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -157,12 +194,22 @@ pub fn publish(args: ReleasePublishArgs) -> Result<()> {
 }
 
 fn publish_with_checker(args: ReleasePublishArgs, checker: &dyn ReleaseAssetChecker) -> Result<()> {
-    let (release, manifest, source) = publish_manifest_input(&args)?;
+    let (release, mut manifest, source) = publish_manifest_input(&args)?;
 
     // Gate before the dry-run return, so `publish --manifest <file> --dry-run`
     // doubles as the CI check on a pin bump: it answers "is this manifest
     // publishable?" without pushing anything.
     verify_manifest_releases(&manifest, args.tag.as_deref(), checker)?;
+
+    // State the gtc artifacts rather than leaving the consumer to rebuild their
+    // names. Deliberately NOT gated on the stable-channel check above: dev is
+    // the lane whose names cannot be reconstructed, so it needs this most.
+    // Best-effort — an unreadable release leaves the field absent and the
+    // consumer falls back exactly as it does today. A manifest file that
+    // already names them is left alone.
+    if manifest.gtc.is_none() {
+        manifest.gtc = gtc_artifacts_for(&manifest.version, checker)?;
+    }
 
     if args.dry_run {
         println!(
@@ -407,8 +454,31 @@ fn snapshot_with_checker(
     checker: &dyn ReleaseAssetChecker,
 ) -> Result<()> {
     let channel = parse_channel(&args.channel)?;
-    let resolver = CratesIoApiVersionResolver::default();
-    let manifest = snapshot_manifest(&args.release, channel, &resolver, Some(created_at_now()?))?;
+    let mut manifest = match args.source {
+        SnapshotSource::CratesIo => {
+            let resolver = CratesIoApiVersionResolver::default();
+            snapshot_manifest(&args.release, channel, &resolver, Some(created_at_now()?))?
+        }
+        SnapshotSource::GithubReleases => {
+            // Only the dev lane publishes a GitHub release per build with the
+            // `<crate>-dev-v<version>-<target>` archives this reads; stable and
+            // research are released through crates.io, and pinning either from
+            // here would name archives that do not exist.
+            if channel != ToolchainChannel::Development {
+                bail!(
+                    "--source github-releases resolves the dev channel only, not `{}`",
+                    args.channel
+                );
+            }
+            let source =
+                crate::release_github_source::GithubDevReleaseSource::new(args.token.as_deref())?;
+            crate::release_github_source::snapshot_manifest_from_github_releases(
+                &args.release,
+                &source,
+                Some(created_at_now()?),
+            )?
+        }
+    };
 
     // Snapshot resolves pins from crates.io, which does NOT imply a finished
     // release build. Most repos gate `publish_crates` on `needs: [release]`, but
@@ -416,6 +486,10 @@ fn snapshot_with_checker(
     // ["v*"]` — so its crates.io version and its GitHub release race, and a
     // stable snapshot could pin the winner of that race. Same gate as publish.
     verify_manifest_releases(&manifest, args.tag.as_deref(), checker)?;
+
+    if manifest.gtc.is_none() {
+        manifest.gtc = gtc_artifacts_for(&manifest.version, checker)?;
+    }
 
     if args.dry_run {
         println!("{}", serde_json::to_string_pretty(&manifest)?);
@@ -495,6 +569,7 @@ fn resolve_manifest_version<R: CrateVersionResolver>(
     resolver: &R,
     crate_in_manifest: &str,
     channel: ToolchainChannel,
+    lane: Option<(u64, u64)>,
 ) -> Result<Option<String>> {
     if channel == ToolchainChannel::Rnd {
         match resolver
@@ -511,6 +586,20 @@ fn resolve_manifest_version<R: CrateVersionResolver>(
                 Ok(None)
             }
         }
+    } else if let (ToolchainChannel::Development, Some(lane)) = (channel, lane) {
+        // Stay inside the release's own minor line. Without this the dev
+        // manifest pins whatever sorts highest across ALL lanes, which is how
+        // an abandoned 1.3 research build kept winning over active 1.2 dev
+        // builds and froze the dev channel.
+        resolver
+            .resolve_latest_in_lane(crate_in_manifest, lane)
+            .with_context(|| {
+                format!(
+                    "failed to resolve a {}.{} version for `{crate_in_manifest}`",
+                    lane.0, lane.1
+                )
+            })
+            .map(Some)
     } else {
         resolver
             .resolve_latest_for_channel(crate_in_manifest, channel)
@@ -529,13 +618,16 @@ pub fn snapshot_manifest<R: CrateVersionResolver>(
     let mut packages = Vec::new();
     for package in GREENTIC_TOOLCHAIN_PACKAGES {
         let crate_in_manifest = manifest_crate_name_for_source(from, package.crate_name);
-        let Some(version) = resolve_manifest_version(resolver, &crate_in_manifest, channel)? else {
+        let Some(version) =
+            resolve_manifest_version(resolver, &crate_in_manifest, channel, lane_of(release))?
+        else {
             continue;
         };
         packages.push(ToolchainPackage {
             crate_name: crate_in_manifest,
             bins: manifest_bins_for_source(from, package.bins),
             version,
+            artifacts: None,
         });
     }
     Ok(ToolchainManifest {
@@ -547,6 +639,7 @@ pub fn snapshot_manifest<R: CrateVersionResolver>(
         packages,
         extension_packs: None,
         components: None,
+        gtc: None,
     })
 }
 
@@ -626,6 +719,7 @@ fn latest_manifest(created_at: Option<String>) -> ToolchainManifest {
                 })
                 .collect(),
         ),
+        gtc: None,
     }
 }
 
@@ -640,6 +734,7 @@ fn latest_manifest_packages() -> Vec<ToolchainPackage> {
             ToolchainChannel::Development,
         )],
         version: "latest".to_string(),
+        artifacts: None,
     })
     .chain(GREENTIC_TOOLCHAIN_PACKAGES.iter().map(|package| {
         ToolchainPackage {
@@ -653,6 +748,7 @@ fn latest_manifest_packages() -> Vec<ToolchainPackage> {
                 .map(|bin| delegated_binary_name_for_channel(bin, ToolchainChannel::Development))
                 .collect(),
             version: "latest".to_string(),
+            artifacts: None,
         }
     }))
     .collect()
@@ -710,6 +806,7 @@ where
                 resolver,
                 &crate_in_manifest,
                 channel_from_source_tag(from),
+                lane_of(release),
             )?,
         };
         let Some(version) = version else {
@@ -719,6 +816,7 @@ where
             crate_name: crate_in_manifest,
             bins: manifest_bins_for_source(from, package.bins),
             version,
+            artifacts: None,
         });
     }
     Ok(ToolchainManifest {
@@ -730,6 +828,7 @@ where
         packages,
         extension_packs: Some(extension_pack_refs_for_release(source, artifact_resolver)?),
         components: Some(component_refs_for_release(source, artifact_resolver)?),
+        gtc: None,
     })
 }
 
@@ -742,7 +841,7 @@ fn channel_from_source_tag(from: &str) -> ToolchainChannel {
     }
 }
 
-fn manifest_bins_for_source(from: &str, bins: &[&str]) -> Vec<String> {
+pub(crate) fn manifest_bins_for_source(from: &str, bins: &[&str]) -> Vec<String> {
     let channel = channel_from_source_tag(from);
     bins.iter()
         .map(|bin| delegated_binary_name_for_channel(bin, channel))
@@ -824,7 +923,7 @@ fn ref_version_for_package(
 /// the stable one. Reuses `delegated_binary_name_for_channel` because the
 /// rule is identical for crates and binaries (`-dev` suffix, with the
 /// special carve-out that `greentic-dev` itself becomes `greentic-dev-dev`).
-fn manifest_crate_name_for_source(from: &str, crate_name: &str) -> String {
+pub(crate) fn manifest_crate_name_for_source(from: &str, crate_name: &str) -> String {
     if from == "dev" {
         delegated_binary_name_for_channel(crate_name, ToolchainChannel::Development)
     } else {
@@ -865,6 +964,15 @@ const RELEASE_ARCHIVE_SUFFIXES: [&str; 2] = [".tgz", ".zip"];
 trait ReleaseAssetChecker {
     /// `Ok(None)` when the release does not exist, `Ok(Some(names))` otherwise.
     fn release_assets(&self, repo: &str, tag: &str) -> Result<Option<Vec<String>>>;
+
+    /// The same release, with each asset's URL and digest.
+    ///
+    /// Defaulted to `None` so the existing test doubles — which model asset
+    /// NAMES only, because that is all the publish gate ever needed — keep
+    /// compiling and keep exercising that gate unchanged.
+    fn release_artifacts(&self, _repo: &str, _tag: &str) -> Result<Option<Vec<ReleaseArtifact>>> {
+        Ok(None)
+    }
 }
 
 #[derive(Deserialize)]
@@ -876,6 +984,19 @@ struct GithubReleaseAssets {
 #[derive(Deserialize)]
 struct GithubReleaseAsset {
     name: String,
+    /// GitHub reports `sha256:<hex>`; absent on older releases.
+    #[serde(default)]
+    digest: Option<String>,
+    #[serde(default)]
+    browser_download_url: Option<String>,
+}
+
+/// A release asset with the download URL and digest GitHub itself reports —
+/// so nothing downstream has to reconstruct either.
+pub(crate) struct ReleaseArtifact {
+    pub name: String,
+    pub url: Option<String>,
+    pub sha256: Option<String>,
 }
 
 struct GithubReleaseAssetChecker {
@@ -898,8 +1019,9 @@ impl GithubReleaseAssetChecker {
     }
 }
 
-impl ReleaseAssetChecker for GithubReleaseAssetChecker {
-    fn release_assets(&self, repo: &str, tag: &str) -> Result<Option<Vec<String>>> {
+impl GithubReleaseAssetChecker {
+    /// One GET, shared by both trait methods.
+    fn fetch_assets(&self, repo: &str, tag: &str) -> Result<Option<Vec<GithubReleaseAsset>>> {
         let url = format!(
             "{}/repos/{TOOLCHAIN_RELEASE_OWNER}/{repo}/releases/tags/{tag}",
             self.base_url.trim_end_matches('/')
@@ -923,9 +1045,28 @@ impl ReleaseAssetChecker for GithubReleaseAssetChecker {
         };
         let release: GithubReleaseAssets = serde_json::from_str(&body)
             .with_context(|| format!("failed to parse release metadata from {url}"))?;
-        Ok(Some(
-            release.assets.into_iter().map(|asset| asset.name).collect(),
-        ))
+        Ok(Some(release.assets))
+    }
+}
+
+impl ReleaseAssetChecker for GithubReleaseAssetChecker {
+    fn release_assets(&self, repo: &str, tag: &str) -> Result<Option<Vec<String>>> {
+        Ok(self
+            .fetch_assets(repo, tag)?
+            .map(|assets| assets.into_iter().map(|asset| asset.name).collect()))
+    }
+
+    fn release_artifacts(&self, repo: &str, tag: &str) -> Result<Option<Vec<ReleaseArtifact>>> {
+        Ok(self.fetch_assets(repo, tag)?.map(|assets| {
+            assets
+                .into_iter()
+                .map(|asset| ReleaseArtifact {
+                    name: asset.name,
+                    url: asset.browser_download_url,
+                    sha256: asset.digest,
+                })
+                .collect()
+        }))
     }
 }
 
@@ -970,6 +1111,57 @@ fn affects_stable_channel(manifest: &ToolchainManifest, target_tag: Option<&str>
 /// The toolchain manifest is what `gtc install` resolves, so a pin that outruns
 /// its release build leaves `:stable` pointing at binaries nobody can download.
 /// The dev and research lanes publish on their own cadence and are never gated.
+/// gtc lives in its own repository, not one named after a pinned crate, so it
+/// is absent from `manifest.packages` and needs its own lookup.
+const GTC_RELEASE_REPO: &str = "greentic";
+
+/// Every target gtc is ever built for. A lane that builds a subset simply has
+/// no asset for the rest, and those are skipped — the manifest states what was
+/// actually published, never what should have been.
+const GTC_TARGETS: &[&str] = &[
+    "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
+    "x86_64-apple-darwin",
+    "aarch64-apple-darwin",
+    "x86_64-pc-windows-msvc",
+    "aarch64-pc-windows-msvc",
+];
+
+/// Name the gtc artifacts for `version`, straight from the release.
+///
+/// `Ok(None)` when the release cannot be read or names nothing usable: the
+/// manifest then carries no `gtc` field and the consumer falls back to
+/// reconstruction, which is what every manifest published so far does.
+fn gtc_artifacts_for(
+    version: &str,
+    checker: &dyn ReleaseAssetChecker,
+) -> Result<Option<Vec<GtcArtifactRef>>> {
+    let tag = format!("v{version}");
+    let Some(artifacts) = checker.release_artifacts(GTC_RELEASE_REPO, &tag)? else {
+        return Ok(None);
+    };
+    let mut named = Vec::new();
+    for target in GTC_TARGETS {
+        let tgz = format!("-{target}.tgz");
+        let zip = format!("-{target}.zip");
+        let Some(found) = artifacts
+            .iter()
+            .find(|artifact| artifact.name.ends_with(&tgz) || artifact.name.ends_with(&zip))
+        else {
+            continue;
+        };
+        let (Some(url), Some(digest)) = (found.url.as_deref(), found.sha256.as_deref()) else {
+            continue;
+        };
+        named.push(GtcArtifactRef {
+            target: (*target).to_string(),
+            url: url.to_string(),
+            sha256: digest.trim_start_matches("sha256:").to_string(),
+        });
+    }
+    Ok((!named.is_empty()).then_some(named))
+}
+
 fn verify_manifest_releases(
     manifest: &ToolchainManifest,
     target_tag: Option<&str>,
@@ -1025,7 +1217,7 @@ fn verify_manifest_releases(
 /// `greentic-mcp-generator-*`), so it cannot drive a per-binary check either.
 /// The residual window is one `gh release upload` invocation — all assets go up
 /// in a single call — against the 35-45 minutes of build time this does cover.
-fn check_release_assets(assets: &[String], version: &str) -> Result<(), String> {
+pub(crate) fn check_release_assets(assets: &[String], version: &str) -> Result<(), String> {
     let names: BTreeSet<&str> = assets.iter().map(String::as_str).collect();
     let version_marker = format!("-v{version}-");
     let archives: Vec<&str> = names
@@ -1118,6 +1310,16 @@ pub trait CrateVersionResolver {
         crate_name: &str,
         _channel: ToolchainChannel,
     ) -> Result<String> {
+        self.resolve_latest(crate_name)
+    }
+
+    /// Resolve the latest version INSIDE a `(major, minor)` lane.
+    ///
+    /// The dev channel needs this: greentic versions its lanes by minor (1.2.x
+    /// dev, 1.3.x research), so "highest overall" lets an abandoned research
+    /// build outrank an active dev one. The default ignores the lane, which is
+    /// correct for resolvers that serve a single lane (the test fakes).
+    fn resolve_latest_in_lane(&self, crate_name: &str, _lane: (u64, u64)) -> Result<String> {
         self.resolve_latest(crate_name)
     }
 
@@ -1370,6 +1572,14 @@ impl CrateVersionResolver for CratesIoApiVersionResolver {
         research_or_fallback(crate_name, &body)
     }
 
+    fn resolve_latest_in_lane(&self, crate_name: &str, lane: (u64, u64)) -> Result<String> {
+        let url = format!("{}/{}", self.base_url.trim_end_matches('/'), crate_name);
+        let body = self.fetch_crate_body(crate_name)?.ok_or_else(|| {
+            anyhow!("crates.io API GET {url} returned 404 Not Found (no published `{crate_name}`)")
+        })?;
+        pick_highest_in_lane(crate_name, &body, lane)
+    }
+
     fn resolve_research_version(&self, crate_name: &str) -> Result<ResearchVersion> {
         // A 404 means the `<name>-rnd` crate is simply not published — the tool
         // ships no research build. Map it to `Absent` (a skip signal) instead of
@@ -1388,6 +1598,65 @@ impl CrateVersionResolver for CratesIoApiVersionResolver {
 /// `max_stable_version` skips). Otherwise picks the highest semver of ANY
 /// channel — the fallback for toolchain crates with no `-research` build, which
 /// keeps them at their latest dev build instead of regressing to old stable.
+/// The `(major, minor)` lane a release belongs to. greentic versions its
+/// toolchain lanes by minor: 1.2.x is dev, 1.3.x is research.
+pub(crate) fn lane_of(release: &str) -> Option<(u64, u64)> {
+    let mut parts = release.split('.');
+    let major = parts.next()?.parse().ok()?;
+    let minor = parts.next()?.parse().ok()?;
+    Some((major, minor))
+}
+
+/// Highest non-yanked version of `crate_name` INSIDE `lane`.
+///
+/// The dev channel must not leave its own minor line. Picking the highest
+/// version overall lets an abandoned lane outrank an active one purely on
+/// semver ordering — `greentic-setup-dev` stopped publishing 1.3 in July while
+/// the dev lane kept shipping 1.2.<run_id>, so every later dev manifest pinned
+/// the July build and the channel froze without anyone doing anything wrong.
+///
+/// An empty lane is an error rather than a fallback: falling back to another
+/// lane is the behaviour this function exists to prevent.
+fn pick_highest_in_lane(crate_name: &str, body: &str, lane: (u64, u64)) -> Result<String> {
+    let payload: serde_json::Value = serde_json::from_str(body)
+        .with_context(|| format!("crates.io API for `{crate_name}` returned invalid JSON"))?;
+    let versions = payload
+        .get("versions")
+        .and_then(|v| v.as_array())
+        .ok_or_else(|| {
+            anyhow!("crates.io API for `{crate_name}` is missing the `versions` array")
+        })?;
+    let mut best: Option<Version> = None;
+    for entry in versions {
+        if entry
+            .get("yanked")
+            .and_then(serde_json::Value::as_bool)
+            .unwrap_or(false)
+        {
+            continue;
+        }
+        let Some(num) = entry.get("num").and_then(|n| n.as_str()) else {
+            continue;
+        };
+        let Ok(parsed) = Version::parse(num) else {
+            continue;
+        };
+        if (parsed.major, parsed.minor) != lane {
+            continue;
+        }
+        if best.as_ref().is_none_or(|current| parsed > *current) {
+            best = Some(parsed);
+        }
+    }
+    best.map(|v| v.to_string()).ok_or_else(|| {
+        anyhow!(
+            "crates.io has no non-yanked `{crate_name}` in the {}.{} lane",
+            lane.0,
+            lane.1
+        )
+    })
+}
+
 fn pick_highest_crates_io_version(
     crate_name: &str,
     body: &str,
@@ -1548,7 +1817,7 @@ fn should_notify_updater(version: &str, channel: &str) -> bool {
 /// Resolve a GitHub token from `--token`, then the ambient CI environment. An
 /// empty or whitespace-only value counts as absent. Reads of public release
 /// metadata work without one; only the dispatch strictly needs it.
-fn ambient_github_token(raw_token: Option<&str>) -> Option<String> {
+pub(crate) fn ambient_github_token(raw_token: Option<&str>) -> Option<String> {
     resolve_registry_token(raw_token)
         .ok()
         .flatten()
@@ -1673,7 +1942,9 @@ async fn manifest_exists(
     }
 }
 
-fn is_missing_manifest_error(err: &oci_distribution::errors::OciDistributionError) -> bool {
+fn is_missing_manifest_error(
+    err: &greentic_distributor_client::oci_client::errors::OciDistributionError,
+) -> bool {
     let msg = err.to_string().to_ascii_lowercase();
     msg.contains("manifest unknown")
         || msg.contains("name unknown")
@@ -1681,7 +1952,9 @@ fn is_missing_manifest_error(err: &oci_distribution::errors::OciDistributionErro
         || msg.contains("404")
 }
 
-fn is_unauthorized_error(err: &oci_distribution::errors::OciDistributionError) -> bool {
+fn is_unauthorized_error(
+    err: &greentic_distributor_client::oci_client::errors::OciDistributionError,
+) -> bool {
     let msg = err.to_string().to_ascii_lowercase();
     msg.contains("not authorized") || msg.contains("unauthorized") || msg.contains("401")
 }
@@ -1995,9 +2268,11 @@ mod tests {
                 crate_name: "greentic-dev".to_string(),
                 bins: vec!["greentic-dev".to_string()],
                 version: "0.5.9".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
+            gtc: None,
         };
         let manifest =
             generate_manifest("1.0.5", "latest", Some(&source), &FixedResolver, None).unwrap();
@@ -2020,6 +2295,7 @@ mod tests {
             packages: Vec::new(),
             extension_packs: None,
             components: None,
+            gtc: None,
         };
         let manifest =
             generate_manifest("1.0.16", "dev", Some(&source), &FixedResolver, None).unwrap();
@@ -2138,6 +2414,65 @@ mod tests {
         assert!(parse_channel("rc").is_err());
     }
 
+    /// The dev channel must stay inside its own minor line.
+    ///
+    /// greentic uses 1.2.x for the dev lane and 1.3.x for research. Picking the
+    /// highest version overall makes an ABANDONED research build outrank an
+    /// active dev one: `greentic-setup-dev` published 1.3.29488015798 in July
+    /// and nothing since, while the dev lane kept shipping 1.2.<run_id>. Every
+    /// dev manifest generated after that pinned the July build, which is how
+    /// the dev channel silently froze.
+    #[test]
+    fn the_dev_lane_ignores_a_higher_research_minor() {
+        let body = r#"{"versions":[
+            {"num":"1.2.32329835532","yanked":false},
+            {"num":"1.2.32374877786","yanked":false},
+            {"num":"1.3.29293243074","yanked":false},
+            {"num":"1.3.29488015798","yanked":false}
+        ]}"#;
+
+        assert_eq!(
+            pick_highest_in_lane("greentic-setup-dev", body, (1, 2)).unwrap(),
+            "1.2.32374877786",
+            "the newest 1.2 build must win over any 1.3"
+        );
+        assert_eq!(
+            pick_highest_in_lane("greentic-setup-dev", body, (1, 3)).unwrap(),
+            "1.3.29488015798",
+            "asking for the 1.3 lane still resolves inside 1.3"
+        );
+    }
+
+    /// A yanked build must never be pinned, lane or not.
+    #[test]
+    fn a_yanked_build_is_not_pinned_in_lane() {
+        let body = r#"{"versions":[
+            {"num":"1.2.100","yanked":false},
+            {"num":"1.2.200","yanked":true}
+        ]}"#;
+        assert_eq!(pick_highest_in_lane("c", body, (1, 2)).unwrap(), "1.2.100");
+    }
+
+    /// A crate with nothing in the lane is an error the caller can report,
+    /// not a silent fall back to another lane — falling back is the bug.
+    #[test]
+    fn an_empty_lane_is_an_error_not_a_fallback() {
+        let body = r#"{"versions":[{"num":"1.3.5","yanked":false}]}"#;
+        let err = pick_highest_in_lane("c", body, (1, 2)).unwrap_err();
+        assert!(
+            err.to_string().contains("1.2"),
+            "the error must name the lane it searched; got {err}"
+        );
+    }
+
+    /// `--release 1.2.1` means the 1.2 lane.
+    #[test]
+    fn the_lane_comes_from_the_release_being_generated() {
+        assert_eq!(lane_of("1.2.1"), Some((1, 2)));
+        assert_eq!(lane_of("1.2.32374413367"), Some((1, 2)));
+        assert_eq!(lane_of("nonsense"), None);
+    }
+
     #[test]
     fn detects_concrete_pins_for_publish_deprecation_warning() {
         let with_pins = ToolchainManifest {
@@ -2150,9 +2485,11 @@ mod tests {
                 crate_name: "greentic-operator-dev".to_string(),
                 bins: vec!["greentic-operator-dev".to_string()],
                 version: "0.5.123".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
+            gtc: None,
         };
         assert!(source_manifest_has_concrete_pins(&with_pins));
 
@@ -2161,6 +2498,7 @@ mod tests {
                 crate_name: "greentic-operator".to_string(),
                 bins: vec!["greentic-operator".to_string()],
                 version: "latest".to_string(),
+                artifacts: None,
             }],
             ..with_pins
         };
@@ -2409,6 +2747,7 @@ mod tests {
             packages: Vec::new(),
             extension_packs: None,
             components: None,
+            gtc: None,
         };
         assert_eq!(manifest_file_name(&manifest), "gtc-1.0.12.json");
     }
@@ -2483,6 +2822,7 @@ mod tests {
                 id: "components/component-adaptive-card".to_string(),
                 version: "0.5.8".to_string(),
             }]),
+            gtc: None,
         };
 
         let manifest =
@@ -2551,9 +2891,11 @@ mod tests {
                 crate_name: "greentic-dev".to_string(),
                 bins: vec!["greentic-dev".to_string()],
                 version: "0.6.0".to_string(),
+                artifacts: None,
             }],
             extension_packs: None,
             components: None,
+            gtc: None,
         };
 
         let versions = source_version_map(Some(&source));
@@ -2675,6 +3017,91 @@ mod tests {
         }
     }
 
+    /// A checker that answers `release_artifacts` — the stub above deliberately
+    /// does not, so it also proves the trait default keeps working.
+    struct StubArtifactChecker(Vec<ReleaseArtifact>);
+
+    impl ReleaseAssetChecker for StubArtifactChecker {
+        fn release_assets(&self, _repo: &str, _tag: &str) -> Result<Option<Vec<String>>> {
+            Ok(Some(self.0.iter().map(|a| a.name.clone()).collect()))
+        }
+
+        fn release_artifacts(&self, repo: &str, tag: &str) -> Result<Option<Vec<ReleaseArtifact>>> {
+            assert_eq!(repo, GTC_RELEASE_REPO, "gtc is looked up in its own repo");
+            assert_eq!(tag, "v1.2.3");
+            Ok(Some(
+                self.0
+                    .iter()
+                    .map(|a| ReleaseArtifact {
+                        name: a.name.clone(),
+                        url: a.url.clone(),
+                        sha256: a.sha256.clone(),
+                    })
+                    .collect(),
+            ))
+        }
+    }
+
+    fn artifact(name: &str, digest: Option<&str>) -> ReleaseArtifact {
+        ReleaseArtifact {
+            name: name.to_string(),
+            url: Some(format!(
+                "https://github.com/greenticai/greentic/releases/download/v1.2.3/{name}"
+            )),
+            sha256: digest.map(str::to_string),
+        }
+    }
+
+    #[test]
+    fn gtc_artifacts_are_taken_from_the_release_not_rebuilt() {
+        // Dev-lane naming: the very shape the consumer could not reconstruct.
+        let checker = StubArtifactChecker(vec![
+            artifact(
+                "gtc-dev-v1.2.3-x86_64-unknown-linux-gnu.tgz",
+                Some(&format!("sha256:{}", "a".repeat(64))),
+            ),
+            artifact(
+                "gtc-dev-v1.2.3-x86_64-unknown-linux-gnu.tgz.sha256",
+                Some(&format!("sha256:{}", "b".repeat(64))),
+            ),
+        ]);
+
+        let named = gtc_artifacts_for("1.2.3", &checker)
+            .expect("lookup")
+            .expect("some");
+        assert_eq!(named.len(), 1, "the .sha256 sidecar is not an artifact");
+        assert_eq!(named[0].target, "x86_64-unknown-linux-gnu");
+        assert!(
+            named[0]
+                .url
+                .ends_with("gtc-dev-v1.2.3-x86_64-unknown-linux-gnu.tgz")
+        );
+        // Stored bare, matching the checksums-manifest shape the other path uses.
+        assert_eq!(named[0].sha256, "a".repeat(64));
+    }
+
+    #[test]
+    fn an_asset_without_a_digest_is_skipped_rather_than_published_unverifiable() {
+        let checker = StubArtifactChecker(vec![artifact(
+            "gtc-dev-v1.2.3-aarch64-apple-darwin.tgz",
+            None,
+        )]);
+        assert!(
+            gtc_artifacts_for("1.2.3", &checker)
+                .expect("lookup")
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn a_checker_that_reports_no_artifacts_leaves_the_field_absent() {
+        // The trait default. Absent means the consumer reconstructs, exactly as
+        // every manifest published before this field existed.
+        let manifest = latest_manifest(None);
+        let stub = StubReleaseChecker::complete_for(&manifest);
+        assert!(gtc_artifacts_for("1.2.3", &stub).expect("lookup").is_none());
+    }
+
     impl StubReleaseChecker {
         /// Every package in `manifest` present with a complete asset set.
         fn complete_for(manifest: &ToolchainManifest) -> Self {
@@ -2724,10 +3151,12 @@ mod tests {
                     crate_name: (*crate_name).to_string(),
                     bins: vec![(*crate_name).to_string()],
                     version: (*version).to_string(),
+                    artifacts: None,
                 })
                 .collect(),
             extension_packs: None,
             components: None,
+            gtc: None,
         }
     }
 

@@ -175,11 +175,19 @@ fn ensure_binstall(offline: bool) -> Result<()> {
     }
 
     log("installing cargo-binstall");
-    // Same route as `passthrough`: prefer the prebuilt release binary, because
-    // `cargo install cargo-binstall` compiles it and inherits the MSRV of
-    // binstall's bundled lockfile — 1.22.0 pins vergen 10.0.2 (rustc 1.96.0),
-    // which no longer builds on the 1.95.0 this repo pins.
-    crate::passthrough::install_cargo_binstall_public().context("failed to install cargo-binstall")
+    let mut args = vec!["install", "cargo-binstall"];
+    args.extend(cargo_args_for_network(offline));
+    let status = Command::new("cargo")
+        .args(&args)
+        .stdin(Stdio::inherit())
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .status()
+        .context("failed to install cargo-binstall")?;
+    if !status.success() {
+        bail!("failed to install cargo-binstall");
+    }
+    Ok(())
 }
 
 fn ensure_tool(bin: &str, package: &str, offline: bool) -> Result<()> {
@@ -198,7 +206,13 @@ fn ensure_tool(bin: &str, package: &str, offline: bool) -> Result<()> {
     let mut command = Command::new("cargo");
     command.arg("binstall");
     command.args(cargo_args_for_network(offline));
-    command.args(["-y", "--force", package]);
+    command.args([
+        "-y",
+        "--force",
+        "--maximum-resolution-timeout",
+        "60",
+        package,
+    ]);
     let status = command
         .stdin(Stdio::inherit())
         .stdout(Stdio::inherit())

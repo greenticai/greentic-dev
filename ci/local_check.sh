@@ -6,7 +6,7 @@ export CARGO_NET_RETRY=10
 export CARGO_HTTP_CHECK_REVOKE=false
 
 TOOLCHAIN_FILE="rust-toolchain.toml"
-TOOLCHAIN_CHANNEL_DEFAULT="1.95.0"
+TOOLCHAIN_CHANNEL_DEFAULT="1.96.0"
 TOOLCHAIN_CHANNEL="$TOOLCHAIN_CHANNEL_DEFAULT"
 TOOLCHAIN_COMPONENTS=""
 PYTHON_BIN="${PYTHON_BIN:-}"
@@ -45,16 +45,25 @@ PY
   fi
 fi
 
+RUSTUP_TOOLCHAIN_ID="$TOOLCHAIN_CHANNEL"
+if [[ "$(uname -s)" == "Darwin" ]] && \
+  [[ "$(sysctl -n hw.optional.arm64 2>/dev/null || true)" == "1" ]]; then
+  # `uname -m` reports x86_64 when this script runs under Rosetta. Query the
+  # physical CPU capability instead so rustup installs and runs the native
+  # Apple Silicon toolchain.
+  RUSTUP_TOOLCHAIN_ID="${TOOLCHAIN_CHANNEL}-aarch64-apple-darwin"
+fi
+
 if [[ "${CARGO_NET_OFFLINE:-false}" != "true" ]]; then
-  echo "[check_local] ensuring rust toolchain ${TOOLCHAIN_CHANNEL} is installed"
-  rustup toolchain install "$TOOLCHAIN_CHANNEL"
+  echo "[check_local] ensuring rust toolchain ${RUSTUP_TOOLCHAIN_ID} is installed"
+  rustup toolchain install "$RUSTUP_TOOLCHAIN_ID"
   if [[ -n "$TOOLCHAIN_COMPONENTS" ]]; then
-    rustup component add --toolchain "$TOOLCHAIN_CHANNEL" $TOOLCHAIN_COMPONENTS
+    rustup component add --toolchain "$RUSTUP_TOOLCHAIN_ID" $TOOLCHAIN_COMPONENTS
   fi
 else
-  echo "[check_local] offline; skipping rust toolchain install for ${TOOLCHAIN_CHANNEL}"
+  echo "[check_local] offline; skipping rust toolchain install for ${RUSTUP_TOOLCHAIN_ID}"
 fi
-export RUSTUP_TOOLCHAIN="$TOOLCHAIN_CHANNEL"
+export RUSTUP_TOOLCHAIN="$RUSTUP_TOOLCHAIN_ID"
 
 if [[ -z "${CARGO_TARGET_DIR:-}" ]]; then
   export CARGO_TARGET_DIR="$(pwd)/.target-local"

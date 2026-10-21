@@ -491,6 +491,20 @@ fn snapshot_with_checker(
         manifest.gtc = gtc_artifacts_for(&manifest.version, checker)?;
     }
 
+    // A target with no release archive installs from crates.io, which
+    // `github-releases` pins do not promise to be on. Say so now; never fail,
+    // since every target that has an archive is unaffected.
+    if matches!(args.source, SnapshotSource::GithubReleases) {
+        match crate::release_fallback_check::CratesIoApi::new() {
+            Ok(lookup) => {
+                for line in crate::release_fallback_check::fallback_warnings(&manifest, &lookup) {
+                    eprintln!("{line}");
+                }
+            }
+            Err(err) => eprintln!("note: skipped the crates.io fallback check: {err:#}"),
+        }
+    }
+
     if args.dry_run {
         println!("{}", serde_json::to_string_pretty(&manifest)?);
         println!(
@@ -1118,7 +1132,7 @@ const GTC_RELEASE_REPO: &str = "greentic";
 /// Every target gtc is ever built for. A lane that builds a subset simply has
 /// no asset for the rest, and those are skipped — the manifest states what was
 /// actually published, never what should have been.
-const GTC_TARGETS: &[&str] = &[
+pub(crate) const GTC_TARGETS: &[&str] = &[
     "x86_64-unknown-linux-gnu",
     "aarch64-unknown-linux-gnu",
     "x86_64-apple-darwin",
